@@ -17,11 +17,30 @@
 .bgimage{
   background-position: center center;
   background-size: cover;
-  height: 90vh;
+  height: 92vh;
 }
 
 .landing-header{
   background-image: url('bg.jpg');
-
   color:white;
 }
+
+#teaser{
+  height:8vh;
+  text-align: center;
+  padding: 15px 0 15px 0;
+  font-weight: 500;
+  font-size: larger;
+}
+
+#features{
+ background-color:lightgray;
+ text-align: center;
+}
+
+  #features img{
+    border:1px dotted black;
+    background-color:white;
+    height:200px;
+    width:200px;
+  }
