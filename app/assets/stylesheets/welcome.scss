@@ -60,13 +60,21 @@
   min-height: 84vh;
 }
 /*Countdown CSS */
-  .digits{
-    display:inline-block;
-  }
-  .cntSeparator { display:none; }
+.digits{
+  display:inline-block;
+}
+.cntSeparator { display:none; }
 
-  .cntDigit {}
-    .cntDigit#cnt_2 { margin-left: 12px; }
-    .cntDigit#cnt_4 { margin-left: 12px; }
-    .cntDigit#cnt_6 { margin-left: 12px; }
+.cntDigit {}
+  .cntDigit#cnt_2 { margin-left: 12px; }
+  .cntDigit#cnt_4 { margin-left: 12px; }
+  .cntDigit#cnt_6 { margin-left: 12px; }
+
+#about{
+
+}
+
+#footer{
+
+}
 
