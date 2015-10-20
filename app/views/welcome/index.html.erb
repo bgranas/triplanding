@@ -17,20 +17,29 @@
   </div> <!-- End Container -->
 </header>
 
-<div class="teaser">
-  <a href="#features" class="">
-    <p class="center-block">Tell Me About It <span class="glyphicon glyphicon-chevron-down center-block"></span></p>
+<div class="teaser" id="feature-teaser">
+  <a href="#feature-teaser" class="">
+    <p class="center-block">Tell Me About It <span class="glyphicon glyphicon-chevron-down center-block"> </span></p>
   </a>
 </div>
 
 <section id="pitch">
 <div class="container">
   <div class="row">
-    <div class="col-lg-6">
-
+    <div class="col-lg-12">
+      <h2>Your Bag Just got Lighter</h2>
     </div>
-    <div class="col-lg-6">
-
+    <div class="col-lg-5 col-lg-push-1">
+      <p class="text-justify">No need for hundreds of bookmarks or that 300 page travel guide. Trip Happy brings together countless travel resources under onto one site. From deciding on an initial destination, to finding detailed bus schedules, Trip Happy has the information you need at each stage of your trip.</p>
+    </div>
+    <div class="col-lg-2"></div>
+    <div class="col-lg-5">
+      <h3>Trip Happy is like...</h3>
+      <ul>
+        <li><h4>Expedia <small>but for travelers</small></h4></li>
+        <li><h4>Lonley Planet <small>without the fluff</small></h4></li>
+        <li><h4>Wikivoyage <small>but on a map</small></h4></li>
+      </ul>
     </div>
   </div> <!-- End Pitch Row -->
 </div> <!-- End Pitch Container -->
@@ -40,29 +49,24 @@
 <div class="container">
   <div class="row">
 
-    <section class="col-sm-6 col-lg-3">
-      <h2>Feature Title</h2>
-      <img src="" />
-      <p>Feature Description</p>
+    <section class="col-lg-4">
+      <h3>Visualize Your Trip</h3>
+      <%= image_tag("feature1.jpg", :alt => "Discover Your Paradise") %>
+      <p>Our interactive travel planner makes it easy to link multiple cities into a personalized travel map. Share your map with others or embed it on your blog.</p>
     </section>
 
-    <section class="col-sm-6 col-lg-3">
-      <h2>Feature Title</h2>
-      <img src="" />
-      <p>Feature Description</p>
+    <section class="col-lg-4">
+      <h3>Go Anywhere. From Anywhere.</h3>
+      <%= image_tag("feature2.jpg", :alt => "Step-by-step directions to anywhere in the world") %>
+      <p>Find the perfect hostel, hotel, or AirBnB wherever you go. Then get detailed plane, train, bus, or ferry directions to each destination on your itinerary. We've got every journey covered with over 800,000 routes worldwide.</p>
     </section>
 
-    <section class="col-sm-6 col-lg-3">
-      <h2>Feature Title</h2>
-      <img src="" />
-      <p>Feature Description</p>
+    <section class="col-lg-4">
+      <h3>Discover Paradise</h3>
+      <%= image_tag("feature3.jpg", :alt => "Get Tips from Other Travelers") %>
+      <p>The best recommendations always come from other travelers. Browse community created trips to countries all across the globe and discover your next travel destination.</p>
     </section>
 
-    <section class="col-sm-6 col-lg-3">
-      <h2>Feature Title</h2>
-      <img src="" />
-      <p>Feature Description</p>
-    </section>
    </div> <!-- End Features Row -->
   </div> <!-- End Features Container -->
 </section> <!-- End Features Section -->
@@ -72,3 +76,7 @@
     <p class="center-block">So When Is It Coming<span class="glyphicon glyphicon-chevron-down center-block"></span></p>
   </a>
 </div>
+
+<section id="countdown">
+
+</section>

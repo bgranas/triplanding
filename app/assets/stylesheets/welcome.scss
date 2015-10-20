@@ -28,18 +28,37 @@
 }
 
 #pitch{
-  height: 42vh;
+  height: 35vh;
 }
+  #pitch h2{
+    text-align:center;
+    margin-bottom: 30px;
+    text-decoration: underline;
+    color: #000000;
+  }
+  #pitch p{
+    font-size: 1.3em;
+    margin:0;
+  }
+  #pitch h3{
+    margin-top:0;
+  }
+  #pitch h4 small{
+    font-size:85%;
+  }
 
 #features{
- background-color:lightgray;
  text-align: center;
- height: 42vh;
+ min-height: 49vh;
 }
 
   #features img{
     border:1px dotted black;
     background-color:white;
-    height:200px;
-    width:200px;
+    width:100%;
   }
+
+#countdown
+{
+  height: 84vh;
+}
