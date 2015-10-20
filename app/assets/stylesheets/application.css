@@ -20,7 +20,7 @@
   height: 92vh;
 }
 
-.header-teaser{
+.teaser{
   height:8vh;
   padding: 10px 0 10px 0;
   font-weight: 500;
@@ -28,12 +28,21 @@
   text-align: center;
 }
 
-.header-teaser a{
+.teaser a{
   color:#ea7663;
+  text-decoration: none !important;
 }
-  .header-teaser a:hover{
+  .teaser a:hover{
     color:#d16654;
-    text-decoration: none;
+    text-decoration: none !important;
+  }
+  .teaser a:active{
+    color:#ea7663;
+    text-decoration: none !important;
+  }
+  .teaser a:visited{
+    color:#ea7663;
+    text-decoration: none !important;
   }
 
 
