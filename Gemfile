@@ -49,6 +49,3 @@ end
 #fixing turbo links with jquery
 gem 'jquery-turbolinks'
 
-#bootstrap
-gem 'bootstrap-sass', '~> 3.2.0'
-gem 'autoprefixer-rails'

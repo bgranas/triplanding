@@ -16,12 +16,3 @@
 //= require turbolinks
 //= require_tree .
 
-/*Smooth Scroll for Anchor Links
-$('a').click(function(){
-    window.alert("begin");
-    $('html, body').animate({
-        scrollTop: $( $.attr(this, 'href') ).offset().top
-    }, 10000);
-    return false;
-});
-*/
