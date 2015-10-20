@@ -28,31 +28,21 @@
 }
 
 #pitch{
-  height: 35vh;
+  height: 84vh;
+  text-align:center;
 }
   #pitch h2{
     text-align:center;
-    margin-bottom: 30px;
-    text-decoration: underline;
     color: #000000;
   }
   #pitch p{
     font-size: 1.3em;
-    margin:0;
-  }
-  #pitch h3{
-    margin-top:0;
-  }
-  #pitch h4 small{
-    font-size:85%;
+    color:#868686;
+    width:85%;
+    margin:auto;
   }
 
-#features{
- text-align: center;
- min-height: 49vh;
-}
-
-  #features img{
+  #pitch img{
     border:1px dotted black;
     background-color:white;
     width:100%;
