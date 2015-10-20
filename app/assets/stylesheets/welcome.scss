@@ -18,8 +18,8 @@
 
 .halfway-down{
   position: absolute;
-  top: 40%;
-  transform: translate(0, -60%);
+  top: 37%;
+  transform: translate(0, -63%);
 }
 
 #submitEmail{
@@ -28,24 +28,30 @@
 }
 
 #pitch{
-  height: 84vh;
+  min-height: 84vh;
   text-align:center;
 }
   #pitch h2{
     text-align:center;
     color: #000000;
   }
+
   #pitch p{
-    font-size: 1.3em;
     color:#868686;
-    width:85%;
-    margin:auto;
+  }
+
+  #sub-pitch{
+    font-size: 1.1em;
+    text-align: left;
+  }
+  .feature-block p{
+    font-size: 1.0em;
+    padding: 2px 5px 0px 5px;
   }
 
   #pitch img{
-    border:1px dotted black;
-    background-color:white;
     width:100%;
+    border: 1px solid lightgray;
   }
 
 #countdown
