@@ -1,3 +1,43 @@
 // Place all the styles related to the welcome controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+
+.landing-header{
+  background-image: url('bg_hitchhike.jpg');
+  color:white;
+  position: relative;
+}
+  .landing-header h1{
+    font-size: 4em;
+  }
+
+  .landing-header #inputEmail{
+      margin-right: 15px;
+      color: black;
+  }
+
+.halfway-down{
+  position: absolute;
+  top: 40%;
+  transform: translate(0, -60%);
+}
+
+#teaser{
+  height:8vh;
+  text-align: center;
+  padding: 15px 0 15px 0;
+  font-weight: 500;
+  font-size: larger;
+}
+
+#features{
+ background-color:lightgray;
+ text-align: center;
+}
+
+  #features img{
+    border:1px dotted black;
+    background-color:white;
+    height:200px;
+    width:200px;
+  }
