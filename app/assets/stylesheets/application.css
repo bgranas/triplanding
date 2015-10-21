@@ -18,6 +18,35 @@ h2{
   color: #333;
 }
 
+#page-header{
+  z-index: 101;
+}
+
+#badge-container{
+  position:fixed;
+  top: 20px;
+  left: 20px;
+  z-index: 100;
+}
+
+#badge-link{
+  text-decoration: none;
+}
+
+#th-badge{
+  border: 2px solid #333;
+  color: #333;
+  border-radius:50px;
+  font-size: 20px;
+  font-weight:bold;
+  padding:5px;
+}
+  #th-badge:hover{
+    border: 2px solid #ea7663;
+    color: #ea7663;
+  }
+
+
 .bgimage{
   background-position: center center;
   background-size: cover;
@@ -59,6 +88,16 @@ h2{
   margin-right: 15px;
   border-color: lightgray;
 }
+
+
+.valign-middle-parent {
+  display:table;
+  width:100%;
+}
+  .valign-middle-child{
+    display:table-cell;
+    vertical-align: middle;
+  }
 
 
 /* Bootstrap Override */

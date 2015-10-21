@@ -1,5 +1,5 @@
 
-<header class="bgimage landing-header">
+<header id="page-header" class="bgimage landing-header">
   <div class="container">
     <div class="halfway-down">
       <h1>TripHappy</h1>
@@ -23,37 +23,37 @@
   </a>
 </div>
 
-<section id="pitch">
-<div class="container">
-  <div class="row">
-    <div class="col-lg-12">
-      <h2 class="">Discover, Plan, and Book Amazing Trips Around the World</h2>
-    </div>
+<section id="pitch" class="">
+  <div class="container">
+    <div class="row">
+      <div class="col-lg-12">
+        <h2 class="">Discover, Plan, and Book Amazing Trips Around the World</h2>
+      </div>
 
-    <div id="sub-pitch" class="col-lg-12">
-      <p>Trip Happy makes multi-city trip planning easy by bringing together dozens of travel resources onto one site - no need for hundreds of bookmarks or that 300 page guide book.  Our custom tools deliver the best travel recommendations and most up-to-date information directly to you. Trip Happy has all the information you need for each stage of your trip. Planning a trip has never been easier.</p>
-    </div>
+      <div id="sub-pitch" class="col-lg-12">
+        <p>Trip Happy makes multi-city trip planning easy by bringing together dozens of travel resources onto one site - no need for hundreds of bookmarks or that 300 page guide book.  Our custom tools deliver the best travel recommendations and most up-to-date information directly to you. Trip Happy has all the information you need for each stage of your trip. Planning a trip has never been easier.</p>
+      </div>
 
-    <section class="col-sm-4 feature-block">
-      <h3>Find Your Paradise</h3>
-      <%= image_tag("paradise-feature.jpg", :alt => "Get Tips from Other Travelers", :class => "img-rounded img-responsive center-block") %>
-      <p class="text-justify">The best recommendations always come from other travelers. Browse community created trips to countries all across the globe and discover your next travel destination.</p>
-    </section>
+      <section class="col-sm-4 feature-block">
+        <h3>Find Your Paradise</h3>
+        <%= image_tag("paradise-feature.jpg", :alt => "Get Tips from Other Travelers", :class => "img-rounded img-responsive center-block") %>
+        <p class="text-justify">The best recommendations always come from other travelers. Browse community created trips to countries all across the globe and discover your next travel destination.</p>
+      </section>
 
-    <section class="col-sm-4 feature-block">
-      <h3>Visualize Your Trip</h3>
-      <%= image_tag("map-feature.jpg", :alt => "Discover Your Paradise", :class => "img-rounded img-responsive center-block") %>
-      <p class="text-justify">Our interactive travel planner makes it easy to link multiple cities into a personalized travel map. Share your map with others or embed it on your blog.</p>
-    </section>
+      <section class="col-sm-4 feature-block">
+        <h3>Visualize Your Trip</h3>
+        <%= image_tag("map-feature.jpg", :alt => "Discover Your Paradise", :class => "img-rounded img-responsive center-block") %>
+        <p class="text-justify">Our interactive travel planner makes it easy to link multiple cities into a personalized travel map. Share your map with others or embed it on your blog.</p>
+      </section>
 
-    <section class="col-sm-4 feature-block">
-      <h3>Go Anywhere. From Anywhere.</h3>
-      <%= image_tag("schedule-feature.jpeg", :alt => "Step-by-step directions to anywhere in the world", :class => "img-rounded img-responsive center-block") %>
-      <p class="text-justify">Get step-by-step directions to anywhere in the world. Find detailed plane, train, bus, and ferry schedules on over 800,000 routes worldwide.</p>
-    </section>
+      <section class="col-sm-4 feature-block">
+        <h3>Go Anywhere. From Anywhere.</h3>
+        <%= image_tag("schedule-feature.jpeg", :alt => "Step-by-step directions to anywhere in the world", :class => "img-rounded img-responsive center-block") %>
+        <p class="text-justify">Get step-by-step directions to anywhere in the world. Find detailed plane, train, bus, and ferry schedules on over 800,000 routes worldwide.</p>
+      </section>
 
-  </div> <!-- End Pitch Row -->
-</div> <!-- End Pitch Container -->
+    </div> <!-- End Pitch Row -->
+  </div> <!-- End Pitch Container -->
 </section> <!-- End Pitch Section -->
 
 <div class="teaser" id="countdown-teaser">
@@ -62,8 +62,8 @@
   </a>
 </div>
 
-<section id="countdown">
-  <div class="container" id="countdown-content">
+<section id="countdown" class="valign-middle-parent">
+  <div class="container valign-middle-child" id="countdown-content">
     <div class="row">
 
       <div class="col-lg-12">
@@ -102,10 +102,38 @@
   </a>
 </div>
 
-<section id="about">
-
+<section id="about" class="valign-middle-parent">
+  <div id="about-content" class="valign-middle-child text-center">
+      <div id="badge-container">
+        <a id="badge-link" href="#page-header"> <span id="th-badge" class=""> TH </span> </a>
+      </div>
+  </div>
 </section>
 
 <secton id="footer">
+  <div id="prelaunch-footer" class="valign-middle-parent">
+   <div class="container valign-middle-child">
 
+     <div class="row footer-first-row">
+
+       <div class="col-sm-9 col-xs-6 text-left">
+         <p><small>
+           <i class="fa fa-copyright"></i> Trip Happy 2015
+           <br/>
+
+         </small></p>
+
+       </div>
+       <div class="col-sm-1 col-xs-2">
+         <a href="#"><i class="fa fa-facebook-square fa-2x footer-social"></i></a>
+       </div>
+       <div class="col-sm-1 col-xs-2">
+         <a href="#"><i class="fa fa-instagram fa-2x footer-social"></i></a>
+       </div>
+       <div class="col-sm-1 col-xs-2">
+         <a href="#"><i class="fa fa-twitter fa-2x footer-social"></i></a>
+       </div>
+     </div>
+    </div>
+  </div>
 </section>
