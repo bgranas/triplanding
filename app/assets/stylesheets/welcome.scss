@@ -33,7 +33,6 @@
 }
   #pitch h2{
     text-align:center;
-    color: #000000;
     margin-top:0px;
   }
 
@@ -57,7 +56,17 @@
 #countdown
 {
   min-height: 84vh;
+  display:table;
+  width:100%;
 }
+  #countdown-content{
+    display:table-cell;
+    vertical-align: middle;
+  }
+
+  #countdown h2{
+    margin-bottom: 30px;
+  }
 /*Countdown CSS */
 .digits{
   display:inline-block;
