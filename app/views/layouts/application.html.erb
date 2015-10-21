@@ -1,9 +1,12 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <title>Trip Happy | Adventure Awaits</title>
+  <title>Trip Happy</title>
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css">
+  <link href='https://fonts.googleapis.com/css?family=Lato:400,900' rel='stylesheet' type='text/css'>
+
+  <%= favicon_link_tag %>
   <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
   <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
   <%= csrf_meta_tags %>
@@ -13,6 +16,35 @@
 <body>
 
 <%= yield %>
+
+<!-- Footer -->
+<secton id="footer">
+  <div id="prelaunch-footer" class="valign-middle-parent">
+   <div class="container valign-middle-child">
+
+     <div class="row footer-first-row">
+
+       <div class="col-sm-9 col-xs-6 text-left">
+         <p><small>
+           <i class="fa fa-copyright"></i> Trip Happy 2015
+           <br/>
+
+         </small></p>
+
+       </div>
+       <div class="col-sm-1 col-xs-2">
+         <a href="https://www.facebook.com/gotriphappy" target="_blank"><i class="fa fa-facebook-square fa-2x footer-social"></i></a>
+       </div>
+       <div class="col-sm-1 col-xs-2">
+         <a href="https://instagram.com/gotriphappy" target="_blank"><i class="fa fa-instagram fa-2x footer-social"></i></a>
+       </div>
+       <div class="col-sm-1 col-xs-2">
+         <a href="http://twitter.com/gotriphappy" target="_blank"><i class="fa fa-twitter fa-2x footer-social"></i></a>
+       </div>
+     </div>
+    </div>
+  </div>
+</section>
 
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
 
