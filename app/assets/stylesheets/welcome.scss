@@ -58,6 +58,7 @@
   min-height: 84vh;
   display:table;
   width:100%;
+  text-align:center;
 }
   #countdown-content{
     display:table-cell;
@@ -67,6 +68,16 @@
   #countdown h2{
     margin-bottom: 30px;
   }
+  #digits-label{
+    margin-bottom: 50px;
+  }
+    #digits-label span{
+      width:140px;
+      display:inline-block;
+      text-transform: uppercase;
+      font-weight: bold;
+    }
+
 /*Countdown CSS */
 .digits{
   display:inline-block;
