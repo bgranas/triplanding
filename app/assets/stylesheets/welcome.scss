@@ -11,21 +11,12 @@
     font-size: 4em;
   }
 
-  .landing-header #inputEmail{
-      margin-right: 15px;
-      color: black;
-  }
-
 .halfway-down{
   position: absolute;
   top: 37%;
   transform: translate(0, -63%);
 }
 
-#submitEmail{
-  background-color: #ea7663;
-  border-color:#E66B57;
-}
 
 #pitch{
   min-height: 84vh;
@@ -43,6 +34,7 @@
   #sub-pitch{
     font-size: 1.1em;
     text-align: left;
+    margin-bottom: 40px;
   }
   .feature-block p{
     font-size: 1.0em;
@@ -68,6 +60,9 @@
   #countdown h2{
     margin-bottom: 30px;
   }
+  #countdown h3{
+    margin-top:40px;
+  }
   #digits-label{
     margin-bottom: 50px;
   }
@@ -77,6 +72,8 @@
       text-transform: uppercase;
       font-weight: bold;
     }
+
+
 
 /*Countdown CSS */
 .digits{
@@ -90,10 +87,10 @@
   .cntDigit#cnt_6 { margin-left: 12px; }
 
 #about{
-
+  min-height: 84vh;
 }
 
 #footer{
-
+  height:8vh;
 }
 
