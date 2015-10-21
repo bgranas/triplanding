@@ -3,6 +3,7 @@ class LeadsController < ApplicationController
   layout false
 
   def index
+    @leads = Lead.order("created_at ASC")
   end
 
   def show
