@@ -99,6 +99,21 @@ h2{
     vertical-align: middle;
   }
 
+.google-maps {
+    position: relative;
+    padding-bottom: 90%; /* (450 ÷ 500 = 0.9 = 90%) */
+    height: 0;
+    overflow: hidden;
+}
+
+.google-maps iframe {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    margin: 25px 0px 25px 0px;
+}
 
 /* Bootstrap Override */
 .btn-success{
@@ -110,4 +125,16 @@ h2{
   border-radius: 4px;
 }
 
+.text-muted{
+  color:#656565;
+  font-size: 1.1em;
+}
+
+/* XS (Smallest) Screen Size */
+@media (max-width: 767px){
+  .img-responsive{
+    max-width: 70%;
+    min-width: 300px;
+  }
+}
 

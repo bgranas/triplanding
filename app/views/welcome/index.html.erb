@@ -1,4 +1,9 @@
 
+<!--Badge is Fixed to Top-Left of Page -->
+<div id="badge-container" class="hidden-xs">
+  <a id="badge-link" href="#page-header"> <span id="th-badge" class=""> TH </span> </a>
+</div>
+
 <header id="page-header" class="bgimage landing-header">
   <div class="container">
     <div class="halfway-down">
@@ -36,19 +41,19 @@
 
       <section class="col-sm-4 feature-block">
         <h3>Find Your Paradise</h3>
-        <%= image_tag("paradise-feature.jpg", :alt => "Get Tips from Other Travelers", :class => "img-rounded img-responsive center-block") %>
+        <%= image_tag("paradise-feature-sm.jpg", :alt => "Get Tips from Other Travelers", :class => "img-rounded img-responsive center-block") %>
         <p class="text-justify">The best recommendations always come from other travelers. Browse community created trips to countries all across the globe and discover your next travel destination.</p>
       </section>
 
       <section class="col-sm-4 feature-block">
         <h3>Visualize Your Trip</h3>
-        <%= image_tag("map-feature.jpg", :alt => "Discover Your Paradise", :class => "img-rounded img-responsive center-block") %>
+        <%= image_tag("map-feature-sm.jpg", :alt => "Discover Your Paradise", :class => "img-rounded img-responsive center-block") %>
         <p class="text-justify">Our interactive travel planner makes it easy to link multiple cities into a personalized travel map. Share your map with others or embed it on your blog.</p>
       </section>
 
       <section class="col-sm-4 feature-block">
         <h3>Go Anywhere. From Anywhere.</h3>
-        <%= image_tag("schedule-feature.jpeg", :alt => "Step-by-step directions to anywhere in the world", :class => "img-rounded img-responsive center-block") %>
+        <%= image_tag("schedule-feature-sm.jpeg", :alt => "Step-by-step directions to anywhere in the world", :class => "img-rounded img-responsive center-block") %>
         <p class="text-justify">Get step-by-step directions to anywhere in the world. Find detailed plane, train, bus, and ferry schedules on over 800,000 routes worldwide.</p>
       </section>
 
@@ -102,13 +107,31 @@
   </a>
 </div>
 
-<section id="about" class="valign-middle-parent">
-  <div id="about-content" class="valign-middle-child text-center">
-      <div id="badge-container">
-        <a id="badge-link" href="#page-header"> <span id="th-badge" class=""> TH </span> </a>
+<section id="about">
+  <div id="about-content" class="container text-center">
+    <div class="row">
+      <div class="col-lg-12">
+        <h2>The Perfect Travel Tool. Built by Travelers.</h2>
       </div>
-  </div>
-</section>
+      <div class="col-lg-12">
+        <p class="text-muted text-left">
+          The ideal trip planner can only be built by real travelers, so we decided to pack our lives into suitcases and hop on a flight. TripHappy will be completely built while on the road, from guesthouses, AirBnb's and coffee shops along the way (you can follow our progress on the map below). We know what it takes to plan a once-in-a-lifetime trip, and we want to help you create your own.
+        </p>
+      </div>
+
+      <!-- Our Google Travel Map -->
+      <div id="google-maps">
+        <iframe src="https://www.google.com/maps/d/embed?mid=zrDvaBECWZxs.krbN8QY-_KOk" width="640" height="330"></iframe>
+      </div>
+
+      <div class="col-lg-12">
+        <p class="text-muted text-left">
+          While there is an endless supply of information online for the most popular tourist sites, it is almost impossible to plan a visit to more off-the-beaten-path destinations. As a result, many travelers miss out on amazing experiences. We are tired of using out of date guide books and endless Google searching to create unique itineraries - now there is a better way.
+        </p>
+      </div>
+    </div> <!-- End About Row -->
+  </div> <!-- End About Container -->
+</section> <!-- End About Section -->
 
 <secton id="footer">
   <div id="prelaunch-footer" class="valign-middle-parent">
