@@ -27,6 +27,11 @@ h2{
   color: #333333;
 }
 
+h4{
+  padding-left: 15px;
+  padding-right: 15px;
+}
+
 #top-of-the-world{
   z-index: 101;
 }
@@ -113,13 +118,10 @@ h2{
     vertical-align: middle;
   }
 
-.google-maps {
-
-}
-
 .google-maps iframe {
-    max-width: 800%;
     margin: 25px 0px 25px 0px;
+    max-width: 80% !important;
+
 }
 
 /* Footer Section */
