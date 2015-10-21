@@ -10,6 +10,20 @@ class LeadsController < ApplicationController
   end
 
   def new
+
+  end
+
+  def create
+    @lead = Lead.new(lead_params) #Create a new object without form parameters
+
+    if @lead.save
+      #Successful save, notify user of success with flashtext
+
+    else
+      #Save failed, notify user with flash text
+
+    end
+
   end
 
   def edit
@@ -17,4 +31,10 @@ class LeadsController < ApplicationController
 
   def delete
   end
+
+
+  private
+    def lead_params
+      params.require(:lead).permit(:email)
+    end
 end

@@ -9,7 +9,7 @@ Rails.application.routes.draw do
   root 'welcome#index'
 
   #Default as specified in Lynda
-  match ':controller(/:action(/:id))', :via => :get
+  match ':controller(/:action(/:id))', :via => [:get, :post]
 
   # Example of regular route:
   #   get 'products/:id' => 'catalog#view'
