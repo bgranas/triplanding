@@ -122,6 +122,27 @@ h2{
     margin: 25px 0px 25px 0px;
 }
 
+/* Footer Section */
+#prelaunch-footer{
+  min-height:8vh;
+  background-color: #444444 ;
+  color: #eeeeee ;
+  height: 50px;
+  margin-top: 0px;
+  letter-spacing: 1px;
+}
+
+.footer-social {
+  color: white;
+  -webkit-transition-duration: 0.2s !important;
+  -moz-transition-duration: 0.2s !important;
+  transition-duration: 0.2s !important;
+}
+
+.footer-social:hover {
+  color: #ea7663;
+}
+
 /* Bootstrap Override */
 .btn-success{
   background-color: #ea7663 !important;
