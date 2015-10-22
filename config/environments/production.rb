@@ -78,6 +78,6 @@ Rails.application.configure do
   config.active_record.dump_schema_after_migration = false
 
   # Precompile Coffeescript
-  config.assets.precompile += ('welcome.js')
+  config.assets.precompile += ['welcome.js']
 
 end
