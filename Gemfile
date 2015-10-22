@@ -51,3 +51,7 @@ gem 'jquery-turbolinks'
 
 #email validation
 gem 'email_validator'
+
+
+#heroku gem
+gem 'rails_12factor'
