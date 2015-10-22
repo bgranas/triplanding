@@ -51,6 +51,3 @@ gem 'jquery-turbolinks'
 
 #email validation
 gem 'email_validator'
-
-#fixing heroku issues
-gem 'rails_12factor', group: :production
