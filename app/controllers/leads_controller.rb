@@ -17,14 +17,6 @@ class LeadsController < ApplicationController
   def create
     @lead = Lead.new(lead_params) #Create a new object without form parameters
 
-    if @lead.save
-      #Successful save, notify user of success with flashtext
-
-    else
-      #Save failed, notify user with flash text
-
-    end
-
   end
 
   def edit

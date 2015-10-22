@@ -1,0 +1,8 @@
+$('h3.results').html("");
+
+<% if @lead.save? %>
+    $("h3.results").html("Thank you! We'll let you know when it's ready."));
+    $('.emailForm').hide();
+<% else %>
+    $("h3.results").html("Invalid E-mail. Please try again!"));
+<% end %>
