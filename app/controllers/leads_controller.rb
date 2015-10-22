@@ -16,6 +16,7 @@ class LeadsController < ApplicationController
 
   def create
     @lead = Lead.new(lead_params) #Create a new object without form parameters
+    @saved = @lead.save
 
   end
 

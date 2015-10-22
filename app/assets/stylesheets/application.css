@@ -32,6 +32,14 @@ h4{
   padding-right: 15px;
 }
 
+.success-green{
+  color: #00C124;
+}
+
+.failure-red{
+  color: #C10000;
+}
+
 #top-of-the-world{
   z-index: 101;
 }

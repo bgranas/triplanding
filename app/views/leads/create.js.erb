@@ -1,8 +1,9 @@
 $('h3.results').html("");
 
-<% if @lead.save? %>
-    $("h3.results").html("Thank you! We'll let you know when it's ready."));
-    $('.emailForm').hide();
+<% if @saved %>
+  //alert("saved!");
+  $('h3.results').html("Thank you! We'll let you know when it's ready.").removeClass('failure-red').addClass('success-green');
 <% else %>
-    $("h3.results").html("Invalid E-mail. Please try again!"));
+  //alert("not saved!");
+  $('h3.results').html("Invalid E-mail. Please try again!").removeClass('success-green').addClass('failure-red');
 <% end %>
