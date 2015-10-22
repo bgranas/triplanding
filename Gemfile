@@ -49,3 +49,5 @@ end
 #fixing turbo links with jquery
 gem 'jquery-turbolinks'
 
+#email validation
+gem 'email_validator'
