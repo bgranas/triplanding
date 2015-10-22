@@ -54,4 +54,4 @@ gem 'email_validator'
 
 
 #heroku gem
-gem 'rails_12factor'
+gem 'rails_12factor', group: :production
