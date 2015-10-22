@@ -1,0 +1,315 @@
+/* line 5, /Users/Calvino/dev/triplanding/app/assets/stylesheets/welcome.scss */
+.landing-header {
+  background-image: url("bg-hitchhike-sm.jpg");
+  color: white;
+  position: relative;
+}
+
+/* line 10, /Users/Calvino/dev/triplanding/app/assets/stylesheets/welcome.scss */
+.landing-header h1 {
+  font-size: 4em;
+}
+
+/* line 14, /Users/Calvino/dev/triplanding/app/assets/stylesheets/welcome.scss */
+.halfway-down {
+  position: absolute;
+  top: 37%;
+  transform: translate(0, -63%);
+}
+
+/* line 21, /Users/Calvino/dev/triplanding/app/assets/stylesheets/welcome.scss */
+#pitch {
+  min-height: 84vh;
+  text-align: center;
+}
+
+/* line 26, /Users/Calvino/dev/triplanding/app/assets/stylesheets/welcome.scss */
+#sub-pitch {
+  font-size: 1.1em;
+  text-align: left;
+  margin-bottom: 40px;
+}
+
+/* line 31, /Users/Calvino/dev/triplanding/app/assets/stylesheets/welcome.scss */
+.feature-block p {
+  font-size: 1.0em;
+  padding: 2px 5px 0px 5px;
+}
+
+/* line 36, /Users/Calvino/dev/triplanding/app/assets/stylesheets/welcome.scss */
+#pitch img {
+  border: 1px solid lightgray;
+}
+
+/* line 40, /Users/Calvino/dev/triplanding/app/assets/stylesheets/welcome.scss */
+#countdown {
+  min-height: 84vh;
+  width: 100%;
+  text-align: center;
+}
+
+/* line 46, /Users/Calvino/dev/triplanding/app/assets/stylesheets/welcome.scss */
+#countdown h2 {
+  margin-bottom: 30px;
+}
+
+/* line 49, /Users/Calvino/dev/triplanding/app/assets/stylesheets/welcome.scss */
+#countdown h3 {
+  margin-top: 40px;
+}
+
+/* line 52, /Users/Calvino/dev/triplanding/app/assets/stylesheets/welcome.scss */
+#digits-label {
+  margin-bottom: 50px;
+}
+
+/* line 55, /Users/Calvino/dev/triplanding/app/assets/stylesheets/welcome.scss */
+#digits-label span {
+  width: 140px;
+  display: inline-block;
+  text-transform: uppercase;
+  font-weight: bold;
+}
+
+/*Countdown CSS */
+/* line 65, /Users/Calvino/dev/triplanding/app/assets/stylesheets/welcome.scss */
+.digits {
+  display: inline-block;
+}
+
+/* line 68, /Users/Calvino/dev/triplanding/app/assets/stylesheets/welcome.scss */
+.cntSeparator {
+  display: none;
+}
+
+/* line 71, /Users/Calvino/dev/triplanding/app/assets/stylesheets/welcome.scss */
+.cntDigit#cnt_2 {
+  margin-left: 12px;
+}
+
+/* line 72, /Users/Calvino/dev/triplanding/app/assets/stylesheets/welcome.scss */
+.cntDigit#cnt_4 {
+  margin-left: 12px;
+}
+
+/* line 73, /Users/Calvino/dev/triplanding/app/assets/stylesheets/welcome.scss */
+.cntDigit#cnt_6 {
+  margin-left: 12px;
+}
+
+/* About Us Section */
+/* line 77, /Users/Calvino/dev/triplanding/app/assets/stylesheets/welcome.scss */
+#about {
+  min-height: 84vh;
+}
+
+/* XS (Smallest) Screen Size */
+@media (max-width: 767px) {
+  /* line 84, /Users/Calvino/dev/triplanding/app/assets/stylesheets/welcome.scss */
+  #countdown {
+    min-height: 1vh;
+  }
+}
+/*
+ * This is a manifest file that'll be compiled into application.css, which will include all the files
+ * listed below.
+ *
+ * Any CSS and SCSS file within this directory, lib/assets/stylesheets, vendor/assets/stylesheets,
+ * or any plugin's vendor/assets/stylesheets directory can be referenced here using a relative path.
+ *
+ * You're free to add application-wide styles to this file and they'll appear at the bottom of the
+ * compiled file so the styles you add here take precedence over styles defined in any styles
+ * defined in the other CSS/SCSS files in this directory. It is generally better to create a new
+ * file per style scope.
+ *
+
+
+ */
+
+
+body{
+  font-family: 'Lato', sans-serif;
+}
+
+h1, h2, h3, h4, h5, h6 {
+  font-family: 'Lato', sans-serif;
+  font-weight: 900;
+}
+
+h2{
+  color: #333333;
+}
+
+h4{
+  padding-left: 15px;
+  padding-right: 15px;
+}
+
+.success-green{
+  color: #00C124;
+}
+
+.failure-red{
+  color: #C10000;
+}
+
+#top-of-the-world{
+  z-index: 101;
+}
+
+#badge-container{
+  position:fixed;
+  top: 20px;
+  left: 20px;
+  z-index: 100;
+}
+
+#badge-link{
+  text-decoration: none;
+}
+
+#th-badge{
+  border: 2px solid #333333;
+  color: #333333;
+  border-radius:50px;
+   -webkit-border-radius: 50px;
+  -moz-border-radius: 50px;
+  font-size: 20px;
+  font-weight:bold;
+  padding:5px;
+
+  -webkit-transition-duration: 0.2s !important;
+  -moz-transition-duration: 0.2s !important;
+  transition-duration: 0.2s !important;
+}
+  #th-badge:hover{
+    border: 2px solid #ea7663;
+    color: #ea7663;
+  }
+
+
+.bgimage{
+  background-position: center center;
+  background-size: cover;
+  height: 92vh;
+}
+
+.teaser{
+  height:8vh;
+  /*min-height: 50px; */
+  padding: 10px 0 10px 0;
+  font-weight: 500;
+  font-size: larger;
+  text-align: center;
+}
+
+.teaser a{
+  color:#ea7663;
+  text-decoration: none !important;
+  display:inline-block;
+}
+  .teaser a:hover{
+    text-decoration: none !important;
+    color: #EF583F !important;
+
+    -webkit-transition-duration: 0.2s !important;
+    -moz-transition-duration: 0.2s !important;
+    transition-duration: 0.2s !important;
+  }
+
+
+.form-lg{
+  padding: 8px 16px;
+  font-size: 18px;
+  line-height: 1.3333333;
+  border-radius: 4px;
+  -webkit-border-radius: 4px;
+  -moz-border-radius: 4px;
+  margin-right: 15px;
+  border-color: lightgray;
+  color:black;
+}
+
+
+.valign-middle-parent {
+  display:table;
+  width:100%;
+}
+  .valign-middle-child{
+    display:table-cell;
+    vertical-align: middle;
+  }
+
+.google-maps iframe {
+    margin: 25px 0px 25px 0px;
+    max-width: 80% !important;
+
+}
+
+/* Footer Section */
+#prelaunch-footer{
+  min-height:8vh;
+  background-color: #444444 ;
+  color: #eeeeee ;
+  height: 50px;
+  margin-top: 0px;
+  letter-spacing: 1px;
+}
+
+.footer-social {
+  color: white;
+  -webkit-transition-duration: 0.2s !important;
+  -moz-transition-duration: 0.2s !important;
+  transition-duration: 0.2s !important;
+}
+
+.footer-social:hover {
+  color: #ea7663;
+}
+
+/* Bootstrap Override */
+.btn-success{
+  background-color: #ea7663 !important;
+  border-color:#E66B57 !important;
+
+  text-shadow: 0 -1px 0 rgba(0, 0, 0, 0.4) !important;
+  -webkit-box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.4), 0 1px 1px rgba(0, 0, 0, 0.2) !important;
+  -moz-box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.4), 0 1px 1px rgba(0, 0, 0, 0.2) !important;
+  box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.4), 0 1px 1px rgba(0, 0, 0, 0.2) !important;
+
+  -webkit-transition-duration: 0.2s !important;
+  -moz-transition-duration: 0.2s !important;
+  transition-duration: 0.2s !important;
+}
+  .btn-success:hover, .btn-success:focus {
+    background-color: #FD7B6C !important;
+    border-color:#E66B57 !important;
+  }
+  .btn-success:active {
+    -webkit-box-shadow: inset 0 1px 4px rgba(0, 0, 0, 0.6) !important;
+    -moz-box-shadow: inset 0 1px 4px rgba(0, 0, 0, 0.6) !important;
+    box-shadow: inset 0 1px 4px rgba(0, 0, 0, 0.6) !important;
+    background-color: #ed4a4b !important;
+    border-color:#E66B57 !important;
+  }
+
+
+.btn-lg{
+  border-radius: 4px;
+  -webkit-border-radius: 4px;
+  -moz-border-radius: 4px;
+}
+
+.text-muted{
+  color:#656565;
+  font-size: 1.1em;
+}
+
+/* XS (Smallest) Screen Size */
+@media (max-width: 767px){
+  .img-responsive{
+    max-width: 70%;
+    min-width: 300px;
+  }
+}
+
