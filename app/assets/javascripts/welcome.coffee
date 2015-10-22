@@ -4,6 +4,8 @@
 
 $ ->
 
+  alert 'test';
+
   $('a[href^="#"]').on 'click.smoothscroll', (e) ->
     e.preventDefault()
 
