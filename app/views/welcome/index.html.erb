@@ -8,15 +8,16 @@
   <div class="container">
     <div class="halfway-down">
       <h1>Trip Happy</h1>
-      <h3>A better way to explore the world. Coming soon.</h3>
+      <h3 class="results">A better way to explore the world. Coming soon.</h3>
 
-      <form class="form-inline emailForm">
-        <div class="form-group">
-          <label class="sr-only" for="inputEmail1">E-mail</label>
-          <input class="form-lg" id="inputEmail1" type="text" placeHolder="Enter Your E-mail" />
-        </div>
-        <input type="submit" class="btn btn-success btn-lg" id="submitEmail1" value="Tell Me When It's Ready" />
-      </form>
+        <%= form_for(:lead, remote: true, :url => {:controller => 'leads', :action => 'create'}, :html => {:class => 'form-inline'}) do |f| %>
+          <div class="form-group">
+            <%= f.label(:email, 'E-mail', class: 'sr-only') %>
+            <%= f.text_field(:email, {:class=> 'form-lg emailForm', :placeHolder => 'Enter Your E-mail'}) %>
+          </div>
+          <%= submit_tag("Tell Me When It's Ready", {:class => 'btn btn-success btn-lg'}) %>
+        <% end %>
+
 
     </div> <!-- End Halfway Down -->
   </div> <!-- End Container -->
@@ -88,16 +89,16 @@
 
         <h3 class="results">Give us your e-mail and we'll send you an invite to beta when it's ready.</h3>
 
-        <%= form_for(:lead, remote: true, :url => {:controller => 'leads', :action => 'create'}, :html => {:class => 'form-inline emailForm'}) do |f| %>
+        <%= form_for(:lead, remote: true, :url => {:controller => 'leads', :action => 'create'}, :html => {:class => 'form-inline'}) do |f| %>
           <div class="form-group">
             <%= f.label(:email, 'E-mail', class: 'sr-only') %>
-            <%= f.text_field(:email, {:id => 'submitEmail2', :class=> 'form-lg', :placeHolder => 'E-mail Address'}) %>
+            <%= f.text_field(:email, {:class=> 'form-lg emailForm', :placeholder => 'E-mail Address'}) %>
           </div>
-          <%= submit_tag("Sounds Good", {:id => 'submitEmail2', :class => 'btn btn-success btn-lg'}) %>
+          <%= submit_tag("Sounds Good", {:class => 'btn btn-success btn-lg'}) %>
         <% end %>
 
         <!-- Old Code
-        <form class="form-inline emailForm">
+        <form class="form-inline">
           <div class="form-group">
             <label class="sr-only" for="inputEmail2">E-mail</label>
             <input class="form-lg" id="inputEmail2" type="text" placeHolder="E-mail Address" />
