@@ -46,6 +46,7 @@ h4{
   color: #eeeeee ;
   letter-spacing: 1px;
   padding: 10px;
+  min-height:40px;
 
 }
 
@@ -107,12 +108,12 @@ h4{
 }
 
 #th-badge{
-  border: 2px solid #333333;
-  color: #333333;
+  border: 2px solid white;
+  color: white;
   border-radius:50px;
    -webkit-border-radius: 50px;
   -moz-border-radius: 50px;
-  font-size: 20px;
+  font-size: 15px;
   font-weight:bold;
   padding:5px;
 
