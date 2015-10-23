@@ -31,23 +31,49 @@
   <div id="footer">
     <div id="footer-container" class="valign-middle-parent">
      <div class="container valign-middle-child">
-       <div class="row footer-first-row">
+       <div class="row">
 
-         <div class="col-sm-9 col-xs-6 text-left">
-           <p>
-            <small> <i class="fa fa-copyright"></i> TripHappy 2015 </small>
-           </p>
+          <div id="footer-copy" class="col-sm-3 col-xs-12">
+            <p>
+              <small> <i class="fa fa-copyright"></i> TripHappy</small>
+            </p>
+          </div>
 
-         </div>
-         <div class="col-sm-1 col-xs-2">
-           <a href="https://www.facebook.com/gotriphappy" target="_blank"><i class="fa fa-facebook-square fa-2x footer-social"></i></a>
-         </div>
-         <div class="col-sm-1 col-xs-2">
-           <a href="https://instagram.com/gotriphappy" target="_blank"><i class="fa fa-instagram fa-2x footer-social"></i></a>
-         </div>
-         <div class="col-sm-1 col-xs-2">
-           <a href="http://twitter.com/gotriphappy" target="_blank"><i class="fa fa-twitter fa-2x footer-social"></i></a>
-         </div>
+          <div id="footer-links">
+            <div class="col-sm-3 col-xs-6 text-left">
+              <h5>Company</h5>
+              <ul>
+                <li><small><%= link_to 'About', {:acton => 'about'} %></small></li>
+                <li><small><%= link_to 'Blog', {:acton => 'blog'} %></small></li>
+                <li><small><%= link_to 'Help', {:acton => 'help'} %></small></li>
+                <li><small><%= link_to 'Contact Us', 'beta/contact' %></small></li>
+              </ul>
+            </div>
+
+            <div class="col-sm-3 col-xs-6 text-left">
+              <h5>Legal</h5>
+              <ul>
+                <li><small><%= link_to 'Site Policies', {:acton => 'about'} %></small></li>
+                <li><small><%= link_to 'Terms of Use', {:acton => 'terms'} %></small></li>
+                <li><small><%= link_to 'Privacy Policy', {:acton => 'privacy'} %></small></li>
+              </ul>
+            </div>
+
+          </div>
+
+          <div id="footer-social-icons">
+            <h5 class="text-center">We Be Social</h5>
+            <div class="col-sm-1 col-xs-4">
+              <a href="https://www.facebook.com/gotriphappy" target="_blank"><i class="fa fa-facebook-square fa-2x footer-social"></i></a>
+            </div>
+            <div class="col-sm-1 col-xs-4">
+              <a href="https://instagram.com/gotriphappy" target="_blank"><i class="fa fa-instagram fa-2x footer-social"></i></a>
+            </div>
+            <div class="col-sm-1 col-xs-4">
+              <a href="http://twitter.com/gotriphappy" target="_blank"> <i class="fa fa-twitter fa-2x footer-social"></i> </a>
+            </div>
+          </div>
+
        </div> <!-- End Row -->
       </div> <!-- End Bootstrap Container -->
     </div> <!-- End Footer Container -->
