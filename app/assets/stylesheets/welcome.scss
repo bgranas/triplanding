@@ -40,6 +40,7 @@
 #countdown
 {
   min-height: 84vh;
+  height: 100px; /* overly small height to fix issue with firefox min-height + table display */
   width:100%;
   text-align:center;
 }

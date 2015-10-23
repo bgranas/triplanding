@@ -69,47 +69,38 @@
 </div>
 
 <section id="countdown" class="valign-middle-parent">
-  <div class="container valign-middle-child" id="countdown-content">
-    <div class="row">
+   <div class="container valign-middle-child" id="countdown-content">
+      <div class="row">
 
-      <div class="col-lg-12 hidden-xs">
-        <h2>Assuming Our Chinese Wi-Fi Holds Up, We Will Launch In:</h2>
-      </div>
+        <div class="col-lg-12 hidden-xs">
+          <h2>Assuming Our Chinese Wi-Fi Holds Up, We Will Launch In:</h2>
+        </div>
 
-      <div class="col-lg-12 hidden-xs">
-        <div class="digits"></div>
-      </div>
-      <div class="col-lg-12 hidden-xs" id="digits-label">
-        <span>days</span>
-        <span>hours</span>
-        <span>minutes</span>
-        <span>seconds</span>
-      </div>
+        <div class="col-lg-12 hidden-xs">
+          <div class="digits"></div>
+        </div>
+        <div class="col-lg-12 hidden-xs" id="digits-label">
+          <span>days</span>
+          <span>hours</span>
+          <span>minutes</span>
+          <span>seconds</span>
+        </div>
 
 
-        <h3 class="results">Give us your e-mail and we'll send you an invite to beta when it's ready.</h3>
+          <h3 class="results">Give us your e-mail and we'll send you an invite to beta when it's ready.</h3>
 
-        <%= form_for(:lead, remote: true, :url => {:controller => 'leads', :action => 'create'}, :html => {:class => 'form-inline'}) do |f| %>
-          <div class="form-group">
-            <%= f.label(:email, 'E-mail', class: 'sr-only') %>
-            <%= f.text_field(:email, {:class=> 'form-lg emailForm', :placeholder => 'E-mail Address'}) %>
-          </div>
-          <%= submit_tag("Sounds Good", {:class => 'btn btn-success btn-lg'}) %>
-        <% end %>
+          <%= form_for(:lead, remote: true, :url => {:controller => 'leads', :action => 'create'}, :html => {:class => 'form-inline'}) do |f| %>
+            <div class="form-group">
+              <%= f.label(:email, 'E-mail', class: 'sr-only') %>
+              <%= f.text_field(:email, {:class=> 'form-lg emailForm', :placeholder => 'E-mail Address'}) %>
+            </div>
+            <%= submit_tag("Sounds Good", {:class => 'btn btn-success btn-lg'}) %>
+          <% end %>
 
-        <!-- Old Code
-        <form class="form-inline">
-          <div class="form-group">
-            <label class="sr-only" for="inputEmail2">E-mail</label>
-            <input class="form-lg" id="inputEmail2" type="text" placeHolder="E-mail Address" />
-          </div>
-          <input type="submit" class="btn btn-success btn-lg" id="submitEmail2" value="Sounds Good" />
-        </form>
-      -->
-
-    </div> <!-- End Countdown Row -->
-  </div> <!-- End Countdown Container -->
+      </div> <!-- End Countdown Row -->
+    </div> <!-- End Countdown Container -->
 </section> <!-- End Countdown Section -->
+
 
 <div class="teaser hidden-xs" id="about-teaser">
   <a href="#about-teaser">
