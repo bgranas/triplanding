@@ -1,5 +1,11 @@
 Rails.application.routes.draw do
 
+  get 'beta/index'
+
+  get 'beta/about'
+
+  get 'beta/contact'
+
   get 'welcome/index'
 
   # The priority is based upon order of creation: first created -> highest priority.
