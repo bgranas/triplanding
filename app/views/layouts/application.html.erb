@@ -18,37 +18,43 @@
 
 </head>
 <body>
+<div id="body-container">
 
-<%= yield %>
-
-<!-- Footer -->
-<secton id="footer">
-  <div id="prelaunch-footer" class="valign-middle-parent">
-   <div class="container valign-middle-child">
-
-     <div class="row footer-first-row">
-
-       <div class="col-sm-9 col-xs-6 text-left">
-         <p><small>
-           <i class="fa fa-copyright"></i> TripHappy 2015
-           <br/>
-
-         </small></p>
-
-       </div>
-       <div class="col-sm-1 col-xs-2">
-         <a href="https://www.facebook.com/gotriphappy" target="_blank"><i class="fa fa-facebook-square fa-2x footer-social"></i></a>
-       </div>
-       <div class="col-sm-1 col-xs-2">
-         <a href="https://instagram.com/gotriphappy" target="_blank"><i class="fa fa-instagram fa-2x footer-social"></i></a>
-       </div>
-       <div class="col-sm-1 col-xs-2">
-         <a href="http://twitter.com/gotriphappy" target="_blank"><i class="fa fa-twitter fa-2x footer-social"></i></a>
-       </div>
-     </div>
-    </div>
+  <div id="header">
   </div>
-</section>
+
+  <div id="main-content">
+    <%= yield %>
+  </div>
+
+  <!-- Footer -->
+  <div id="footer">
+    <div id="footer-container" class="valign-middle-parent">
+     <div class="container valign-middle-child">
+       <div class="row footer-first-row">
+
+         <div class="col-sm-9 col-xs-6 text-left">
+           <p>
+            <small> <i class="fa fa-copyright"></i> TripHappy 2015 </small>
+           </p>
+
+         </div>
+         <div class="col-sm-1 col-xs-2">
+           <a href="https://www.facebook.com/gotriphappy" target="_blank"><i class="fa fa-facebook-square fa-2x footer-social"></i></a>
+         </div>
+         <div class="col-sm-1 col-xs-2">
+           <a href="https://instagram.com/gotriphappy" target="_blank"><i class="fa fa-instagram fa-2x footer-social"></i></a>
+         </div>
+         <div class="col-sm-1 col-xs-2">
+           <a href="http://twitter.com/gotriphappy" target="_blank"><i class="fa fa-twitter fa-2x footer-social"></i></a>
+         </div>
+       </div> <!-- End Row -->
+      </div> <!-- End Bootstrap Container -->
+    </div> <!-- End Footer Container -->
+
+  </div> <!-- End Footer Div -->
+
+</div> <!-- End body-container -->
 
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
 

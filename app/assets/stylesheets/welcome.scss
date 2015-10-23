@@ -11,6 +11,10 @@
     font-size: 4em;
   }
 
+#top-of-the-world{
+  z-index: 101;
+}
+
 .halfway-down{
   position: absolute;
   top: 37%;
@@ -77,6 +81,22 @@
 /* About Us Section */
 #about{
   min-height: 84vh;
+}
+
+.google-maps iframe {
+    margin: 25px 0px 25px 0px;
+    max-width: 80% !important;
+
+}
+
+/* Footer Section */
+#prelaunch-footer{
+  min-height:8vh;
+  background-color: #444444 ;
+  color: #eeeeee ;
+  height: 50px;
+  margin-top: 0px;
+  letter-spacing: 1px;
 }
 
 

@@ -14,8 +14,11 @@
  *= require_self
  */
 
-body{
+html, body{
   font-family: 'Lato', sans-serif;
+  margin: 0;
+  padding: 0;
+  height: 100%;
 }
 
 h1, h2, h3, h4, h5, h6 {
@@ -32,17 +35,47 @@ h4{
   padding-right: 15px;
 }
 
-.success-green{
-  color: #00C124;
+/* Setting Up Header, Footer, Content for Layout */
+#body-container{
+  min-height: 100%;
+  position: relative;
 }
 
-.failure-red{
-  color: #C10000;
+#header{
+  background-color: #444444 ;
+  color: #eeeeee ;
+  letter-spacing: 1px;
+  padding: 10px;
+
 }
 
-#top-of-the-world{
-  z-index: 101;
+#main-content{
+  padding:10px;
+  padding-bottom: 150px; /* Height of Footer */
 }
+
+#footer{
+  position:absolute;
+  bottom:0;
+  width:100%;
+  height:150px;   /* Height of the footer */
+  background-color: #444444 ;
+  color: #eeeeee ;
+  letter-spacing: 1px;
+}
+  .footer-social {
+    color: white;
+    -webkit-transition-duration: 0.2s !important;
+    -moz-transition-duration: 0.2s !important;
+    transition-duration: 0.2s !important;
+  }
+
+  .footer-social:hover {
+    color: #ea7663;
+  }
+
+
+
 
 #badge-container{
   position:fixed;
@@ -127,32 +160,9 @@ h4{
     vertical-align: middle;
   }
 
-.google-maps iframe {
-    margin: 25px 0px 25px 0px;
-    max-width: 80% !important;
 
-}
 
-/* Footer Section */
-#prelaunch-footer{
-  min-height:8vh;
-  background-color: #444444 ;
-  color: #eeeeee ;
-  height: 50px;
-  margin-top: 0px;
-  letter-spacing: 1px;
-}
 
-.footer-social {
-  color: white;
-  -webkit-transition-duration: 0.2s !important;
-  -moz-transition-duration: 0.2s !important;
-  transition-duration: 0.2s !important;
-}
-
-.footer-social:hover {
-  color: #ea7663;
-}
 
 /* Bootstrap Override */
 .btn-success{
