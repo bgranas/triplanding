@@ -56,5 +56,10 @@ gem 'email_validator'
 #heroku gem
 gem 'rails_12factor', group: :production
 
+#needed for Windows local server
+gem 'tzinfo-data'
+
 #ruby version
 ruby '2.1.5'
+
+

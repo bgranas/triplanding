@@ -24,7 +24,7 @@ default: &default
 development:
   adapter: postgresql
   database: triplanding_development
-  username: thadmin
+  username: Ben
   password: abc123
   host: localhost
   encoding: UTF8
