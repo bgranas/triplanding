@@ -1,6 +1,6 @@
 class LeadsController < ApplicationController
 
-  layout false
+  layout 'application'
   #respond_to :html, :js
 
   def index
@@ -24,6 +24,13 @@ class LeadsController < ApplicationController
   end
 
   def delete
+    @lead = Lead.find(params[:id])
+  end
+
+  def destroy
+    @lead = Lead.find(params[:id])
+    @lead.destroy
+    redirect_to(:action => 'index')
   end
 
 

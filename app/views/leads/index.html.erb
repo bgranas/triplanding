@@ -2,8 +2,15 @@
 
 
 #make this a table with show edit delete
-<ol>
-  <% @leads.each do |lead| %>
-    <li> <%= lead.email  %> </li>
-  <% end %>
-</ol>
+<table class="table">
+	<tr>
+		<th>Email</th>
+		<th>Delete</th>
+	</tr>
+	<% @leads.each do |lead| %>
+	<tr>
+		<td><%= lead.email %></td>
+		<td><%= link_to("Delete", {:action=> 'delete', :id => lead.id}) %></td>
+	</tr>
+	<% end %>
+</table>

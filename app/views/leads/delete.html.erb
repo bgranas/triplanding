@@ -1,2 +1,15 @@
-<h1>Leads#delete</h1>
-<p>Find me in app/views/leads/delete.html.erb</p>
+<div class="lead delete">
+  <h2>Delete Email</h2>
+
+  <%= form_for(:lead, :url => {:action => 'destroy', :id => @lead.id}) do |f| %>
+
+    <p>Are you sure you want to permanently delete this email?</p>
+
+    <p class="reference-name"><%= @lead.email %></p>
+
+    <div class="form-buttons">
+      <%= submit_tag("Delete Email") %>
+    </div>
+
+  <% end %>
+</div>
