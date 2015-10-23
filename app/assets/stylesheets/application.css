@@ -51,7 +51,7 @@ h4{
 
 #main-content{
   padding:10px;
-  padding-bottom: 150px; /* Height of Footer */
+  padding-bottom: 150px; /* Min-Height of Footer */
 }
 
 #footer{
@@ -66,12 +66,13 @@ h4{
 
   #footer-container{
     margin-top: 15px;
+    margin-bottom: 15px;
   }
 
-  #footer-link h5{
-    margin-bottom:5px;
+  #footer h5{
+    margin-bottom:10px;
   }
-    #footer-links ul{
+    #footer ul{
       list-style-type: none;
       padding-left:0px;
     }
@@ -84,6 +85,9 @@ h4{
     }
     #footer a:hover{
       color: #ea7663;
+    }
+    #footer-copy{
+      margin-top:15px;
     }
 
 
