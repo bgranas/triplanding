@@ -2,11 +2,14 @@
 
 <table class="table">
 	<tr>
+		<th>#</th>
 		<th>Email</th>
 		<th>Delete</th>
 	</tr>
+	<% i=0 %>
 	<% @leads.each do |lead| %>
 	<tr>
+		<td><%= i+=1 %>
 		<td><%= lead.email %></td>
 		<td><%= link_to("Delete", {:action=> 'delete', :id => lead.id}) %></td>
 	</tr>
