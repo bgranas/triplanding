@@ -22,8 +22,14 @@ default: &default
   pool: 5
 
 development:
-  <<: *default
+  adapter: postgresql
   database: triplanding_development
+  username: thadmin
+  password: abc123
+  host: localhost
+  encoding: UTF8
+  pool: 5
+  timeout: 5000
 
   # The specified database role being used to connect to postgres.
   # To create additional roles in postgres see `$ createuser --help`.
