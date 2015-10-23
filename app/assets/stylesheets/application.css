@@ -41,32 +41,35 @@ h4{
   position: relative;
 }
 
-#header{
-  background-color: #444444 ;
-  color: #eeeeee ;
-  letter-spacing: 1px;
-  padding: 10px;
-  min-height:60px;
 
+/* Bootstrap Override for Header */
+.navbar-inverse {
+  background-color: #444444;
+  border:none;
+  letter-spacing: 1px;
 }
-  #header a{
-      text-decoration: none;
+
+  .navbar-inverse .navbar-brand {
+    color: white;
+    -webkit-transition-duration: 0.2s !important;
+    -moz-transition-duration: 0.2s !important;
+    transition-duration: 0.2s !important;
+  }
+    .navbar-inverse .navbar-brand:hover {
+      color: #ea7663;
+    }
+
+  .navbar-inverse .navbar-nav>li>a {
       color:white;
       -webkit-transition-duration: 0.2s !important;
       -moz-transition-duration: 0.2s !important;
       transition-duration: 0.2s !important;
-    }
-    #header a:hover{
-      color: #ea7663;
-    }
-  #header ul{
-      list-style-type: none;
-      margin-top:10px;
   }
-    #header li{
-      display:inline-block;
-      margin-right:15px;
-    }
+  .navbar-inverse .navbar-nav>li>a:hover {
+      color: #ea7663;
+  }
+
+
 
 #main-content{
   padding:10px;
@@ -126,12 +129,12 @@ h4{
 }
 
 #th-badge{
-  border: 2px solid white;
-  color: white;
+  border: 2px solid #333333;
+  color: #333333;
   border-radius:50px;
    -webkit-border-radius: 50px;
   -moz-border-radius: 50px;
-  font-size: 15px;
+  font-size: 20px;
   font-weight:bold;
   padding:5px;
 
