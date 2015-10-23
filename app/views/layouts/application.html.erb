@@ -20,13 +20,49 @@
 <body>
 <div id="body-container">
 
+<nav class="navbar navbar-inverse">
+  <div class="container">
+
+    <div class="navbar-header">
+      <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#collapsemenu" aria-expanded="false">
+        <span class="sr-only">Toggle Navigation</span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+
+      </button>
+      <a href="/beta" class="navbar-brand"> <h4> TripHappy </h4> </a>
+    </div>
+
+    <div class="collapse navbar-collapse" id="collapsemenu">
+      <ul class="nav navbar-nav navbar-right">
+        <li><%= link_to 'Plan a Trip', '#' %></li>
+        <li><%= link_to 'Get Inspired', '#' %></li>
+        <li><%= link_to 'How it Works', '#' %></li>
+        <li><%= link_to 'Sign Up', '#' %></li>
+        <li><%= link_to 'Login', '#' %></li>
+      </ul>
+    </div>
+
+
+  </div> <!-- End Navbar Container -->
+</nav> <!-- End Nav -->
+
+<!--
   <div id="header">
     <div class="pull-left">
-      <a id="badge-link" href="/beta"> <span id="th-badge" class=""> TH </span> </a>
+      <a id="logo" href="/beta"> <h4> TripHappy </h4> </a>
     </div>
 
     <div class="pull-right">
-
+      <ul>
+        <li><%= link_to 'Plan a Trip', '#' %></li>
+        <li><%= link_to 'Get Inspired', '#' %></li>
+        <li><%= link_to 'How it Works', '#' %></li>
+        <li> | </li>
+        <li><%= link_to 'Sign Up', '#' %></li>
+        <li><%= link_to 'Login', '#' %></li>
+      </ul>
     </div>
   </div> <!-- end header -->
 

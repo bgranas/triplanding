@@ -46,9 +46,27 @@ h4{
   color: #eeeeee ;
   letter-spacing: 1px;
   padding: 10px;
-  min-height:40px;
+  min-height:60px;
 
 }
+  #header a{
+      text-decoration: none;
+      color:white;
+      -webkit-transition-duration: 0.2s !important;
+      -moz-transition-duration: 0.2s !important;
+      transition-duration: 0.2s !important;
+    }
+    #header a:hover{
+      color: #ea7663;
+    }
+  #header ul{
+      list-style-type: none;
+      margin-top:10px;
+  }
+    #header li{
+      display:inline-block;
+      margin-right:15px;
+    }
 
 #main-content{
   padding:10px;
