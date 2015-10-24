@@ -80,16 +80,21 @@ h4{
   }
 
   .navbar-inverse .navbar-nav>li>a {
-      color:white;
-      -webkit-transition-duration: 0.2s !important;
-      -moz-transition-duration: 0.2s !important;
-      transition-duration: 0.2s !important;
+    color:white;
+    -webkit-transition-duration: 0.2s !important;
+    -moz-transition-duration: 0.2s !important;
+    transition-duration: 0.2s !important;
   }
 
 
 
   .navbar-inverse .navbar-nav>li>a:hover {
-      color: #ea7663;
+    color: #ea7663;
+    border-color: #ea7663;
+  }
+
+  .navbar-inverse .navbar-toggle {
+    border:2px solid white;
   }
 
   .navbar .divider-vertical {
@@ -104,14 +109,17 @@ h4{
   .navbar-inverse .divider-vertical {
     border-color: white;
   }
-  .dropdown:hover .dropdown-menu {
-      display: block;
-   }
 
-  @media (max-width: 767px) {
-  .navbar-collapse .nav > .divider-vertical {
-      display: none;
-    }
+  /* only do dropdown on hover if non-mobile screen */
+  @media (min-width: 767px){
+    .dropdown:hover .dropdown-menu {
+        display: block;
+     }
+  }
+
+  /* Background color once dropdown is clicked */
+  .navbar-inverse .navbar-nav>.open>a, .navbar-inverse .navbar-nav>.open>a:focus, .navbar-inverse .navbar-nav>.open>a:hover {
+      background-color: #353535;
   }
 
 
@@ -155,40 +163,6 @@ h4{
       margin-top:15px;
     }
 
-
-
-
-
-
-#badge-container{
-  position:fixed;
-  top: 20px;
-  left: 8px;
-  z-index: 100;
-}
-
-#badge-link{
-  text-decoration: none;
-}
-
-#th-badge{
-  border: 2px solid #040404;
-  color: #040404;
-  border-radius:50px;
-   -webkit-border-radius: 50px;
-  -moz-border-radius: 50px;
-  font-size: 20px;
-  font-weight:bold;
-  padding:5px;
-
-  -webkit-transition-duration: 0.2s !important;
-  -moz-transition-duration: 0.2s !important;
-  transition-duration: 0.2s !important;
-}
-  #th-badge:hover{
-    border: 2px solid #ea7663;
-    color: #ea7663;
-  }
 
 
 .bgimage{
@@ -285,8 +259,28 @@ h4{
   font-size: 1.1em;
 }
 
+/************** MEDIA QUERIES ***************/
 /* XS (Smallest) Screen Size */
 @media (max-width: 767px){
+
+  #header .container{
+    background-color: #444444;
+  }
+
+  .nav-link-box{
+    border: none;
+    padding-top: 10px;
+    padding-bottom: 10px;
+    margin-top: 0px;
+    margin-bottom: 0px;
+  }
+
+
+  .navbar-collapse .nav > .divider-vertical {
+    display: none;
+  }
+
+
   .img-responsive{
     max-width: 70%;
     min-width: 300px;
@@ -294,6 +288,7 @@ h4{
 
   #main-content{
     padding-bottom:270px;
+    margin-top: 0px;
   }
 
   #footer{
