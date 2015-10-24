@@ -1,3 +1,35 @@
 // Place all the styles related to the beta controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+
+
+
+#index-first-section {
+	background-position: center center;
+  background-size: cover; 
+	background-image: url('bg-hitchhike-sm.jpg');
+  color:white;
+  height: 80vh;
+  margin-top: -20px;
+}
+
+.callout {
+	padding-top: 50px;
+}
+
+	.callout h1 {
+		text-align: center;
+	}
+
+#index-second-section {
+	margin-bottom: 40px;
+}
+
+#highlightedtrips-widget-holder {
+	border: 2px solid lightgray;
+}
+
+.trip-map-static {
+	height: 350px;
+	width: 200px;
+}
