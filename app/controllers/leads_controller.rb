@@ -1,7 +1,8 @@
 class LeadsController < ApplicationController
 
   layout 'application'
-  #respond_to :html, :js
+
+  before_action :authenticate_user!
 
   def index
     @leads = Lead.order("created_at ASC")
