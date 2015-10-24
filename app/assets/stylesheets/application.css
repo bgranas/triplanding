@@ -43,6 +43,10 @@ h4{
 
 
 /* Bootstrap Override for Header */
+.navbar{
+  border-radius: 0px;
+}
+
 .navbar-inverse {
   background-color: #444444;
   border:none;
@@ -72,7 +76,6 @@ h4{
 
 
 #main-content{
-  padding:10px;
   padding-bottom: 150px; /* Min-Height of Footer */
 }
 
