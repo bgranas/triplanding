@@ -101,6 +101,10 @@
 
   #prelaunch-footer a{
     color: white;
+
+    -webkit-transition-duration: 0.2s !important;
+    -moz-transition-duration: 0.2s !important;
+    transition-duration: 0.2s !important;
   }
 
   #prelaunch-footer a:hover{
