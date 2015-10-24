@@ -9,15 +9,17 @@ Landing page
 
 #index-first-section {
 	background-position: center center;
-  background-size: cover; 
-	background-image: url('bg-hitchhike-sm.jpg');
+  background-size: cover;
+	background-image: url('girl_horizon_sm.jpg'); /* 1st favorite */
+  /* background-image: url('bg-hitchhike-sm.jpg');    2nd favorite */
+  /* background-image: url('beach_sunset_sm.jpg');    3rd favorite */
   color:white;
   height: 84vh;
   margin-top: -20px;
 }
 
 .callout {
-	padding-top: 50px;
+	padding-top: 80px;
 	text-align: center;
 }
 
