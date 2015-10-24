@@ -77,6 +77,9 @@ Rails.application.configure do
   # Do not dump schema after migrations.
   config.active_record.dump_schema_after_migration = false
 
+  #default url used when generating urls in the mailer
+  config.action_mailer.default_url_options = { host: 'triphappy.me'}
+
   # Precompile Coffeescript
   #config.assets.precompile += ('welcome.js')
 
