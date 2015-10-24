@@ -10,4 +10,8 @@ class RegistrationsController < Devise::RegistrationsController
     params.require(:user).permit(:name, :email, :password, :password_confirmation, :current_password)
   end
 
+  def after_sign_up_path_for(user)
+    '/beta'
+  end
+
 end
