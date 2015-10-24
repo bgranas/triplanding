@@ -20,7 +20,7 @@
 <body>
 <div id="body-container">
 
-<nav id="header" class="navbar navbar-inverse">
+<nav id="header" class="navbar <%= @transparent_nav ? 'navbar-transparent navbar-inverse' : 'navbar-inverse' %>">
   <div class="container">
 
     <div class="navbar-header">
@@ -64,7 +64,7 @@
   </div> <!-- End Navbar Container -->
 </nav> <!-- End Nav -->
 
-  <div id="main-content">
+  <div id="main-content" class="<%= @transparent_nav ? 'content-in-nav' : '' %>">
     <%= yield %>
   </div>
 

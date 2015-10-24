@@ -53,6 +53,13 @@ h4{
   letter-spacing: 1px;
 }
 
+  .navbar-transparent{
+    background-color: rgba(0,0,0, 0.15) !important; /* 10% opacity with black color */
+  }
+  .content-in-nav{
+    margin-top:-70px;
+  }
+
   .navbar-inverse .navbar-brand {
     color: white;
     -webkit-transition-duration: 0.2s !important;
