@@ -54,7 +54,7 @@ h4{
 }
 
   .navbar-transparent{
-    background-color: rgba(0,0,0, 0.15) !important; /* 10% opacity with black color */
+    background-color: rgba(0,0,0, 0) !important; /* 0% opacity with black color */
   }
   .content-in-nav{
     margin-top:-70px;
@@ -70,12 +70,24 @@ h4{
       color: #ea7663;
     }
 
+
+  .nav-link-box{
+    border: 2px solid white;
+    padding-top: 4px !important;
+    padding-bottom: 4px !important;
+    margin-top: 9px;
+    margin-bottom: 9px;
+  }
+
   .navbar-inverse .navbar-nav>li>a {
       color:white;
       -webkit-transition-duration: 0.2s !important;
       -moz-transition-duration: 0.2s !important;
       transition-duration: 0.2s !important;
   }
+
+
+
   .navbar-inverse .navbar-nav>li>a:hover {
       color: #ea7663;
   }
