@@ -11,7 +11,7 @@ class RegistrationsController < Devise::RegistrationsController
   end
 
   def after_sign_up_path_for(user)
-    '/beta'
+    session[:previous_url] || root_path
   end
 
 end
