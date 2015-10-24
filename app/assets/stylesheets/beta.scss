@@ -3,33 +3,52 @@
 // You can use Sass (SCSS) here: http://sass-lang.com/
 
 
+/***********************
+Landing page
+***********************/
 
 #index-first-section {
 	background-position: center center;
   background-size: cover; 
 	background-image: url('bg-hitchhike-sm.jpg');
   color:white;
-  height: 80vh;
+  height: 84vh;
   margin-top: -20px;
 }
 
 .callout {
 	padding-top: 50px;
+	text-align: center;
 }
 
 	.callout h1 {
 		text-align: center;
+		font-size: 3em;
 	}
+
+.destination-form {
+	width: 300px;
+}
 
 #index-second-section {
 	margin-bottom: 40px;
+	margin-top: 20px;
 }
 
-#highlightedtrips-widget-holder {
+#highlightedtrips-carousel {
 	border: 2px solid lightgray;
 }
+
+/***********************
+Highlighted trips widget
+***********************/
+
 
 .trip-map-static {
 	height: 350px;
 	width: 200px;
+}
+
+.region-sort {
+	margin-top: 8px;
 }

@@ -1,10 +1,10 @@
 <div class="container-fluid"  id="index-first-section">
 	<div class="callout">
     <h1>A better way to explore the world</h1>
-     		<%= form_for(:lead, remote: true, :url => {:controller => 'leads', :action => 'create'}, :html => {:class => 'form-inline'}) do |f| %>
+     		<%= form_for(:trip, remote: true, :url => {:controller => 'trips', :action => 'create'}, :html => {:class => 'form-inline'}) do |f| %>
           <div class="form-group">
-            <%= f.label(:email, 'E-mail', class: 'sr-only') %>
-            <%= f.text_field(:email, {:class=> 'form-lg emailForm', :placeHolder => 'Where do you want to start?'}) %>
+            <%= f.label(:string, 'Destination', class: 'sr-only') %>
+            <%= f.text_field(:string, {:class=> 'form-lg emailForm destination-form', :placeHolder => 'Where do you want to go?'}) %>
           </div>
           <%= submit_tag("Go explore", {:class => 'btn btn-success btn-lg'}) %>
         <% end %>
@@ -13,12 +13,15 @@
    </div>
 </div>
 
-<div class="container-fluid"  id="index-second-section">
+<div class="teaser hidden-xs" id="feature-teaser">
+  <a href="#feature-teaser" class="">
+    <p class="center-block">Get inspiration from these awesome trips<span class="glyphicon glyphicon-chevron-down center-block"> </span></p>
+  </a>
+</div>
+
+<div class="container"  id="index-second-section">
 	<div class="row">
-		<div class="col-xs-12">
-			<h2>Get Inspired</h2>
-		</div>
-		<div class="col-md-12 col-xs-12" id="highlightedtrips-widget-holder">
+		<div class="col-md-12 col-xs-12" id="highlightedtrips-carousel">
 			<%= render "trip_display/region_sort" %>
 		</div>
 	</div>
