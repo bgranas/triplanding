@@ -48,23 +48,11 @@
   </div> <!-- End Navbar Container -->
 </nav> <!-- End Nav -->
 
-<!--
-  <div id="header">
-    <div class="pull-left">
-      <a id="logo" href="/beta"> <h4> TripHappy </h4> </a>
-    </div>
+<% if !flash[:notice].blank? or !flash[:alert].blank? %>
+  <p class="notice"><%= notice %></p>
+  <p class="alert"><%= alert %></p>
+<% end %>
 
-    <div class="pull-right">
-      <ul>
-        <li><%= link_to 'Plan a Trip', '#' %></li>
-        <li><%= link_to 'Get Inspired', '#' %></li>
-        <li><%= link_to 'How it Works', '#' %></li>
-        <li> | </li>
-        <li><%= link_to 'Sign Up', '#' %></li>
-        <li><%= link_to 'Login', '#' %></li>
-      </ul>
-    </div>
-  </div> <!-- end header -->
 
   <div id="main-content">
     <%= yield %>
