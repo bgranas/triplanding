@@ -153,6 +153,16 @@ h4{
     .dropdown-toggle:hover{
       color:white !important;
     }
+  } /* End Media Query */
+
+  .form-dropdown{
+    padding:10px;
+  }
+    .form-dropdown li{
+      margin: 5px 0px;
+    }
+  .popup-form{
+    width:200px;
   }
 
   /* Background color once dropdown is clicked */
