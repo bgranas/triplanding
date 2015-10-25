@@ -6,4 +6,6 @@
   <li role="presentation"><a href="#" aria-controls="profile" role="tab" data-toggle="tab">Africa</a></li>
   <li role="presentation"><a href="#" aria-controls="profile" role="tab" data-toggle="tab">Oceania</a></li>
 </ul>
-<%= render "trip_display/tripdisplay" %> <!--use to get region variable: locals: {region: @region}!-->
+
+<%= render "trip_display/tripdisplay", locals:  {tripTitle: @tripTitle} %> <!--use to get region variable: locals: {region: @region}!-->
+
