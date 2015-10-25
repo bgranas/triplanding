@@ -6,7 +6,7 @@ class BetaController < ApplicationController
     @transparent_nav = true
 
     #calling Trip Display helper
-    trip_display
+    trip_display_setup
 
   end
 
