@@ -14,8 +14,4 @@ class RegistrationsController < Devise::RegistrationsController
     session[:previous_url] || root_path
   end
 
-  def after_update_path_for(user)
-    session[:previous_url] || root_path
-  end
-
 end
