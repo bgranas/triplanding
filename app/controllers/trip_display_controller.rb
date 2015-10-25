@@ -9,7 +9,7 @@ class TripDisplayController < ApplicationController
 	end
 
 	def regionSort
-		@regions = [Asia, Americas, Europe, Africa, India, Oceania]
+		@regions = ["Asia","Americas","Europe","Africa","India","Oceania"]
 
 	end
 
