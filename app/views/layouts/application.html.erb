@@ -52,7 +52,6 @@
               <li><%= link_to 'Logout', destroy_user_session_path, :method => :delete %></li>
             </ul>
           </li>
-
         <% else %>
           <li><%= link_to 'Sign Up', new_user_registration_path, class: 'nav-link-box' %></li>
           <li class="dropdown">
