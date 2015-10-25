@@ -7,6 +7,13 @@ Rails.application.routes.draw do
     get "/logout" => "devise/sessions#destroy"
   end
 
+  get 'beta/index'
+
+  get 'beta/about'
+
+  get 'beta/contact'
+
+  get 'welcome/index'
 
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
