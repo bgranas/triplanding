@@ -161,9 +161,15 @@ h4{
     .form-dropdown li{
       margin: 5px 0px;
     }
-  .popup-form{
-    width:200px;
-  }
+
+    .form-dropdown #login-btn{
+      width:100%;
+    }
+
+    .popup-form{
+      width:200px;
+      font-size: 14px;
+    }
 
   /* Background color once dropdown is clicked */
   .navbar-inverse .navbar-nav>.open>a, .navbar-inverse .navbar-nav>.open>a:focus, .navbar-inverse .navbar-nav>.open>a:hover {

@@ -62,12 +62,11 @@
               <%= form_for(:user, url: session_path(:user)) do |f| %>
                 <li> <%= f.email_field :email, :placeholder => 'E-mail', class: 'popup-form' %> </li>
                 <li> <%= f.password_field :password, autocomplete: "off", :placeholder => 'Password', class: 'popup-form' %> </li>
-                <li> <%= f.submit "Log in" %> </li>
+                <li> <%= f.submit "Login", :id =>'login-btn', class: 'btn btn-primary btn-small' %> </li>
                 <li>Forgot Your Password?</li>
               <% end %>
             </ul>
           </li>
-            <!--<li><%= link_to 'Login', new_user_session_path %></li> -->
         <% end %>
       </ul>
     </div>
