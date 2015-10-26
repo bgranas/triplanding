@@ -36,6 +36,16 @@ h4{
   padding-right: 15px;
 }
 
+.no-margin{
+  margin:0px;
+}
+  .no-top-margin{
+    margin-top:0px;
+  }
+  .no-bottom-margin{
+    margin-bottom:0px;
+  }
+
 /* Setting Up Header, Footer, Content for Layout */
 #body-container{
   min-height: 100%;
@@ -312,6 +322,17 @@ h4{
 .text-muted{
   color:#656565;
   font-size: 1.1em;
+}
+
+/************** LightBox ***************/
+.lightbox-content{
+  padding: 20px;
+}
+
+/* Colorbox Overrides */
+#cboxClose {
+  top: 5px;
+  right: 5px;
 }
 
 /************** MEDIA QUERIES ***************/

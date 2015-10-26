@@ -53,12 +53,17 @@
             </ul>
           </li>
         <% else %>
-          <li><%= link_to 'Sign Up', '/blank/sign_in_helper', class: 'nav-link-box',
+
+          <!-- If mobile browser, go to sign_up page, otherwise trigger lightbox -->
+          <% if browser.mobile? %>
+            <li><%= link_to 'Sign Up', new_user_registration_path, class: 'nav-link-box', :id => 'sign-up-link' %></li>
+          <% else %>
+            <li><%= link_to 'Sign Up', '/blank/sign_up_helper', class: 'nav-link-box',
                                           :id => 'sign-up-link', :data => {
-                                          :colorbox => true}
-                                           %></li>
-          <!-- old signup
-          <li><%= link_to 'Sign Up', new_user_registration_path, class: 'nav-link-box', :id => 'sign-up-link' %></li> -->
+                                          :colorbox => true} %>
+            </li>
+          <% end %>
+
           <li class="dropdown">
             <a href="<%= new_user_session_path %>" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">
               Login

@@ -1,10 +1,16 @@
-<h2>Sign Up</h2>
+<h2 class="no-top-margin">Sign Up</h2>
+
+<button>Sign up with Facebook</button>
+<button>Sign up with Google</button>
+
+<hr>
+</hr>
 
 <%= form_for(:user, url: registration_path(:user)) do |f| %>
 
   <div class="field">
     <%= f.label :name, 'Display Name' %><br />
-    <%= f.text_field :name %>
+    <%= f.text_field :name, autofocus: true %>
   </div>
 
   <div class="field">
