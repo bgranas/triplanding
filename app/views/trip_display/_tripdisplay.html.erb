@@ -9,7 +9,7 @@
 			<div class="trip-map-static"><img src=<%= @tripMapStatic %>>
 				<ul class="list-inline image-hover-options">
 					<li><i class="fa fa-heart fa-3x image-hover-favorite"></i></li>
-					<li><i class="fa fa-share-alt fa-3x image-hover-share"></i>
+					<li><i class="fa fa-share-alt fa-3x image-hover-share"></i></li>
 				</ul>
 			</div>
 
@@ -19,13 +19,13 @@
 			<!-- Trip countries list -->
 			<ul class="list-inline destination-item-list">
 				<% @tripCity.first(5).each do |city| %>
-					<li class="trip-destination-item trip-city-item"><p><%= link_to(city, {:controller => 'users', :action => 'show'}) %></a></p></li>
+					<li class="trip-destination-item trip-city-item"><p><%= link_to(city, {:controller => 'users', :action => 'show'}) %></p></li>
 				<% end %>				
 				<% @tripCountry.first(3).each do |country| %>
 					<li class="trip-destination-item trip-country-item"><p><%= link_to(country, {:controller => 'users', :action => 'show'}) %></p></li>
 				<% end %>
 				<% if @tripCity.length > 5 %>
-					<li class="trip-destination-item trip-excess-item>"><p><%= link_to("...", {:controller => 'users', :action => 'show'}) %></p></li>
+					<li class="trip-excess-item"><%= link_to("...", {:controller => 'users', :action => 'show'}) %></li>
 				<% end %>
 			</ul>
 

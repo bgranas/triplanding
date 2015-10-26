@@ -76,6 +76,11 @@ Highlighted trips widget
 
 
 		/*** Like and share hover buttons over map ***/
+		.trip-map-static:hover .image-hover-options {
+			display: block;
+			z-index: 101;
+		}
+
 		.image-hover-options {
 			display: none;
 			position: absolute;
@@ -111,19 +116,17 @@ Highlighted trips widget
 						color: lightblue;
 					}
 
-
+			/* Map fade on hover
 			.image-hover-options:hover .trip-map-static img {
 				opacity: .8;
 			}
 
-		.trip-map-static img:hover {
-			opacity: .8;
-		}
+			.trip-map-static img:hover {
+				opacity: .8;
+			}
+			*/
 
-		.trip-map-static:hover .image-hover-options {
-			display: block;
-			z-index: 101;
-		}
+
 
 	/*** Trip likes and shares section ***/
 	.trip-favorites {
@@ -161,13 +164,15 @@ Highlighted trips widget
 			}
 
 			.trip-country-item {
-				border: 1px solid #B1A2A2;
-				background-color: #B1A2A2;
+				border: 1px solid #444444;
+				background-color: #444444;
 			}
 
 			.trip-excess-item {
-				border: 1px solid #B1A2A2;
-				background-color: #B1A2A2;
+				border: 1px solid lightgray;
+				border-radius: 2px 2px 2px 2px;
+				background-color: white;
+				color: black;
 			}
 
 
