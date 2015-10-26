@@ -61,11 +61,38 @@ Highlighted trips widget
 
 	}
 
+	.trip-title {
+		text-align: center;
+	}
+
 	/*** Static map display ***/
 	.trip-map-static {
 		height: 300px;
 		width: 300px;
 		margin: auto;
+	}
+
+	/*** Trip likes and shares section ***/
+	.trip-stats {
+		text-align: right;
+		margin-top: 5px;
+	}
+
+	.trip-favorites {
+		color: lightgray;
+	}
+
+	.trip-stats p {
+		color: lightgray;
+	}
+
+		.trip-shares {
+			color: lightgray;
+		}
+
+	.mobile-likeandshare {
+		text-align: right;
+		margin-top: 5px;	
 	}
 
 		/*** Adding qualities to map for hover buttons ***/
@@ -87,8 +114,8 @@ Highlighted trips widget
 			height: 50px;
 			width: 50px;
 			background-color: rgba(34,34,34,0.2);
-			top: 70px;
-			left: 50px;
+			top: 8%;
+			left: 12%;
 		}
 
 			.image-hover-options li {
@@ -128,19 +155,7 @@ Highlighted trips widget
 
 
 
-	/*** Trip likes and shares section ***/
-	.trip-favorites {
-		color: lightgray;
-	}
 
-	.trip-stats p {
-		color: lightgray;
-		text-align: right;
-	}
-
-		.trip-shares {
-			color: lightgray;
-		}
 
 	/*** Destination tags ***/
 	.destination-item-list {
@@ -171,6 +186,7 @@ Highlighted trips widget
 			.trip-excess-item {
 				border: 1px solid lightgray;
 				border-radius: 2px 2px 2px 2px;
+				height: 20px;
 				background-color: white;
 				color: black;
 			}

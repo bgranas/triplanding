@@ -3,7 +3,8 @@ module TripDisplayHelper
 	def trip_display_setup
 
 		#Rendering different map sizes
-		@tripMapStaticSize = "300x300"
+		#if !browser.mobile?
+			@tripMapStaticSize = "300x300"
 
 
 		# Trip object attributes
