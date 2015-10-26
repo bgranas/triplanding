@@ -142,9 +142,6 @@ h4{
 
   /* only do dropdown on hover if non-mobile screen */
   @media (min-width: 767px){
-    .dropdown:hover .dropdown-menu {
-
-     }
 
     .dropdown-menu:before {
       position: absolute;
@@ -334,6 +331,8 @@ h4{
 .vertical-stack-form{
     padding: 8px;
     line-height: 1.3;
+    border-top-left-radius: 0px;
+    border-bottom-right-radius: 0px;
 }
 
 

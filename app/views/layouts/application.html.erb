@@ -40,7 +40,8 @@
         <li><%= link_to 'Get Inspired', '#' %></li>
         <li><%= link_to 'How it Works', '#' %></li>
         <% if user_signed_in? %>
-          <li class="dropdown">
+          <!-- Don't want dropdown on hover if mobile -->
+          <li class="dropdown <% if !browser.mobile? %> dropdown-toggle-hover <% end %>">
             <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">
               <%= current_user.name %>
               <span class="caret"></span>
@@ -77,7 +78,7 @@
                 <button class="btn btn-block btn-social btn-google">
                     <i class="fa fa-google"></i> Sign in with Google
                 </button>
-                <div class="signup-or-separator">
+                <div class="signup-or-separator hidden-xs">
                     <span class="h6 signup-or-separator-text">or</span>
                     <hr>
                 </div>
