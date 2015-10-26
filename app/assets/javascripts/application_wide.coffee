@@ -6,11 +6,12 @@ $ ->
   $(document).bind 'cbox_load', ->
     $('#colorbox').blur()
 
+  #login success or error actions
   $("#login-form").on "ajax:success", (e, data, status, xhr) ->
     alert "login success!"
-
   $("#login-form").on "ajax:error", (e, xhr, status, error) ->
-    alert xhr.responseText
+    $('#login-container').find('.error-message').text(xhr.responseText)
+
 
   $('.dropdown-toggle-hover').on('mouseover', ->
     $(this).find('.dropdown-menu').show()

@@ -53,7 +53,7 @@
               <li><%= link_to 'Logout', destroy_user_session_path, :method => :delete %></li>
             </ul>
           </li>
-        <% else %>
+        <% else %> <!-- If the user is not signed in -->
 
           <!-- If mobile browser, go to sign_up page, otherwise trigger lightbox -->
           <% if browser.mobile? %>
@@ -72,36 +72,8 @@
             </a>
             <ul class="dropdown-menu form-dropdown">
               <li>
-                  <button class="btn btn-block btn-social btn-facebook">
-                    <i class="fa fa-facebook"></i> Sign in with Facebook
-                  </button>
-                <button class="btn btn-block btn-social btn-google">
-                    <i class="fa fa-google"></i> Sign in with Google
-                </button>
-                <div class="signup-or-separator hidden-xs">
-                    <span class="h6 signup-or-separator-text">or</span>
-                    <hr>
-                </div>
+                <%= render :partial => 'shared/login' %>
               </li>
-
-              <%= form_for(:user, url: session_path(:user), remote: true, :html => {:id => "login-form"}) do |f| %>
-                <li>
-                  <div class="input-group margin-bottom-sm">
-                    <span class="input-group-addon"><i class="fa fa-envelope-o fa-fw"></i></span>
-                    <%= f.email_field :email, class: 'vertical-stack-form',
-                                      :placeholder => 'E-mail', :required => true %>
-                  </div>
-                </li>
-                <li>
-                  <div class="input-group margin-bottom-sm">
-                    <span class="input-group-addon"><i class="fa fa-key fa-fw"></i></span>
-                    <%= f.password_field :password, autocomplete: "off", class: 'vertical-stack-form',
-                                         :placeholder => 'Password', :required => true %>
-                  </div>
-                </li>
-                <li> <%= f.submit "Login", class: 'btn btn-primary btn-block' %> </li>
-                <li>Forgot Your Password?</li>
-              <% end %>
             </ul>
           </li>
         <% end %>
