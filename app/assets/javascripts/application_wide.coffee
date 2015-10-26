@@ -8,7 +8,7 @@ $ ->
 
   #login success or error actions
   $("#login-form").on "ajax:success", (e, data, status, xhr) ->
-    alert "login success!"
+    location.reload()
   $("#login-form").on "ajax:error", (e, xhr, status, error) ->
     $('#login-container').find('.error-message').text(xhr.responseText)
 
