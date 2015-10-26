@@ -2,10 +2,13 @@
   <li role="presentation" class="active"><a href="#" aria-controls="home" role="tab" data-toggle="tab">Popular</a></li>
   
   <% @regions.each do |region| %>
-  <li role="presentation"><a href="#" aria-controls="profile" role="tab" data-toggle="tab"><%= region %></a></li>
+  	<li role="presentation"><a href="#" aria-controls="profile" role="tab" data-toggle="tab"><%= region %></a></li>
   <% end %>
 
 </ul>
 
-<%= render "trip_display/tripdisplay" %> <!--use to get region variable: locals: {region: @region}!-->
+<!-- show username in display -->
+	<%= render "trip_display/tripdisplay",  :locals => {:show_username => true} %>
+
+
 

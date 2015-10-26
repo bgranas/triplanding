@@ -1,11 +1,41 @@
-
-
 <div class="col-md-4 col-sm-12">
+	<div class="trip-holder">
+		<div class="trip-holder-content">
 
-		<h4><%= @tripTitle %></h4>
-		<div class="thumbnail trip-map-static"><img src=<%= @tripMapStatic %>></div>
-		<p class="trip-country-tag"><a href="#"><%= @tripCountry %></a></p>
-		<p><span class="badge"><%= @upvoteScore %></span><a href="#"> Likes</a></p>
-		<p class="trip-display-username"><a href="#"><%= @username %></a></p>
-		
+			<!-- Title of Trip -->
+			<h4><a href="#"><%= @tripTitle %></a></h4>
+
+			<!-- Trip static map -->
+			<div class="trip-map-static"><img src=<%= @tripMapStatic %>></div>
+
+
+
+			<!-- Trip countries list -->
+			<ul class="list-inline destination-item-list">
+				<% @tripCity.first(5).each do |city| %>
+					<li class="trip-destination-item trip-city-item"><p><a href="#"><%= city %></a></p></li>
+				<% end %>				
+				<% @tripCountry.first(5).each do |country| %>
+					<li class="trip-destination-item trip-country-item"><p><a href="#"><%= country %></a></p></li>
+				<% end %>
+			</ul>
+
+			<!-- Title of Trip -->
+			<% if :show_username %>
+				<div class="media trip-creator-box">
+					<div class="media-left media-middle">
+						<a href="#"><img class="media-object img-thumbnail" src=<%= @profilePicture %>></a>
+					</div>
+					<div class="media-body">
+						<h5 class="media-heading"><%= link_to(@username, {:controller => 'users', :action => 'show'}, :class => 'trip-display-username') %></h5>
+					</div>
+				</div>
+			<% end %>
+			<!-- Trip stats -->
+			<ul class="list-inline trip-stats">
+				<li><p><i class="fa fa-heart trip-favorites"></i> <%= @tripScore %></p></li>
+				<li><p><i class="fa fa-share-square-o trip-shares"></i> <%= @numTripShares %></p></li>
+			</ul>
+		</div>
+	</div>
 </div>

@@ -1,8 +1,31 @@
 class UsersController < ApplicationController
 
+	
 	layout 'application'
 
+	include TripDisplayHelper
+
 	def show
+		#User info
+		@username = "user12345" # username
+		@profilePicture = "paradise-feature-sm.jpg" # user's profile picture
+		@userBlogURL = "myblog.com" # user's blog (optional)
+		@userHomeCity = "San Francisco" # user's home city
+		@userHomeCountry = "USA" # user's home country
+
+		#User scores
+		@numTrips = "5"  # number of trips user has created
+		@upvoteScore = "20" # total upvotes user has received on trips
+		@numCountriesVisited = "5" # total number of countries present in user's created trips
+
+		# User's trips
+		# @userTrips = [trips with @userID = user's ID]
+
+		#calling Trip Display helper
+    trip_display_setup
+
+    #To prevent username from displaying on trip list
+    @show_username = false;
 
 	end
 

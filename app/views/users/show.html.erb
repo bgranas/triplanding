@@ -1,1 +1,45 @@
-<p>User profile page</p>
+<div class="container-fluid user-profile-top">
+	
+	<div class="row">	
+		<div class="col-md-9 col-md-offset-1  userprofile-holder">
+			<div class="userprofile-content">
+				<%= image_tag(@profilePicture, :alt => "User profile picture", :class => "img-circle img-responsive profile-picture") %>
+				<h2><%= @username %></h2>
+				<h4><%= @userHomeCity %>, <%= @userHomeCountry %></h4>
+				<h4><a href="#"><%= @userBlogURL %></a></h4>
+			</div>
+			<div class="user-stats-holder">
+				<ul class="list-inline user-stats">
+					<li class="user-stat"><p><strong><%= @numTrips %></strong> Trips planned</p></li>
+					<li class="user-stat"><p><span class="badge"><%= @numCountriesVisited %></span> Countries visited</p></li>
+					<li class="user-stat"><p><span class="badge"><%= @upvoteScore %></span> Score</p></li>
+				</ul>
+			</div>
+		</div>
+	</div>
+</div>
+<!-- end profile info -->
+
+<div class="container user-profile-bottom">
+	<div class="row">
+		<div class="col-md-12 userprofile-triplist-sort">
+			<ul class="nav nav-tabs region-sort" role="tablist">
+			  <li role="presentation" class="active"><a href="#" aria-controls="home" role="tab" data-toggle="tab">All trips</a></li>
+			  <li role="presentation"><a href="#" aria-controls="profile" role="tab" data-toggle="tab">My travels</a></li>
+			  <li role="presentation"><a href="#" aria-controls="profile" role="tab" data-toggle="tab">Wishlist</a></li>
+			  <li role="presentation"><a href="#" aria-controls="profile" role="tab" data-toggle="tab">Favorites</a></li>
+			</ul>
+		</div>	
+	</div>
+
+
+<!-- Start trip display -->
+	<div class="container-fluid userprofile-triplist">
+			<div class="row">
+				<div class="col-md-12 col-xs-12">
+					<%= render "trip_display/tripdisplay", :locals => :show_username %>
+					<%= render "trip_display/tripdisplay" %>
+				</div>
+			</div>
+	</div>	
+</div>
