@@ -143,7 +143,7 @@ h4{
   /* only do dropdown on hover if non-mobile screen */
   @media (min-width: 767px){
     .dropdown:hover .dropdown-menu {
-        display: block;
+
      }
 
     .dropdown-menu:before {

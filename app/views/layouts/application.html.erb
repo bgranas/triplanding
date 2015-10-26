@@ -65,7 +65,7 @@
             </li>
           <% end %>
 
-          <li class="dropdown">
+          <li class="dropdown <% if !browser.mobile? %> dropdown-toggle-hover <% end %>">
             <a href="<%= new_user_session_path %>" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">
               Login
             </a>
@@ -83,17 +83,19 @@
                 </div>
               </li>
 
-              <%= form_for(:user, url: session_path(:user)) do |f| %>
+              <%= form_for(:user, url: session_path(:user), remote: true, :html => {:id => "login-form"}) do |f| %>
                 <li>
                   <div class="input-group margin-bottom-sm">
                     <span class="input-group-addon"><i class="fa fa-envelope-o fa-fw"></i></span>
-                    <%= f.email_field :email, class: 'vertical-stack-form', :placeholder => 'E-mail' %>
+                    <%= f.email_field :email, class: 'vertical-stack-form',
+                                      :placeholder => 'E-mail', :required => true %>
                   </div>
                 </li>
                 <li>
                   <div class="input-group margin-bottom-sm">
                     <span class="input-group-addon"><i class="fa fa-key fa-fw"></i></span>
-                    <%= f.password_field :password, autocomplete: "off", class: 'vertical-stack-form', :placeholder => 'Password' %>
+                    <%= f.password_field :password, autocomplete: "off", class: 'vertical-stack-form',
+                                         :placeholder => 'Password', :required => true %>
                   </div>
                 </li>
                 <li> <%= f.submit "Login", class: 'btn btn-primary btn-block' %> </li>
