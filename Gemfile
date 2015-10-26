@@ -62,6 +62,10 @@ gem 'tzinfo-data'
 #gem for user-login
 gem 'devise'
 
+
+#gem for colorbox (lightbox)
+gem 'colorbox-rails'
+
 #ruby version
 ruby '2.1.5'
 

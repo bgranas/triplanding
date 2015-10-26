@@ -14,6 +14,7 @@
 //= require jquery.turbolinks
 //= require jquery_ujs
 //= require jquery.countdown.js
+//= require colorbox-rails
 //= require turbolinks
 //= require_tree .
 
