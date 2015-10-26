@@ -18,6 +18,9 @@
 				<% @tripCountry.first(5).each do |country| %>
 					<li class="trip-destination-item trip-country-item"><p><a href="#"><%= country %></a></p></li>
 				<% end %>
+				<% if @tripCity.length > 5 %>
+					<li class="trip-destination-item trip-excess-item"><p><%= link_to("See all", {:controller => 'users', :action => 'show'}) %></p></li>
+				<% end %>
 			</ul>
 
 			<!-- Title of Trip -->
