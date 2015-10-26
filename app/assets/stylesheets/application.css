@@ -319,6 +319,11 @@ h4{
   -moz-border-radius: 4px;
 }
 
+.btn-md{
+  padding: 9px 27px;
+  font-size: 16px;
+}
+
 .text-muted{
   color:#656565;
   font-size: 1.1em;
@@ -329,10 +334,60 @@ h4{
   padding: 20px;
 }
 
+.lightbox-content input{
+  width:100%;
+}
+
+.lightbox-content hr{
+  border-top: 1px solid #dce0e0;
+  width: 100%;
+}
+
+.signup-or-separator{
+  background: none;
+  height: 40px;
+  position: relative;
+  text-align: center;
+  color: #808080;
+}
+
+.signup-or-separator hr{
+  margin-top: -25px;
+}
+.signup-or-separator-text{
+  background-color: #fff;
+  display: inline-block;
+  padding: 8px;
+  text-transform: uppercase;
+}
+
+
 /* Colorbox Overrides */
 #cboxClose {
   top: 5px;
   right: 5px;
+  display: none;
+}
+
+
+#cboxTopLeft, #cboxTopRight, #cboxBottomLeft, #cboxBottomRight, #cboxMiddleLeft,
+#cboxMiddleRight, #cboxTopCenter, #cboxBottomCenter{
+  display: none;
+}
+
+#cboxContent{
+  border-radius: 4px;
+  -webkit-border-radius: 4px;
+  -moz-border-radius: 4px;
+}
+
+#cboxLoadedContent{
+  margin-bottom:0px;
+}
+
+#cboxOverlay{
+  background: black;
+
 }
 
 /************** MEDIA QUERIES ***************/

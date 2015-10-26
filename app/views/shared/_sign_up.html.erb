@@ -1,40 +1,48 @@
-<h2 class="no-top-margin">Sign Up</h2>
+<a class="btn btn-block btn-social btn-facebook btn-lg">
+    <i class="fa fa-facebook"></i> Sign up with Facebook
+  </a>
+<a class="btn btn-block btn-social btn-google btn-lg">
+    <i class="fa fa-google"></i> Sign up with Google
+</a>
 
-<button>Sign up with Facebook</button>
-<button>Sign up with Google</button>
+<div class="signup-or-separator">
+    <span class="h6 signup-or-separator-text">or</span>
+    <hr>
+</div>
+
+
+<%= form_for(:user, url: registration_path(:user)) do |f| %>
+
+<div class="field">
+  <%= f.label :name, 'Display Name' %><br />
+  <%= f.text_field :name, autofocus: true %>
+</div>
+
+<div class="field">
+  <%= f.label :email %><br />
+  <%= f.email_field :email, autofocus: true %>
+</div>
+
+<div class="field">
+  <%= f.label :password %>
+  <% if @minimum_password_length %>
+  <em>(<%= @minimum_password_length %> characters minimum)</em>
+  <% end %><br />
+  <%= f.password_field :password, autocomplete: "off" %>
+</div>
+
+<div class="field">
+  <%= f.label :password_confirmation %><br />
+  <%= f.password_field :password_confirmation, autocomplete: "off" %>
+</div>
+
+<div class="actions">
+  <%= f.submit "Sign up", class: 'btn btn-primary btn-lg' %>
+</div>
 
 <hr>
 </hr>
 
-<%= form_for(:user, url: registration_path(:user)) do |f| %>
-
-  <div class="field">
-    <%= f.label :name, 'Display Name' %><br />
-    <%= f.text_field :name, autofocus: true %>
-  </div>
-
-  <div class="field">
-    <%= f.label :email %><br />
-    <%= f.email_field :email, autofocus: true %>
-  </div>
-
-  <div class="field">
-    <%= f.label :password %>
-    <% if @minimum_password_length %>
-    <em>(<%= @minimum_password_length %> characters minimum)</em>
-    <% end %><br />
-    <%= f.password_field :password, autocomplete: "off" %>
-  </div>
-
-  <div class="field">
-    <%= f.label :password_confirmation %><br />
-    <%= f.password_field :password_confirmation, autocomplete: "off" %>
-  </div>
-
-  <div class="actions">
-    <%= f.submit "Sign up" %>
-  </div>
-
-  <p>Already a member? <%= link_to 'Login.', new_user_session_path, class: 'lightbox-close', data: {no_turbolink: true} %> </p>
+<p>Already a member? <%= link_to 'Login.', new_user_session_path, class: 'lightbox-close', data: {no_turbolink: true} %> </p>
 <% end %>
 
