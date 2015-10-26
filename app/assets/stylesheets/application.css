@@ -176,12 +176,13 @@ h4{
 
   .form-dropdown{
     padding:10px;
+    min-width:250px;
   }
     .form-dropdown li{
       margin: 5px 0px;
     }
 
-    .form-dropdown #login-btn{
+    .form-dropdown input{
       width:100%;
     }
 
@@ -346,7 +347,7 @@ h4{
   padding: 20px;
 }
 
-.lightbox-content input{
+.lightbox-content input {
   width: 100%;
 }
 
@@ -354,7 +355,7 @@ h4{
   margin:0px;
 }
 
-.lightbox-content hr{
+hr{
   border-top: 1px solid #dce0e0;
   width: 100%;
 }
