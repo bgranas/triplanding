@@ -71,9 +71,19 @@
             </a>
             <ul class="dropdown-menu form-dropdown">
               <%= form_for(:user, url: session_path(:user)) do |f| %>
-                <li> <%= f.email_field :email, :placeholder => 'E-mail', class: 'popup-form' %> </li>
-                <li> <%= f.password_field :password, autocomplete: "off", :placeholder => 'Password', class: 'popup-form' %> </li>
-                <li> <%= f.submit "Login", :id =>'login-btn', class: 'btn btn-primary btn-small' %> </li>
+                <li>
+                  <div class="input-group margin-bottom-sm">
+                    <span class="input-group-addon"><i class="fa fa-envelope-o fa-fw"></i></span>
+                    <%= f.email_field :email, class: 'vertical-stack-form', :placeholder => 'E-mail' %>
+                  </div>
+                </li>
+                <li>
+                  <div class="input-group margin-bottom-sm">
+                    <span class="input-group-addon"><i class="fa fa-key fa-fw"></i></span>
+                    <%= f.password_field :password, autocomplete: "off", class: 'vertical-stack-form', :placeholder => 'Password' %>
+                  </div>
+                </li>
+                <li> <%= f.submit "Login", class: 'btn btn-primary btn-small btn-block' %> </li>
                 <li>Forgot Your Password?</li>
               <% end %>
             </ul>
