@@ -1,5 +1,3 @@
-#Created by Calvin - for application-wide coffeescript
+#Put application-wide coffeescript here
 
-$ ->
-  $('.lightbox-close').click ->
-    $.colorbox.close()
+
