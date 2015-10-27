@@ -9,7 +9,7 @@ class UsersController < ApplicationController
 		#User info
 		@username = "user12345" # username
 		@profilePicture = "paradise-feature-sm.jpg" # user's profile picture
-		@userBlogURL = "myblog.com" # user's blog (optional)
+		@userBlogURL = "www.myblog.com" # user's blog (optional)
 		@userHomeCity = "San Francisco" # user's home city
 		@userHomeCountry = "USA" # user's home country
 

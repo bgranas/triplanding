@@ -458,3 +458,51 @@ hr{
   }
 }
 
+
+
+/************** nav-tab Navigation Bar overrides ***************/
+
+/*** Region sort bar  ***/
+.region-sort {
+  margin-top: 8px;
+  margin-left: 14px;
+  margin-right: 14px;
+  border-bottom: 1px solid white;
+}
+
+.nav-tabs {
+
+}
+
+  .nav-tabs a {
+    color: #444444;
+  }
+
+  .nav-tabs>li {
+    
+  }
+
+  .nav-tabs>li>a {
+    background-color: white;
+    margin-right: 2px;
+    border-radius: 0px;
+
+  }
+
+  .nav-tabs>li.active>a, .nav-tabs>li.active>a:focus, .nav-tabs>li.active>a:hover {
+
+    border-radius: 0px;
+    border-right: 1px solid white;
+    border-left: 1px solid white;
+    border-top: 1px solid white;
+    border-bottom: 1px solid #3B68B7;
+    margin-bottom: -1px;
+  }
+
+  .nav-tabs>li>a:hover {
+    border-bottom: 1px solid #3B68B7;
+    border-right: 1px solid white;
+    border-left: 1px solid white;
+    border-top: 1px solid white;
+    background-color: white;
+  }

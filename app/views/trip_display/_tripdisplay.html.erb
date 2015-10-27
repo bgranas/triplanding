@@ -52,7 +52,7 @@
 
 				<!-- Like and share buttons -->
 				<ul class="list-inline mobile-likeandshare">
-					<li><i class="fa fa-heart fa-2x trip-favorite"></i></li>
+					<li><i><%= link_to("", {:controller => 'users', :action => 'show'}, :class => "fa fa-heart fa-2x trip-favorite") %></i></li>
 					<li><i class="fa fa-share-alt fa-2x trip-share"></i></li>
 				</ul>
 
