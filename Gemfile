@@ -68,6 +68,9 @@ gem 'colorbox-rails'
 #for detecting browser of user
 gem "browser"
 
+#going with the recommended PUMA webserver instead of webBrik
+gem 'puma'
+
 #ruby version
 ruby '2.1.5'
 
