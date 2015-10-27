@@ -9,12 +9,20 @@ class RegistrationsController < Devise::RegistrationsController
     resource.save
     yield resource if block_given?
     if resource.persisted?
-      puts '************************sign-up failed'
+      puts '************************sign-up successful'
       if resource.active_for_authentication?
+        puts '************************ resource.active_for_authentication'
         set_flash_message :notice, :signed_up if is_flashing_format?
         sign_up(resource_name, resource)
-        respond_with resource, location: after_sign_up_path_for(resource)
+
+        if request.format.html?
+          respond_with resource, location: after_sign_up_path_for(resource)
+        else
+          return render :json => {:success => true, :redirect => after_sign_in_path_for(resource), :errors => resource.errors.full_messages}
+        end
+
       else
+        puts '************************ resource NOT ACTIVE'
         set_flash_message :notice, :"signed_up_but_#{resource.inactive_message}" if is_flashing_format?
         expire_data_after_sign_in!
         respond_with resource, location: after_inactive_sign_up_path_for(resource)
@@ -25,7 +33,7 @@ class RegistrationsController < Devise::RegistrationsController
       set_minimum_password_length
       respond_to do |format|
         format.html {respond_with resource}
-        format.js { return render :json => {:status => 400, :success => false, :errors => resource.errors.full_messages } }
+        format.js { return render :json => {:success => false, :errors => resource.errors.full_messages } }
       end
     end
 =begin

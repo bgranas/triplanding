@@ -11,19 +11,16 @@ $ ->
   $(document).bind 'cbox_complete', ->
     #sign-up success or error actions
     $("#signup-form").on "ajax:success", (e, data, status, xhr) ->
-      alert 'ajax successful'
       if data.success #signed-up
-        #location.reload()
-      else #failed sign-up
+        window.location.replace(data.redirect)
+      else #failed sign-up, but ajax call successful for some reason
         $('#signup-container').find('.error-message').html('')
-        alert 'data.success = failed. errors: ' + data.errors
         for error in data.errors
           do ->
             $('#signup-container').find('.error-message').append('<li>' + error + '</li>')
             $.colorbox.resize()
 
-
-      #location.reload()
+    #sign-up failed
     $("#signup-form").on "ajax:error", (e, xhr, status, error) ->
       $('#signup-container').find('.error-message').html('')
       data = JSON.parse(xhr.responseText)
@@ -36,7 +33,7 @@ $ ->
 
   #login success or error actions
   $("#login-form").on "ajax:success", (e, data, status, xhr) ->
-    location.reload()
+    window.location.replace(data.redirect)
   $("#login-form").on "ajax:error", (e, xhr, status, error) ->
     $('#login-container').find('.error-message').text(xhr.responseText)
 
