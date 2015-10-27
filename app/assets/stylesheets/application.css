@@ -57,7 +57,11 @@ h4{
 .error-message{
   color: #8C0000;
   text-align: center;
+  padding-left: 0px;
 }
+  .error-message li{
+    list-style-type: none;
+  }
 
 /* Setting Up Header, Footer, Content for Layout */
 #body-container{

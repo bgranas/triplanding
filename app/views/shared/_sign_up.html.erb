@@ -1,48 +1,52 @@
-<button class="btn btn-block btn-social btn-facebook btn-lg">
-    <i class="fa fa-facebook"></i> Sign up with Facebook
+<div id="signup-container">
+  <button class="btn btn-block btn-social btn-facebook btn-lg">
+      <i class="fa fa-facebook"></i> Sign up with Facebook
+    </button>
+  <button class="btn btn-block btn-social btn-google btn-lg">
+      <i class="fa fa-google"></i> Sign up with Google
   </button>
-<button class="btn btn-block btn-social btn-google btn-lg">
-    <i class="fa fa-google"></i> Sign up with Google
-</button>
 
-<div class="signup-or-separator">
-    <span class="h6 signup-or-separator-text">or</span>
-    <hr>
+  <div class="signup-or-separator">
+      <span class="h6 signup-or-separator-text">or</span>
+      <hr>
+  </div>
+
+  <ul class="error-message"></ul>
+  <%= form_for(:user, url: registration_path(:user), remote: true, :html => {:id => "signup-form"}) do |f| %>
+
+  <div class="input-group margin-bottom-sm">
+    <span class="input-group-addon"><i class="fa fa-user fa-fw"></i></span>
+    <%= f.text_field :name, class: 'vertical-stack-form', :placeholder => 'Display Name', :required => true %>
+  </div>
+
+
+  <div class="input-group margin-bottom-sm">
+    <span class="input-group-addon"><i class="fa fa-envelope-o fa-fw"></i></span>
+    <%= f.email_field :email, class: 'vertical-stack-form', :placeholder => 'E-mail', :required => true %>
+  </div>
+
+  <div class="input-group margin-bottom-sm">
+    <span class="input-group-addon"><i class="fa fa-key fa-fw"></i></span>
+    <%= f.password_field :password, autocomplete: "off", class: 'vertical-stack-form', :placeholder => 'Password', :required => true %>
+  </div>
+
+  <div class="input-group margin-bottom-sm">
+    <span class="input-group-addon"><i class="fa fa-key fa-fw"></i></span>
+    <%= f.password_field :password_confirmation, autocomplete: "off", class: 'vertical-stack-form', :placeholder => 'Confirm Password', :required => true %>
+  </div>
+
+  <div class="actions">
+    <%= f.submit "Sign up", class: 'btn btn-primary btn-lg full-width' %>
+  </div>
+
+  <% end %>
+
+  <hr>
+  </hr>
+
+  <p>Already a member? <%= link_to 'Login.', new_user_session_path, class: 'lightbox-close', data: {no_turbolink: true} %> </p>
+
 </div>
 
-
-<%= form_for(:user, url: registration_path(:user)) do |f| %>
-
-<div class="input-group margin-bottom-sm">
-  <span class="input-group-addon"><i class="fa fa-user fa-fw"></i></span>
-  <%= f.text_field :name, class: 'vertical-stack-form', :placeholder => 'Display Name' %>
-</div>
-
-
-<div class="input-group margin-bottom-sm">
-  <span class="input-group-addon"><i class="fa fa-envelope-o fa-fw"></i></span>
-  <%= f.email_field :email, class: 'vertical-stack-form', :placeholder => 'E-mail' %>
-</div>
-
-<div class="input-group margin-bottom-sm">
-  <span class="input-group-addon"><i class="fa fa-key fa-fw"></i></span>
-  <%= f.password_field :password, autocomplete: "off", class: 'vertical-stack-form', :placeholder => 'Password' %>
-</div>
-
-<div class="input-group margin-bottom-sm">
-  <span class="input-group-addon"><i class="fa fa-key fa-fw"></i></span>
-  <%= f.password_field :password_confirmation, autocomplete: "off", class: 'vertical-stack-form', :placeholder => 'Confirm Password' %>
-</div>
-
-<div class="actions">
-  <%= f.submit "Sign up", class: 'btn btn-primary btn-lg full-width' %>
-</div>
-
-<% end %>
-
-<hr>
-</hr>
-
-<p>Already a member? <%= link_to 'Login.', new_user_session_path, class: 'lightbox-close', data: {no_turbolink: true} %> </p>
 
 
