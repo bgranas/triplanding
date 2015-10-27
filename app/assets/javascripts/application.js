@@ -18,3 +18,23 @@
 //= require turbolinks
 //= require_tree .
 
+
+
+var ready = function() {
+
+
+}
+
+var map;
+var myLatLng = {lat: 0, lng: 0};
+function initMap() {
+  map = new google.maps.Map(document.getElementById('map-holder'), {
+    center: myLatLng,
+    zoom: 2,
+  });
+
+}
+
+
+$(document).ready(ready);
+$(document).on('page:load', ready);
