@@ -195,6 +195,11 @@ h4{
   }
 
 
+.container{
+  overflow-x:hidden;
+}
+
+
 #main-content{
   padding-bottom: 150px; /* Min-Height of Footer */
 }
