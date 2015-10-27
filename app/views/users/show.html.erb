@@ -1,7 +1,7 @@
 <div class="container-fluid user-profile-top">
 	
 	<div class="row">	
-		<div class="col-md-9 col-md-offset-1  userprofile-holder">
+		<div class="col-sm-5 col-sm-offset-1  userprofile-holder">
 			<div class="userprofile-content">
 				<%= image_tag(@profilePicture, :alt => "User profile picture", :class => "img-circle img-responsive profile-picture") %>
 				<h2><%= @username %></h2>
@@ -11,8 +11,8 @@
 			<div class="user-stats-holder">
 				<ul class="list-inline user-stats">
 					<li class="user-stat"><p><strong><%= @numTrips %></strong> Trips planned</p></li>
-					<li class="user-stat"><p><span class="badge"><%= @numCountriesVisited %></span> Countries visited</p></li>
-					<li class="user-stat"><p><span class="badge"><%= @upvoteScore %></span> Score</p></li>
+					<li class="user-stat"><p><strong><%= @numCountriesVisited %></strong> Countries visited</p></li>
+					<li class="user-stat"><p><strong><%= @upvoteScore %></strong> Score</p></li>
 				</ul>
 			</div>
 		</div>
