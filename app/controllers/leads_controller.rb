@@ -24,11 +24,11 @@ class LeadsController < ApplicationController
   end
 
   def delete
-    @lead = Lead.find(params[:id])
+    @lead = Lead.find_by_id(params[:id])
   end
 
   def destroy
-    @lead = Lead.find(params[:id])
+    @lead = Lead.find_by_id(params[:id])
     @lead.destroy
     redirect_to(:action => 'index')
   end
