@@ -1,13 +1,14 @@
-		<div id="map-container">	
-			<div id="map-holder"></div>
-		</div>
-<div class="container-fluid user-profile-top">
-	
+<!-- Start map -->
+<div id="map-container">	
+	<div id="map-holder"></div>
+</div>
 
+<!-- Start profile header -->
+<div class="container-fluid user-profile-top">
 	<div class="row">	
 		<div class="col-sm-5 col-sm-offset-1  userprofile-holder">
 			<div class="userprofile-content">
-				<%= image_tag(@profilePicture, :alt => "User profile picture", :class => "img-circle img-responsive profile-picture") %>
+				<%= image_tag(@profilePicture, :alt => @username+"'s profile picture", :class => "img-circle img-responsive profile-picture") %>
 				<h2><%= @username %></h2>
 				<h4><%= @userHomeCity %>, <%= @userHomeCountry %></h4>
 				<h4><a href="#"><%= @userBlogURL %></a></h4>
@@ -24,7 +25,7 @@
 </div>
 <!-- end profile info -->
 
-<div class="container user-profile-bottom">
+<div class="container-fluid user-profile-bottom">
 	<div class="row">
 		<div class="col-md-12 userprofile-triplist-sort">
 			<ul class="nav nav-tabs region-sort" role="tablist">
@@ -35,7 +36,7 @@
 			</ul>
 		</div>	
 	</div>
-
+</div>
 
 <!-- Start trip display -->
 	<div class="container-fluid userprofile-triplist">
@@ -46,5 +47,5 @@
 				</div>
 			</div>
 	</div>	
-</div>
+
 

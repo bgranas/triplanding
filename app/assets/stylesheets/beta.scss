@@ -38,17 +38,14 @@ Landing page
 }
 
 #highlightedtrips-carousel {
-	border: 2px solid lightgray;
+
 }
 
 /***********************
 Highlighted trips widget
 ***********************/
 
-/*** Region sort bar  ***/
-.region-sort {
-	margin-top: 8px;
-}
+
 
 .trip-holder {
 	border: 1px solid lightgray;
@@ -80,8 +77,110 @@ Highlighted trips widget
 		}
 
 
+
+
+	/*** Trip likes and shares section ***/
+	.trip-stats {
+		text-align: right;
+		margin-top: 5px;
+		/*border: 1px solid lightgray;
+		border-radius: 2px;*/
+	}
+
+	.trip-favorites-total {
+		color: #444444;
+	}
+
+	.trip-stats p {
+		color: #444444;
+	}
+
+		.trip-shares-total {
+			color: #444444;
+		}
+
+	.mobile-likeandshare {
+		text-align: left;
+		position: absolute;
+		top: 90%;
+    left: 75%;
+	}
+
+	.trip-favorite {
+		color: #FBA89B;
+	}
+
+		.trip-favorite:hover {
+			color: #ea7663;
+		}
+
+		.trip-favorite:visited {
+			color: #ea7663;
+		}
+
+	.trip-share {
+		color: #887C7C;
+	}
+
+		.trip-share:hover {
+			color: #444444;
+		}
+
+		.trip-share:visited {
+			color: #444444;
+		}
+
+
+	/*** Destination tags ***/
+	.destination-item-list {
+		margin-left: 0px;
+		margin-top: 15px;
+		margin-bottom: 20px;
+	}
+
+		.trip-destination-item {
+			height: 20px;
+			margin-top: 3px;
+			border-radius: 1px;
+		}
+
+			.trip-destination-item a {
+				color: white;
+			}
+
+			.trip-city-item {
+				border: 1px solid #ea7663;
+				background-color: #ea7663;
+			}
+
+			.trip-country-item {
+				border: 1px solid #3B68B7;
+				background-color: #3B68B7;
+			}
+
+			.trip-excess-item {
+				border: 1px solid lightgray;
+				border-radius: 2px 2px 2px 2px;
+				height: 20px;
+				background-color: white;
+				color: black;
+			}
+
+
+/*** Trip creator profile picture and username ***/
+.trip-creator-box {
+	margin-bottom: 10px;
+}
+
+	.profile-picture-thumbnail {
+		height: 40px;
+		width: 40px;
+	}
+
+
+
 		/*** Like and share hover buttons over map ***/
-		.trip-map-static:hover .image-hover-options {
+		/*.trip-map-static:hover .image-hover-options {
 			display: block;
 			z-index: 101;
 		}
@@ -119,7 +218,7 @@ Highlighted trips widget
 
 					.image-hover-share:hover {
 						color: lightblue;
-					}
+					}*/
 
 			/* Map fade on hover
 			.image-hover-options:hover .trip-map-static img {
@@ -130,88 +229,4 @@ Highlighted trips widget
 				opacity: .8;
 			}
 			*/
-
-	/*** Trip likes and shares section ***/
-	.trip-stats {
-		text-align: right;
-		margin-top: 5px;
-		/*border: 1px solid lightgray;
-		border-radius: 2px;*/
-	}
-
-	.trip-favorites-total {
-		color: #444444;
-	}
-
-	.trip-stats p {
-		color: #444444;
-	}
-
-		.trip-shares-total {
-			color: #444444;
-		}
-
-	.mobile-likeandshare {
-		text-align: left;
-		position: absolute;
-		top: 90%;
-    left: 75%;
-	}
-
-	.trip-favorite {
-		color: #ea7663;
-	}
-
-	.trip-share {
-		color: lightblue;
-	}
-
-
-
-	/*** Destination tags ***/
-	.destination-item-list {
-		margin-left: 0px;
-		margin-top: 15px;
-		margin-bottom: 20px;
-	}
-
-		.trip-destination-item {
-			height: 20px;
-			margin-top: 3px;
-			border-radius: 1px;
-		}
-
-			.trip-destination-item a {
-				color: white;
-			}
-
-			.trip-city-item {
-				border: 1px solid #ea7663;
-				background-color: #ea7663;
-			}
-
-			.trip-country-item {
-				border: 1px solid #444444;
-				background-color: #444444;
-			}
-
-			.trip-excess-item {
-				border: 1px solid lightgray;
-				border-radius: 2px 2px 2px 2px;
-				height: 20px;
-				background-color: white;
-				color: black;
-			}
-
-
-/*** Trip creator profile picture and username ***/
-.trip-creator-box {
-	margin-bottom: 10px;
-}
-
-	.profile-picture-thumbnail {
-		height: 40px;
-		width: 40px;
-	}
-
 
