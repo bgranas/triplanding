@@ -30,6 +30,7 @@ function initMap() {
     center: myLatLng,
     zoom: 3,
     scrollwheel: false,
+    mapTypeId: google.maps.MapTypeId.SATELLITE
 
   });
 }
