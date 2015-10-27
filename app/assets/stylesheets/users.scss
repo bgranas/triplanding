@@ -6,11 +6,6 @@
 User profile page
 ***********************/
 
-.user-profile-top {
-  margin-bottom: 30px;
-  border-bottom: 1px solid lightgray;
-  margin-top: -20px;
-}
 
 #map-container {
   height: 70vh;
@@ -22,59 +17,61 @@ User profile page
 
 }
 
-.userprofile-holder {
-  margin-top: 30px;
-  margin-bottom: 30px;
-  border: 1px solid lightgray;
-  border-radius: 5px;
-  height: 185px;
+#user-profile-top{
+  width:100%;
 }
+
+#user-profile-demographics{
+  float:left;
+  margin-top: -42px; /* height of the stats bar */
+  margin-left: 11px;
+}
+  #user-profile-demographics h4, #user-profile-demographics h2{
+    display: inline-block;
+    margin-top: 0px;
+    color:white;
+    text-shadow: 1px 1px 3px rgba(0,0,0,1);
+  }
 
   .profile-picture {
     height: 200px;
     width: 200px;
     z-index: 101;
+    float:left;
+    margin-left:15px;
+    margin-top:-100px;
+    border: 2px solid #E8E8E8;
   }
 
-  .userprofile-content {
-    padding-left: 140px;
-  }
 
-  .user-stats-holder {
+  #user-profile-stats {
     background-color: #ECECEC;
-    width: 100%;
-    position: absolute;
-    left: 0px;
-    bottom: 0px;
     z-index: 100;
     border-top: 1px solid lightgray;
-    margin-top: 20px;
+    border-bottom: 1px solid lightgray;
+    height:42px;
   }
 
-    .user-stats {
+    #user-stats {
       padding-left: 160px;
       margin-bottom: 0px;
-
-
     }
 
-      .user-stats li {
+      #user-stats li {
         border-right: 1px solid lightgray;
         padding-right: 15px;
         padding-left: 15px;
-        margin-top: 10px;
       }
 
-      .user-stats li:last-child {
+      #user-stats li:last-child {
         border-right: none;
-        padding-right: 15px;
-        padding-left: 15px;
       }
 
+      #user-stats p{
+        line-height:42px;
+        margin-bottom:0px;
+      }
 
-.userprofile-triplist-sort {
-
-}
 
 .userprofile-triplist {
   border: 1px solid lightgray;

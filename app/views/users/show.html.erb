@@ -1,51 +1,64 @@
 <!-- Start map -->
-<div id="map-container">	
-	<div id="map-holder"></div>
+<div id="map-container">
+  <div id="map-holder"></div>
 </div>
 
-<!-- Start profile header -->
-<div class="container-fluid user-profile-top">
-	<div class="row">	
-		<div class="col-sm-5 col-sm-offset-1  userprofile-holder">
-			<div class="userprofile-content">
-				<%= image_tag(@profilePicture, :alt => @username+"'s profile picture", :class => "img-circle img-responsive profile-picture") %>
-				<h2><%= @username %></h2>
-				<h4><%= @userHomeCity %>, <%= @userHomeCountry %></h4>
-				<h4><a href="#"><%= @userBlogURL %></a></h4>
-			</div>
-			<div class="user-stats-holder">
-				<ul class="list-inline user-stats">
-					<li class="user-stat"><p><strong><%= @numTrips %></strong> Trips planned</p></li>
-					<li class="user-stat"><p><strong><%= @numCountriesVisited %></strong> Countries visited</p></li>
-					<li class="user-stat"><p><strong><%= @upvoteScore %></strong> Score</p></li>
-				</ul>
-			</div>
-		</div>
-	</div>
+<div class="container-fluid full-width-container">
+  <div class="row">
+    <div class="col-sm-12">
+
+      <div id="user-profile-top">
+        <%= image_tag(@profilePicture, :alt => @username+"'s profile picture", :class => "img-circle img-responsive profile-picture") %>
+        <div id="user-profile-demographics">
+          <h2><%= @username %></h2>
+          <h4><%= @userHomeCity %>, <%= @userHomeCountry %></h4>
+          <!-- NEED TO ADD BLOG -->
+          <!-- <h4><a href="#"><%= @userBlogURL %></a></h4> -->
+        </div>
+        <div id="user-profile-stats">
+          <ul class="list-inline" id="user-stats">
+            <li><p><strong><%= @numTrips %></strong> Trips planned</p></li>
+            <li><p><strong><%= @numCountriesVisited %></strong> Countries visited</p></li>
+            <li><p><strong><%= @upvoteScore %></strong> Score</p></li>
+          </ul>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</div>
+
+<!-- Start profile header
+<div class="container-fluid">
+  <div class="row">
+    <div class="col-sm-12">
+
+    </div>
+  </div>
 </div>
 <!-- end profile info -->
 
 <div class="container-fluid user-profile-bottom">
-	<div class="row">
-		<div class="col-md-12 userprofile-triplist-sort">
-			<ul class="nav nav-tabs region-sort" role="tablist">
-			  <li role="presentation" class="active"><a href="#" aria-controls="home" role="tab" data-toggle="tab">All trips</a></li>
-			  <li role="presentation"><a href="#" aria-controls="profile" role="tab" data-toggle="tab">My travels</a></li>
-			  <li role="presentation"><a href="#" aria-controls="profile" role="tab" data-toggle="tab">Wishlist</a></li>
-			  <li role="presentation"><a href="#" aria-controls="profile" role="tab" data-toggle="tab">Favorites</a></li>
-			</ul>
-		</div>	
-	</div>
+  <div class="row">
+    <div class="col-md-12 userprofile-triplist-sort">
+      <ul class="nav nav-tabs region-sort" role="tablist">
+        <li role="presentation" class="active"><a href="#" aria-controls="home" role="tab" data-toggle="tab">All trips</a></li>
+        <li role="presentation"><a href="#" aria-controls="profile" role="tab" data-toggle="tab">My travels</a></li>
+        <li role="presentation"><a href="#" aria-controls="profile" role="tab" data-toggle="tab">Wishlist</a></li>
+        <li role="presentation"><a href="#" aria-controls="profile" role="tab" data-toggle="tab">Favorites</a></li>
+      </ul>
+    </div>
+  </div>
 </div>
 
 <!-- Start trip display -->
-	<div class="container-fluid userprofile-triplist">
-			<div class="row">
-				<div class="col-md-12 col-xs-12">
-					<%= render "trip_display/tripdisplay", :locals => :show_username %>
-					<%= render "trip_display/tripdisplay" %>
-				</div>
-			</div>
-	</div>	
+  <div class="container-fluid userprofile-triplist">
+      <div class="row">
+        <div class="col-md-12 col-xs-12">
+          <%= render "trip_display/tripdisplay", :locals => :show_username %>
+          <%= render "trip_display/tripdisplay" %>
+        </div>
+      </div>
+  </div>
 
 
