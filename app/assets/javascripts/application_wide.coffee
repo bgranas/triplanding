@@ -13,13 +13,14 @@ $ ->
     $("#signup-form").on "ajax:success", (e, data, status, xhr) ->
       alert 'ajax successful'
       if data.success #signed-up
-        location.reload()
+        #location.reload()
       else #failed sign-up
         $('#signup-container').find('.error-message').html('')
         alert 'data.success = failed. errors: ' + data.errors
         for error in data.errors
           do ->
             $('#signup-container').find('.error-message').append('<li>' + error + '</li>')
+            $.colorbox.resize()
 
 
       #location.reload()
@@ -29,6 +30,7 @@ $ ->
       for e in data.errors
           do ->
             $('#signup-container').find('.error-message').append('<li>' + e + '</li>')
+            $.colorbox.resize()
 
 
 
