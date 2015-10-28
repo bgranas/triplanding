@@ -1,10 +1,11 @@
-<div class="col-md-4 col-sm-6 col-xs-12">
+<div class="col-md-3 col-sm-6 col-xs-12">
 	<div class="trip-holder">
 		<div class="row">
 			<div class="col-xs-12 trip-holder-content">
 
 				<!-- Title of Trip -->
 				<h4 class="col-xs-12 trip-title"><%= link_to(@tripTitle, {:controller => 'users', :action => 'show'}) %></h4>
+				<p class="col-xs-12 trip-date"><i><%= @tripDate %></i></p>
 
 				<!-- Trip static map -->
 				<div class="col-xs-12 trip-map-static">
@@ -20,8 +21,8 @@
 
 						<!-- Like and share buttons -->
 						<ul class="list-inline trip-favoriteandshare-container">
-							<li><i class="fa fa-star-o fa-2x trip-favorite"><%= link_to("", {:controller => 'users', :action => 'show'}) %></i></li>
-							<li><i><%= link_to("", {:controller => 'users', :action => 'show'}, :class => "fa fa-share-alt fa-2x trip-share") %></i></li>
+							<li><i class="fa fa-star-o fa-lg trip-favorite"><%= link_to("", {:controller => 'users', :action => 'show'}) %></i></li>
+							<li><i><%= link_to("", {:controller => 'users', :action => 'show'}, :class => "fa fa-share-alt fa-lg trip-share") %></i></li>
 						</ul>
 
 				</div>

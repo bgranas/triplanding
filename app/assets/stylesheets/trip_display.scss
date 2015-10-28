@@ -9,7 +9,7 @@ Highlighted trips widget
 
 .trip-holder {
 	border: 1px solid lightgray;
-	border-radius: 5px;
+	/*border-radius: 5px;*/
 	margin-top: 20px;
 	margin-bottom: 25px;
 }
@@ -19,7 +19,11 @@ Highlighted trips widget
 	}
 
 	.trip-title {
-		text-align: center;
+		text-align: left;
+	}
+
+	.trip-date {
+		
 	}
 
 
@@ -33,6 +37,8 @@ Map section
 	/*height: 300px;
 	width: 300px;*/
 	margin: auto;
+	padding-left: 0px;
+	padding-right: 0px;
 }
 
 	/*** Adding qualities to map for hover buttons ***/
@@ -50,7 +56,6 @@ Trip favorite button and share button
 	top: 90%;
   left: 75%;*/
   float: right;
-  margin-right: 5px;
   margin-top: 5px;
 }
 
@@ -86,7 +91,7 @@ Trip likes and shares section
 
 .trip-thumbsup-container {
 	float: left;
-	margin-top: 10px;
+	margin-top: 5px;
 	margin-left: 5px;
 	border: 1px solid lightgray;
 	border-radius: 2px;
@@ -120,8 +125,8 @@ Trip likes and shares section
 City and country tags
 ***********************/
 .destination-item-list {
-	margin-left: 5px;
-	margin-right: 5px;
+	/*margin-left: 5px;
+	margin-right: 5px;*/
 	margin-bottom: 10px;
 }
 

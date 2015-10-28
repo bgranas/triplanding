@@ -11,12 +11,16 @@ module TripDisplayHelper
 		# Trip object attributes
 		@tripID = 1 # Unique trip ID identifier
 		@tripTitle = "Vietnam North to South"
+		@tripDestination = ["Hanoi, Vietnam"] #etc...     # is this needed or can we parse city and country without it?
 		@tripCity = ["Hanoi","Ho Chi Minh City","Da Nang","Da Lat","Mui Ne"] #all cities included in Trip
 		@tripCountry = ["Vietnam"] #all countries included in Trip
 		@likeTotal = "20" # total likes received on this Trip
+		@tripStartDate = "August 2015" #Date trip taken - all fields optional
+		@tripEndDate = "September 2015" #Optional
+		@tripDate = @tripStartDate + " - " + @tripEndDate
 
 		#Whether this trip is wishlist, confirmed, or neither
-		@travelConfirmStatus = 2 #0 = no user input, 1 = wishlist, 2 = confirmed (past travel or currently booked on our site)
+		@travelConfirmStatus = 1 #0 = wishlist if @tripDate == null, 1 = confirmed if @tripDate !== null
 
 		# Trip's User atributes
 		@username = "User12345" # trip creator's username
