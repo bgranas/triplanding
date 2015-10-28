@@ -54,6 +54,10 @@ h4{
   width: 100%;
 }
 
+.full-width-container{
+  padding:0px;
+}
+
 .error-message{
   color: #8C0000;
   text-align: center;
@@ -479,7 +483,7 @@ hr{
   }
 
   .nav-tabs>li {
-    
+
   }
 
   .nav-tabs>li>a {

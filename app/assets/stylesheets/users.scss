@@ -1,3 +1,81 @@
 // Place all the styles related to the Users controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+
+/***********************
+User profile page
+***********************/
+
+
+#map-container {
+  height: 70vh;
+}
+
+#map-holder {
+  height: 100%;
+  width: 100%;
+
+}
+
+#user-profile-top{
+  width:100%;
+}
+
+#user-profile-demographics{
+  float:left;
+  margin-top: -42px; /* height of the stats bar */
+  margin-left: 11px;
+}
+  #user-profile-demographics h4, #user-profile-demographics h2{
+    display: inline-block;
+    margin-top: 0px;
+    color:white;
+    text-shadow: 1px 1px 3px rgba(0,0,0,1);
+  }
+
+  .profile-picture {
+    height: 200px;
+    width: 200px;
+    z-index: 101;
+    float:left;
+    margin-left:15px;
+    margin-top:-100px;
+    border: 2px solid #E8E8E8;
+  }
+
+
+  #user-profile-stats {
+    background-color: #ECECEC;
+    z-index: 100;
+    border-top: 1px solid lightgray;
+    border-bottom: 1px solid lightgray;
+    height:42px;
+  }
+
+    #user-stats {
+      padding-left: 160px;
+      margin-bottom: 0px;
+    }
+
+      #user-stats li {
+        border-right: 1px solid lightgray;
+        padding-right: 15px;
+        padding-left: 15px;
+      }
+
+      #user-stats li:last-child {
+        border-right: none;
+      }
+
+      #user-stats p{
+        line-height:42px;
+        margin-bottom:0px;
+      }
+
+
+.userprofile-triplist {
+  border: 1px solid lightgray;
+  border-top: none;
+  border-radius: 0px 0px 5px 5px;
+  margin-bottom: 30px;
+}

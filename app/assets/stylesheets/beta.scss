@@ -38,7 +38,7 @@ Landing page
 }
 
 #highlightedtrips-carousel {
-	
+
 }
 
 /***********************
@@ -103,7 +103,7 @@ Highlighted trips widget
 		text-align: left;
 		position: absolute;
 		top: 90%;
-    left: 75%;	
+    left: 75%;
 	}
 
 	.trip-favorite {
@@ -181,92 +181,6 @@ Highlighted trips widget
 	}
 
 
-/***********************
-User profile page
-***********************/
-#map-container {
-	height: 70vh;
-	margin-top: -20px;
-}
-
-#map-holder {
-  height: 100%;
-  width: 100%;
-
-}
-
-.user-profile-top {
-	margin-bottom: 30px;
-	border-bottom: 1px solid lightgray;
-	margin-top: -20px;
-}
-
-.userprofile-holder {
-	margin-top: 30px;
-	margin-bottom: 30px;
-	border: 1px solid lightgray;
-	border-radius: 5px;
-	height: 185px;
-	background-color: white;
-}
-
-	.profile-picture {
-		margin: auto;
-		height: 200px;
-		width: 200px;
-		float: left;
-		position: absolute;
-		left: -70px;
-		top: -10px;
-		z-index: 101;
-	}
-
-	.userprofile-content {
-		padding-left: 140px;
-	}
-
-	.user-stats-holder {
-		background-color: #ECECEC;
-		width: 100%;
-		position: absolute;
-		left: 0px;
-		bottom: 0px;
-		z-index: 100;
-		border-top: 1px solid lightgray;
-		margin-top: 20px;
-	}
-
-		.user-stats {
-			padding-left: 160px;
-			margin-bottom: 0px;
-			
-			
-		}
-
-			.user-stats li {
-				border-right: 1px solid lightgray;
-				padding-right: 15px;
-				padding-left: 15px;
-				margin-top: 10px;
-			}
-
-			.user-stats li:last-child {
-				border-right: none;
-				padding-right: 15px;
-				padding-left: 15px;
-			}
-
-
-.userprofile-triplist-sort {
-	
-}
-
-.userprofile-triplist {
-	/*border: 1px solid lightgray;
-  border-top: none;
-  border-radius: 0px 0px 5px 5px;*/
-  margin-bottom: 30px;
-}
 
 		/*** Like and share hover buttons over map ***/
 		/*.trip-map-static:hover .image-hover-options {
@@ -318,3 +232,4 @@ User profile page
 				opacity: .8;
 			}
 			*/
+

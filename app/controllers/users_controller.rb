@@ -1,11 +1,12 @@
 class UsersController < ApplicationController
 
-	
+
 	layout 'application'
 
 	include TripDisplayHelper
 
 	def show
+
 		#User info
 		@username = "user12345" # username
 		@profilePicture = "paradise-feature-sm.jpg" # user's profile picture
