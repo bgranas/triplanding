@@ -30,7 +30,7 @@ class ApplicationController < ActionController::Base
 
 
   #keep user on same page after signout
-  def after_sign_out_path_for(user)
+  def after_sign_out_path_for(resource)
     request.referrer
   end
 end
