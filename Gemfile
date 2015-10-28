@@ -71,6 +71,9 @@ gem "browser"
 #going with the recommended PUMA webserver instead of webBrik
 gem 'puma'
 
+#red/green testing
+gem  'minitest-reporters'
+
 #ruby version
 ruby '2.1.5'
 
