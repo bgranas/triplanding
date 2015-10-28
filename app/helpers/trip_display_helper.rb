@@ -23,7 +23,7 @@ module TripDisplayHelper
 		@travelConfirmStatus = 1 #0 = wishlist if @tripDate == null, 1 = confirmed if @tripDate !== null
 
 		# Trip's User atributes
-		@username = "User12345" # trip creator's username
+		#@username = "User12345" # trip creator's username
 		@profilePicture = "paradise-feature-sm.jpg" # trip creator's profile picture
 
 
