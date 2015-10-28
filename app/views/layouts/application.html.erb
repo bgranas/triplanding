@@ -34,14 +34,14 @@
         <span class="icon-bar"></span>
 
       </button>
-      <a href="/beta" class="navbar-brand"> TripHappy </a>
+      <a href="<%= home_path %>" class="navbar-brand"> TripHappy </a>
     </div>
 
     <div class="collapse navbar-collapse" id="collapsemenu">
       <ul class="nav navbar-nav navbar-right">
         <li><%= link_to 'Plan a Trip', '#' %></li>
         <li><%= link_to 'Get Inspired', '#' %></li>
-        <li><%= link_to 'How it Works', '/beta/how_it_works' %></li>
+        <li><%= link_to 'How it Works', how_it_works_path %></li>
         <% if user_signed_in? %>
           <!-- Don't want dropdown on hover if mobile -->
           <li class="dropdown <% if !browser.mobile? %> dropdown-toggle-hover <% end %>">
@@ -100,19 +100,19 @@
             <div class="col-sm-4 col-sm-push-1 col-xs-6 col-xs-push-1 text-left">
               <h5>Company</h5>
               <ul>
-                <li><small><%= link_to 'About', 'beta/about' %></small></li>
-                <li><small><%= link_to 'Blog', 'beta/blog' %></small></li>
-                <li><small><%= link_to 'Help', 'beta/help' %></small></li>
-                <li><small><%= link_to 'Contact Us', 'beta/contact' %></small></li>
+                <li><small><%= link_to 'About', about_path %></small></li>
+                <li><small><%= link_to 'Blog', blog_path %></small></li>
+                <li><small><%= link_to 'Help', help_path %></small></li>
+                <li><small><%= link_to 'Contact Us', contact_path %></small></li>
               </ul>
             </div>
 
             <div class="col-sm-4 col-sm-pull-1 col-xs-6 col-xs-pull-0 text-left">
               <h5>Legal</h5>
               <ul>
-                <li><small><%= link_to 'Site Policies', 'beta/policies' %></small></li>
-                <li><small><%= link_to 'Terms of Use', 'beta/terms' %></small></li>
-                <li><small><%= link_to 'Privacy Policy', 'beta/privacy' %></small></li>
+                <li><small><%= link_to 'Site Policies', policies_path %></small></li>
+                <li><small><%= link_to 'Terms of Use', terms_path %></small></li>
+                <li><small><%= link_to 'Privacy Policy', privacy_path %></small></li>
               </ul>
             </div>
 

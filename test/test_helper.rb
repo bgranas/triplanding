@@ -7,12 +7,14 @@ Minitest::Reporters.use!
 class ActiveSupport::TestCase
   # Setup all fixtures in test/fixtures/*.yml for all tests in alphabetical order.
   fixtures :all
-
-  include Devise::TestHelpers
   # Add more helper methods to be used by all tests here...
   #
 
   def setup_variables
     @base_title = "TripHappy"
   end
+end
+
+class ActionController::TestCase
+  include Devise::TestHelpers
 end
