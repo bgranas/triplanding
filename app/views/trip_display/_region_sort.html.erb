@@ -1,8 +1,8 @@
-<ul class="nav nav-tabs region-sort" role="tablist">
+<ul class="nav nav-tabs region-sort" id="index-page-sort" role="tablist">
   <li role="presentation" class="active"><a href="#" aria-controls="home" role="tab" data-toggle="tab">Popular</a></li>
   
   <% @regions.each do |region| %>
-  	<li role="presentation"><a href="#" aria-controls="profile" role="tab" data-toggle="tab"><%= region %></a></li>
+  	<li role="presentation"><a href="#index-page-sort" aria-controls="profile" role="tab" data-toggle="tab"><%= region %></a></li>
   <% end %>
 
 </ul>
