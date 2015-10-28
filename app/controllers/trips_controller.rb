@@ -1,4 +1,7 @@
 class TripsController < ApplicationController
+  
+  layout 'application'
+
   def index
   end
 

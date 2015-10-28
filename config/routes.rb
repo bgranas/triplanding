@@ -1,14 +1,5 @@
 Rails.application.routes.draw do
 
-  get 'trips/index'
-
-  get 'trips/show'
-
-  get 'trips/delete'
-
-  get 'trips/edit'
-
-  get 'trips/new'
 
   devise_for :users, controllers: {registrations: 'registrations', sessions: 'sessions'}
 
