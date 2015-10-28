@@ -44,7 +44,13 @@ class UserTest < ActiveSupport::TestCase
     user2 = User.new ({:name => 'test', :email => 'test2@test.com', :password => '12345678', :password_confirmation => '12345678'})
 
     assert user2.valid?
+  end
 
+  test "submitting invalid URL for blog" do
+     user = User.new ({:name => 'test', :email => 'test@test.com',
+                        :password => '12345678', :password_confirmation => '12345678',
+                        :blog_url => "asdfd"})
+     assert user.invalid?
   end
 
 end

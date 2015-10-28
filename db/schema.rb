@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20151028103804) do
+ActiveRecord::Schema.define(version: 20151028111310) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -23,25 +23,25 @@ ActiveRecord::Schema.define(version: 20151028103804) do
   end
 
   create_table "users", force: :cascade do |t|
-    t.string   "email",                  default: "", null: false
-    t.string   "encrypted_password",     default: "", null: false
+    t.string   "email",                  limit: 50,  default: "", null: false
+    t.string   "encrypted_password",                 default: "", null: false
     t.string   "reset_password_token"
     t.datetime "reset_password_sent_at"
     t.datetime "remember_created_at"
-    t.integer  "sign_in_count",          default: 0,  null: false
+    t.integer  "sign_in_count",                      default: 0,  null: false
     t.datetime "current_sign_in_at"
     t.datetime "last_sign_in_at"
     t.inet     "current_sign_in_ip"
     t.inet     "last_sign_in_ip"
-    t.datetime "created_at",                          null: false
-    t.datetime "updated_at",                          null: false
-    t.string   "name",                   default: "", null: false
-    t.string   "hometown",               default: ""
+    t.datetime "created_at",                                      null: false
+    t.datetime "updated_at",                                      null: false
+    t.string   "name",                   limit: 20,  default: "", null: false
+    t.string   "hometown",               limit: 20,  default: ""
     t.string   "country_iso_3"
-    t.string   "country"
-    t.string   "blog_url"
-    t.string   "profile_picture_path"
-    t.string   "profile_url"
+    t.string   "country",                limit: 50
+    t.string   "blog_url",               limit: 75
+    t.string   "profile_picture_path",   limit: 75
+    t.string   "profile_url",            limit: 100
   end
 
   add_index "users", ["email"], name: "index_users_on_email", unique: true, using: :btree
