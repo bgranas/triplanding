@@ -53,4 +53,20 @@ class UserTest < ActiveSupport::TestCase
      assert user.invalid?
   end
 
+  test "calling my display name nigger" do
+    user = User.new ({:name => 'nigger', :email => 'test@test.com',
+                        :password => '12345678', :password_confirmation => '12345678'})
+    assert user.invalid?
+
+    user.name = "cunt"
+    assert user.invalid?
+
+    user.name = "shit"
+    assert user.invalid?
+
+    user.name = 'gumby'
+
+    assert user.valid?
+  end
+
 end
