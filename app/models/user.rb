@@ -4,7 +4,13 @@ class User < ActiveRecord::Base
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :trackable, :validatable
 
+  NAME_REGEX = /^(?=.{2,20}$)[A-Za-z0-9]+(?:[ _-][A-Za-z0-9]+)*$/
+  HOMETOWN_REGEX = /^[a-zA-ZàáâäãåąčćęèéêëėįìíîïłńòóôöõøùúûüųūÿýżźñçčšžÀÁÂÄÃÅĄĆČĖĘÈÉÊËÌÍÎÏĮŁŃÒÓÔÖÕØÙÚÛÜŲŪŸÝŻŹÑßÇŒÆČŠŽ∂ð ,.'-]+$/u
 
+
+  validates :name, :presence => true, :length => { :minimum => 2, :maximum => 20}, :format => NAME_REGEX, :confirmation => true
+  validates :hometown, :presence => true, :allow_nil => true, :length => { :minimum => 1, :maximum => 100}, :format => HOMETOWN_REGEX, :confirmation => true
+  validates :country, :presence => true, :allow_nil => true, :length => { :minimum => 2, :maximum => 50}, :format => HOMETOWN_REGEX, :confirmation => true
 
 
 =begin
