@@ -15,12 +15,13 @@ class UsersController < ApplicationController
 		@userHomeCountry = "USA" # user's home country
 
 		#User scores
-		@numTrips = "5"  # number of trips user has created
-		@upvoteScore = "20" # total upvotes user has received on trips
-		@numCountriesVisited = "5" # total number of countries present in user's created trips
+		@numTrips = 5  # number of trips user has created
+		@upvoteScore = 20 # user reputation score
+		@numCountriesVisited = 5 # total number of countries present in user's created trips
 
 		# User's trips
-		# @userTrips = [trips with @userID = user's ID]
+		# @userTrips = [trip IDs with @userID = user's ID]
+		# @userFavoriteTrips = [trip IDs of favorited trips stored here]
 
 		#calling Trip Display helper
     trip_display_setup

@@ -15,7 +15,7 @@
 						<!-- Thumbs up icon and counter -->
 						<ul class="list-inline trip-thumbsup-container">
 							<li class="trip-thumbsup-button"><i class="fa fa-thumbs-o-up"> </i></li>
-							<li class="trip-thumbsup-total"><%= @tripScore %></li>
+							<li class="trip-thumbsup-total"><%= @likeTotal %></li>
 						</ul>
 
 						<!-- Like and share buttons -->
@@ -41,7 +41,7 @@
 						<% end %>				
 
 						<% if @tripCity.length > 3 %>
-							<li class="trip-excess-item"><%= link_to("...", {:controller => 'users', :action => 'show'}) %></li>
+							<li class="trip-destination-item trip-excess-item"><%= link_to("...", {:controller => 'users', :action => 'show'}) %></li>
 						<% end %>
 					</ul>
 
@@ -54,10 +54,10 @@
 								<% if :show_username %>
 									
 										<div class="media trip-creator-box">
-											<div class="media-left media-middle">
+											<div class="media-left media-bottom">
 												<%= image_tag(@profilePicture, :class => 'media-object img-circle profile-picture-thumbnail') %>
 											</div>
-											<div class="media-body">
+											<div class="media-body creator-username">
 												<h5 class="media-heading"><%= link_to(@username, {:controller => 'users', :action => 'show'}, :class => 'trip-display-username') %></h5>
 											</div>
 										</div>

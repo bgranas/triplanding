@@ -126,9 +126,12 @@ City and country tags
 }
 
 	.trip-destination-item {
-		height: 20px;
 		margin-top: 3px;
 		border-radius: 1px;
+	}
+
+	.trip-destination-item p {
+		margin-bottom: 0px;
 	}
 
 		.trip-destination-item a {
@@ -153,9 +156,7 @@ City and country tags
 		.trip-excess-item {
 			border: 1px solid lightgray;
 			border-radius: 2px 2px 2px 2px;
-			height: 20px;
-			background-color: white;
-			color: black;
+			background-color: lightgray;
 		}
 
 	/***********************
@@ -174,6 +175,10 @@ City and country tags
 	.profile-picture-thumbnail {
 		height: 40px;
 		width: 40px;
+	}
+
+	.creator-username {
+		vertical-align: middle;
 	}
 
 
