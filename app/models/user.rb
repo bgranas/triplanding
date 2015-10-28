@@ -4,10 +4,13 @@ class User < ActiveRecord::Base
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :trackable, :validatable
 
+
+
+
   validates :blog_url, :allow_nil => true, :url => {:no_local => true}
-
-
-
+  validates :name, :presence => true, :length => { :minimum => 2, :maximum => 20}, :format => NAME_REGEX, :confirmation => true
+  validates :hometown, :presence => true, :allow_nil => true, :length => { :minimum => 1, :maximum => 100}, :format => HOMETOWN_REGEX, :confirmation => true
+  validates :country, :presence => true, :allow_nil => true, :length => { :minimum => 2, :maximum => 50}, :format => HOMETOWN_REGEX, :confirmation => true
 
 
 =begin
@@ -22,6 +25,8 @@ class User < ActiveRecord::Base
   -profile url (letters & characters, max-50, url safe on create) *
 =end
 
+NAME_REGEX = /^(?=.{2,20}$)[A-Za-z0-9]+(?:[ _-][A-Za-z0-9]+)*$/
+HOMETOWN_REGEX = /^[a-zA-ZàáâäãåąčćęèéêëėįìíîïłńòóôöõøùúûüųūÿýżźñçčšžÀÁÂÄÃÅĄĆČĖĘÈÉÊËÌÍÎÏĮŁŃÒÓÔÖÕØÙÚÛÜŲŪŸÝŻŹÑßÇŒÆČŠŽ∂ð ,.'-]+$/u
 
 #Below is a list of curse words taken from GOOGLE'S banned words list!
 FORBIDDEN_USERNAMES =
