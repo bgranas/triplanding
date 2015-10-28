@@ -24,7 +24,7 @@ module TripDisplayHelper
 
 		# Trip's User atributes
 		@username = "User12345" # trip creator's username
-		@profilePicture = "paradise-feature-sm.jpg" # trip creator's profile pictre
+		@profilePicture = "paradise-feature-sm.jpg" # trip creator's profile picture
 
 		#List of regions for map sorting
 		@regions = ["Asia","Americas","Europe","Africa","India","Oceania"]
