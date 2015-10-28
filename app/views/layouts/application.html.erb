@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <title>TripHappy</title>
+  <title><%= @page_title %> | TripHappy </title>
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css">
   <link href='https://fonts.googleapis.com/css?family=Lato:400,900' rel='stylesheet' type='text/css'>
@@ -41,11 +41,11 @@
       <ul class="nav navbar-nav navbar-right">
         <li><%= link_to 'Plan a Trip', '#' %></li>
         <li><%= link_to 'Get Inspired', '#' %></li>
-        <li><%= link_to 'How it Works', '#' %></li>
+        <li><%= link_to 'How it Works', '/beta/how_it_works' %></li>
         <% if user_signed_in? %>
           <!-- Don't want dropdown on hover if mobile -->
           <li class="dropdown <% if !browser.mobile? %> dropdown-toggle-hover <% end %>">
-            <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">
+            <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">s
               <%= current_user.name %>
               <span class="caret"></span>
             </a>
