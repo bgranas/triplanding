@@ -1,4 +1,4 @@
-<div class="col-sm-4 col-sm-6 col-xs-12">
+<div class="col-md-4 col-sm-6 col-xs-12">
 	<div class="trip-holder">
 		<div class="row">
 			<div class="col-xs-12 trip-holder-content">
@@ -7,20 +7,23 @@
 				<h4 class="col-xs-12 trip-title"><%= link_to(@tripTitle, {:controller => 'users', :action => 'show'}) %></h4>
 
 				<!-- Trip static map -->
-				<div class="col-xs-12 trip-map-static"><img src=<%= @tripMapStatic %>>
+				<div class="col-xs-12 trip-map-static">
+
+					<!-- Inserting Trip static map img -->
+					<img src=<%= @tripMapStatic %>>
 					
-				<!-- Thumbs up icon and counter -->
-				<div class="trip-thumbsup-container">
-					<p><i class="fa fa-thumbs-o-up"> <%= @tripScore %></i></p>
+						<!-- Thumbs up icon and counter -->
+						<ul class="list-inline trip-thumbsup-container">
+							<li class="trip-thumbsup-button"><i class="fa fa-thumbs-o-up"> </i></li>
+							<li class="trip-thumbsup-total"><%= @tripScore %></li>
+						</ul>
 
-				</div>
+						<!-- Like and share buttons -->
+						<ul class="list-inline trip-favoriteandshare-container">
+							<li><i class="fa fa-star-o fa-2x trip-favorite"><%= link_to("", {:controller => 'users', :action => 'show'}) %></i></li>
+							<li><i><%= link_to("", {:controller => 'users', :action => 'show'}, :class => "fa fa-share-alt fa-2x trip-share") %></i></li>
+						</ul>
 
-
-					<!-- Hidden at sm and xs *moved to bottom of display section* -->
-					<!--<ul class="list-inline image-hover-options hidden-sm hidden-xs">-->
-					<!--	<li><i class="fa fa-heart fa-3x image-hover-favorite"></i></li>-->
-					<!--	<li><i class="fa fa-share-alt fa-3x image-hover-share"></i></li>-->
-					<!--</ul>-->
 				</div>
 
 
@@ -29,41 +32,41 @@
 				<!-- Trip countries list -->
 
 					<ul class="col-xs-12 list-inline destination-item-list">
-						<% @tripCity.first(5).each do |city| %>
+						<% @tripCountry.first(5).each do |country| %>
+							<li class="trip-destination-item trip-country-item"><p><%= link_to(country, {:controller => 'users', :action => 'show'}) %></p></li>
+						<% end %>						
+
+						<% @tripCity.first(3).each do |city| %>
 							<li class="trip-destination-item trip-city-item"><p><%= link_to(city, {:controller => 'users', :action => 'show'}) %></p></li>
 						<% end %>				
-						<% @tripCountry.first(3).each do |country| %>
-							<li class="trip-destination-item trip-country-item"><p><%= link_to(country, {:controller => 'users', :action => 'show'}) %></p></li>
-						<% end %>
-						<% if @tripCity.length > 5 %>
+
+						<% if @tripCity.length > 3 %>
 							<li class="trip-excess-item"><%= link_to("...", {:controller => 'users', :action => 'show'}) %></li>
 						<% end %>
 					</ul>
 
 
 
+					<div class="col-xs-12 tripdisplay-last-container">
+						<div class="row">
+							<div class="col-xs-8">
+								<!-- User info box -->
+								<% if :show_username %>
+									
+										<div class="media trip-creator-box">
+											<div class="media-left media-middle">
+												<%= image_tag(@profilePicture, :class => 'media-object img-circle profile-picture-thumbnail') %>
+											</div>
+											<div class="media-body">
+												<h5 class="media-heading"><%= link_to(@username, {:controller => 'users', :action => 'show'}, :class => 'trip-display-username') %></h5>
+											</div>
+										</div>
+								<% end %>
+							</div>
 
-				<!-- User info box -->
-				<% if :show_username %>
-					<div class="col-xs-12">	
-						<div class="media trip-creator-box">
-							<div class="media-left media-middle">
-								<%= image_tag(@profilePicture, :class => 'media-object img-circle profile-picture-thumbnail') %>
-							</div>
-							<div class="media-body">
-								<h5 class="media-heading"><%= link_to(@username, {:controller => 'users', :action => 'show'}, :class => 'trip-display-username') %></h5>
-							</div>
 						</div>
 					</div>
-				<% end %>
-
-				<!-- Like and share buttons -->
-				<ul class="list-inline mobile-likeandshare">
-					<li><i class="fa fa-star-o fa-2x trip-favorite"><%= link_to("", {:controller => 'users', :action => 'show'}) %></i></li>
-					<li><i><%= link_to("", {:controller => 'users', :action => 'show'}, :class => "fa fa-share-alt fa-2x trip-share") %></i></li>
-				</ul>
-
-			</div>
+				</div>
 		</div>
 	</div>
 </div>

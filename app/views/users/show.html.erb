@@ -27,24 +27,14 @@
   </div>
 </div>
 
-<!-- Start profile header
-<div class="container-fluid">
-  <div class="row">
-    <div class="col-sm-12">
-
-    </div>
-  </div>
-</div>
-<!-- end profile info -->
-
 <div class="container-fluid user-profile-bottom">
   <div class="row">
-    <div class="col-md-12 userprofile-triplist-sort">
+    <div class="col-md-12 userprofile-triplist-sort" id="trips-focus">
       <ul class="nav nav-tabs region-sort" role="tablist">
-        <li role="presentation" class="active"><a href="#" aria-controls="home" role="tab" data-toggle="tab">All trips</a></li>
-        <li role="presentation"><a href="#" aria-controls="profile" role="tab" data-toggle="tab">My travels</a></li>
-        <li role="presentation"><a href="#" aria-controls="profile" role="tab" data-toggle="tab">Wishlist</a></li>
-        <li role="presentation"><a href="#" aria-controls="profile" role="tab" data-toggle="tab">Favorites</a></li>
+        <li role="presentation" class="active"><a href="#trips-focus" aria-controls="home" role="tab" data-toggle="tab">All trips</a></li>
+        <li role="presentation"><a href="#trips-focus" aria-controls="profile" role="tab" data-toggle="tab">My travels</a></li>
+        <li role="presentation"><a href="#trips-focus" aria-controls="profile" role="tab" data-toggle="tab">Wishlist</a></li>
+        <li role="presentation"><a href="#trips-focus" aria-controls="profile" role="tab" data-toggle="tab">Favorites</a></li>
       </ul>
     </div>
   </div>
@@ -55,6 +45,8 @@
       <div class="row">
         <div class="col-md-12 col-xs-12">
           <%= render "trip_display/tripdisplay", :locals => :show_username %>
+          <%= render "trip_display/tripdisplay" %>
+          <%= render "trip_display/tripdisplay" %>
           <%= render "trip_display/tripdisplay" %>
         </div>
       </div>

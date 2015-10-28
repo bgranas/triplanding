@@ -1,3 +1,234 @@
 // Place all the styles related to the HighlightedTrips controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+
+
+/***********************
+Highlighted trips widget
+***********************/
+
+.trip-holder {
+	border: 1px solid lightgray;
+	border-radius: 5px;
+	margin-top: 20px;
+	margin-bottom: 25px;
+}
+
+	.trip-holder-content {
+
+	}
+
+	.trip-title {
+		text-align: center;
+	}
+
+
+
+/***********************
+Map section
+***********************/
+
+/*** Static map display ***/
+.trip-map-static {
+	/*height: 300px;
+	width: 300px;*/
+	margin: auto;
+}
+
+	/*** Adding qualities to map for hover buttons ***/
+ 	.trip-map-static img {
+		display: block;
+		width: 100%;
+	}
+
+
+/***********************
+Trip favorite button and share button
+***********************/
+.trip-favoriteandshare-container {
+	/*position: absolute;
+	top: 90%;
+  left: 75%;*/
+  float: right;
+  margin-right: 5px;
+  margin-top: 5px;
+}
+
+.trip-favorite {
+	color: #FBA89B;
+}
+
+	.trip-favorite:hover {
+		color: #ea7663;
+		text-decoration: none;
+	}
+
+	.trip-favorite>a:visited {
+		color: #ea7663;
+	}
+
+.trip-share {
+	color: #887C7C;
+}
+
+	.trip-share>a:hover {
+		color: #444444;
+		text-decoration: none;
+	}
+
+	.trip-share>a:visited {
+		color: #444444;
+	}
+
+/***********************
+Trip likes and shares section
+***********************/
+
+.trip-thumbsup-container {
+	float: left;
+	margin-top: 10px;
+	margin-left: 5px;
+	border: 1px solid lightgray;
+	border-radius: 2px;
+}
+
+	.trip-thumbsup-container li {
+		padding-right: 10px;
+	  padding-left: 10px;
+	}
+
+	.trip-thumbsup-container p {
+		color: #444444;
+	}
+
+	.trip-thumbsup-button {
+		color: lightgray;
+		border-right: 1px solid lightgray;
+
+	} 
+
+		.trip-thumbsup-button:hover {
+			color: #ea7663;
+		} 
+
+	.trip-thumbsup-total {
+		color: #444444;
+	}
+
+
+/***********************
+City and country tags
+***********************/
+.destination-item-list {
+	margin-left: 5px;
+	margin-right: 5px;
+	margin-bottom: 10px;
+}
+
+	.trip-destination-item {
+		height: 20px;
+		margin-top: 3px;
+		border-radius: 1px;
+	}
+
+		.trip-destination-item a {
+			color: white;
+			font-size: .8em;
+		}
+
+			.trip-destination-item a:hover {
+				text-decoration: none;
+			}			
+
+		.trip-city-item {
+			border: 1px solid #887C7C;
+			background-color: #887C7C;
+		}
+
+		.trip-country-item {
+			border: 1px solid #444444;
+			background-color: #444444;
+		}
+
+		.trip-excess-item {
+			border: 1px solid lightgray;
+			border-radius: 2px 2px 2px 2px;
+			height: 20px;
+			background-color: white;
+			color: black;
+		}
+
+	/***********************
+	City and country tags
+	***********************/
+
+.tripdisplay-last-container {
+	margin-bottom: 10px;
+}
+
+/*** Trip creator profile picture and username ***/
+.trip-creator-box {
+	float: left;
+}
+
+	.profile-picture-thumbnail {
+		height: 40px;
+		width: 40px;
+	}
+
+
+
+
+/*** MAP HOVERS ***/
+
+/*** Like and share hover buttons over map ***/
+/*.trip-map-static:hover .image-hover-options {
+	display: block;
+	z-index: 101;
+}
+
+.image-hover-options {
+	display: none;
+	position: absolute;
+	height: 50px;
+	width: 50px;
+	background-color: rgba(34,34,34,0.2);
+	top: 6%;
+	left: 10%;
+}
+
+	.image-hover-options li {
+		height: 50px;
+		width: 50px;
+		background-color: rgba(34,34,34,0.4);
+		margin-bottom: 5px;
+		color: white;
+		vertical-align: middle;
+	}
+
+		.image-hover-favorite {
+			margin-top: 5px;
+		}
+
+			.image-hover-favorite:hover {
+				color: #ea7663;
+			}
+
+		.image-hover-share {
+			margin-top: 5px;
+		}
+
+			.image-hover-share:hover {
+				color: lightblue;
+			}*/
+
+	/* Map fade on hover
+	.image-hover-options:hover .trip-map-static img {
+		opacity: .8;
+	}
+
+	.trip-map-static img:hover {
+		opacity: .8;
+	}
+	*/
+
