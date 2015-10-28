@@ -39,6 +39,12 @@ group :development, :test do
   #for automated testing
   gem 'guard'
   gem 'guard-minitest'
+
+  #Rspec framework for testing
+  gem 'rspec-rails'
+
+  #Human readable testing
+  gem 'capybara'
 end
 
 group :development do
