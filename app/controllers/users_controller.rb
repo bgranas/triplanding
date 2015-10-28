@@ -1,14 +1,13 @@
 class UsersController < ApplicationController
 
-
 	layout 'application'
 
 	include TripDisplayHelper
 
 	def show
-
+		@page_title = "User 123" + "\'s Profile"
 		#User info
-		@username = "user12345" # username
+		@username = "User 123"
 		@profilePicture = "paradise-feature-sm.jpg" # user's profile picture
 		@userBlogURL = "www.myblog.com" # user's blog (optional)
 		@userHomeCity = "San Francisco" # user's home city
