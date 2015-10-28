@@ -10,4 +10,9 @@ class ActiveSupport::TestCase
 
   include Devise::TestHelpers
   # Add more helper methods to be used by all tests here...
+  #
+
+  def setup_variables
+    @base_title = "TripHappy"
+  end
 end
