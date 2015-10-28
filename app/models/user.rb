@@ -6,7 +6,7 @@ class User < ActiveRecord::Base
 
 
   #Below is a list of curse words taken from GOOGLE'S banned words list!
-  FORBIDDEN_USERNAMES = ["4r5e",
+    FORBIDDEN_USERNAMES = ["4r5e",
         "5h1t",
         "5hit",
         "a55",
@@ -197,30 +197,22 @@ class User < ActiveRecord::Base
         "vagina",
         "whore"]
 
-  #NAME_REGEX = /^(?=.{2,20}$)[A-Za-z0-9]+(?:[ _-][A-Za-z0-9]+)*$/
-  #HOMETOWN_REGEX = /^[a-zA-ZàáâäãåąčćęèéêëėįìíîïłńòóôöõøùúûüųūÿýżźñçčšžÀÁÂÄÃÅĄĆČĖĘÈÉÊËÌÍÎÏĮŁŃÒÓÔÖÕØÙÚÛÜŲŪŸÝŻŹÑßÇŒÆČŠŽ∂ð ,.'-]+$/u
+  NAME_REGEX = /\A[A-Za-z0-9]+(?:[ _-][A-Za-z0-9]+)*\z/
+  HOMETOWN_REGEX = /\A[a-zA-ZàáâäãåąčćęèéêëėįìíîïłńòóôöõøùúûüųūÿýżźñçčšžÀÁÂÄÃÅĄĆČĖĘÈÉÊËÌÍÎÏĮŁŃÒÓÔÖÕØÙÚÛÜŲŪŸÝŻŹÑßÇŒÆČŠŽ∂ð ,.'-]+\z/u
+  PROFILE_URL = /\A[a-zA-Z\-_]+\z/
   #Below is a list of curse words taken from GOOGLE'S banned words list!
 
 
   validates :blog_url, :allow_nil => true, :url => {:no_local => true}
-  validates :name, :presence => true, :length => { :minimum => 2, :maximum => 20}, exclusion: { in: FORBIDDEN_USERNAMES }
-  validates :hometown, :allow_nil => true, :length => { :minimum => 1, :maximum => 100}
+  validates :name, :presence => true, :length => { :minimum => 2, :maximum => 20},
+            :exclusion => { in: FORBIDDEN_USERNAMES }, :format => NAME_REGEX
+  validates :hometown, :allow_nil => true, :length => { :minimum => 1, :maximum => 100},
+                       :format => HOMETOWN_REGEX
   validates :country,  :allow_nil => true, :length => { :minimum => 2, :maximum => 50}
-  #validates :hometown, :presence => true, :allow_nil => true, :length => { :minimum => 1, :maximum => 100}, :format => HOMETOWN_REGEX, :confirmation => true
-  #validates :country, :presence => true, :allow_nil => true, :length => { :minimum => 2, :maximum => 50}, :format => HOMETOWN_REGEX, :confirmation => true
+  validates :profile_url, :allow_nil => true, :uniqueness => true, :format => PROFILE_URL
 
 
-=begin
-  Items for User:
-  -Name (letters number and spaces, max 20 characters) *
-  -Email (max 50)
-  -Password (max 75)
-  -Hometown (unicode characters, max 100) *
-  -Country (max 5o)
-  -Blog (url validator, max 100, post-url crawler) *
-  -Profile Picture path (valid path, max 100) *
-  -profile url (letters & characters, max-50, url safe on create) *
-=end
+
 
 
 end
