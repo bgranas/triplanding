@@ -39,6 +39,9 @@ group :development, :test do
   #for automated testing
   gem 'guard'
   gem 'guard-minitest'
+
+  #for writing cool test syntax
+  gem 'capybara'
 end
 
 group :development do

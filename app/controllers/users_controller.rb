@@ -5,6 +5,7 @@ class UsersController < ApplicationController
 	include TripDisplayHelper
 
 	def show
+
 		@page_title = "User 123" + "\'s Profile"
 		#User info
 		@username = "User 123"
