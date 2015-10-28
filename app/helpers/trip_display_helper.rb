@@ -3,14 +3,13 @@ module TripDisplayHelper
 	def trip_display_setup
 
 
-		# Static map link builder
-		@tripMapStaticSize = "350x300"
+		# Static map API link builder
+		@tripMapStaticSize = "300x300&scale=2"
+		@tripMapStatic = "https://www.google.com/maps/api/staticmap?size="+@tripMapStaticSize+"&path=weight:5|Hanoi,Vietnam|Halong,Vietnam|Hue,Vietnam|DaLat,Vietnam|HoChiMinhCity,Vietnam" # Google static map URL
 		#@tripMapStaticDestination = ["Hanoi","Da Nang","Da Lat","Mui Ne","Ho Chi Minh City"]   # Build City, Country items for URL 
 
 		# Trip object attributes
 		@tripTitle = "Vietnam North to South"
-		
-		@tripMapStatic = "https://www.google.com/maps/api/staticmap?size="+@tripMapStaticSize+"&path=weight:5|Hanoi,Vietnam|Halong,Vietnam|Hue,Vietnam|DaLat,Vietnam|HoChiMinhCity,Vietnam" # Google static map URL
 		@tripCity = ["Hanoi","Ho Chi Minh City","Da Nang","Da Lat","Mui Ne"] #all cities included in Trip
 		@tripCountry = ["Vietnam"] #all countries included in Trip
 		@tripScore = 10

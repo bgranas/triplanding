@@ -9,6 +9,13 @@
 				<!-- Trip static map -->
 				<div class="col-xs-12 trip-map-static"><img src=<%= @tripMapStatic %>>
 					
+				<!-- Thumbs up icon and counter -->
+				<div class="trip-thumbsup-container">
+					<p><i class="fa fa-thumbs-o-up"> <%= @tripScore %></i></p>
+
+				</div>
+
+
 					<!-- Hidden at sm and xs *moved to bottom of display section* -->
 					<!--<ul class="list-inline image-hover-options hidden-sm hidden-xs">-->
 					<!--	<li><i class="fa fa-heart fa-3x image-hover-favorite"></i></li>-->
@@ -52,8 +59,8 @@
 
 				<!-- Like and share buttons -->
 				<ul class="list-inline mobile-likeandshare">
-					<li><i><%= link_to("", {:controller => 'users', :action => 'show'}, :class => "fa fa-heart fa-2x trip-favorite") %></i></li>
-					<li><i class="fa fa-share-alt fa-2x trip-share"></i></li>
+					<li><i class="fa fa-star-o fa-2x trip-favorite"><%= link_to("", {:controller => 'users', :action => 'show'}) %></i></li>
+					<li><i><%= link_to("", {:controller => 'users', :action => 'show'}, :class => "fa fa-share-alt fa-2x trip-share") %></i></li>
 				</ul>
 
 			</div>

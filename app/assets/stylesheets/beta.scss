@@ -112,9 +112,11 @@ Highlighted trips widget
 
 		.trip-favorite:hover {
 			color: #ea7663;
+			text-decoration: none;
 		}
 
-		.trip-favorite:visited {
+		.trip-favorite>a:visited {
+			display: inline-block;
 			color: #ea7663;
 		}
 
@@ -122,11 +124,12 @@ Highlighted trips widget
 		color: #887C7C;
 	}
 
-		.trip-share:hover {
+		.trip-share>a:hover {
 			color: #444444;
+			text-decoration: none;
 		}
 
-		.trip-share:visited {
+		.trip-share>a:visited {
 			color: #444444;
 		}
 
