@@ -41,7 +41,7 @@
       <ul class="nav navbar-nav navbar-right">
         <li><%= link_to 'Plan a Trip', '#' %></li>
         <li><%= link_to 'Get Inspired', '#' %></li>
-        <li><%= link_to 'How it Works', '#' %></li>
+        <li><%= link_to 'How it Works', '/beta/how_it_works' %></li>
         <% if user_signed_in? %>
           <!-- Don't want dropdown on hover if mobile -->
           <li class="dropdown <% if !browser.mobile? %> dropdown-toggle-hover <% end %>">
