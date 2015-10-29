@@ -21,11 +21,11 @@ class UsersControllerTest < ActionController::TestCase
 
 
   test "user id in correct format must be present for show" do
-    get :show, {:id => 1}
-    assert_response :success, "cannot get /users/show/1, should be valid"
+    get :show, {:profile_url => 'uncy_c'}
+    assert_response :success, "cannot get /uncy_c, should be valid"
 
     assert_raise ActiveRecord::RecordNotFound, "successfully got /users/show/69, should be invalid" do
-      get :show, {:id => 69}
+      get :show, {:profile_url => 'not_a_url'}
     end
   end
 

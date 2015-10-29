@@ -7,14 +7,16 @@ class UsersController < ApplicationController
 
 
   #List all users for admins to view/edit/delete
-	def index
-	end
+
 
 	def show
 
 		#User info
-		#@user = User.find(params[:id])
-		@user = User.find_by_profile_url params[:profile_url]  #for searching by user URL
+
+		@user = User.find_by_profile_url(params[:profile_url])  #for searching by user URL
+    raise ActiveRecord::RecordNotFound if  @user.nil? #user was not found
+
+
 
 		@page_title = @user.name + "\'s Profile"
 
