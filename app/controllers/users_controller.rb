@@ -4,6 +4,8 @@ class UsersController < ApplicationController
 
 	include TripDisplayHelper
 
+  before_action :authenticate_user!, only: [:edit, :update, :destroy, :delete]
+
 
 
   #List all users for admins to view/edit/delete
@@ -15,6 +17,7 @@ class UsersController < ApplicationController
 
 		@user = User.find_by_profile_url(params[:profile_url])  #for searching by user URL
     raise ActiveRecord::RecordNotFound if  @user.nil? #user was not found
+
 
 
 
@@ -35,11 +38,14 @@ class UsersController < ApplicationController
 
   def edit
     @user = User.find(params[:id])
+    validate_current_user_is_user
   end
 
   def update
     #find an existing object using parameters
     @user = User.find(params[:id])
+    validate_current_user_is_user
+
     #update the object
     if @user.update_attributes(user_params)
       #succeeds
@@ -56,10 +62,13 @@ class UsersController < ApplicationController
 
   def delete
     @user = User.find_by_id(params[:id])
+    validate_current_user_is_user
   end
 
   def destroy
     @user = User.find_by_id(params[:id])
+    validate_current_user_is_user
+
     @user.destroy
     redirect_to(home_path)
   end
@@ -68,6 +77,10 @@ class UsersController < ApplicationController
 
   def user_params
   	params.require(:user).permit(:name, :email, :blog_url, :profile_picture_path, :hometown, :country, :profile_url)
+  end
+
+  def validate_current_user_is_user
+    redirect_to home_path if not @user.id == current_user.id
   end
 
 
