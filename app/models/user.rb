@@ -26,7 +26,7 @@ class User < ActiveRecord::Base
 
   #removes blank values and instead makes nil
   def nil_if_blank
-    puts "******** nil_if_blank called"
+    #puts "******** nil_if_blank called"
     NULL_ATTRS.each { |attr| self[attr] = nil if self[attr].blank? }
   end
 
