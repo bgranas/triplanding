@@ -19,7 +19,7 @@ class User < ActiveRecord::Base
             :exclusion => { in: FORBIDDEN_USERNAMES }, :format => NAME_REGEX
   validates :hometown, :allow_nil => true, :allow_blank => true, :length => { :minimum => 1, :maximum => 100},
                        :format => HOMETOWN_REGEX
-  validates :country,  :allow_nil => true, :allow_blank => true, :length => { :minimum => 2, :maximum => 50}
+  validates :country,  :allow_nil => true, :allow_blank => true, :length => { :minimum => 2, :maximum => 50}, :format => HOMETOWN_REGEX
   validates :profile_url, :allow_nil => true, :allow_blank => true, :uniqueness => true, :format => PROFILE_URL
 
 
