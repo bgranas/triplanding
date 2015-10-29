@@ -2,7 +2,7 @@ class LeadsController < ApplicationController
 
   layout 'application'
 
-  before_action :verify_is_user, only: [:index, :delete, :destroy]
+  before_action :verify_is_admin, only: [:index, :delete, :destroy]
 
   def index
     @leads = Lead.order("created_at ASC")
