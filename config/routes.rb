@@ -19,6 +19,9 @@ Rails.application.routes.draw do
   get 'beta/privacy' => 'beta#privacy', as: 'privacy' #creates privacy_path and privacy_url pointing to /beta/privacy
   get 'beta/terms' => 'beta#terms', as: 'terms' #creates terms_path and terms_url pointing to /beta/terms
   get 'leads' => 'leads#index' #creates leads_path and leads_url pointing to /leads/index
+  get 'users' => 'users#index' #creates users_path and users_url pointing to /users/index
+
+
 
 
   # The priority is based upon order of creation: first created -> highest priority.
@@ -28,7 +31,7 @@ Rails.application.routes.draw do
   root 'welcome#index'
 
   #Default as specified in Lynda
-  match ':controller(/:action(/:id))', :via => [:get, :post]
+  match ':controller(/:action(/:id))', :via => [:get, :post] #---!!!!! DANGER !!!! SHOULD REPLACE
 
   # Example of regular route:
   #   get 'products/:id' => 'catalog#view'
