@@ -3,15 +3,21 @@
 <table class="table">
 	<tr>
 		<th>#</th>
+		<th>User ID</th>
 		<th>Name</th>
-		<th>Delete</th>
+		<th>Actions</th>
 	</tr>
 	<% i=0 %>
 	<% @users.each do |user| %>
 	<tr>
-		<td><%= i+=1 %>
+		<td><%= i+=1 %> </td>
+		<td><%= user.id %> </td>
 		<td><%= user.name %></td>
-		<td><%= link_to("Delete", {:action => :delete, :id => user.id}) %></td>
+		<td>
+			<%= link_to("Show", {:action => :show, :id => user.id}) %>
+			<%= link_to("Edit", {:action => :edit, :id => user.id}) %>
+			<%= link_to("Delete", {:action => :delete, :id => user.id}) %>
+		</td>
 	</tr>
 	<% end %>
 </table>
