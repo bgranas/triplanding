@@ -2,13 +2,12 @@ class LeadsController < ApplicationController
 
   layout 'application'
 
+  before_action :verify_is_admin_or_user, only: [:index, :delete, :destroy]
 
   def index
     @leads = Lead.order("created_at ASC")
   end
 
-  def show
-  end
 
   def new
 
@@ -38,4 +37,5 @@ class LeadsController < ApplicationController
     def lead_params
       params.require(:lead).permit(:email)
     end
+
 end

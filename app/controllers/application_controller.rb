@@ -33,4 +33,13 @@ class ApplicationController < ActionController::Base
   def after_sign_out_path_for(resource)
     request.referrer
   end
+
+protected
+
+  def verify_is_admin
+      if not current_user.try(:isAdmin?)
+        redirect_to new_user_session_path
+      end
+  end
+
 end
