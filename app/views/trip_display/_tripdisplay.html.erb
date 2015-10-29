@@ -59,7 +59,7 @@
 												<%= image_tag(@profilePicture, :class => 'media-object img-circle profile-picture-thumbnail') %>
 											</div>
 											<div class="media-body creator-username">
-												<h5 class="media-heading"><%= link_to(@username, {:controller => 'users', :action => 'show', :username => @username}, :class => 'trip-display-username') %></h5>
+												<h5 class="media-heading"><%= link_to(@username, {:controller => 'users', :action => 'show'}, :class => 'trip-display-username') %></h5>
 											</div>
 										</div>
 								<% end %>

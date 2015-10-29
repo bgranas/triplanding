@@ -25,6 +25,7 @@ module TripDisplayHelper
 		# Trip's User atributes
 		#@username = "User12345" # trip creator's username
 		@profilePicture = "paradise-feature-sm.jpg" # trip creator's profile picture
+		@username = "User 12345"
 
 
 

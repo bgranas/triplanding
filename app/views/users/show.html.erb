@@ -8,17 +8,17 @@
     <div class="col-sm-12 no-padding">
 
       <div id="user-profile-top">
-        <%= image_tag(@profilePicture, :alt => @username +"'s profile picture", :class => "img-circle img-responsive profile-picture") %>
+        <%= image_tag(@user.profile_picture_path, :alt => @user.name + "\'s profile picture", :class => "img-circle img-responsive profile-picture") %>
         <div id="user-profile-demographics">
-          <h2><%= @username %></h2>
-          <h4><%= @userHomeCity %>, <%= @userHomeCountry %></h4>
+          <h2><%= @user.name %></h2>
+          <h4><%= @user.hometown %>, <%= @user.country %></h4>
         </div>
         <div id="user-profile-stats">
           <ul class="list-inline" id="user-stats">
             <li><p><strong><%= @numTrips %></strong> Trips planned</p></li>
             <li><p><strong><%= @numCountriesVisited %></strong> Countries visited</p></li>
             <li><p><strong><%= @upvoteScore %></strong> Score</p></li>
-            <li><p><a href="#"><%= @userBlogURL %></a></p></li>
+            <li><p><a href="#"><%= @user.blog_url %></a></p></li>
           </ul>
         </div>
       </div>

@@ -1,0 +1,17 @@
+<h1>All Users</h1>
+
+<table class="table">
+	<tr>
+		<th>#</th>
+		<th>Name</th>
+		<th>Delete</th>
+	</tr>
+	<% i=0 %>
+	<% @users.each do |user| %>
+	<tr>
+		<td><%= i+=1 %>
+		<td><%= user.name %></td>
+		<td><%= link_to("Delete", {:action => :delete, :id => user.id}) %></td>
+	</tr>
+	<% end %>
+</table>
