@@ -19,10 +19,6 @@ class UsersControllerTest < ActionController::TestCase
     assert false, "need to write test"
   end
 
-  test "users/index only loads for admin_user" do
-    get :index
-    assert_response :redirect
-  end
 
   test "user id in correct format must be present for show" do
     get :show, {:id => 1}
@@ -54,8 +50,9 @@ class UsersControllerTest < ActionController::TestCase
   end
 
   test "should not index if not logged in" do
-    get :index
-    assert_response :redirect, "no one is logged in, but are able to access users/index"
+    assert_raise ActionView::MissingTemplate, "successfully got /users/index, should be invalid" do
+      get :index
+    end
   end
 
 
