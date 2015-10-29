@@ -9,13 +9,13 @@ class ApplicationController < ActionController::Base
   def store_location
 
     # store last url as long as it isn't a /users path
-    if (request.path != "/users/sign_in" &&
+    if (request.path != "/d/users/sign_in" &&
       request.path != "/login" &&
-      request.path != "/users/sign_up" &&
-      request.path != "/users/password/new" &&
-      request.path != "/users/password/edit" &&
-      request.path != "/users/confirmation" &&
-      request.path != "/users/sign_out" &&
+      request.path != "/d/users/sign_up" &&
+      request.path != "/d/users/password/new" &&
+      request.path != "/d/users/password/edit" &&
+      request.path != "/d/users/confirmation" &&
+      request.path != "/d/users/sign_out" &&
       request.path != "/logout" &&
       !request.xhr?) # don't store ajax calls
       session[:previous_url] = request.fullpath
@@ -38,6 +38,7 @@ protected
 
   def verify_is_admin
       if not current_user.try(:isAdmin?)
+        #puts '***********previous session URL: ' + session[:previous_url].to_s
         redirect_to new_user_session_path
       end
   end

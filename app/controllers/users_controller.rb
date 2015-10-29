@@ -4,14 +4,16 @@ class UsersController < ApplicationController
 
 	include TripDisplayHelper
 
-	def index 
+  before_action :verify_is_admin, only: [:index]
+
+	def index
 		@users = User.order("created_at ASC")
 	end
 
 	def show
 
-		
-		
+
+
 		#User info
 		@user = User.find(params[:id])
 
