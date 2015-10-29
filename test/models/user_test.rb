@@ -1,4 +1,4 @@
-require 'test_helper'
+    require 'test_helper'
 
 class UserTest < ActiveSupport::TestCase
 
@@ -45,6 +45,21 @@ class UserTest < ActiveSupport::TestCase
 
     assert user2.valid?
   end
+
+  test "valid blog url" do
+     user = User.new ({:name => 'test', :email => 'test@test.com',
+                        :password => '12345678', :password_confirmation => '12345678',
+                        :blog_url => "www.test.com"})
+     assert user.valid?, "cannot save valid blog url"
+  end
+
+  test "test valid profile_url" do
+     user = User.new ({:name => 'test', :email => 'test@test.com',
+                        :password => '12345678', :password_confirmation => '12345678',
+                        :profile_url => "calvin-hawkes"})
+     assert user.valid?, "cannot submit valid profile url"
+  end
+
 
   test "submitting invalid URL for blog" do
      user = User.new ({:name => 'test', :email => 'test@test.com',

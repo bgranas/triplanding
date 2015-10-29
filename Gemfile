@@ -59,9 +59,6 @@ gem 'jquery-turbolinks'
 #email validation
 gem 'email_validator'
 
-#validating urls
-gem "validate_url"
-
 #heroku gem
 gem 'rails_12factor', group: :production
 

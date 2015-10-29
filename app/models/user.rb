@@ -200,10 +200,11 @@ class User < ActiveRecord::Base
   NAME_REGEX = /\A[A-Za-z0-9]+(?:[ _-][A-Za-z0-9]+)*\z/
   HOMETOWN_REGEX = /\A[a-zA-ZàáâäãåąčćęèéêëėįìíîïłńòóôöõøùúûüųūÿýżźñçčšžÀÁÂÄÃÅĄĆČĖĘÈÉÊËÌÍÎÏĮŁŃÒÓÔÖÕØÙÚÛÜŲŪŸÝŻŹÑßÇŒÆČŠŽ∂ð ,.'-]+\z/u
   PROFILE_URL = /\A[a-zA-Z\-_]+\z/
+  URL_VALLIDATION = /\A^[a-z0-9]+([\-\.]{1}[a-z0-9]+)*\.[a-z]{2,5}\z/
   #Below is a list of curse words taken from GOOGLE'S banned words list!
 
 
-  validates :blog_url, :allow_nil => true, :url => {:no_local => true}
+  validates :blog_url, :allow_nil => true, :format => URL_VALLIDATION
   validates :name, :presence => true, :length => { :minimum => 2, :maximum => 20},
             :exclusion => { in: FORBIDDEN_USERNAMES }, :format => NAME_REGEX
   validates :hometown, :allow_nil => true, :length => { :minimum => 1, :maximum => 100},

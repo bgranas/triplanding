@@ -58,6 +58,13 @@ h4{
   padding:0px;
 }
 
+  .no-padding-left{
+    padding-left:0px;
+  }
+  .no-padding-right{
+    padding-right:0px;
+  }
+
 .error-message{
   color: #8C0000;
   text-align: center;
