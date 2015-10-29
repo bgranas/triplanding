@@ -36,6 +36,7 @@ class User < ActiveRecord::Base
     if self.profile_url.blank?
       self.profile_url = self.name
       self.valid? #testing to see if self is valid after profile url
+
       puts '************** profile_url is taken' if debug
       puts '************** self.errors[profile_url]: ' + self.errors[:profile_url].to_s if debug
 

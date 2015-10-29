@@ -19,6 +19,11 @@ class UserProfileTest < ActionDispatch::IntegrationTest
 
   test "blog url links to correct location" do
     assert false, "need to write test"
+    #test external link
+  end
+
+  test "no url displayed if blog_url does not exist" do
+    assert false, "need to write test"
   end
 
   test "edit user profile should preload values" do
