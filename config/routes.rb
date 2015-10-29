@@ -32,6 +32,9 @@ Rails.application.routes.draw do
   # You can have the root of your site routed with "root"
   root 'welcome#index'
 
+   #matching profile_url
+  match "/:profile_url" => "users#show", :via => [:get]
+
   #Default as specified in Lynda
   match ':controller(/:action(/:id))', :via => [:get, :post] #---!!!!! DANGER !!!! SHOULD REPLACE
 
