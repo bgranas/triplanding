@@ -13,6 +13,12 @@ class SiteLayoutTest < ActionDispatch::IntegrationTest
     @admin_user.save!
   end
 
+  test "should get beta" do
+    get '/beta'
+    assert_response :success
+    assert_template 'beta/index'
+  end
+
   test "top navigation bar links" do
     get home_path
     assert_template 'beta/index'
