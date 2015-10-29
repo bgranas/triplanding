@@ -1,7 +1,8 @@
 Rails.application.routes.draw do
 
 
-  devise_for :users, controllers: {registrations: 'registrations', sessions: 'sessions'}
+  devise_for :users, controllers: {registrations: 'registrations', sessions: 'sessions'}, :path_prefix => 'd'
+  resources :users
 
   devise_scope :user do
     get "/login" => "devise/sessions#new"
