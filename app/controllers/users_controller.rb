@@ -30,6 +30,26 @@ class UsersController < ApplicationController
 
 	end
 
+  def edit
+    @user = User.find(params[:id])
+  end
+
+   def update
+    #find an existing object using parameters
+    @user = User.find(params[:id])
+    #update the object
+    if @user.update_attributes(user_params)
+      #succeeds
+      flash[:notice] = "Updated succesfully"
+      redirect_to(:action => 'index', :id => @user.id)
+    else
+      #fails
+      render('edit')
+    end
+    #if save succeeds, redirect to the index action
+    #if save fails, redisplay the form so user can fix problems
+  end
+
 
   def delete
     @user = User.find_by_id(params[:id])
@@ -40,5 +60,12 @@ class UsersController < ApplicationController
     @user.destroy
     redirect_to(:action => 'index')
   end
+
+  private
+
+  def user_params
+  	params.require(:user).permit(:name, :email, :blog_url, :profile_picture_path)
+  end
+
 
 end

@@ -1,0 +1,13 @@
+<h2>Edit <%= @user.name %></h2>
+
+
+<%= form_for(:user, :url => {:action => 'update', :id => @user.id}, html: {method: "update"}) do |f| %>
+
+
+  <%= render(:partial => "form", :locals => {:f => f}) %>
+
+    <div class="form-buttons">
+      <%= f.submit "Update" %>
+    </div>
+
+  <% end %>
