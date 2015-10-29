@@ -9,6 +9,12 @@
 					<th>#</th>
 					<th>User ID</th>
 					<th>Name</th>
+					<th>Email</th>
+					<th>Blog URL</th>
+					<th>Profile picture path</th>
+					<th>Hometown</th>
+					<th>Country</th>
+					<th>Profile URL</th>
 					<th>Actions</th>
 				</tr>
 				<% i=0 %>
@@ -17,6 +23,12 @@
 					<td><%= i+=1 %> </td>
 					<td><%= user.id %> </td>
 					<td><%= user.name %></td>
+					<td><%= user.email %></td>
+					<td><%= user.blog_url %></td>
+					<td><%= user.profile_picture_path %></td>
+					<td><%= user.hometown %></td>
+					<td><%= user.country %></td>
+					<td><%= user.profile_url %></td>
 					<td>
 						<%= link_to("Show", {:action => :show, :id => user.id}) %>
 						<%= link_to("Edit", {:action => :edit, :id => user.id}) %>
