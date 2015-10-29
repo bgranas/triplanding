@@ -6,7 +6,6 @@ class UsersController < ApplicationController
 
 
 
-
   #List all users for admins to view/edit/delete
 	def index
 	end
