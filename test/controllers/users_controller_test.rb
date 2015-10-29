@@ -2,6 +2,7 @@ require 'test_helper'
 
 class UsersControllerTest < ActionController::TestCase
 
+
   def setup
     #@request.env["devise.mapping"] = Devise.mappings[:user]
   end
@@ -14,9 +15,9 @@ class UsersControllerTest < ActionController::TestCase
   end
 
 
-  
 
 
+  #test can't edit unless admin
   #test users/index only loads for admin_user
 
   #test user id in correct format must be present for show

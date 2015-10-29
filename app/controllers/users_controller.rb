@@ -4,7 +4,8 @@ class UsersController < ApplicationController
 
 	include TripDisplayHelper
 
-  before_action :verify_is_admin, only: [:index]
+  before_action :verify_is_admin, only: [:index, :delete, :destroy, :edit, :update]
+
 
 
   #List all users for admins to view/edit/delete
@@ -39,7 +40,7 @@ class UsersController < ApplicationController
     @user = User.find(params[:id])
   end
 
-   def update
+  def update
     #find an existing object using parameters
     @user = User.find(params[:id])
     #update the object
