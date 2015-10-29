@@ -55,5 +55,24 @@ class UsersControllerTest < ActionController::TestCase
     end
   end
 
+  test "should save edit with blog_url as empty string"
+    assert false, "need to write test"
+  end
+
+  test "should save edit with profile_url as empty string"
+    assert false, "need to write test"
+  end
+
+  test "should save edit with profile_picture_path as empty string"
+    assert false, "need to write test"
+  end
+
+  test "should save edit with hometown as empty string"
+    assert false, "need to write test"
+  end
+
+  test "should save edit with country as empty string"
+    assert false, "need to write test"
+  end
 
 end
