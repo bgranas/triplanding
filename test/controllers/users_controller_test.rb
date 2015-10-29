@@ -9,30 +9,49 @@ class UsersControllerTest < ActionController::TestCase
 
 
   test "users/show without id should fail" do
-    assert_raise ActiveRecord::RecordNotFound do
+    assert_raise ActiveRecord::RecordNotFound, "successfully accessed users/show" do
       get :show
     end
   end
 
 
+  test "cant edit unless admin" do
+    assert false, "need to write test"
+  end
 
+  test "users/index only loads for admin_user" do
+    get :index
+    assert_response :redirect
+  end
 
-  #test can't edit unless admin
-  #test users/index only loads for admin_user
+  test "user id in correct format must be present for show" do
+    get :show, {:id => 1}
+    assert_response :success, "cannot get /users/show/1, should be valid"
 
-  #test user id in correct format must be present for show
+    assert_raise ActiveRecord::RecordNotFound, "successfully got /users/show/69, should be invalid" do
+      get :show, {:id => 69}
+    end
+  end
 
-  #test show loads with profile URL
+  test "show loads with profile URL" do
+    assert false, "need to write test"
+  end
 
-  #test show does not load with incorrect profile URL
+  test "show does not load with incorrect profile URL" do
+    assert false, "need to write test"
+  end
 
-  #test show will still load with nil profile picture
+  test "show will still load with nil profile picture" do
+    assert false, "need to write test"
+  end
 
-  #test show will still load with nil hometown
+  test "show will still load with nil hometown" do
+    assert false, "need to write test"
+  end
 
-  #test show will still load with nil profile picture
-
-  #test show will still load with nil blog_url
+  test "show will still load with nil blog_url" do
+    assert false, "need to write test"
+  end
 
   test "should not index if not logged in" do
     get :index

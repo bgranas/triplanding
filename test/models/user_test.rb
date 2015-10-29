@@ -12,6 +12,17 @@ class UserTest < ActiveSupport::TestCase
     user.password_confirmation = '12345678'
 
     assert user.valid?
+
+    #adding all fields
+    user.hometown = "Los Gatos"
+    user.country_iso_3 = "USA"
+    user.country = "United States"
+    user.blog_url = "www.google.com"
+    user.profile_url = "test-acas"
+    user.profile_picture_path = "asdfasdf.jpg"
+    user.isAdmin = false
+
+    assert user.valid?, "cannot save user with all attributes"
   end
 
   test "user email must not be empty" do
