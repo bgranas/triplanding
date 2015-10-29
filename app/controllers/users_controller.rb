@@ -4,15 +4,11 @@ class UsersController < ApplicationController
 
 	include TripDisplayHelper
 
-  before_action :verify_is_admin, only: [:index, :delete, :destroy, :edit, :update]
 
 
 
   #List all users for admins to view/edit/delete
 	def index
-    @page_title = 'Edit Users'
-
-		@users = User.order("created_at ASC")
 	end
 
 	def show
@@ -35,7 +31,6 @@ class UsersController < ApplicationController
 
 	end
 
-#
   def edit
     @user = User.find(params[:id])
   end
@@ -47,7 +42,7 @@ class UsersController < ApplicationController
     if @user.update_attributes(user_params)
       #succeeds
       flash[:notice] = "Updated succesfully"
-      redirect_to(:action => 'index', :id => @user.id)
+      redirect_to(:action => 'show', :id => @user.id)
     else
       #fails
       render('edit')
@@ -64,7 +59,7 @@ class UsersController < ApplicationController
   def destroy
     @user = User.find_by_id(params[:id])
     @user.destroy
-    redirect_to(:action => 'index')
+    redirect_to(home_path)
   end
 
   private

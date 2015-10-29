@@ -4,7 +4,7 @@
       <div class="delete">
         <h2 class="no-padding-left">Delete User</h2>
 
-        <%= form_for(:user, :url => {:action => 'destroy', :id => @user.id}) do |f| %>
+        <%= form_for(:user, :url => {:action => 'destroy_user', :id => @user.id}) do |f| %>
 
           <p>Are you sure you want to permanently delete this user?</p>
 

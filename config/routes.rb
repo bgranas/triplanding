@@ -20,7 +20,8 @@ Rails.application.routes.draw do
   get 'beta/terms' => 'beta#terms', as: 'terms' #creates terms_path and terms_url pointing to /beta/terms
   get 'leads' => 'leads#index' #creates leads_path and leads_url pointing to /leads/index
   get 'users' => 'users#index' #creates users_path and users_url pointing to /users/index
-  get 'admin' => 'users#index' #creates admin_path and admin_url pointing to /users/index
+  get 'admin' => 'admin#index' #creates admin_path and admin_url pointing to /admin/index
+  get 'admin/users' => 'admin#all_users'
 
 
 
