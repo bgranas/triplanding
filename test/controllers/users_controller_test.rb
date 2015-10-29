@@ -7,9 +7,10 @@ class UsersControllerTest < ActionController::TestCase
   end
 
 
-  test "not authenticated should get show" do
-    get :show
-    assert_response :success
+  test "users/show without id should fail" do
+    assert_raise ActiveRecord::RecordNotFound do
+      get :show
+    end
   end
 
 end
