@@ -1,6 +1,10 @@
 class RegistrationsController < Devise::RegistrationsController
   respond_to :html, :json
 
+  before_filter only: [:new] do
+    params.delete(:isAdmin)
+  end
+
 
   # POST /resource
   def create
