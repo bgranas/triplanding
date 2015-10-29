@@ -40,7 +40,7 @@ protected
       if not current_user.try(:isAdmin?)
         #puts '***********previous session URL: ' + session[:previous_url].to_s
         if user_signed_in?
-          redirect_to root_path
+          redirect_to home_path
         else
           store_location
           redirect_to new_user_session_path
