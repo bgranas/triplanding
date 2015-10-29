@@ -3,6 +3,9 @@
 
 
 <%= form_for(:user, :url => {:action => 'update', :id => @user.id}, html: {method: "update"}) do |f| %>
+    <% @user.errors.full_messages.each do |msg| %>
+      <p><%= msg %></p>
+    <% end %>
 
 
   <%= render(:partial => "shared/edit_user_form", :locals => {:f => f}) %>
