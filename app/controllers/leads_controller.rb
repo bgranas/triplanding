@@ -5,6 +5,7 @@ class LeadsController < ApplicationController
   before_action :verify_is_admin, only: [:index, :delete, :destroy]
 
   def index
+    @page_title = 'Edit Leads'
     @leads = Lead.order("created_at ASC")
   end
 

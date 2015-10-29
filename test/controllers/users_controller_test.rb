@@ -13,6 +13,7 @@ class UsersControllerTest < ActionController::TestCase
     end
   end
 
+
   
 
 
@@ -31,5 +32,11 @@ class UsersControllerTest < ActionController::TestCase
   #test show will still load with nil profile picture
 
   #test show will still load with nil blog_url
+
+  test "should not index if not logged in" do
+    get :index
+    assert_response :redirect, "no one is logged in, but are able to access users/index"
+  end
+
 
 end

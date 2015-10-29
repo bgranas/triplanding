@@ -204,10 +204,25 @@ h4{
   }
 
 
-.container{
-
+/* Admin Panel */
+#admin-nav{
+  background-color: #940303;
+  color: white;
+  height:35px;
 }
+  #admin-nav h5{
+    margin-left:15px;
+    display:inline-block;
+  }
 
+  #admin-nav ul {
+    display: inline-block;
+    padding-left: 40px;
+  }
+  #admin-nav a{
+    color: white;
+    line-height: 35px;
+  }
 
 #main-content{
   padding-bottom: 150px; /* Min-Height of Footer */

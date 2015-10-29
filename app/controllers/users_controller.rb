@@ -4,14 +4,18 @@ class UsersController < ApplicationController
 
 	include TripDisplayHelper
 
-	def index 
+  before_action :verify_is_admin, only: [:index]
+
+
+  #List all users for admins to view/edit/delete
+	def index
+    @page_title = 'Edit Users'
+
 		@users = User.order("created_at ASC")
 	end
 
 	def show
 
-		
-		
 		#User info
 		@user = User.find(params[:id])
 

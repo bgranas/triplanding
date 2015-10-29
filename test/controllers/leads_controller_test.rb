@@ -1,9 +1,9 @@
 require 'test_helper'
 
 class LeadsControllerTest < ActionController::TestCase
-  test "should get index" do
+  test "should not index if not logged in" do
     get :index
-    assert_response :success
+    assert_response :redirect
   end
 
   test "should get show" do

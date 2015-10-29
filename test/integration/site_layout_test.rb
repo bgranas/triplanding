@@ -1,7 +1,17 @@
 require 'test_helper'
 
+
 class SiteLayoutTest < ActionDispatch::IntegrationTest
 
+  def setup
+    @test_user = User.new ({:name => 'test_user', :email => 'test@user.com', :password => '12345678', :password_confirmation => '12345678'})
+    @test_user.save!
+
+    @admin_user = User.new ({:name => 'admin_user', :email => 'admin@user.com', :password => '12345678', :password_confirmation => '12345678'})
+    @admin_user.save!
+    @admin_user.isAdmin = true
+    @admin_user.save!
+  end
 
   test "top navigation bar links" do
     get home_path
@@ -31,6 +41,41 @@ class SiteLayoutTest < ActionDispatch::IntegrationTest
     assert_select "a[href=?]", 'https://www.facebook.com/gotriphappy'
     assert_select "a[href=?]", 'https://instagram.com/gotriphappy'
     assert_select "a[href=?]", 'http://twitter.com/gotriphappy'
+  end
+
+  test "sucessfully redirected to admin section after admin login" do
+    visit home_path
+    visit leads_path
+    assert_current_path new_user_session_path #should be redirected to login
+
+    within('#new_user') do
+      fill_in 'E-mail', with: 'admin@user.com'
+      fill_in 'Password', with: '12345678'
+      click_button 'Log in'
+    end
+
+    assert_current_path leads_path
+
+  end
+
+  test "admins can access leads/index and users/index" do
+    login_as(@admin_user)
+    visit leads_path
+    assert_current_path leads_path
+
+    visit users_path
+    assert_current_path users_path
+  end
+
+  test "without sign_in, admin page redirects to sign_in" do
+    visit leads_path
+    assert_current_path new_user_session_path
+  end
+
+  test "regular user cannot access admin pages" do
+    login_as(@test_user)
+    visit leads_path
+    assert_no_current_path leads_path
   end
 
   test "testing signup form through popup" do
