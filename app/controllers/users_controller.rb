@@ -7,18 +7,10 @@ class UsersController < ApplicationController
   before_action :authenticate_user!, only: [:edit, :update, :destroy, :delete]
 
 
-
-  #List all users for admins to view/edit/delete
-
-
 	def show
-
 		#User info
-
 		@user = User.find_by_profile_url(params[:profile_url])  #for searching by user URL
     raise ActiveRecord::RecordNotFound if  @user.nil? #user was not found
-
-
 
 
 		@page_title = @user.name + "\'s Profile"

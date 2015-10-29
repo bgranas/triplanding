@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20151029142639) do
+ActiveRecord::Schema.define(version: 20151029152153) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -41,7 +41,7 @@ ActiveRecord::Schema.define(version: 20151029142639) do
     t.string   "country",                limit: 50
     t.string   "blog_url",               limit: 75
     t.string   "profile_picture_path",   limit: 75
-    t.string   "profile_url",            limit: 100
+    t.string   "profile_url",            limit: 100,                 null: false
     t.boolean  "isAdmin",                            default: false, null: false
   end
 

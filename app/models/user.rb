@@ -18,7 +18,7 @@ class User < ActiveRecord::Base
   validates :hometown, :allow_nil => true, :length => { :minimum => 1, :maximum => 100},
                        :format => HOMETOWN_REGEX
   validates :country,  :allow_nil => true, :length => { :minimum => 2, :maximum => 50}, :format => HOMETOWN_REGEX
-  validates :profile_url, :allow_nil => true, :uniqueness => true, :format => PROFILE_URL
+  validates :profile_url, :allow_nil => false, :uniqueness => true, :format => PROFILE_URL
 
 
   protected
