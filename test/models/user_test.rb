@@ -159,7 +159,7 @@ class UserTest < ActiveSupport::TestCase
     assert user.valid?
   end
 
-  test "testing hometown names" do
+  test "valid / invalid hometown names" do
     user = User.new ({:name => 'aaaa', :email => 'test@test.com',
                         :password => '12345678', :password_confirmation => '12345678'})
     assert user.valid?
@@ -188,8 +188,12 @@ class UserTest < ActiveSupport::TestCase
     user.hometown = 'calvin@calvin.town'
     assert user.invalid?
 
-    user.hometown = ''
-    assert user.invalid?
+    user.hometown = '' #blank string will be converted to nil when saved
+    assert user.valid?, "blank hometown unable to save (should have converted to nil before validation)"
+
+    user.hometown = '   ' #string with spaces will be converted to nil when saved
+    assert user.valid?, "blank hometown unable to save (should have converted to nil before validation)"
+
 
     user.hometown = '111'
     assert user.invalid?
