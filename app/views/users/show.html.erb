@@ -18,7 +18,7 @@
             <li><p><strong><%= @numTrips %></strong> Trips planned</p></li>
             <li><p><strong><%= @numCountriesVisited %></strong> Countries visited</p></li>
             <li><p><strong><%= @upvoteScore %></strong> Score</p></li>
-            <li><p><%= link_to @user.blog_url, @user.blog_url %></p></li>
+            <li><p><%= link_to @user.blog_url, url_with_protocol(@user.blog_url), :target => '_blank' %></p></li>
           </ul>
         </div>
       </div>
