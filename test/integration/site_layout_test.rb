@@ -58,13 +58,13 @@ class SiteLayoutTest < ActionDispatch::IntegrationTest
 
   end
 
-  test "admins can access leads/index and users/index" do
+  test "admins can access leads/index and admins/all_users" do
     login_as(@admin_user)
     visit leads_path
     assert_current_path leads_path
 
-    visit users_path
-    assert_current_path users_path
+    visit admin_users_path
+    assert_current_path admin_users_path
   end
 
   test "without sign_in, admin page redirects to sign_in" do
