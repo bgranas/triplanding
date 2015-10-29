@@ -18,9 +18,8 @@ Rails.application.routes.draw do
   get 'beta/policies' => 'beta#policies', as: 'policies' #creates policies_path and policies_url pointing to /beta/policies
   get 'beta/privacy' => 'beta#privacy', as: 'privacy' #creates privacy_path and privacy_url pointing to /beta/privacy
   get 'beta/terms' => 'beta#terms', as: 'terms' #creates terms_path and terms_url pointing to /beta/terms
+  get 'leads' => 'leads#index' #creates leads_path and leads_url pointing to /leads/index
 
-
-  match 'users/:username' => 'users#show', via: :get
 
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".

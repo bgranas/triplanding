@@ -13,4 +13,9 @@ class UsersControllerTest < ActionController::TestCase
     end
   end
 
+  test "should not index if not logged in" do
+    get :index
+    assert_response :redirect, "no one is logged in, but are able to access users/index"
+  end
+
 end

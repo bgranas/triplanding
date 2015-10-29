@@ -1,23 +1,31 @@
-<h1>All Users</h1>
+<%= render :partial => 'shared/admin_navigation' %>
 
-<table class="table">
-	<tr>
-		<th>#</th>
-		<th>User ID</th>
-		<th>Name</th>
-		<th>Actions</th>
-	</tr>
-	<% i=0 %>
-	<% @users.each do |user| %>
-	<tr>
-		<td><%= i+=1 %> </td>
-		<td><%= user.id %> </td>
-		<td><%= user.name %></td>
-		<td>
-			<%= link_to("Show", {:action => :show, :id => user.id}) %>
-			<%= link_to("Edit", {:action => :edit, :id => user.id}) %>
-			<%= link_to("Delete", {:action => :delete, :id => user.id}) %>
-		</td>
-	</tr>
-	<% end %>
-</table>
+<div class="container-fluid">
+	<div class="row">
+		<div class="col-sm-12">
+			<h1>Users</h1>
+			<table class="table">
+				<tr>
+					<th>#</th>
+					<th>User ID</th>
+					<th>Name</th>
+					<th>Actions</th>
+				</tr>
+				<% i=0 %>
+				<% @users.each do |user| %>
+				<tr>
+					<td><%= i+=1 %> </td>
+					<td><%= user.id %> </td>
+					<td><%= user.name %></td>
+					<td>
+						<%= link_to("Show", {:action => :show, :id => user.id}) %>
+						<%= link_to("Edit", {:action => :edit, :id => user.id}) %>
+						<%= link_to("Delete", {:action => :delete, :id => user.id}) %>
+					</td>
+				</tr>
+				<% end %>
+			</table>
+		</div>
+	</div>
+</div>
+
