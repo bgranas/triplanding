@@ -10,11 +10,12 @@
 
 	height: 55vh;
 	z-index: 101;
-	
+
 	background: transparent linear-gradient(to right,#272727 0%,rgba(39,39,39,.9) 90%);
 }
 
-	#featured-trip-content h1,h2,h3,h4 {
+
+	#featured-trip-content h1, #featured-trip-content h2, #featured-trip-content h3,#featured-trip-content h4 {
 		color: white;
 		padding-left: 20px;
 		padding-right: 20px;
@@ -31,4 +32,4 @@
 		margin-left: 20px;
 		border: 2px solid #E8E8E8;
 	}
-	
+
