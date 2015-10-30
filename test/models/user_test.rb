@@ -70,6 +70,18 @@ class UserTest < ActiveSupport::TestCase
                         :password => '12345678', :password_confirmation => '12345678',
                         :profile_url => "calvin-hawkes"})
      assert user.valid?, "cannot submit valid profile url"
+
+     user.profile_url = "99823"
+     assert user.valid? , "can submit profile url with only numbers"
+
+     user.profile_url = "69mebaby"
+     assert user.valid? , "can submit profile url with numbers first"
+
+     user.profile_url = "babylike69"
+     assert user.valid?, "numbers should be allowed at the end of a profile_url"
+
+     user.profile_url = "baby69me"
+     assert user.valid?, "numbers should be allowed in the middle of a profile_url"
   end
 
 

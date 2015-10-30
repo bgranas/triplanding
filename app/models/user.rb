@@ -7,12 +7,8 @@ class User < ActiveRecord::Base
          :recoverable, :rememberable, :trackable, :validatable
 
   NULL_ATTRS = %w( hometown country_iso_3 country blog_url profile_url profile_picture_path name email )
-
   before_validation :nil_if_blank
-
-  #WARNING: This must be run after nil_if_blank is run
-  before_validation :generate_profile_url
-
+  before_validation :generate_profile_url #WARNING: This must be run after nil_if_blank is run
 
 
   validates :blog_url, :allow_nil => true, :format => URL_VALLIDATION
