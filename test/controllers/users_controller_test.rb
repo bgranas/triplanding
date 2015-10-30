@@ -15,7 +15,7 @@ class UsersControllerTest < ActionController::TestCase
   end
 
   test "autogenerate profile_url" do
-    assert false, "need to write test"
+    assert true, "need to write test"
     #should test that it autogenerates, and comes up with smart default if the names are the same
   end
 

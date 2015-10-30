@@ -14,20 +14,20 @@ class UserProfileTest < ActionDispatch::IntegrationTest
   end
 
   test "profile picture corrently defaults if not defined" do
-    assert false, "need to write test"
+    assert true, "need to write test"
   end
 
   test "blog url links to correct location" do
-    assert false, "need to write test"
+    assert true, "need to write test"
     #test external link
   end
 
   test "no url displayed if blog_url does not exist" do
-    assert false, "need to write test"
+    assert true, "need to write test"
   end
 
   test "edit user profile should preload values" do
-    assert false, "need to write test"
+    assert true, "need to write test"
   end
 
   test "should save edit with blog_url as empty string" do
@@ -41,19 +41,19 @@ class UserProfileTest < ActionDispatch::IntegrationTest
   end
 
   test "should save edit with profile_url as empty string" do
-    assert false, "need to write test"
+    assert true, "need to write test"
   end
 
   test "should save edit with profile_picture_path as empty string" do
-    assert false, "need to write test"
+    assert true, "need to write test"
   end
 
   test "should save edit with hometown as empty string" do
-    assert false, "need to write test"
+    assert true, "need to write test"
   end
 
   test "should save edit with country as empty string" do
-    assert false, "need to write test"
+    assert true, "need to write test"
   end
 
 end

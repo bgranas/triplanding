@@ -11,7 +11,7 @@ class UserTest < ActiveSupport::TestCase
     user.password = '12345678'
     user.password_confirmation = '12345678'
 
-    assert user.valid?
+    assert user.valid?, "cannot save user with name uncle c"
 
     #adding all fields
     user.hometown = "Los Gatos"
@@ -23,6 +23,7 @@ class UserTest < ActiveSupport::TestCase
     user.isAdmin = false
 
     assert user.valid?, "cannot save user with all attributes"
+
   end
 
   test "user email must not be empty" do
@@ -48,13 +49,13 @@ class UserTest < ActiveSupport::TestCase
 
   test "display name is not unique" do
     user = User.new ({:name => 'test', :email => 'test@test.com', :password => '12345678', :password_confirmation => '12345678'})
-    assert user.valid?
+    assert user.valid?, "cannot create valid user"
 
     user.save!
 
     user2 = User.new ({:name => 'test', :email => 'test2@test.com', :password => '12345678', :password_confirmation => '12345678'})
 
-    assert user2.valid?
+    assert user2.valid?, "was not able to create user with same display name"
   end
 
   test "valid blog url" do
