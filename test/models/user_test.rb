@@ -65,7 +65,8 @@ class UserTest < ActiveSupport::TestCase
      assert user.valid?, "cannot save valid blog url"
   end
 
-  test "test valid profile_url" do
+  test "valid profile_url" do
+
      user = User.new ({:name => 'test', :email => 'test@test.com',
                         :password => '12345678', :password_confirmation => '12345678',
                         :profile_url => "calvin-hawkes"})

@@ -35,10 +35,8 @@ class User < ActiveRecord::Base
     debug = false
 
     if !self.name.nil? and self.profile_url.blank?
-      self.profile_url = self.name #THIS LINE FAILS IF self.name is true
-      self.valid? #testing to see if self is valid after profile url
-
-      puts '************** user is not valid, but does the error have to do with profile_url?' if debug
+      self.profile_url = self.name.gsub(' ', '-') #replacing spaces with dashes
+      puts '************** profile_url: ' + self.profile_url if debug
       puts '************** self.errors[profile_url]: ' + self.errors[:profile_url].to_s if debug
       puts '************** User.find_by_profile_url(self.profile_url).nil?: ' +
                             (User.find_by_profile_url(self.profile_url).nil?).to_s if debug
