@@ -25,6 +25,7 @@
               <span class="caret"></span>
             </a>
             <ul class="dropdown-menu">
+              <li><%= link_to 'My Profile', ('/' + current_user.profile_url) %></li>
               <li><%= link_to 'My Trips', '#' %></li>
               <li><%= link_to 'My Bookings', '#' %></li>
               <li><%= link_to 'Edit Profile', {:controller => 'users', :action => 'edit', :id => current_user.id} %></li>
