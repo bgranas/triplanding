@@ -11,7 +11,7 @@
         <%= image_tag(@user.profile_picture_path, :alt => @user.name + "\'s profile picture", :class => "img-circle img-responsive profile-picture") %>
         <div id="user-profile-demographics">
           <h2><%= @user.name %></h2>
-          <h4><%= @user.hometown %>, <%= @user.country %></h4>
+          <h4><%= @user.hometown + ', ' if not @user.hometown.nil? %><%= @user.country %></h4>
         </div>
         <div id="user-profile-stats">
           <ul class="list-inline" id="user-stats">
