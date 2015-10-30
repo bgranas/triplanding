@@ -117,7 +117,7 @@ class SiteLayoutTest < ActionDispatch::IntegrationTest
     assert_selector '.lightbox-content'
 
     within("#signup-form") do
-      fill_in 'Display Name', :with => 'uncle c'
+      fill_in 'Display Name', :with => users(:one).name
       fill_in 'E-mail', :with => 'test@test.com'
       fill_in 'Password', :with => '11111'
       fill_in 'Confirm Password', :with => '11112'
@@ -131,7 +131,7 @@ class SiteLayoutTest < ActionDispatch::IntegrationTest
     visit home_path
     click_link('Sign Up')
     within("#signup-form") do
-      fill_in 'Display Name', :with => 'uncle c'
+      fill_in 'Display Name', :with => users(:one).name
       fill_in 'E-mail', :with => 'test@test.com'
       fill_in 'Password', :with => '11111111'
       fill_in 'Confirm Password', :with => '11111111'
@@ -139,6 +139,9 @@ class SiteLayoutTest < ActionDispatch::IntegrationTest
     end
 
     visit home_path
+    within("#header") do
+      assert_text users(:one).name #username should be displayed at top
+    end
 
 
     #logging out of created account

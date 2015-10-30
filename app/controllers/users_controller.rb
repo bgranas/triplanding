@@ -42,7 +42,7 @@ class UsersController < ApplicationController
     if @user.update_attributes(user_params)
       #succeeds
       flash[:notice] = "Updated succesfully"
-      redirect_to(:action => 'show', :id => @user.id)
+      redirect_to(:action => 'show', :profile_url => @user.profile_url)
     else
       #fails
       render('edit')

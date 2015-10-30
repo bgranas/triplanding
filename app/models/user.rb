@@ -32,18 +32,19 @@ class User < ActiveRecord::Base
 
   #generating unique profile url if one was not provided
   def generate_profile_url
-    debug = false
+    #need to replace spaces with strings
+    debug = true
     if self.profile_url.blank?
       self.profile_url = self.name
       self.valid? #testing to see if self is valid after profile url
 
-      puts '************** profile_url is taken' if debug
+      puts '************** user is not valid, but does the error have to do with profile_url?' if debug
       puts '************** self.errors[profile_url]: ' + self.errors[:profile_url].to_s if debug
 
       #there can be other reasons that the user is invalid, so we just want to keep checking
       #until there are no errors in the profile_url
       i = 1
-      while not self.errors[:profile_url].blank? do
+      while self.errors[:profile_url] == "has already been taken" do
         puts '************** self.errors[profile_url]: ' + self.errors[:profile_url].to_s if debug
         self.profile_url = self.name + "_" + i.to_s
         puts '************** new profile_url ' + self.profile_url if debug
