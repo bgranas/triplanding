@@ -7,7 +7,7 @@
 <header id="top-of-the-world" class="bgimage landing-header">
   <div class="container">
     <div class="halfway-down">
-      <h1>TripHappy</h1>
+      <%= image_tag("white_logo_orange_pin.png", :alt => "Trip Happy Logo", :class => "left-block", :id => 'header-logo') %>
       <h3 class="results">A better way to explore the world. Coming soon.</h3>
 
         <%= form_for(:lead, remote: true, :url => {:controller => 'leads', :action => 'create'}, :html => {:class => 'form-inline'}) do |f| %>
