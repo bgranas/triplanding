@@ -15,9 +15,11 @@
   <meta charset="utf-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
 
-  <script
-    src="https://maps.googleapis.com/maps/api/js?key=AIzaSyChcz6jwL7JobPusW5GaQT5zHCuHBh3Atc&callback=initMap"  async defer>
-  </script>
+  <% if @map_page %>
+    <script
+      src="https://maps.googleapis.com/maps/api/js?key=AIzaSyChcz6jwL7JobPusW5GaQT5zHCuHBh3Atc&callback=initMap"  async defer>
+    </script>
+  <% end %>
 
 </head>
 <body>

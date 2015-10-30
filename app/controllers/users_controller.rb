@@ -8,6 +8,8 @@ class UsersController < ApplicationController
 
 
 	def show
+    @map_page = true
+
 		#User info
 		@user = User.find_by_profile_url(params[:profile_url])  #for searching by user URL
     raise ActiveRecord::RecordNotFound if  @user.nil? #user was not found
