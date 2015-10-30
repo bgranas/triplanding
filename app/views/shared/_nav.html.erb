@@ -1,0 +1,63 @@
+<nav id="header" class="navbar <%= @transparent_nav ? 'navbar-transparent navbar-inverse' : 'navbar-inverse' %>">
+  <div class="container">
+
+    <div class="navbar-header">
+      <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#collapsemenu" aria-expanded="false">
+        <span class="sr-only">Toggle Navigation</span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+
+      </button>
+      <a href="<%= home_path %>" class="navbar-brand"> TripHappy </a>
+    </div>
+
+    <div class="collapse navbar-collapse" id="collapsemenu">
+      <ul class="nav navbar-nav navbar-right">
+        <li><%= link_to 'Plan a Trip', '#' %></li>
+        <li><%= link_to 'Get Inspired', '#' %></li>
+        <li><%= link_to 'How it Works', how_it_works_path %></li>
+        <% if user_signed_in? %>
+          <!-- Don't want dropdown on hover if mobile -->
+          <li class="dropdown <% if !browser.mobile? %> dropdown-toggle-hover <% end %>">
+            <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">
+              <%= current_user.name %>
+              <span class="caret"></span>
+            </a>
+            <ul class="dropdown-menu">
+              <li><%= link_to 'My Trips', '#' %></li>
+              <li><%= link_to 'My Bookings', '#' %></li>
+              <li><%= link_to 'Edit Profile', {:controller => 'users', :action => 'edit', :id => current_user.id} %></li>
+              <li><%= link_to 'Logout', destroy_user_session_path, :method => :delete %></li>
+            </ul>
+          </li>
+        <% else %> <!-- If the user is not signed in -->
+
+          <!-- If mobile browser, go to sign_up page, otherwise trigger lightbox -->
+          <% if browser.mobile? %>
+            <li><%= link_to 'Sign Up', new_user_registration_path, class: 'nav-link-box', :id => 'sign-up-link' %></li>
+          <% else %>
+            <li><%= link_to 'Sign Up', '/blank/sign_up_helper', class: 'nav-link-box',
+                                          :id => 'sign-up-link', :data => {
+                                          :colorbox => true,
+                                          :colorbox_width => '380px'} %>
+            </li>
+          <% end %>
+
+          <li class="dropdown <% if !browser.mobile? %> dropdown-toggle-hover <% end %>">
+            <a href="<%= new_user_session_path %>" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">
+              Login
+            </a>
+            <ul class="dropdown-menu form-dropdown">
+              <li>
+                <%= render :partial => 'shared/login' %>
+              </li>
+            </ul>
+          </li>
+        <% end %>
+      </ul>
+    </div>
+
+
+  </div> <!-- End Navbar Container -->
+</nav> <!-- End Nav -->
