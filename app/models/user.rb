@@ -42,18 +42,23 @@ class User < ActiveRecord::Base
       # Get the existing user by email if the provider gives us a verified email.
       # If no verified email was provided we assign a temporary email and ask the
       # user to verify it on the next step via UsersController.finish_signup
+      puts '************* email: ' + auth.info.email
       email_is_verified = auth.info.email && (auth.info.verified || auth.info.verified_email)
       email = auth.info.email if email_is_verified
+      puts '************* email: ' + email
       user = User.where(:email => email).first if email
 
       # Create the user if it's a new registration
       if user.nil?
+        puts '********************auth: ' + auth.to_yaml
         user = User.new(
           name: auth.info.first_name,
-          external_picture_url: auth.info.picture,
+          external_picture_url: auth.info.image,
           email: email ? email : "#{TEMP_EMAIL_PREFIX}-#{auth.uid}-#{auth.provider}.com",
           password: Devise.friendly_token[0,20]
         )
+        puts '************* auto.info.verified: ' + auth.info.verified.to_s
+        puts '************* auto.info.picture: ' + auth.info.image
         user.generate_profile_url #generates profile URL based off name
         user.save!
       end

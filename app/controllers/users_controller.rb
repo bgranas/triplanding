@@ -14,6 +14,11 @@ class UsersController < ApplicationController
 		@user = User.find_by_profile_url(params[:profile_url])  #for searching by user URL
     raise ActiveRecord::RecordNotFound if  @user.nil? #user was not found
 
+    if @user.external_picture_url?
+      @profile_image_path = @user.external_picture_url
+    else
+      @profile_image_path = 'profile_pics/' + (@user.profile_picture_path).to_s
+    end
 
 		@page_title = @user.name + "\'s Profile"
 
@@ -85,7 +90,7 @@ class UsersController < ApplicationController
 
 
   def user_params
-  	params.require(:user).permit(:name, :email, :blog_url, :profile_picture_path, :hometown, :country, :profile_url)
+  	params.require(:user).permit(:name, :email, :blog_url, :profile_picture_path, :hometown, :country, :profile_url, :external_picture_url)
   end
 
   def validate_current_user_is_user
