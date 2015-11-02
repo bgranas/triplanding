@@ -66,8 +66,10 @@ gem 'rails_12factor', group: :production
 #needed for Windows local server
 gem 'tzinfo-data'
 
-#gem for user-login
+#gems for user-login
 gem 'devise'
+gem 'omniauth'
+gem 'omniauth-facebook'
 
 #gem for colorbox (lightbox)
 gem 'colorbox-rails'

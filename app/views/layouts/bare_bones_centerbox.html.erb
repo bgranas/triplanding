@@ -41,9 +41,11 @@
                   <% if request.env['PATH_INFO'] == signup_path %>
                     <li> <%= link_to 'Sign Up', signup_path, class: 'strong tabs-first-a' %> </li>
                     <li> <%= link_to 'Login', login_path %> </li>
-                  <% else %>
+                  <% elsif request.env['PATH_INFO'] == login_path%>
                     <li> <%= link_to 'Sign Up', signup_path, class: 'tabs-first-a' %> </li>
                     <li> <%= link_to 'Login', login_path, class: 'strong' %> </li>
+                  <% else %>
+                    <!-- Show no links -->
                   <% end %>
 
                 </ul>

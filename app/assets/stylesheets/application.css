@@ -499,12 +499,6 @@ h4{
   font-weight: initial;
 }
 
-
-#login-dropdown a{
-  padding-left:0px;
-  color: #337ab7;
-}
-
 #auth-body-right{
     min-height: 250px;
  }

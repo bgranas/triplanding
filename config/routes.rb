@@ -1,7 +1,8 @@
 Rails.application.routes.draw do
 
 
-  devise_for :users, controllers: {registrations: 'registrations', sessions: 'sessions'}, :path_prefix => 'd'
+  devise_for :users, controllers: {registrations: 'registrations', sessions: 'sessions', omniauth_callbacks: 'omniauth_callbacks'},
+                                  :path_prefix => 'd'
   #resources :users
 
   devise_scope :user do
@@ -24,8 +25,8 @@ Rails.application.routes.draw do
   get 'admin' => 'admin#index' #creates admin_path and admin_url pointing to /admin/index
   get 'admin/users' => 'admin#all_users' #creates admin_users_path and admin_users_url pointing to /admin/all_users
 
-
-
+  #for capturing information after signup
+  match '/users/:id/finish_signup' => 'users#finish_signup', via: [:get, :patch], :as => :finish_signup
 
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".

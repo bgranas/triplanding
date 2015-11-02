@@ -1,7 +1,10 @@
  <div id="login-container">
-  <button class="btn btn-block btn-social btn-facebook">
-    <i class="fa fa-facebook"></i> Sign in with Facebook
-  </button>
+    <a href="<%= user_omniauth_authorize_path(:facebook) %>"
+      class="btn btn-block btn-social btn-facebook"
+      data-no-turbolink="true">
+      <i class="fa fa-facebook"></i> Sign in with Facebook
+    </a>
+
   <button class="btn btn-block btn-social btn-google">
     <i class="fa fa-google"></i> Sign in with Google
   </button>
