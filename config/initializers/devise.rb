@@ -241,6 +241,10 @@ Devise.setup do |config|
                   info_fields: 'first_name,email,picture,verified',
                   image_size: {:width => 200, :height => 200}
 
+  require "omniauth-google-oauth2"
+  config.omniauth :google_oauth2, '702561317014-d84lb2r265qb075blmikfu3r7f175eqg.apps.googleusercontent.com', 'S9-ER4S3CU-whpbGEzpWDf3K',
+                  {access_type: 'online'}
+
   # ==> Warden configuration
   # If you want to use other strategies, that are not supported by Devise, or
   # change the failure app, you can configure them inside the config.warden block.

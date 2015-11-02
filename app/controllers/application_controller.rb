@@ -55,7 +55,7 @@ protected
           redirect_to home_path
         else
           store_location
-          redirect_to new_user_session_path
+          redirect_to login_path
         end
       end
   end

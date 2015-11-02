@@ -1,6 +1,6 @@
 class UsersController < ApplicationController
 
-	layout 'application'
+	layout 'bare_bones_centerbox', :only => [:finish_signup]
 
 	include TripDisplayHelper
 

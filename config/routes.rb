@@ -11,6 +11,7 @@ Rails.application.routes.draw do
     get "/logout" => "sessions#destroy"
   end
 
+
   get 'beta' => 'beta#index'
   get 'beta/index' => 'beta#index', as: 'home' #creates helper home_path and home_url pointing to /beta/index
   get 'beta/about' => 'beta#about', as: 'about' #creates helper about_path and about_url pointing to /beta/about

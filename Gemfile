@@ -70,6 +70,8 @@ gem 'tzinfo-data'
 gem 'devise'
 gem 'omniauth'
 gem 'omniauth-facebook'
+gem 'omniauth-oauth2', '~> 1.3.1'
+gem "omniauth-google-oauth2"
 
 #gem for colorbox (lightbox)
 gem 'colorbox-rails'
