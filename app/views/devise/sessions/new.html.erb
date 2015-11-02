@@ -1,26 +1,20 @@
+<h1>Login to TripHappy</h1>
 
-
-<h2>Login</h2>
-
-<%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
-  <div class="field">
-    <%= f.email_field :email, autofocus: true, :placeholder => 'E-mail' %>
-  </div>
-
-  <div class="field">
-    <%= f.password_field :password, autocomplete: "off", :placeholder => 'Password' %>
-  </div>
-
-  <% if devise_mapping.rememberable? -%>
-    <div class="field">
-      <%= f.check_box :remember_me %>
-      <%= f.label :remember_me %>
+<div class="container-fluid">
+  <div class="row">
+    <div id="auth-body-left" class="col-sm-6">
+      <%= render partial: 'shared/login' %>
     </div>
-  <% end -%>
-
-  <div class="actions">
-    <%= f.submit "Log in", class: 'btn btn-success btn-medium' %>
+    <div id="auth-body-right" class="col-sm-4 col-sm-offset-2 border-left">
+      <div id="sign-up-div">
+        <h5>Don't have an account?</h5>
+        <%= link_to 'Sign up for free today', signup_path %>
+      </div>
+      <div id="reset-div">
+        <h5>Forgot your password?</h5>
+        <%= link_to 'Reset it here', '#' %>
+      </div>
+    </div>
   </div>
-<% end %>
+</div>
 
-<%= render "devise/shared/links" %>

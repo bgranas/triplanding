@@ -5,8 +5,9 @@ Rails.application.routes.draw do
   #resources :users
 
   devise_scope :user do
-    get "/login" => "devise/sessions#new"
-    get "/logout" => "devise/sessions#destroy"
+    get "/login" => "sessions#new"
+    get "/signup" => "registrations#new"
+    get "/logout" => "sessions#destroy"
   end
 
   get 'beta' => 'beta#index'

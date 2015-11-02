@@ -20,6 +20,7 @@ html, body{
   margin: 0;
   padding: 0;
   height: 100%;
+  background-color:#f5f5f5;
 }
 
 h1, h2, h3, h4, h5, h6 {
@@ -451,6 +452,13 @@ h4{
   font-size: 32px;
 }
 
+#auth-body-content h5{
+  margin: 5px 0px;
+}
+
+#sign-up-div{
+  margin-bottom: 30px
+}
 
 .strong{
   font-weight: 900;
@@ -465,7 +473,7 @@ h4{
   #auth-wrapper{
     min-width: 0;
   }
-    #auth-wrapper .col-sm-6{
+    #auth-wrapper .col-sm-6. #auth-wrapper .col-sm-4{
       padding-left:5px;
       padding-right:5px;
     }
@@ -473,16 +481,40 @@ h4{
   #auth-body-content{
     padding:5px;
   }
+
+  #login-dropdown label{
+  color: white;
+}
 }
 
 #auth-footer{
   text-align:center;
 }
 
-#signup-container input {
+#signup-container input, #login-container input {
   width: 100%;
 }
 
+#login-container label{
+  font-weight: initial;
+}
+
+
+#login-dropdown a{
+  padding-left:0px;
+  color: #337ab7;
+}
+
+#auth-body-right{
+    min-height: 250px;
+ }
+.border-left{
+  border-left: 1px solid lightgray;
+}
+
+.color-white{
+  color:white;
+}
 
 /************** LightBox ***************/
 #colorbox{

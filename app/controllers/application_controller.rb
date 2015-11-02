@@ -11,6 +11,7 @@ class ApplicationController < ActionController::Base
     # store last url as long as it isn't a /users path
     if (request.path != "/d/users/sign_in" &&
       request.path != "/login" &&
+      request.path != "/signup" &&
       request.path != "/d/users/sign_up" &&
       request.path != "/d/users/password/new" &&
       request.path != "/d/users/password/edit" &&

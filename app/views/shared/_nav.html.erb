@@ -49,9 +49,10 @@
             <a href="<%= new_user_session_path %>" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">
               Login
             </a>
-            <ul class="dropdown-menu form-dropdown">
+            <ul id="login-dropdown" class="dropdown-menu form-dropdown">
               <li>
                 <%= render :partial => 'shared/login' %>
+                <%= link_to 'Forgot Your Password?' ,'#' %>
               </li>
             </ul>
           </li>

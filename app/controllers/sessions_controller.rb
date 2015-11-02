@@ -1,6 +1,9 @@
 class SessionsController < Devise::SessionsController
   respond_to :html, :json
 
+  layout "bare_bones_centerbox", :only => [:new]
+
+
   def create
     self.resource = warden.authenticate!(auth_options)
     set_flash_message(:notice, :signed_in) if is_flashing_format?

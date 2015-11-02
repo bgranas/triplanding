@@ -12,6 +12,8 @@ Highlighted trips widget
 	/*border-radius: 5px;*/
 	margin-top: 20px;
 	margin-bottom: 25px;
+	background-color: white;
+
 }
 
 	.trip-holder-content {
@@ -23,7 +25,7 @@ Highlighted trips widget
 	}
 
 	.trip-date {
-		
+
 	}
 
 
@@ -110,11 +112,11 @@ Trip likes and shares section
 		color: lightgray;
 		border-right: 1px solid lightgray;
 
-	} 
+	}
 
 		.trip-thumbsup-button:hover {
 			color: #ea7663;
-		} 
+		}
 
 	.trip-thumbsup-total {
 		color: #444444;
@@ -146,7 +148,7 @@ City and country tags
 
 			.trip-destination-item a:hover {
 				text-decoration: none;
-			}			
+			}
 
 		.trip-city-item {
 			border: 1px solid #887C7C;
