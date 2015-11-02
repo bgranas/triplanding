@@ -42,6 +42,7 @@ group :development, :test do
 
   #for writing cool test syntax
   gem 'capybara'
+  gem "launchy" #for save_and_open_page method
 end
 
 group :development do

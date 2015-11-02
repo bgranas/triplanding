@@ -1,8 +1,20 @@
 class RegistrationsController < Devise::RegistrationsController
   respond_to :html, :json
 
+  layout "bare_bones_centerbox", :only => [:new]
+
   before_filter only: [:new] do
     params.delete(:isAdmin)
+  end
+
+  # GET /resource/sign_up
+  # Devise original code, with page_title added
+  def new
+    @page_title = 'Sign Up'
+    build_resource({})
+    set_minimum_password_length
+    yield resource if block_given?
+    respond_with self.resource
   end
 
 

@@ -1,22 +1,20 @@
 <div id="signup-container">
-  <button class="btn btn-block btn-social btn-facebook btn-lg">
-      <i class="fa fa-facebook"></i> Sign up with Facebook
-    </button>
-  <button class="btn btn-block btn-social btn-google btn-lg">
-      <i class="fa fa-google"></i> Sign up with Google
-  </button>
+  <div id="signup-social">
+    <%= render partial: 'shared/sign_up_social' %>
 
-  <div class="signup-or-separator">
+    <div class="signup-or-separator">
       <span class="h6 signup-or-separator-text">or</span>
       <hr>
+    </div>
   </div>
+
+
 
   <ul class="error-message"></ul>
   <%= form_for(:user, url: registration_path(:user), remote: true, :html => {:id => "signup-form"}) do |f| %>
-
   <div class="input-group margin-bottom-sm">
     <span class="input-group-addon"><i class="fa fa-user fa-fw"></i></span>
-    <%= f.text_field :name, class: 'vertical-stack-form', :placeholder => 'Display Name', :required => true %>
+    <%= f.text_field :name, class: 'vertical-stack-form', :placeholder => 'Display Name', :required => true, autofocus: true %>
   </div>
 
 
@@ -46,7 +44,7 @@
 
   <p>Already a member? <%= link_to 'Login.', new_user_session_path, class: 'lightbox-close', data: {no_turbolink: true} %> </p>
 
-</div>
+</div> <!-- End sign-up container -->
 
 
 

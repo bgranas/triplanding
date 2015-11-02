@@ -15,13 +15,12 @@
 //= require jquery_ujs
 //= require jquery.countdown.js
 //= require colorbox-rails
+//= require jquery.readyselector
 //= require turbolinks
 //= require_tree .
 
 
 
-var ready = function() {
-}
 
 var map;
 var myLatLng = {lat: 28, lng: 0};
@@ -35,5 +34,3 @@ function initMap() {
   });
 }
 
-$(document).ready(ready);
-$(document).on('page:load', ready);

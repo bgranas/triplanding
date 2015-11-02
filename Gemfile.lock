@@ -36,6 +36,7 @@ GEM
       minitest (~> 5.1)
       thread_safe (~> 0.3, >= 0.3.4)
       tzinfo (~> 1.1)
+    addressable (2.3.8)
     ansi (1.5.0)
     arel (6.0.3)
     bcrypt (3.1.10)
@@ -104,6 +105,8 @@ GEM
       railties (>= 3.1.0)
       turbolinks
     json (1.8.3)
+    launchy (2.4.3)
+      addressable (~> 2.3)
     listen (3.0.3)
       rb-fsevent (>= 0.9.3)
       rb-inotify (>= 0.9)
@@ -237,6 +240,7 @@ DEPENDENCIES
   jbuilder (~> 2.0)
   jquery-rails
   jquery-turbolinks
+  launchy
   minitest-reporters
   pg
   puma

@@ -116,6 +116,7 @@ class SiteLayoutTest < ActionDispatch::IntegrationTest
     click_link('Sign Up')
     assert_selector '.lightbox-content'
 
+
     within("#signup-form") do
       fill_in 'Display Name', :with => users(:one).name
       fill_in 'E-mail', :with => 'test@test.com'
@@ -124,6 +125,7 @@ class SiteLayoutTest < ActionDispatch::IntegrationTest
       click_button('Sign up')
     end
 
+    print page.html
     assert_text "Password is too short (minimum is 8 characters)"
     assert_text "Password confirmation doesn't match Password"
 

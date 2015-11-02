@@ -80,6 +80,10 @@ h4{
   position: relative;
 }
 
+.col-centered{
+    float: none;
+    margin: 0 auto;
+}
 
 /* Bootstrap Override for Header */
 .navbar{
@@ -378,6 +382,81 @@ h4{
 
 
 
+/************** Static Login and Sign-up pages ****************************/
+#auth-wrapper{
+    vertical-align: baseline;
+    margin: auto;
+    min-width: 710px;
+}
+
+#auth-header{
+    margin: 0;
+    padding: 0;
+    border: 0;
+    font-weight: inherit;
+    font-style: inherit;
+    font-size: 100%;
+    vertical-align: baseline;
+}
+
+#auth-header img{
+  height: 40px;
+}
+
+#logo-and-tabs{
+  padding-top:40px;
+  overflow: hidden;
+}
+
+#auth-body{
+  box-shadow: 1px 3px 8px rgba(0, 0, 0, 0.2);
+  margin: 10px 0px;
+}
+
+#auth-body-content{
+  background-color: white;
+  position: relative;
+  padding: 20px;
+  min-height: 330px;
+}
+
+#auth-body-content h1{
+  margin-top:0px;
+  font-size: 32px;
+}
+
+#auth-body-right{
+  border-left: solid 1px lightgray;
+}
+
+ /** Media queries for xs screens */
+@media (max-width: 767px){
+  #auth-body-right{
+    border-left: none;
+  }
+
+  #auth-wrapper{
+    min-width: 0;
+  }
+    #auth-wrapper .col-sm-6{
+      padding-left:5px;
+      padding-right:5px;
+    }
+
+  #auth-body-content{
+    padding:5px;
+  }
+}
+
+#auth-footer{
+  text-align:center;
+}
+
+#signup-container input {
+  width: 100%;
+}
+
+
 /************** LightBox ***************/
 #colorbox{
   outline: none;
@@ -385,10 +464,6 @@ h4{
 
 .lightbox-content{
   padding: 20px;
-}
-
-.lightbox-content input {
-  width: 100%;
 }
 
 .lightbox-content p{
