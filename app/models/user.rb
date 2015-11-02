@@ -80,7 +80,7 @@ class User < ActiveRecord::Base
   #generating unique profile url if one was not provided
   def generate_profile_url
     #need to replace spaces with strings
-    debug = true
+    debug = false
 
     if !self.name.nil? and self.profile_url.blank?
       self.profile_url = self.name.gsub(' ', '-').downcase #replacing spaces with dashes
