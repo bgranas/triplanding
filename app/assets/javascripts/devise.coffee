@@ -14,7 +14,7 @@ $ ->
         for error in data.errors
           do ->
             $('#signup-container').find('.error-message').append('<li>' + error + '</li>')
-            $('#signup-container').fadeIn()
+            $('#signup-container').find('.error-message').fadeIn().removeClass('hidden')
 
     #sign-up failed
     $("#signup-form").on "ajax:error", (e, xhr, status, error) ->

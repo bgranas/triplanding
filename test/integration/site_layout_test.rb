@@ -118,10 +118,10 @@ class SiteLayoutTest < ActionDispatch::IntegrationTest
 
 
     within("#signup-form") do
-      fill_in 'Display Name', :with => users(:one).name
+      fill_in 'Display Name', :with => 'unclec'
       fill_in 'E-mail', :with => 'test@test.com'
-      fill_in 'Password', :with => '11111'
-      fill_in 'Confirm Password', :with => '11112'
+      fill_in 'Password', :with => '1111111'
+      fill_in 'Confirm Password', :with => '1112111'
       click_button('Sign up')
     end
 

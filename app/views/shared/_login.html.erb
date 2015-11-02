@@ -23,6 +23,10 @@
       <%= f.password_field :password, autocomplete: "off", class: 'vertical-stack-form',
                            :placeholder => 'Password', :required => true %>
     </div>
+
+      <%= f.check_box :remember_me , class: "initial-width" %>
+      <%= f.label :remember_me %>
+
     <%= f.submit "Login", class: 'btn btn-primary btn-block' %>
   <% end %>
   <span>Forgot Your Password?</span>

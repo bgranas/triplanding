@@ -37,8 +37,17 @@
                 <%= link_to image_tag('gray_orange_logo_sm.png', alt: 'TripHappy logo'), home_path %>
               </div>
               <div id="tabs" class="pull-right">
-                <%= link_to 'Sign Up', new_user_registration_path %>
-                <%= link_to 'Login', login_path %>
+                <ul class="list-inline">
+                  <% if request.env['PATH_INFO'] == new_user_registration_path %>
+                    <li> <%= link_to 'Sign Up', new_user_registration_path, class: 'strong tabs-first-a' %> </li>
+                    <li> <%= link_to 'Login', login_path %> </li>
+                  <% else %>
+                    <li> <%= link_to 'Sign Up', new_user_registration_path, class: 'tabs-first-a' %> </li>
+                    <li> <%= link_to 'Login', login_path, class: 'strong' %> </li>
+                  <% end %>
+
+                </ul>
+
 
               </div>
             </div>

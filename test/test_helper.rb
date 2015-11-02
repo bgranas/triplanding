@@ -26,4 +26,6 @@ class ActionDispatch::IntegrationTest
   include Capybara::DSL
   include Warden::Test::Helpers
   Warden.test_mode!
+
+  Capybara.default_wait_time = 5
 end

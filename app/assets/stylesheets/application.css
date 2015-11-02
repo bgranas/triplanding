@@ -208,6 +208,14 @@ h4{
       width:100%;
     }
 
+    .form-dropdown label{
+      font-weight: 200;
+    }
+
+    .initial-width{
+      width:initial !important;
+    }
+
 
   /* Background color once dropdown is clicked */
   .navbar-inverse .navbar-nav>.open>a, .navbar-inverse .navbar-nav>.open>a:focus, .navbar-inverse .navbar-nav>.open>a:hover {
@@ -408,6 +416,24 @@ h4{
   overflow: hidden;
 }
 
+#tabs{
+  line-height: 40px; /* height of logo */
+}
+#tabs a{
+  color: #333;
+    text-decoration: none;
+    font-size: 15px;
+}
+
+.tabs-first-a{
+  padding-right:10px;
+  border-right:1px solid black;
+}
+
+#tabs ul{
+  margin-bottom: 0px;
+}
+
 #auth-body{
   box-shadow: 1px 3px 8px rgba(0, 0, 0, 0.2);
   margin: 10px 0px;
@@ -425,8 +451,9 @@ h4{
   font-size: 32px;
 }
 
-#auth-body-right{
-  border-left: solid 1px lightgray;
+
+.strong{
+  font-weight: 900;
 }
 
  /** Media queries for xs screens */

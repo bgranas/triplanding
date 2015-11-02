@@ -10,11 +10,11 @@
 
 
 
-  <ul class="error-message"></ul>
+  <ul class="error-message hidden"></ul>
   <%= form_for(:user, url: registration_path(:user), remote: true, :html => {:id => "signup-form"}) do |f| %>
   <div class="input-group margin-bottom-sm">
     <span class="input-group-addon"><i class="fa fa-user fa-fw"></i></span>
-    <%= f.text_field :name, class: 'vertical-stack-form', :placeholder => 'Display Name', :required => true, autofocus: true %>
+    <%= f.text_field :name, class: 'vertical-stack-form', :placeholder => 'Display Name', :required => true %>
   </div>
 
 
