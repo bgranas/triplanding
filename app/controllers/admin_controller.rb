@@ -20,9 +20,11 @@ class AdminController < ApplicationController
   end
 
   def edit_user
+
     @user = User.find(params[:id])
 
     @page_title = "Edit " + @user.name
+
   end
 
   def update_user
