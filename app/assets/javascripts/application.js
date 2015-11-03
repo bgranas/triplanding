@@ -75,6 +75,7 @@ function displayResults( data ){
   $("#location-query-results").empty();
   data.features.forEach(function(feat){
     var label = feat.properties.label;
-    $("#location-query-results").append('<li>'+label+'</li>');
+    $("#location-query-results").append('<li class="location-query-resultslist">'+label+'</li>');
   });
 };
+
