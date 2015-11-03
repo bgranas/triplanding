@@ -624,16 +624,8 @@ hr{
   border:none;
 }
 
-.nav-tabs {
-
-}
-
   .nav-tabs a {
     color: #444444;
-  }
-
-  .nav-tabs>li {
-
   }
 
   .nav-tabs>li>a {
