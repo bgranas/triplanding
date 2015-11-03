@@ -36,7 +36,7 @@ function initSearch() {
   autocomplete = new google.maps.places.Autocomplete(
     (document.getElementById('location-query')),
       { types: ['geocode'] });
-  autocomplete.addListener('place_changed'); 
+  autocomplete.addListener('place_changed');
 }
 
 function geolocate() {
@@ -53,7 +53,7 @@ if (navigator.geolocation) {
     autocomplete.setBounds(circle.getBounds());
   });
 }
-} 
+}
 
 
 

@@ -2,6 +2,15 @@
 
 $ ->
 
+  ///user scrolled to top of page (test for map view)
+  $(window).scroll (event) ->
+    scroll = $(window).scrollTop()
+    if scroll == 0
+      alert 'user scrolled to top of page'
+      map.setOptions({scrollwheel: false})
+    return
+  ///
+
   #preventing colorbox focus on load
   $(document).bind 'cbox_load', ->
     $('#colorbox').blur()
