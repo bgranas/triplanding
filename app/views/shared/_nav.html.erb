@@ -25,7 +25,7 @@
               <span class="caret"></span>
             </a>
             <ul class="dropdown-menu">
-              <li><%= link_to 'My Profile', ('/' + current_user.profile_url) %></li>
+              <li><%= link_to 'My Profile', ('/' + current_user.profile_url), data: {no_turbolink: true} %></li>
               <li><%= link_to 'My Trips', '#' %></li>
               <li><%= link_to 'My Bookings', '#' %></li>
               <li><%= link_to 'Edit Profile', {:controller => 'users', :action => 'edit', :id => current_user.id} %></li>
@@ -49,9 +49,10 @@
             <a href="<%= new_user_session_path %>" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">
               Login
             </a>
-            <ul class="dropdown-menu form-dropdown">
+            <ul id="login-dropdown" class="dropdown-menu form-dropdown">
               <li>
                 <%= render :partial => 'shared/login' %>
+                <%= link_to 'Forgot Your Password?' ,'#' %>
               </li>
             </ul>
           </li>

@@ -42,6 +42,7 @@ group :development, :test do
 
   #for writing cool test syntax
   gem 'capybara'
+  gem "launchy" #for save_and_open_page method
 end
 
 group :development do
@@ -65,8 +66,12 @@ gem 'rails_12factor', group: :production
 #needed for Windows local server
 gem 'tzinfo-data'
 
-#gem for user-login
+#gems for user-login
 gem 'devise'
+gem 'omniauth'
+gem 'omniauth-facebook'
+gem 'omniauth-oauth2', '~> 1.3.1'
+gem "omniauth-google-oauth2"
 
 #gem for colorbox (lightbox)
 gem 'colorbox-rails'

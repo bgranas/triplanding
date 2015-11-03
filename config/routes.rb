@@ -1,13 +1,16 @@
 Rails.application.routes.draw do
 
 
-  devise_for :users, controllers: {registrations: 'registrations', sessions: 'sessions'}, :path_prefix => 'd'
+  devise_for :users, controllers: {registrations: 'registrations', sessions: 'sessions', omniauth_callbacks: 'omniauth_callbacks'},
+                                  :path_prefix => 'd'
   #resources :users
 
   devise_scope :user do
-    get "/login" => "devise/sessions#new"
-    get "/logout" => "devise/sessions#destroy"
+    get "/login" => "sessions#new"
+    get "/signup" => "registrations#new"
+    get "/logout" => "sessions#destroy"
   end
+
 
   get 'beta' => 'beta#index'
   get 'beta/index' => 'beta#index', as: 'home' #creates helper home_path and home_url pointing to /beta/index
@@ -23,8 +26,8 @@ Rails.application.routes.draw do
   get 'admin' => 'admin#index' #creates admin_path and admin_url pointing to /admin/index
   get 'admin/users' => 'admin#all_users' #creates admin_users_path and admin_users_url pointing to /admin/all_users
 
-
-
+  #for capturing information after signup
+  match '/users/:id/finish_signup' => 'users#finish_signup', via: [:get, :patch], :as => :finish_signup
 
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".

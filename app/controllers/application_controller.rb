@@ -11,6 +11,7 @@ class ApplicationController < ActionController::Base
     # store last url as long as it isn't a /users path
     if (request.path != "/d/users/sign_in" &&
       request.path != "/login" &&
+      request.path != "/signup" &&
       request.path != "/d/users/sign_up" &&
       request.path != "/d/users/password/new" &&
       request.path != "/d/users/password/edit" &&
@@ -34,6 +35,17 @@ class ApplicationController < ActionController::Base
     request.referrer
   end
 
+   def ensure_signup_complete
+    # Ensure we don't go into an infinite loop
+    return if action_name == 'finish_signup'
+
+    # Redirect to the 'finish_signup' page if the user
+    # email hasn't been verified yet
+    if current_user && !current_user.email_verified?
+      redirect_to finish_signup_path(current_user)
+    end
+  end
+
 protected
 
   def verify_is_admin
@@ -43,7 +55,7 @@ protected
           redirect_to home_path
         else
           store_location
-          redirect_to new_user_session_path
+          redirect_to login_path
         end
       end
   end

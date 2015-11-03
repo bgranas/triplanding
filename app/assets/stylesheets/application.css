@@ -20,6 +20,7 @@ html, body{
   margin: 0;
   padding: 0;
   height: 100%;
+  background-color:#f5f5f5;
 }
 
 h1, h2, h3, h4, h5, h6 {
@@ -80,6 +81,10 @@ h4{
   position: relative;
 }
 
+.col-centered{
+    float: none;
+    margin: 0 auto;
+}
 
 /* Bootstrap Override for Header */
 .navbar{
@@ -202,6 +207,14 @@ h4{
 
     .form-dropdown input{
       width:100%;
+    }
+
+    .form-dropdown label{
+      font-weight: 200;
+    }
+
+    .initial-width{
+      width:initial !important;
     }
 
 
@@ -378,6 +391,125 @@ h4{
 
 
 
+/************** Static Login and Sign-up pages ****************************/
+#auth-wrapper{
+    vertical-align: baseline;
+    margin: auto;
+    min-width: 710px;
+}
+
+#auth-header{
+    margin: 0;
+    padding: 0;
+    border: 0;
+    font-weight: inherit;
+    font-style: inherit;
+    font-size: 100%;
+    vertical-align: baseline;
+}
+
+#auth-header img{
+  height: 40px;
+}
+
+#logo-and-tabs{
+  padding-top:40px;
+  overflow: hidden;
+}
+
+#tabs{
+  line-height: 40px; /* height of logo */
+}
+#tabs a{
+  color: #333;
+    text-decoration: none;
+    font-size: 15px;
+}
+
+.tabs-first-a{
+  padding-right:10px;
+  border-right:1px solid black;
+}
+
+#tabs ul{
+  margin-bottom: 0px;
+}
+
+#auth-body{
+  box-shadow: 1px 3px 8px rgba(0, 0, 0, 0.2);
+  margin: 10px 0px;
+}
+
+#auth-body-content{
+  background-color: white;
+  position: relative;
+  padding: 20px;
+  min-height: 330px;
+}
+
+#auth-body-content h1{
+  margin-top:0px;
+  font-size: 32px;
+}
+
+#auth-body-content h5{
+  margin: 5px 0px;
+}
+
+#sign-up-div{
+  margin-bottom: 30px
+}
+
+.strong{
+  font-weight: 900;
+}
+
+ /** Media queries for xs screens */
+@media (max-width: 767px){
+  #auth-body-right{
+    border-left: none;
+  }
+
+  #auth-wrapper{
+    min-width: 0;
+  }
+    #auth-wrapper .col-sm-6. #auth-wrapper .col-sm-4{
+      padding-left:5px;
+      padding-right:5px;
+    }
+
+  #auth-body-content{
+    padding:5px;
+  }
+
+  #login-dropdown label{
+  color: white;
+}
+}
+
+#auth-footer{
+  text-align:center;
+}
+
+#signup-container input, #login-container input {
+  width: 100%;
+}
+
+#login-container label{
+  font-weight: initial;
+}
+
+#auth-body-right{
+    min-height: 250px;
+ }
+.border-left{
+  border-left: 1px solid lightgray;
+}
+
+.color-white{
+  color:white;
+}
+
 /************** LightBox ***************/
 #colorbox{
   outline: none;
@@ -385,10 +517,6 @@ h4{
 
 .lightbox-content{
   padding: 20px;
-}
-
-.lightbox-content input {
-  width: 100%;
 }
 
 .lightbox-content p{

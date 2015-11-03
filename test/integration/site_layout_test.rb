@@ -54,10 +54,10 @@ class SiteLayoutTest < ActionDispatch::IntegrationTest
     visit leads_path
     assert_current_path new_user_session_path #should be redirected to login
 
-    within('#new_user') do
+    within('#login-container') do
       fill_in 'E-mail', with: 'admin@user.com'
       fill_in 'Password', with: '12345678'
-      click_button 'Log in'
+      click_button 'Login'
     end
 
     assert_current_path leads_path
@@ -116,11 +116,12 @@ class SiteLayoutTest < ActionDispatch::IntegrationTest
     click_link('Sign Up')
     assert_selector '.lightbox-content'
 
+
     within("#signup-form") do
-      fill_in 'Display Name', :with => users(:one).name
+      fill_in 'Display Name', :with => 'unclec'
       fill_in 'E-mail', :with => 'test@test.com'
-      fill_in 'Password', :with => '11111'
-      fill_in 'Confirm Password', :with => '11112'
+      fill_in 'Password', :with => '1111111'
+      fill_in 'Confirm Password', :with => '1112111'
       click_button('Sign up')
     end
 
