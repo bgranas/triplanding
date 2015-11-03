@@ -645,3 +645,41 @@ hr{
     border-bottom: 1px solid #3B68B7;
 
   }
+
+
+/************** Google autocomplte dropdown styles ***************/
+
+.pac-container {
+  width: auto !important;
+}
+
+  .pac-container:after {
+    /* Disclaimer: not needed to show 'powered by Google' if also a Google Map is shown */
+
+    background-image: none !important;
+    height: 0px;
+}
+
+.pac-item {
+
+}
+
+  .pac-item:hover {
+
+  }
+
+  .pac-item-selected {
+
+  }
+
+.pac-icon {
+
+}
+
+.pac-matched {
+
+}
+
+.pac-item-query {
+
+}
