@@ -22,8 +22,10 @@
   </div>
 
   <div class="field">
-    <%= f.label :hometown %><br />
-    <%= f.text_field :hometown %>
+      <%= f.label :hometown %><br />
+      <%= f.text_field :hometown, :id => "location-query" %>
+    <ul id="location-query-results">  
+    </ul>
   </div>
 
   <div class="field">

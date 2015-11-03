@@ -20,8 +20,7 @@
 
 
 
-var ready = function() {
-}
+
 
 var map;
 var myLatLng = {lat: 28, lng: 0};
@@ -35,5 +34,47 @@ function initMap() {
   });
 }
 
-$(document).ready(ready);
-$(document).on('page:load', ready);
+var delay = (function(){
+  var timer = 0;
+  return function(callback, ms){
+    clearTimeout (timer);
+    timer = setTimeout(callback, ms);
+  };
+})();
+
+
+$(document).ready(function () {
+	$("#location-query").keyup( function () {
+		var text =  $(this).val();
+		delay( function () {
+			
+			$.ajax({
+			  url: "https://search.mapzen.com/v1/autocomplete",
+			  method: "GET",
+			  dataType: "json",
+			  data: {
+			    "text": text,
+			    "api_key": "search-EEgHGcM",
+			    "layers": "course",
+			    "sources": "ga",
+
+			  },
+			  success: function( data, status, jqxhr ){
+			    console.log( "Request received:", data );
+			    displayResults (data);
+			  },
+			  error: function( jqxhr, status, error ){
+			    console.log( "Something went wrong!" );
+			  },
+			});
+		}, 250);
+	}); 
+});
+
+function displayResults( data ){
+  $("#location-query-results").empty();
+  data.features.forEach(function(feat){
+    var label = feat.properties.label;
+    $("#location-query-results").append('<li>'+label+'</li>');
+  });
+};
