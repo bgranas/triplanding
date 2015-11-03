@@ -1,50 +1,22 @@
 <div class="col-md-3 col-sm-6 col-xs-12">
 	<div class="trip-holder">
 		<div class="row">
-			<div class="col-xs-12 trip-holder-content">
-
-				<!-- Title of Trip -->
-				<h4 class="col-xs-12 trip-title"><%= link_to(@tripTitle, {:controller => 'trips', :action => 'show', :trip_id => @tripID}) %></h4>
-				<p class="col-xs-12 trip-date"><i><%= @tripDate %></i></p>
+			<div class="col-xs-12 trip-holder-map">
 
 				<!-- Trip static map -->
 				<div class="col-xs-12 trip-map-static">
 
 					<!-- Inserting Trip static map img -->
 					<img src=<%= @tripMapStatic %>>
-					
-						<!-- Thumbs up icon and counter -->
-						<ul class="list-inline trip-thumbsup-container">
-							<li class="trip-thumbsup-button"><i class="fa fa-thumbs-o-up"> </i></li>
-							<li class="trip-thumbsup-total"><%= @likeTotal %></li>
-						</ul>
-
-						<!-- Like and share buttons -->
-						<ul class="list-inline trip-favoriteandshare-container">
-							<li><i class="fa fa-star-o fa-lg trip-favorite"><%= link_to("", {:controller => 'trips', :action => 'like'}) %></i></li>
-							<li><i><%= link_to("", {:controller => 'share'}, :class => "fa fa-share-alt fa-lg trip-share") %></i></li>
-						</ul>
 
 				</div>
 
+			</div>
+			<div class="col-xs-12 trip-holder-content">
 
-
-
-				<!-- Trip countries list -->
-
-					<ul class="col-xs-12 list-inline destination-item-list">
-						<% @tripCountry.first(5).each do |country| %>
-							<li class="trip-destination-item trip-country-item"><p><%= link_to(country, {:controller => 'trips', :action => 'show', :country => @country}) %></p></li>
-						<% end %>						
-
-						<% @tripCity.first(3).each do |city| %>
-							<li class="trip-destination-item trip-city-item"><p><%= link_to(city, {:controller => 'trips', :action => 'show', :city => city}) %></p></li>
-						<% end %>				
-
-						<% if @tripCity.length > 3 %>
-							<li class="trip-destination-item trip-excess-item"><%= link_to("...", {:controller => 'users', :action => 'show'}) %></li>
-						<% end %>
-					</ul>
+				<!-- Title of Trip -->
+				<h4 class="col-xs-12 trip-title"><%= link_to(@tripTitle, {:controller => 'trips', :action => 'show', :trip_id => @tripID}) %></h4>
+				<p class="col-xs-12 trip-date"><i><%= @tripDate %></i></p>
 
 
 
@@ -66,6 +38,37 @@
 							</div>
 
 						</div>
+					</div>
+
+						<!-- Hidden on load - visible on hover -->
+					<div class="col-xs-12 tripdisplay-hover-content">
+						<!-- Trip countries list  -->
+						<ul class="col-xs-12 list-inline destination-item-list">
+							<% @tripCountry.first(5).each do |country| %>
+								<li class="trip-destination-item trip-country-item"><p><%= link_to(country, {:controller => 'trips', :action => 'show', :country => @country}) %></p></li>
+							<% end %>						
+
+							<% @tripCity.first(3).each do |city| %>
+								<li class="trip-destination-item trip-city-item"><p><%= link_to(city, {:controller => 'trips', :action => 'show', :city => city}) %></p></li>
+							<% end %>				
+
+							<% if @tripCity.length > 3 %>
+								<li class="trip-destination-item trip-excess-item"><%= link_to("...", {:controller => 'users', :action => 'show'}) %></li>
+							<% end %>
+						</ul>
+
+						<!-- Thumbs up icon and counter -->
+						<ul class="list-inline trip-thumbsup-container">
+							<li class="trip-thumbsup-button"><i class="fa fa-thumbs-o-up"> </i></li>
+							<li class="trip-thumbsup-total"><%= @likeTotal %></li>
+						</ul>
+
+						<!-- Like and share buttons -->
+						<ul class="list-inline trip-favoriteandshare-container">
+							<li><i class="fa fa-star-o fa-lg trip-favorite"><%= link_to("", {:controller => 'trips', :action => 'like'}) %></i></li>
+							<li><i><%= link_to("", {:controller => 'share'}, :class => "fa fa-share-alt fa-lg trip-share") %></i></li>
+						</ul>
+
 					</div>
 				</div>
 		</div>

@@ -7,6 +7,8 @@
 Highlighted trips widget
 ***********************/
 
+
+
 .trip-holder {
 	border: 1px solid lightgray;
 	/*border-radius: 5px;*/
@@ -15,7 +17,7 @@ Highlighted trips widget
 }
 
 	.trip-holder-content {
-
+		
 	}
 
 	.trip-title {
@@ -185,6 +187,28 @@ City and country tags
 	.creator-username {
 		vertical-align: middle;
 	}
+
+
+	
+
+
+	.tripdisplay-hover-content {
+		display: none;
+
+	}
+
+		.tripdisplay-hover-content:hover {
+			display: block;
+					
+
+			/**
+			Only visible on hover
+			transformation to pull up on hover
+				-webkit-transition-duration: 0.2s !important;
+			  -moz-transition-duration: 0.2s !important;
+			  transition-duration: 0.2s !important;
+			**/
+		}
 
 
 
