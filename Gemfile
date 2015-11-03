@@ -72,6 +72,7 @@ gem 'omniauth'
 gem 'omniauth-facebook'
 gem 'omniauth-oauth2', '~> 1.3.1'
 gem "omniauth-google-oauth2"
+gem 'omniauth-instagram', '~> 1.0', '>= 1.0.1'
 
 #gem for colorbox (lightbox)
 gem 'colorbox-rails'
