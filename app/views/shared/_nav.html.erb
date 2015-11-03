@@ -52,7 +52,7 @@
             <ul id="login-dropdown" class="dropdown-menu form-dropdown">
               <li>
                 <%= render :partial => 'shared/login' %>
-                <%= link_to 'Forgot Your Password?' ,'#' %>
+                <%= link_to 'Forgot Your Password?' , new_password_path(:user), class: 'dropdown-link'  %>
               </li>
             </ul>
           </li>

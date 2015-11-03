@@ -464,6 +464,18 @@ h4{
   font-weight: 900;
 }
 
+.dropdown-link{
+  text-align: left;
+  color: #337ab7 !important;
+  padding-left: 0px !important;
+  padding-top: 10px !important;
+}
+
+  .dropdown-link:hover{
+    text-decoration: underline !important;
+    background-color: transparent !important;
+  }
+
  /** Media queries for xs screens */
 @media (max-width: 767px){
   #auth-body-right{
@@ -485,6 +497,7 @@ h4{
   #login-dropdown label{
   color: white;
   }
+
 }
 
 #auth-footer{
