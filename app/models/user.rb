@@ -45,7 +45,7 @@ class User < ActiveRecord::Base
       email_is_verified = auth.info.email && (auth.info.verified || auth.info.verified_email || auth.extra.raw_info.email_verified)
       email = auth.info.email if email_is_verified
 
-      puts '********************auth: ' + auth.to_yaml
+      #puts '********************auth: ' + auth.to_yaml
       user = User.where(:email => email).first if email
 
       # Create the user if it's a new registration

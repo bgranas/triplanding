@@ -47,7 +47,7 @@ $(document).ready(function () {
 	$("#location-query").keyup( function () {
 		var text =  $(this).val();
 		delay( function () {
-			
+
 			$.ajax({
 			  url: "https://search.mapzen.com/v1/autocomplete",
 			  method: "GET",
@@ -68,7 +68,7 @@ $(document).ready(function () {
 			  },
 			});
 		}, 250);
-	}); 
+	});
 });
 
 function displayResults( data ){
