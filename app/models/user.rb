@@ -42,8 +42,10 @@ class User < ActiveRecord::Base
       # Get the existing user by email if the provider gives us a verified email.
       # If no verified email was provided we assign a temporary email and ask the
       # user to verify it on the next step via UsersController.finish_signup
-      email_is_verified = auth.info.email && (auth.info.verified || auth.info.verified_email)
+      email_is_verified = auth.info.email && (auth.info.verified || auth.info.verified_email || auth.extra.raw_info.email_verified)
       email = auth.info.email if email_is_verified
+
+      name = auth.info.first_name ?  auth.info.first_name : auth.info.given_name
       puts '********************auth: ' + auth.to_yaml
       user = User.where(:email => email).first if email
 
@@ -51,7 +53,7 @@ class User < ActiveRecord::Base
       if user.nil?
 
         user = User.new(
-          name: auth.info.first_name,
+          name: name,
           external_picture_url: auth.info.image,
           email: email ? email : "#{TEMP_EMAIL_PREFIX}-#{auth.uid}-#{auth.provider}.com",
           password: Devise.friendly_token[0,20]
@@ -81,7 +83,8 @@ class User < ActiveRecord::Base
     debug = false
 
     if !self.name.nil? and self.profile_url.blank?
-      self.profile_url = self.name.gsub(' ', '-').downcase #replacing spaces with dashes
+      temp_name = self.name.downcase.gsub(' ', '-').gsub('_', '-') #replacing spaces, underscores with dashes
+      self.profile_url = temp_name #replacing spaces with dashes
       puts '************** profile_url: ' + self.profile_url if debug
       puts '************** self.errors[profile_url]: ' + self.errors[:profile_url].to_s if debug
       puts '************** User.find_by_profile_url(self.profile_url).nil?: ' +
@@ -92,7 +95,7 @@ class User < ActiveRecord::Base
       i = 2
       while not User.find_by_profile_url(self.profile_url).nil? do
         puts '************** self.errors[profile_url]: ' + self.errors[:profile_url].to_s if debug
-        self.profile_url = self.name + "_" + i.to_s
+        self.profile_url = temp_name + "_" + i.to_s
         puts '************** new profile_url ' + self.profile_url if debug
         self.valid? #checking if valid, will generate new self.errors
         i = i + 1

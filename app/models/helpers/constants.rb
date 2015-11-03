@@ -1,6 +1,6 @@
 NAME_REGEX = /\A[A-Za-z0-9]+(?:[ _-][A-Za-z0-9]+)*\z/
 HOMETOWN_REGEX = /\A[a-zA-ZàáâäãåąčćęèéêëėįìíîïłńòóôöõøùúûüųūÿýżźñçčšžÀÁÂÄÃÅĄĆČĖĘÈÉÊËÌÍÎÏĮŁŃÒÓÔÖÕØÙÚÛÜŲŪŸÝŻŹÑßÇŒÆČŠŽ∂ð ,.'-]+\z/u
-PROFILE_URL = /\A[a-zA-Z0-9\-_]+\z/
+PROFILE_URL = /\A[a-z0-9\-_]+\z/
 URL_VALLIDATION = /\A^[a-z0-9]+([\-\.]{1}[a-z0-9]+)*\.[a-z]{2,5}\z/
 
 FORBIDDEN_USERNAMES = ["4r5e",
