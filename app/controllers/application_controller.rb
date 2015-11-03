@@ -13,6 +13,7 @@ class ApplicationController < ActionController::Base
       request.path != "/login" &&
       request.path != "/signup" &&
       request.path != "/d/users/sign_up" &&
+      request.path != "/d/users/password" &&
       request.path != "/d/users/password/new" &&
       request.path != "/d/users/password/edit" &&
       request.path != "/d/users/confirmation" &&
