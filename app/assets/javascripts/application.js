@@ -67,5 +67,3 @@ var delay = (function(){
 
 
 
-
-

@@ -54,3 +54,8 @@ bower.json
 
 # Ignore Spring files.
 /spring/*.pid
+
+.env
+
+# Ignore application configuration
+/config/application.yml
