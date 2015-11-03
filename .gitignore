@@ -54,3 +54,5 @@ bower.json
 
 # Ignore Spring files.
 /spring/*.pid
+
+.env
