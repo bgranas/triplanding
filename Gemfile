@@ -43,6 +43,9 @@ group :development, :test do
   #for writing cool test syntax
   gem 'capybara'
   gem "launchy" #for save_and_open_page method
+
+  #dealing with setting environment variables
+  gem 'figaro'
 end
 
 group :development do

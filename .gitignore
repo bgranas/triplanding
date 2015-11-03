@@ -56,3 +56,6 @@ bower.json
 /spring/*.pid
 
 .env
+
+# Ignore application configuration
+/config/application.yml
