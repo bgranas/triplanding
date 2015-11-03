@@ -473,7 +473,7 @@ h4{
   #auth-wrapper{
     min-width: 0;
   }
-    #auth-wrapper .col-sm-6. #auth-wrapper .col-sm-4{
+    #auth-wrapper .col-sm-6, #auth-wrapper .col-sm-4{
       padding-left:5px;
       padding-right:5px;
     }
@@ -484,7 +484,7 @@ h4{
 
   #login-dropdown label{
   color: white;
-}
+  }
 }
 
 #auth-footer{
