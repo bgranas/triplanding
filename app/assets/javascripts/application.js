@@ -15,10 +15,9 @@
 //= require jquery_ujs
 //= require jquery.countdown.js
 //= require colorbox-rails
+//= require jquery.readyselector
 //= require turbolinks
 //= require_tree .
-
-
 
 
 
@@ -29,10 +28,11 @@ function initMap() {
     center: myLatLng,
     zoom: 3,
     scrollwheel: false,
-    mapTypeId: google.maps.MapTypeId.SATELLITE
+    //mapTypeId: google.maps.MapTypeId.SATELLITE
 
   });
 }
+
 
 var delay = (function(){
   var timer = 0;
