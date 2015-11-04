@@ -1,6 +1,6 @@
 class TripsController < ApplicationController
 
-  layout 'application'
+  layout 'nav_bar_only', :only => [:new, :edit]
 
   def index
 

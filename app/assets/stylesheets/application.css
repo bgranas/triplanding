@@ -90,6 +90,7 @@ h4{
 .navbar{
   border-radius: 0px;
   margin-bottom:0px;
+  height:6vh;
 }
 
 .navbar-inverse {
@@ -245,7 +246,7 @@ h4{
   }
 
 #main-content{
-  padding-bottom: 150px; /* Min-Height of Footer */
+  padding-bottom: 155px; /* Min-Height of Footer */
 }
 
 #footer{

@@ -19,6 +19,7 @@
 //= require turbolinks
 //= require_tree .
 
+
 var map;
 var myLatLng = {lat: 28, lng: 0};
 function initMap() {
@@ -26,7 +27,10 @@ function initMap() {
     center: myLatLng,
     zoom: 3,
     scrollwheel: true,
-    //mapTypeId: google.maps.MapTypeId.SATELLITE
+    streetViewControl: false,
+    panControl: false,
+    mapTypeControlOptions: {position: google.maps.ControlPosition.TOP_RIGHT},
+    zoomControlOptions: {position: google.maps.ControlPosition.RIGHT_TOP}
   });
 }
 
