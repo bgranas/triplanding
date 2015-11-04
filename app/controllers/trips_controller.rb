@@ -43,5 +43,6 @@ class TripsController < ApplicationController
   end
 
   def new
+    @map_page = true
   end
 end

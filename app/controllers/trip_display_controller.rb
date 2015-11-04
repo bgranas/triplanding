@@ -1,4 +1,0 @@
-class TripDisplayController < ApplicationController
-
-
-end

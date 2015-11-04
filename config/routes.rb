@@ -26,6 +26,7 @@ Rails.application.routes.draw do
   get 'leads' => 'leads#index' #creates leads_path and leads_url pointing to /leads/index
   get 'admin' => 'admin#index' #creates admin_path and admin_url pointing to /admin/index
   get 'admin/users' => 'admin#all_users' #creates admin_users_path and admin_users_url pointing to /admin/all_users
+  get 'trips/new' => 'trips#new' #creates trips_new_path and trips_new_url pointing to /trips/new/
 
   #for capturing information after signup
   match '/users/:id/finish_signup' => 'users#finish_signup', via: [:get, :patch], :as => :finish_signup
