@@ -25,7 +25,7 @@ function initMap() {
   map = new google.maps.Map(document.getElementById('map-holder'), {
     center: myLatLng,
     zoom: 3,
-    scrollwheel: false,
+    scrollwheel: true,
     //mapTypeId: google.maps.MapTypeId.SATELLITE
   });
 }
