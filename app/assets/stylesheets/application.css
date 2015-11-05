@@ -335,6 +335,7 @@ h4{
 
 .tooltip-inner{
   white-space:nowrap;
+  z-index: 1000001;
 }
 
 .valign-middle-parent {
@@ -550,8 +551,17 @@ h4{
   outline: none;
 }
 
+#cboxContent {
+    background: white;
+}
+
 .lightbox-content{
   padding: 20px;
+  background:white;
+}
+
+.lightbox-content-transparent{
+  background:transparent;
 }
 
 .lightbox-content p{
