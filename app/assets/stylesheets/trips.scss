@@ -14,6 +14,7 @@
 
 #map-container-90{
 	height: 84vh;/* height of footer and header */
+	position: relative;
 }
 
 
@@ -30,11 +31,18 @@
   -moz-transition: all 0.5s ease;
   -o-transition: all 0.5s ease;
   transition: all 0.5s ease;
+
+  background-color: white;
+  background-image: -webkit-gradient(linear, left top, left bottom, color-stop(0%,rgba(255,255,255,.5)), color-stop(100%, rgba(255,255,255,.5)) 50%), url('subtle_white_feathers.png');
+  background-image: -webkit-linear-gradient(top, rgba(255,255,255,.5), rgba(255,255,255,.5) 50%), url('subtle_white_feathers.png');
+  background-image: -moz-linear-gradient(top,rgba(255,255,255,.5), rgba(255,255,255,.5) 50%), url('subtle_white_feathers.png');
+  background-image: -ms-linear-gradient(top,rgba(255,255,255,.5), rgba(255,255,255,.5) 50%), url('subtle_white_feathers.png');
+  background-image: -o-linear-gradient(top,rgba(255,255,255,.5), rgba(255,255,255,.5) 50%), url('subtle_white_feathers.png');
+  background-image: linear-gradient(top,rgba(255,255,255,.5), rgba(255,255,255,.5) 50%), url('subtle_white_feathers.png');
+
+  -webkit-font-smoothing: antialiased; /* Fix for webkit rendering */
 }
 
-.snapshot-toggle{
-
-}
 .trip-snapshot-max{
 	height: 88vh !important;
 }
@@ -56,10 +64,62 @@
 
 }
 
-	#snapshot-toggle-bar span{
-		padding: 0 50px;
+#map-controls-container{
+	position:absolute;
+	top: 20px;
+	left: 50px;
+}
+
+#map-controls{
+
+	box-shadow: 0 2px 4px rgba(0,0,0,0.2),0 -1px 0px rgba(0,0,0,0.02);
+	border-bottom: 1px solid transparent;
+	border-radius: 2px;
+	padding: 12px 10px;
+	background-color: white;
+}
+
+	#map-controls-div{
+		padding-top: 3px;
+		padding-bottom: 3px;
 	}
 
+	#switch-trips-button{
+		padding: 0 8px;
+		cursor: pointer;
+	}
+
+	#map-controls input{
+    min-width: 200px;
+    border:none;
+    font-size: 15px;
+
+	}
+		#map-controls input:focus{
+			 outline: none;
+		}
+
+	#map-controls-buttons-container{
+		border-left: 1px solid #ddd;
+    padding-right: 10px;
+    padding-left: 5px;
+	}
+		#map-controls-buttons-container button{
+	    margin-left: 5px;
+	    margin-right: 5px;
+	    text-shadow: 0 -1px 0 rgba(0, 0, 0, 0.4) !important;
+
+	    -webkit-box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.4), 0 1px 1px rgba(0, 0, 0, 0.2) !important;
+	    -moz-box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.4), 0 1px 1px rgba(0, 0, 0, 0.2) !important;
+	    box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.4), 0 1px 1px rgba(0, 0, 0, 0.2) !important;
+	    -webkit-transition-duration: 0.2s !important;
+		}
+
+		#map-controls-buttons-container i{
+	    padding-left: 5px;
+	    padding-right: 5px;
+	    cursor: pointer;
+		}
 
 /********* FOR TRIPS / INDEX ***********/
 

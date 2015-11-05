@@ -11,6 +11,8 @@ $ ->
     return
   ///
 
+  $('[data-toggle="tooltip"]').tooltip()
+
   #preventing colorbox focus on load
   $(document).bind 'cbox_load', ->
     $('#colorbox').blur()
