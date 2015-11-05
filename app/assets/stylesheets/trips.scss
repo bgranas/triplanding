@@ -9,6 +9,71 @@
 }
 
 
+	/*** Itinerary Viewer ***/
+
+	.itinerary-holder {
+		margin-top: 30px;
+	}
+
+	.itinerary-step-number {
+		font-size: 3em;
+		margin-top: 8px;
+	}
+
+	.itinerary-calendar-box {
+		position: absolute;
+    left: 10%;
+  }
+
+	.calendar-text {
+		padding-top: .3em;
+	}
+
+	.calendar-month {
+		margin-left: 0.5em;
+		font-weight: bold;
+	}
+
+	.itinerary-destination-step {
+		border-top: 1px solid lightgray;
+		border-bottom: 1px solid lightgray;
+		margin-top: 15px;
+		margin-bottom: 15px;
+
+	}
+
+		.itinerary-step-overview {
+			margin-bottom: 10px;
+		}
+
+			.itinerary-step-city {
+				font-size: 3em;
+    		margin-bottom: -5px;
+			}
+
+			.itinerary-step-country {
+				font-size: 1.5em;
+		    font-style: italic;
+		    color: gray;
+			}
+
+		.itinerary-step-accomodation {
+			margin-bottom: 20px;
+		}
+
+	.itinerary-transportation-vertical {
+		width: 5px;
+		height: 30px;
+		border-left: 5px dotted lightgray;
+		margin-left: .6em;
+		margin-top: 5px;
+		margin-bottom: 5px;
+	}
+
+		.itinerary-transportation-vertical-bottom {
+			position: absolute;
+		}
+
 
 
 /********* FOR TRIPS / INDEX ***********/

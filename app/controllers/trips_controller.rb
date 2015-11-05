@@ -34,15 +34,39 @@ class TripsController < ApplicationController
   end
 
   def show
+    @map_page = true
   end
 
   def delete
   end
 
   def edit
+    @map_page = true
   end
 
   def new
     @map_page = true
+    
+    @itineraryOriginDate = "1"
+    @itineraryOriginTransportation = "Flight from SFO to PVG"
+    @itineraryOriginSpecifics = "American Airlines flight 1 | 9:00 AM"
+    @itineraryOriginPrice = "$1000"
+
+
+    @itineraryStepOrder = "1"
+    @itineraryStepDate = "2"
+    @itineraryStepCity = "Shanghai"
+    @itineraryStepCountry = "China"
+
+    @accommodationType = "Hotel"
+    @accommodationSpecifics = "2 nights in ABC Hotel | Check in: Jan 1 Check out: Jan 3"
+    @accommodationPrice = "$100"
+
+    @transportationType = "Bus"
+    @itineraryStepDestination2 = "Dafeng"
+    @transportationSpecifics = "DF Bus | Shanghai Bus Station | 12:00 PM"
+    @transportationPrice = "$15"
+
+
   end
 end
