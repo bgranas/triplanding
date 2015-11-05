@@ -10,7 +10,8 @@ mapClickListener = null
 $ -> #on document ready
 
 
-  #alert($("a[target='_blank']").find('img').attr('src'));
+  $('.snapshot-location-container').hover ->
+    $(this).find('.snapshot-location-controls').toggleClass('hidden')
 
   $('.snapshot-toggle').click ->
     toggleTripSnapshot()
