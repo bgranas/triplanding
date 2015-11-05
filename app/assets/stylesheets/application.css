@@ -641,6 +641,9 @@ hr{
     padding-bottom:270px;
     margin-top: 0px;
   }
+   #main-content-no-footer{
+    margin-top: 0px;
+  }
 
   #footer{
     text-align:center;
