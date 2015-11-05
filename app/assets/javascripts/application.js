@@ -19,14 +19,18 @@
 //= require turbolinks
 //= require_tree .
 
+
 var map;
 var myLatLng = {lat: 28, lng: 0};
 function initMap() {
   map = new google.maps.Map(document.getElementById('map-holder'), {
     center: myLatLng,
     zoom: 3,
-    scrollwheel: false,
-    //mapTypeId: google.maps.MapTypeId.SATELLITE
+    scrollwheel: true,
+    streetViewControl: false,
+    panControl: false,
+    mapTypeControlOptions: {position: google.maps.ControlPosition.TOP_RIGHT},
+    zoomControlOptions: {position: google.maps.ControlPosition.RIGHT_TOP}
   });
 }
 

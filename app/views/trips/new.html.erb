@@ -1,5 +1,29 @@
 <div class="hidden-xs" id="map-container-90">
   <div id="map-holder"></div>
+
+  <div id="map-controls-container">
+    <div id="map-controls">
+      <div id="switch-trips-button" class="inline-block">
+        <i data-toggle="tooltip" data-placement="top" title="Switch Trips" class="fa fa-caret-down fa-lg"></i>
+      </div>
+
+      <%= text_field_tag 'trip_name_input', '', placeholder: 'Enter a Name for Your Trip'  %>
+
+
+      <div id="map-controls-buttons-container" class="inline-block map-controls-div">
+        <button type="button" class="btn btn-primary btn-xs">
+          <span>Save</span>
+        </button>
+        <i data-toggle="tooltip" data-placement="top" title="Add to Favorites" class="fa fa-star-o fa-lg trip-favorite"></i>
+        <i data-toggle="tooltip" data-placement="top" title="Share Trip" class="fa fa-share-alt fa-lg icon-gray"></i>
+        <i data-toggle="tooltip" data-placement="top" title="More Actions" class="fa fa-ellipsis-h fa-lg icon-gray"></i>
+        <!-- More Options Should Have a Dropdown for the following -->
+        <!-- Embed Trip <i class="fa fa-code fa-lg"></i> -->
+        <!-- Duplicate Trip <i class="fa fa-files-o fa-lg"></i> -->
+        <!-- Delete Trip <i class="fa fa-trash-o fa-lg"></i> -->
+      </div>
+    </div>
+  </div>
 </div>
 
 <div class="container">
@@ -166,5 +190,21 @@
 	</div>
 </div>
 
+<div id="trip-snapshot-container" class="container-fluid">
+  <div class="row">
+    <div id="snapshot-toggle-bar" class="col-sm-12 text-center snapshot-toggle">
+      <i class="fa fa-chevron-up snapshot-toggle-icon"></i>
+    </div>
+    <div class="col-sm-12">
+      <ul id="trip-snapshot" class="list-inline">
+        <li> Location 1 </li>
+        <li> Location 1 </li>
+        <li> Location 1 </li>
+        <li> Location 1 </li>
+        <li> Location 1 </li>
+      </ul>
+    </div>
+  </div>
+</div>
 
 
