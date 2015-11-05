@@ -33,25 +33,27 @@
     <div id="snapshot-toggle-bar" class="col-sm-12 text-center snapshot-toggle">
       <i class="fa fa-chevron-up snapshot-toggle-icon"></i>
     </div>
-    <div class="col-sm-12">
-      <ul id="trip-snapshot" class="list-inline">
+    <div class="col-sm-12 valign-middle-parent">
+      <ul id="trip-snapshot-ul" class="list-inline valign-middle-child">
         <li> Location 1 </li>
         <li> Location 1 </li>
         <li> Location 1 </li>
         <li> Location 1 </li>
-        <li><i class="fa fa-plus-circle fa-2x add-destination"></i></li>
+        <li>
+          <a href="/blank/add_destination_helper" data-colorbox="true"><i class="fa fa-plus-circle fa-2x add-destination"></i></a>
+        </li>
       </ul>
     </div>
   </div>
-	
+
+
 	<div class="itinerary-holder">
 		<h1 class="itinerary-trip-title">My Trip</h1>
-		
-			<div class="itinerary-transportation-step">	
+			<div class="itinerary-transportation-step">
 				<div class="row itinerary-transportation-header">
-					<div class="col-sm-1 itinerary-transportation-icon">	
+					<div class="col-sm-1 itinerary-transportation-icon">
 						<i class="fa fa-plane fa-2x"></i>
-						<div class="itinerary-transportation-vertical itinerary-transportation-vertical-bottom"></div>		
+						<div class="itinerary-transportation-vertical itinerary-transportation-vertical-bottom"></div>
 					</div>
 					<div class="col-sm-11 itinerary-transportation-overview">
 						<p class="itinerary-transportation-title">Jan 1 | Travel to Shanghai, China</p>
@@ -74,12 +76,12 @@
 				</div>
 			</div>
 
-			
+
 			<div class="itinerary-destination-step">
 				<div class="row itinerary-destination-header">
 					<div class="col-sm-1">
 						<h3 class="itinerary-step-number"><%= @itineraryStepOrder %></h3>
-						<div class="itinerary-calendar-box">		
+						<div class="itinerary-calendar-box">
 							<span class="fa-stack fa-lg">
 							  <i class="fa fa-calendar-o fa-stack-2x"></i>
 							  <strong class="fa-stack-1x calendar-text"><%= @itineraryStepDate %></strong>
@@ -102,19 +104,19 @@
 					</div>
 					<div class="col-sm-1 itinerary-step-price">
 						<p><%= @accommodationPrice %></p>
-					</div>				
+					</div>
 					<div class="col-sm-2 itinerary-step-booking">
 						<%= submit_tag("Book now", {:class => 'btn btn-success'}) %>
 					</div>
-				</div> 
+				</div>
 			</div>
-				
-			<div class="itinerary-transportation-step">	
+
+			<div class="itinerary-transportation-step">
 				<div class="row itinerary-transportation-header">
 					<div class="col-sm-1 itinerary-transportation-icon">
-						<div class="itinerary-transportation-vertical"></div>	
+						<div class="itinerary-transportation-vertical"></div>
 						<i class="fa fa-bus fa-2x"></i>
-						<div class="itinerary-transportation-vertical itinerary-transportation-vertical-bottom"></div>		
+						<div class="itinerary-transportation-vertical itinerary-transportation-vertical-bottom"></div>
 					</div>
 					<div class="col-sm-11 itinerary-transportation-overview">
 						<p class="itinerary-transportation-title">Jan 2 | Travel to Dafeng, China</p>
@@ -142,7 +144,7 @@
 				<div class="row itinerary-destination-header">
 					<div class="col-sm-1">
 						<h3 class="itinerary-step-number"><%= @itineraryStepOrder %></h3>
-						<div class="itinerary-calendar-box">		
+						<div class="itinerary-calendar-box">
 							<span class="fa-stack fa-lg">
 							  <i class="fa fa-calendar-o fa-stack-2x"></i>
 							  <strong class="fa-stack-1x calendar-text"><%= @itineraryStepDate %></strong>
@@ -165,19 +167,19 @@
 					</div>
 					<div class="col-sm-1 itinerary-step-price">
 						<p><%= @accommodationPrice %></p>
-					</div>				
+					</div>
 					<div class="col-sm-2 itinerary-step-booking">
 						<%= submit_tag("Book now", {:class => 'btn btn-success'}) %>
 					</div>
-				</div> 
+				</div>
 			</div>
 
-			<div class="itinerary-transportation-step">	
+			<div class="itinerary-transportation-step">
 				<div class="row itinerary-transportation-header">
 					<div class="col-sm-1 itinerary-transportation-icon">
-						<div class="itinerary-transportation-vertical"></div>	
+						<div class="itinerary-transportation-vertical"></div>
 						<i class="fa fa-bus fa-2x"></i>
-						<div class="itinerary-transportation-vertical itinerary-transportation-vertical-bottom"></div>		
+						<div class="itinerary-transportation-vertical itinerary-transportation-vertical-bottom"></div>
 					</div>
 					<div class="col-sm-11 itinerary-transportation-overview">
 						<p class="itinerary-transportation-title">+ Add transportation</p>
@@ -196,12 +198,12 @@
 						<p></p>
 					</div>
 					<div class="col-sm-2 itinerary-step-booking">
-						
+
 					</div>
 				</div>
 			</div>
 
-		
+
 		</div>
 </div>
 
