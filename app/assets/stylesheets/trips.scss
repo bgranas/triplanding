@@ -44,13 +44,25 @@
 		cursor: pointer;
 	}
 
+	#add-destination-input{
+		padding-left: 10px;
+		min-width: 250px;
+		border:none;
+    font-size: 15px;
+	}
+	.add-destination-button{
+		border-top-left-radius: 0px;
+		border-bottom-left-radius: 0px;
+	}
+
+
 	#map-controls input{
     min-width: 200px;
     border:none;
     font-size: 15px;
 
 	}
-		#map-controls input:focus{
+		#map-controls input:focus, #add-destination-input:focus{
 			 outline: none;
 		}
 
@@ -74,7 +86,7 @@
 
 	.itinerary-holder {
 		margin-top: 30px;
-		
+
 	}
 
 	.itinerary-step-number {
