@@ -40,6 +40,11 @@ $ ->
             $('#signup-container').find('.error-message').append('<li>' + e + '</li>')
             $.colorbox.resize()
 
+    #button within a lightbox to initiate close
+    $('.lightbox-close').click ->
+      $.colorbox.close()
+
+
 
 
   #login success or error actions
