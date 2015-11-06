@@ -52,6 +52,7 @@
 
 	<div class="itinerary-holder">
 		<h1 class="itinerary-trip-title">My Trip</h1>
+			
 			<div class="itinerary-transportation-step">
 				<div class="row itinerary-transportation-header">
 					<div class="itinerary-transportation-icon">
@@ -82,8 +83,7 @@
 
 			<div class="itinerary-destination-step">
 				<div class="row itinerary-destination-header">
-					<div class="itinerary-step-holder">
-						<h3 class="itinerary-step-number"><%= @itineraryStepOrder %></h3>
+
 						<div class="itinerary-calendar-box">
 							<span class="fa-stack fa-lg">
 							  <i class="fa fa-calendar-o fa-stack-2x"></i>
@@ -91,10 +91,13 @@
 							</span>
 							<p class="calendar-month">Jan</p>
 						</div>
-					</div>
+
 					<div class="col-sm-11 col-sm-offset-1 itinerary-step-overview">
-							<p class="itinerary-step-city"><%= @itineraryStepCity %></p>
-							<p class="itinerary-step-country"><%= @itineraryStepCountry %></p>
+						<ul class="list-inline">
+							<li><p class="itinerary-step-city"><%= @itineraryStepCity %></p></li>
+							<li><p class="itinerary-step-country"><%= @itineraryStepCountry %></p></li>
+						</ul>
+							
 					</div>
 				</div>
 
@@ -159,8 +162,7 @@
 
 			<div class="itinerary-destination-step">
 				<div class="row itinerary-destination-header">
-					<div class="itinerary-step-holder">
-						<h3 class="itinerary-step-number"><%= @itineraryStepOrder %></h3>
+
 						<div class="itinerary-calendar-box">
 							<span class="fa-stack fa-lg">
 							  <i class="fa fa-calendar-o fa-stack-2x"></i>
@@ -168,10 +170,13 @@
 							</span>
 							<p class="calendar-month">Jan</p>
 						</div>
-					</div>
+
 					<div class="col-sm-11 col-sm-offset-1 itinerary-step-overview">
-							<p class="itinerary-step-city"><%= @itineraryStepCity %></p>
-							<p class="itinerary-step-country"><%= @itineraryStepCountry %></p>
+						<ul class="list-inline">
+							<li><p class="itinerary-step-city"><%= @itineraryStepCity %></p></li>
+							<li><p class="itinerary-step-country"><%= @itineraryStepCountry %></p></li>
+						</ul>
+							
 					</div>
 				</div>
 
@@ -220,7 +225,7 @@
 				</div>
 
 				<div class="row">
-					<button type="button" class="itinerary-add-destination" data-toggle="tooltip" data-placement="top" title="Add destination"><i class="fa fa-plus fa-2x add-destination-button"></i></button>
+					<button type="button" class="itinerary-add-destination" data-toggle="tooltip" data-placement="top" title="Add destination"><i class="fa fa-plus fa-2x itinerary-add-destination-button"></i></button>
 				</div>
 			</div>
 

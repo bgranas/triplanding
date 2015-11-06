@@ -90,6 +90,11 @@
   margin-right: 30px;
 }
 
+.itinerary-trip-title {
+	border-bottom: 1px solid lightgray;
+  padding-bottom: 15px;
+}
+
 .itinerary-destination-header {
 	position: relative;
 }
@@ -108,12 +113,13 @@
 
 	.itinerary-calendar-box {
 		position: absolute;
-    left: -20%;
-    top: 140%;
+    left: 41px;
+    top: 50%;
   }
 
 	.calendar-text {
 		padding-top: .3em;
+		color: #ea7663;
 	}
 
 	.calendar-month {
@@ -122,10 +128,11 @@
 	}
 
 	.itinerary-destination-step {
-		border-top: 1px solid lightgray;
 		border-bottom: 1px solid lightgray;
 		margin-top: 15px;
 		margin-bottom: 15px;
+		background-color: #EFE5E5;
+    border-top: 5px solid lightgray;
 
 	}
 
@@ -139,8 +146,7 @@
 			}
 
 			.itinerary-step-country {
-				font-size: 1.5em;
-		    font-style: italic;
+				font-size: 1.2em;
 		    color: gray;
 			}
 
@@ -148,9 +154,18 @@
 			margin-bottom: 20px;
 		}
 
+			.itinerary-step-accomodation-overview {
+				font-weight: bold;
+   		 	font-size: 1em;
+			}
+
+			.itinerary-step-specifics {
+				font-size: 1em;
+			}
+
 	.itinerary-step-price {
 		font-weight: bold;
-    font-size: 1.5em;
+    font-size: 1.2em;
   }
 
   .itinerary-transportation-header {
@@ -175,6 +190,21 @@
     left: 4%;
 	}
 
+	.itinerary-transportation-title {
+		
+    color: gray;
+    font-size: .9em;
+	}
+
+	.itinerary-transportation-subtitle {
+		font-weight: bold;
+    font-size: 1em;
+  }
+
+  .itinerary-transportation-specifics {
+  	font-size: 1em;	
+  }
+
 
 	.itinerary-add-destination {
     background-color: green;
@@ -191,7 +221,7 @@
     left: 11%;
 	}
 
-		.add-destination-button {
+		.itinerary-add-destination-button {
 			color: white;
 			position: absolute;
 			margin-left: -10px;

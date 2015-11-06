@@ -56,7 +56,7 @@ class TripsController < ApplicationController
     @itineraryStepOrder = "1"
     @itineraryStepDate = "2"
     @itineraryStepCity = "Shanghai"
-    @itineraryStepCountry = "China"
+    @itineraryStepCountry = "CHINA"
 
     @accommodationType = "Hotel"
     @accommodationSpecifics = "2 nights in ABC Hotel | Check in: Jan 1 Check out: Jan 3"
