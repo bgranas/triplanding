@@ -153,6 +153,7 @@
 	 width:150px;
 	 text-align: center;
 	 height:100%;
+	 vertical-align:top;
 }
 
 #trip-snapshot-link-ul{
@@ -173,9 +174,19 @@
 .snapshot-location-container{
 	margin-top: 5px;
 	padding: 5px 15px;
+	min-height: 47px;
 	cursor: pointer;
 	border: 1px solid lightgray;
 	background-color:white;
+}
+
+.snapshot-location-container-placeholder{
+	margin-top: 5px;
+	padding: 5px 15px;
+	min-height: 47px;
+	cursor: pointer;
+	border: 1px solid lightgray;
+	background-color:#E6E6E6;
 }
 
 .snapshot-location-icon span{
