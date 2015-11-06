@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20151102102750) do
+ActiveRecord::Schema.define(version: 20151106095249) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -31,6 +31,26 @@ ActiveRecord::Schema.define(version: 20151102102750) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
+
+  create_table "trips", force: :cascade do |t|
+    t.string   "title"
+    t.string   "permalink"
+    t.datetime "start_date"
+    t.datetime "end_date"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "user_trips", force: :cascade do |t|
+    t.integer  "user_id"
+    t.integer  "trip_id"
+    t.boolean  "created_by_user",   default: false, null: false
+    t.boolean  "favorited_by_user", default: false, null: false
+    t.datetime "created_at",                        null: false
+    t.datetime "updated_at",                        null: false
+  end
+
+  add_index "user_trips", ["user_id", "trip_id"], name: "index_user_trips_on_user_id_and_trip_id", using: :btree
 
   create_table "users", force: :cascade do |t|
     t.string   "email",                  limit: 50,                  null: false
