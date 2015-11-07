@@ -42,7 +42,6 @@ connectMarkers = (o_marker, d_marker, map) ->
     map: map
 
 saveDestinationToDatabase = (place) ->
-  alert('method called')
   $.ajax '/destinations',
     dataType: 'json'
     type: 'POST'
@@ -53,4 +52,3 @@ saveDestinationToDatabase = (place) ->
     failure: ->
       alert 'Unsuccessful'
       return
-  alert('after method')
