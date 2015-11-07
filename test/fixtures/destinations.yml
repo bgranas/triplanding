@@ -1,0 +1,43 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  name: MyString
+  google_place_id: MyString
+  lat: 9.99
+  lng: 9.99
+  formatted_address: MyString
+  street_address: MyString
+  route: MyString
+  intersection: MyString
+  country: MyString
+  administrative_area_level_1: MyString
+  colloquial_area: MyString
+  locality: MyString
+  neighborhood: MyString
+  postal_code: 1
+  natural_feature: MyString
+  airport: MyString
+  park: MyString
+  point_of_interest: MyString
+  ward: MyString
+
+two:
+  name: MyString
+  google_place_id: MyString
+  lat: 9.99
+  lng: 9.99
+  formatted_address: MyString
+  street_address: MyString
+  route: MyString
+  intersection: MyString
+  country: MyString
+  administrative_area_level_1: MyString
+  colloquial_area: MyString
+  locality: MyString
+  neighborhood: MyString
+  postal_code: 1
+  natural_feature: MyString
+  airport: MyString
+  park: MyString
+  point_of_interest: MyString
+  ward: MyString
