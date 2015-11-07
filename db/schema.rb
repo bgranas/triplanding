@@ -16,6 +16,17 @@ ActiveRecord::Schema.define(version: 20151107034524) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
+  create_table "destination_orders", force: :cascade do |t|
+    t.integer  "trip_id"
+    t.integer  "destination_id"
+    t.integer  "order_authority"
+    t.datetime "created_at",      null: false
+    t.datetime "updated_at",      null: false
+  end
+
+  add_index "destination_orders", ["destination_id"], name: "index_destination_orders_on_destination_id", using: :btree
+  add_index "destination_orders", ["trip_id"], name: "index_destination_orders_on_trip_id", using: :btree
+
   create_table "destinations", force: :cascade do |t|
     t.string   "name",                                                 null: false
     t.string   "google_place_id"
@@ -61,17 +72,6 @@ ActiveRecord::Schema.define(version: 20151107034524) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
-
-  create_table "trip_orders", force: :cascade do |t|
-    t.integer  "trip_id"
-    t.integer  "destination_id"
-    t.integer  "order_authority"
-    t.datetime "created_at",      null: false
-    t.datetime "updated_at",      null: false
-  end
-
-  add_index "trip_orders", ["destination_id"], name: "index_trip_orders_on_destination_id", using: :btree
-  add_index "trip_orders", ["trip_id"], name: "index_trip_orders_on_trip_id", using: :btree
 
   create_table "trips", force: :cascade do |t|
     t.string   "title"
@@ -120,7 +120,7 @@ ActiveRecord::Schema.define(version: 20151107034524) do
   add_index "users", ["email"], name: "index_users_on_email", unique: true, using: :btree
   add_index "users", ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true, using: :btree
 
+  add_foreign_key "destination_orders", "destinations"
+  add_foreign_key "destination_orders", "trips"
   add_foreign_key "identities", "users"
-  add_foreign_key "trip_orders", "destinations"
-  add_foreign_key "trip_orders", "trips"
 end

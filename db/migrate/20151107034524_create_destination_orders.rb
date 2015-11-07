@@ -1,6 +1,6 @@
-class CreateTripOrders < ActiveRecord::Migration
+class CreateDestinationOrders < ActiveRecord::Migration
   def up
-    create_table :trip_orders do |t|
+    create_table :destination_orders do |t|
       t.references :trip, index: true, foreign_key: true
       t.references :destination, index: true, foreign_key: true
       t.integer :order_authority
@@ -10,6 +10,6 @@ class CreateTripOrders < ActiveRecord::Migration
   end
 
   def down
-    drop_table :trip_orders
+    drop_table :destination_orders
   end
 end
