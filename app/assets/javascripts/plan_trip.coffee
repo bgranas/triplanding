@@ -16,17 +16,22 @@ $ ->
 
 #adds a marker at the geolocation specified in place (google place),
 #on the map specified in map
-#returns the marker
+#PRE: bounds array must be declared
 addPlacetoMap = (place, map) ->
   marker = new google.maps.Marker
     position: place.geometry.location
     map: map
     title: place.formatted_address
 
+  #add position to the maps bounds
+  bounds.extend marker.position
+
+  #connect the new marker with the last marker if needed
   markers.push marker #add to the array of markers
   mCount = markers.length
   if mCount >= 2
     connectMarkers(markers[mCount-2], markers[mCount-1], map)
+    map.fitBounds(bounds)
 
 connectMarkers = (o_marker, d_marker, map) ->
   path_coordinates = [o_marker.position, d_marker.position]
