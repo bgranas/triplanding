@@ -11,13 +11,14 @@ $ ->
     # PRE: place should be defined from the autocomplete function
     # PRE: map should be initialized
     $('#add-destination-submit').click ->
-      addPlacetoMap(place, map)
+      addPlaceToMap(place, map)
+      saveDestinationToDatabase(place)
 
 
 #adds a marker at the geolocation specified in place (google place),
 #on the map specified in map
 #PRE: bounds array must be declared
-addPlacetoMap = (place, map) ->
+addPlaceToMap = (place, map) ->
   marker = new google.maps.Marker
     position: place.geometry.location
     map: map
@@ -39,3 +40,17 @@ connectMarkers = (o_marker, d_marker, map) ->
     path: path_coordinates
     geodesic: true
     map: map
+
+saveDestinationToDatabase = (place) ->
+  alert('method called')
+  $.ajax '/destinations',
+    dataType: 'json'
+    type: 'POST'
+    data: place: JSON.stringify(place)
+    success: (data) ->
+      alert 'Successful'
+      return
+    failure: ->
+      alert 'Unsuccessful'
+      return
+  alert('after method')
