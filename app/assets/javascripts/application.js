@@ -33,46 +33,11 @@ function initMap() {
     mapTypeControlOptions: {position: google.maps.ControlPosition.TOP_RIGHT},
     zoomControlOptions: {position: google.maps.ControlPosition.RIGHT_TOP}
   });
+
+  initSearch();
 }
 
 
-var autocomplete;
-function initSearch() {
-  autocomplete = new google.maps.places.Autocomplete(
-    (document.getElementById('location-query')),
-      { types: ['geocode'] });
-  autocomplete.addListener('place_changed', function(){
-    var place = autocomplete.getPlace();
-    alert(place.name);
-  });
-
-}
-
-function geolocate() {
-if (navigator.geolocation) {
-  navigator.geolocation.getCurrentPosition(function(position) {
-    var geolocation = {
-      lat: position.coords.latitude,
-      lng: position.coords.longitude
-    };
-    var circle = new google.maps.Circle({
-      center: geolocation,
-      radius: position.coords.accuracy
-    });
-    autocomplete.setBounds(circle.getBounds());
-  });
-}
-}
-
-
-
-var delay = (function(){
-  var timer = 0;
-  return function(callback, ms){
-    clearTimeout (timer);
-    timer = setTimeout(callback, ms);
-  };
-})();
 
 
 

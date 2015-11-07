@@ -52,7 +52,7 @@
     font-size: 15px;
 
 	}
-		#map-controls input:focus, #add-destination-input:focus{
+		#map-controls input:focus, .add-destination-input:focus{
 			 outline: none;
 		}
 
@@ -74,7 +74,7 @@
 
 
 	/********* Lightbox to add destination *******/
-	#add-destination-input{
+	.add-destination-input{
 		padding-left: 10px;
 		min-width: 250px;
 		border:none;
@@ -84,6 +84,10 @@
 		border-top-left-radius: 0px;
 		border-bottom-left-radius: 0px;
 	}
+
+  .pac-container{ /* google autocomplete results */
+    z-index: 1000000 !important;
+  }
 
 
 /****** TRIP SNAPSHOT ***********/
@@ -326,7 +330,7 @@
 	}
 
 	.itinerary-transportation-title {
-		
+
     color: gray;
     font-size: .9em;
 	}
@@ -337,7 +341,7 @@
   }
 
   .itinerary-transportation-specifics {
-  	font-size: 1em;	
+  	font-size: 1em;
   }
 
 
