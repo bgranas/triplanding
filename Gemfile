@@ -93,6 +93,9 @@ gem 'puma'
 #red/green testing
 gem  'minitest-reporters'
 
+#For calling API URLs
+gem 'httparty', '~> 0.13.7'
+
 #ruby version
 ruby '2.1.5'
 

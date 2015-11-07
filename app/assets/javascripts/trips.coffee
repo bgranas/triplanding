@@ -9,7 +9,6 @@ mapClickListener = null
 
 $ -> #on document ready
 
-
   $('.snapshot-location-container').hover ->
     $(this).find('.snapshot-location-controls').toggleClass('hidden')
 
@@ -33,3 +32,5 @@ toggleTripSnapshot = ->
     $('#trip-snapshot-container').removeClass('trip-snapshot-max')
     $('.snapshot-toggle-icon').removeClass('fa-chevron-down').addClass('fa-chevron-up')
     google.maps.event.removeListener(mapClickListener)
+
+

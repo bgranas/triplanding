@@ -1,0 +1,8 @@
+<ul class="transportation-show-routes">
+	<% @routes.each do |i| %>
+	<li><%= i %></li>
+		<ul class="transportation-show-segments">
+			<li><% @transitSegments %></li>
+		</ul>
+	<% end %>
+</ul>

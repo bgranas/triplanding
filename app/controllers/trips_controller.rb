@@ -1,6 +1,8 @@
 class TripsController < ApplicationController
 
   layout 'nav_bar_only', :only => [:new, :edit]
+  include TransportationHelper
+
 
   def index
 
@@ -21,6 +23,7 @@ class TripsController < ApplicationController
     @tripStartDate = "August 2015" #Date trip taken - all fields optional
     @tripEndDate = "September 2015" #Optional
     @tripDate = @tripStartDate + " - " + @tripEndDate
+
 
     #Whether this trip is wishlist, confirmed, or neither
     @travelConfirmStatus = 1 #0 = wishlist if @tripDate == null, 1 = confirmed if @tripDate !== null
@@ -47,6 +50,8 @@ class TripsController < ApplicationController
   def new
     @map_page = true
     
+    
+
     @itineraryOriginDate = "1"
     @itineraryOriginTransportation = "Flight from SFO to PVG"
     @itineraryOriginSpecifics = "American Airlines flight 1 | 9:00 AM"
@@ -67,6 +72,12 @@ class TripsController < ApplicationController
     @transportationSpecifics = "DF Bus | Shanghai Bus Station | 12:00 PM"
     @transportationPrice = "$15"
 
+    @originCoords = "31.157,121.40" #might have a max number of digits
+    @destinationCoords = "10.09,99.83806"
+
+    #calling TransportationHelper
+    r2r_call
 
   end
+
 end
