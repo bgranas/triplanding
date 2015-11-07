@@ -19,7 +19,7 @@ ActiveRecord::Schema.define(version: 20151107034524) do
   create_table "destination_orders", force: :cascade do |t|
     t.integer  "trip_id"
     t.integer  "destination_id"
-    t.integer  "order_authority"
+    t.integer  "order_authority", null: false
     t.datetime "created_at",      null: false
     t.datetime "updated_at",      null: false
   end

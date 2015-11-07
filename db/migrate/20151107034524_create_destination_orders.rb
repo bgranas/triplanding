@@ -3,7 +3,7 @@ class CreateDestinationOrders < ActiveRecord::Migration
     create_table :destination_orders do |t|
       t.references :trip, index: true, foreign_key: true
       t.references :destination, index: true, foreign_key: true
-      t.integer :order_authority
+      t.integer :order_authority, null: false
 
       t.timestamps null: false
     end
