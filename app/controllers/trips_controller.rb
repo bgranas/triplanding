@@ -89,7 +89,7 @@ class TripsController < ApplicationController
 
   end
 
-<<<<<<< HEAD
+
 
   def new_destination
     @dest = Destination.new
