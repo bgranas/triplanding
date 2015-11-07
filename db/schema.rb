@@ -11,10 +11,51 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20151106095249) do
+ActiveRecord::Schema.define(version: 20151107034524) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+
+  create_table "destination_orders", force: :cascade do |t|
+    t.integer  "trip_id"
+    t.integer  "destination_id"
+    t.integer  "order_authority", null: false
+    t.datetime "created_at",      null: false
+    t.datetime "updated_at",      null: false
+  end
+
+  add_index "destination_orders", ["destination_id"], name: "index_destination_orders_on_destination_id", using: :btree
+  add_index "destination_orders", ["trip_id"], name: "index_destination_orders_on_trip_id", using: :btree
+
+  create_table "destinations", force: :cascade do |t|
+    t.string   "name",                                                 null: false
+    t.string   "google_place_id"
+    t.decimal  "lat",                         precision: 11, scale: 8
+    t.decimal  "lng",                         precision: 11, scale: 8
+    t.string   "formatted_address"
+    t.string   "street_address"
+    t.string   "route"
+    t.string   "intersection"
+    t.string   "country"
+    t.string   "administrative_area_level_1"
+    t.string   "administrative_area_level_2"
+    t.string   "administrative_area_level_3"
+    t.string   "administrative_area_level_4"
+    t.string   "administrative_area_level_5"
+    t.string   "colloquial_area"
+    t.string   "locality"
+    t.string   "neighborhood"
+    t.integer  "postal_code"
+    t.string   "natural_feature"
+    t.string   "airport"
+    t.string   "park"
+    t.string   "point_of_interest"
+    t.string   "ward"
+    t.datetime "created_at",                                           null: false
+    t.datetime "updated_at",                                           null: false
+  end
+
+  add_index "destinations", ["google_place_id"], name: "index_destinations_on_google_place_id", using: :btree
 
   create_table "identities", force: :cascade do |t|
     t.integer  "user_id"
@@ -79,5 +120,7 @@ ActiveRecord::Schema.define(version: 20151106095249) do
   add_index "users", ["email"], name: "index_users_on_email", unique: true, using: :btree
   add_index "users", ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true, using: :btree
 
+  add_foreign_key "destination_orders", "destinations"
+  add_foreign_key "destination_orders", "trips"
   add_foreign_key "identities", "users"
 end

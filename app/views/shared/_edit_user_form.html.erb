@@ -1,9 +1,4 @@
 
-  <!-- Blank forms disables Chrome Autocomplete,
-       which interfers with Google's Autocomplete -->
-  <input type="text" name="prevent_autofill" id="prevent_autofill" value="" style="display:none;" />
-  <input type="password" name="password_fake" id="password_fake" value="" style="display:none;" />
-  <input type="password" name="password" id="password" value="" style="display:none;" />
 
 
   <div class="field">
@@ -28,9 +23,7 @@
 
   <div class="field">
       <%= f.label :hometown %><br />
-      <%= f.text_field :hometown, :id => "location-query", :onFocus => "geolocate()" %>
-    <ul id="location-query-results">
-    </ul>
+      <%= f.text_field :hometown, :id => "location-query" %>
   </div>
 
   <div class="field">
