@@ -4,7 +4,10 @@ class TripsController < ApplicationController
 
   def index
 
+    # add initialization script for google maps
     @map_page = true
+
+
 
     # Static map API link builder
     @tripMapStaticSize = "300x300"
@@ -45,8 +48,11 @@ class TripsController < ApplicationController
   end
 
   def new
+    # add initialization script for google maps
     @map_page = true
-    
+
+    @trip = Trip.new #creates trip object to start adding information to
+
     @itineraryOriginDate = "1"
     @itineraryOriginTransportation = "Flight from SFO to PVG"
     @itineraryOriginSpecifics = "American Airlines flight 1 | 9:00 AM"
@@ -68,5 +74,9 @@ class TripsController < ApplicationController
     @transportationPrice = "$15"
 
 
+  end
+
+  def new_destination
+    @dest = Destination.new
   end
 end
