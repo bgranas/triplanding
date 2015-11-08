@@ -22,6 +22,7 @@
 
 
 var map;
+var bounds;
 var myLatLng = {lat: 28, lng: 0};
 function initMap() {
   map = new google.maps.Map(document.getElementById('map-holder'), {
@@ -35,6 +36,7 @@ function initMap() {
   });
 
   initSearch();
+  bounds = new google.maps.LatLngBounds();
 }
 
 

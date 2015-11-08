@@ -31,6 +31,9 @@ Rails.application.routes.draw do
   #for capturing information after signup
   match '/users/:id/finish_signup' => 'users#finish_signup', via: [:get, :patch], :as => :finish_signup
 
+  #for creating or updating destinations
+  match "/destinations" => "destinations#create", :via => [:post, :patch], :as => :create_destination
+
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 
