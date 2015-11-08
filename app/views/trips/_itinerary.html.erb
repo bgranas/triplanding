@@ -30,21 +30,21 @@
 
 
 			<% if @destinationChosen %>
-				<%= render 'destination_chosen' %>
+				<%= render partial: 'destination_chosen' %>
 			<% else %>
-				<%= render 'itinerary_add_destination' %>
+				<%= render partial: 'itinerary_add_destination' %>
 			<% end %>
 			
 			<% if @transportChosen %>
-				<%= render 'transport_chosen' %>
+				<%= render partial: 'transport_chosen' %>
 			<% else %>
-				<%= render 'transport_search' %>
+				<%= render partial: 'transport_search' %>
 			<% end %>
 
 			<% if @destinationChosen %>
-				<%= render 'destination_chosen' %>
+				<%= render partial: 'destination_chosen' %>
 			<% else %>
-				<%= render 'itinerary_add_destination' %>
+				<%= render partial: 'itinerary_add_destination' %>
 			<% end %>
 
 

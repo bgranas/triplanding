@@ -5,7 +5,7 @@ module TripDisplayHelper
 
 		# Static map API link builder
 		@tripMapStaticSize = "300x300"
-		@tripMapStatic = "https://www.google.com/maps/api/staticmap?size="+@tripMapStaticSize+"&scale=2&path=weight:5|Hanoi,Vietnam|Halong,Vietnam|Hue,Vietnam|DaLat,Vietnam|HoChiMinhCity,Vietnam" # Google static map URL
+		@tripMapStatic = "https://www.google.com/maps/api/staticmap?size="+@tripMapStaticSize+"&path=weight:5|Hanoi,Vietnam|Halong,Vietnam|Hue,Vietnam|DaLat,Vietnam|HoChiMinhCity,Vietnam" # Google static map URL
 		#@tripMapStaticDestination = ["Hanoi","Da Nang","Da Lat","Mui Ne","Ho Chi Minh City"]   # Build City, Country items for URL
 
 		# Trip object attributes

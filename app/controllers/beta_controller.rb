@@ -3,6 +3,7 @@ class BetaController < ApplicationController
 
 
   def index
+    @autocomplete_page = true
     @transparent_nav = true
 
     @page_title = "Home"

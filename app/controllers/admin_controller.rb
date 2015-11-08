@@ -20,7 +20,7 @@ class AdminController < ApplicationController
   end
 
   def edit_user
-
+    @autocomplete_page = true
     @user = User.find(params[:id])
 
     @page_title = "Edit " + @user.name

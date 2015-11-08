@@ -33,6 +33,12 @@
     </script>
   <% end %>
 
+  <% if @autocomplete_page %>
+    <script
+      src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBbL1jb6SbG8RGQME134WvJeJbd6PJEFSw&libraries=places&callback=initSearch"  async defer>
+    </script>
+  <% end %>
+
 
 </head>
 
