@@ -1,0 +1,29 @@
+<!-- rendered when there is a destination in the trip to show -->
+
+<div class="itinerary-destination-step">
+	<div class="row itinerary-destination-header">
+
+			<div class="itinerary-calendar-box">
+				<span class="fa-stack fa-lg">
+				  <i class="fa fa-calendar-o fa-stack-2x"></i>
+				  <strong class="fa-stack-1x calendar-text"><%= @itineraryStepDate %></strong>
+				</span>
+				<p class="calendar-month">Jan</p>
+			</div>
+
+		<div class="col-sm-11 col-sm-offset-1 itinerary-step-overview">
+			<ul class="list-inline">
+				<li><p class="itinerary-step-city"><%= @itineraryStepCity %></p></li>
+				<li><p class="itinerary-step-country"><%= @itineraryStepCountry %></p></li>
+			</ul>
+				
+		</div>
+	</div>
+	
+	<% if @accommChosen %>
+		<%= render 'accomm_chosen' %>
+	<% else %>
+		<%= render 'accomm_search' %>
+	<% end %>
+	
+</div>

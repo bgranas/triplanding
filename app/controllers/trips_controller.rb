@@ -76,6 +76,15 @@ class TripsController < ApplicationController
     @accommodationSpecifics = "2 nights in ABC Hotel | Check in: Jan 1 Check out: Jan 3"
     @accommodationPrice = "$100"
 
+    #if true renders destination selection in itinerary, if false renders "add next destination" button
+    @destinationChosen = true
+    #if true renders transport selection in itinerary, if false renders transport search with r2r call
+    @transportChosen = true
+    #if true renders accomm selection in itinerary, if false renders accomm search
+    @accommChosen = true
+
+    
+
     @transportationType = "Bus"
     @itineraryStepDestination2 = "Dafeng"
     @transportationSpecifics = "DF Bus | Shanghai Bus Station | 12:00 PM"
