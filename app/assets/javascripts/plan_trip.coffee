@@ -30,7 +30,9 @@ addPlaceToMap = (place, map) ->
   #connect the new marker with the last marker if needed
   markers.push marker #add to the array of markers
   mCount = markers.length
-  if mCount >= 2
+  if mCount == 1
+    map.setCenter(marker.position)
+  else if mCount >= 2
     connectMarkers(markers[mCount-2], markers[mCount-1], map)
     map.fitBounds(bounds)
 

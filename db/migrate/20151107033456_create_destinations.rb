@@ -10,6 +10,7 @@ class CreateDestinations < ActiveRecord::Migration
       t.string :route
       t.string :intersection
       t.string :country
+      t.string :country_iso_2
       t.string :administrative_area_level_1
       t.string :administrative_area_level_2
       t.string :administrative_area_level_3
