@@ -4,6 +4,11 @@ markers = []
 
 $ ->
 
+  #on click of the button, save the current trip
+  $('#save-trip').click ->
+    tripTitle = $('#trip_name_input').val()
+    saveTrip(tripID, tripTitle)
+
 
   $(document).bind 'cbox_complete', ->
     initSearch() #calling initSearch because initial call didn't bind to lightbox input
@@ -14,6 +19,22 @@ $ ->
       addPlaceToMap(place, map)
       saveDestinationToDatabase(place)
 
+
+
+#save trip to database, destination and details should already be in the database
+saveTrip = (trip_id, trip_title) ->
+  $.ajax '/trips/create',
+    dataType: 'json'
+    type: 'POST'
+    data:
+      trip_title: trip_title
+      trip_id: trip_id
+    success: (data) ->
+      alert 'Successful'
+      return
+    failure: ->
+      alert 'Unsuccessful'
+      return
 
 #adds a marker at the geolocation specified in place (google place),
 #on the map specified in map

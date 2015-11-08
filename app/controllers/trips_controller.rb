@@ -83,7 +83,7 @@ class TripsController < ApplicationController
     #if true renders accomm selection in itinerary, if false renders accomm search
     @accommChosen = true
 
-    
+
 
     @transportationType = "Bus"
     @itineraryStepDestination2 = "Dafeng"
@@ -98,7 +98,14 @@ class TripsController < ApplicationController
 
   end
 
+  def create
+    trip_id = params[:trip_id].to_i
+    trip_title = params[:trip_title]
 
+    @trip = Trip.find_by_id(trip_id)
+    @trip.title = trip_title
+    @trip.save
+  end
 
   def new_destination
     @dest = Destination.new
