@@ -32,6 +32,7 @@ addPlaceToMap = (place, map) ->
   mCount = markers.length
   if mCount == 1
     map.setCenter(marker.position)
+    map.setOptions(zoom: 6)
   else if mCount >= 2
     connectMarkers(markers[mCount-2], markers[mCount-1], map)
     map.fitBounds(bounds)
