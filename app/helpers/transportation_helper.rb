@@ -19,24 +19,11 @@ module TransportationHelper
 	  @segmentDistance = []
 	  @segmentDuration = []
 	  @segmentPrice = []
-	  
+
 	  #@segmentOption = ""@routeSegment.to_s + " to " + @routeTarget.to_s","
 
-	  @response['routes'].each do |route|
-	  	@routes << route['name']
-	  	@routePrice << route['indicativePrice']['price']
-	  	@routeDistance << route['distance']
-	  	@routeDistance << route['duration']
-	  end
+	  @routes = @response['routes']
 
-		@response['routes'][@routeID]['segments'].each do |segment|
-			@segmentName << segment['kind']# +" to "+f['tName']
-			@segmentTarget << segment['tName']
-			@segmentDistance << segment['distance']
-			@segmentPrice << segment['indicativePrice']['price']
-			@segmentDuration << segment['duration']
-			
-		end
 
 		puts '***** route price:' + @routePrice.to_s
 		puts '***** route distance:' + @routeDistance.to_s
@@ -45,7 +32,7 @@ module TransportationHelper
 		puts '***** targets:'  + @segmentTarget.to_s
 		puts '***** distance:' + @segmentDistance.to_s
 		puts '***** segment duration:' + @segmentDuration.to_s
-		puts '***** price:' + @segmentPrice.to_s 		
+		puts '***** price:' + @segmentPrice.to_s
 
 	end
 

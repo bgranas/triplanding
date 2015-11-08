@@ -1,9 +1,9 @@
 <ul class="transportation-show-routes">
 	<% @routes.each do |route| %>
-	<li><%= route %></li>
-		<% @segmentName.each do |segment| %>
+	<li><%= route['name'] %></li>
+		<% route['segments'].each do |segment| %>
 			<ul class="transportation-show-segments">
-				<li><%= segment %></li>
+				<li><%= segment['kind'].to_s + ' to ' + segment['tName'].to_s %></li>
 			</ul>
 		<% end %>
 	<% end %>
