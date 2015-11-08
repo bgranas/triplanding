@@ -1,3 +1,8 @@
+<% #inserting trip_id variable so javascript can read %>
+<%= javascript_tag do %>
+  window.tripID = <%= @trip.id %>;
+<% end %>
+
 <div class="hidden-xs" id="map-container-90">
   <div id="map-holder"></div>
 
@@ -95,7 +100,7 @@
 
 	<div class="itinerary-holder">
 		<h1 class="itinerary-trip-title">My Trip</h1>
-			
+
 			<div class="itinerary-transportation-step">
 				<div class="row itinerary-transportation-header">
 					<div class="itinerary-transportation-icon">
@@ -140,7 +145,7 @@
 							<li><p class="itinerary-step-city"><%= @itineraryStepCity %></p></li>
 							<li><p class="itinerary-step-country"><%= @itineraryStepCountry %></p></li>
 						</ul>
-							
+
 					</div>
 				</div>
 
@@ -219,7 +224,7 @@
 							<li><p class="itinerary-step-city"><%= @itineraryStepCity %></p></li>
 							<li><p class="itinerary-step-country"><%= @itineraryStepCountry %></p></li>
 						</ul>
-							
+
 					</div>
 				</div>
 

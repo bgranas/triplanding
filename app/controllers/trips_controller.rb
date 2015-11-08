@@ -54,11 +54,11 @@ class TripsController < ApplicationController
     # add initialization script for google maps
     @map_page = true
 
-    
-    
 
 
-    @trip = Trip.new #creates trip object to start adding information to
+
+
+    @trip = Trip.create #creates/saves a trip object
 
 
     @itineraryOriginDate = "1"

@@ -47,7 +47,9 @@ saveDestinationToDatabase = (place) ->
   $.ajax '/destinations',
     dataType: 'json'
     type: 'POST'
-    data: place: JSON.stringify(place)
+    data:
+      place: JSON.stringify(place)
+      trip_id: tripID
     success: (data) ->
       alert 'Successful'
       return

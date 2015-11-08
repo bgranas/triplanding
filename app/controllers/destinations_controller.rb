@@ -4,6 +4,8 @@ class DestinationsController < ApplicationController
   def create
     place = JSON.parse params[:place]
 
+    trip_id = params[:trip_id].to_i
+
     #use destination if already in the DB, otherwise create a new one
     dest = Destination.find_by_google_place_id(place['id'])
     if dest.nil?
@@ -11,7 +13,11 @@ class DestinationsController < ApplicationController
       dest.save
     end
 
-
+    #Should only create destination order if a trip_id is defined
+    if not trip_id.nil?
+      dest_order = dest.destination_orders.build(trip_id: trip_id, order_authority: 100)
+      dest_order.save
+    end
   end
 
 
