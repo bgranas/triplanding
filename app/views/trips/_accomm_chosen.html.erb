@@ -1,0 +1,16 @@
+<!-- rendered when accommodation is known -->
+
+<div class="row itinerary-step-accomodation">
+	<div class="col-sm-3 col-sm-offset-1 itinerary-step-accomodation-overview">
+		<p><%= @accommodationType %> in <%= @itineraryStepCity %></p>
+	</div>
+	<div class="col-sm-5 itinerary-step-specifics">
+		<p><%= @accommodationSpecifics %></p>
+	</div>
+	<div class="col-sm-1 itinerary-step-price">
+		<p><%= @accommodationPrice %></p>
+	</div>
+	<div class="col-sm-2 itinerary-step-booking">
+		<%= submit_tag("Book now", {:class => 'btn btn-success'}) %>
+	</div>
+</div>
