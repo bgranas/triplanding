@@ -24,6 +24,8 @@ module TransportationHelper
 			@routeTarget << segment['tName']
 		end
 
+		puts @routeSegments
+
 	end
 
 	def show_routes
