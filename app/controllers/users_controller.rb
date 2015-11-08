@@ -36,6 +36,7 @@ class UsersController < ApplicationController
 	end
 
   def edit
+    @autocomplete_page = true
     @user = User.find_by_id(params[:id])
     validate_current_user_is_user
   end

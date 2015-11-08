@@ -98,6 +98,46 @@ class TripsController < ApplicationController
 
   end
 
+  def itinerary_test
+        # add initialization script for google maps
+    @map_page = true
+
+
+    @itineraryOriginDate = "1"
+    @itineraryOriginTransportation = "Flight from SFO to PVG"
+    @itineraryOriginSpecifics = "American Airlines flight 1 | 9:00 AM"
+    @itineraryOriginPrice = "$1000"
+
+
+    @itineraryStepOrder = "1"
+    @itineraryStepDate = "2"
+    @itineraryStepCity = "Shanghai"
+    @itineraryStepCountry = "CHINA"
+
+    @accommodationType = "Hotel"
+    @accommodationSpecifics = "2 nights in ABC Hotel | Check in: Jan 1 Check out: Jan 3"
+    @accommodationPrice = "$100"
+
+    #if true renders destination selection in itinerary, if false renders "add next destination" button
+    @destinationChosen = true
+    #if true renders transport selection in itinerary, if false renders transport search with r2r call
+    @transportChosen = true
+    #if true renders accomm selection in itinerary, if false renders accomm search
+    @accommChosen = true
+
+    
+
+    @transportationType = "Bus"
+    @itineraryStepDestination2 = "Dafeng"
+    @transportationSpecifics = "DF Bus | Shanghai Bus Station | 12:00 PM"
+    @transportationPrice = "$15"
+
+    @originCoords = "31.157,121.40" #might have a max number of digits
+    @destinationCoords = "10.09,99.83806"
+
+    #calling TransportationHelper
+    r2r_call
+  end
 
 
   def new_destination
