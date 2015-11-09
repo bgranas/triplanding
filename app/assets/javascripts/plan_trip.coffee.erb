@@ -17,8 +17,10 @@ $ ->
     # PRE: place should be defined from the autocomplete function
     # PRE: map should be initialized
     $('#add-destination-submit').click ->
-      addPlaceToMap(place, map)
-      saveDestinationToDatabase(place)
+      markerID = addPlaceToMap(place, map)
+      response = saveDestinationToDatabase(place)
+      destinationID = response.responseText
+      addDestinationSnapshot(place, markerID, destinationID)
 
 
 generateMarkerID = ->
@@ -45,17 +47,32 @@ saveTrip = (trip_id, trip_title) ->
 #add location to trip snapshot
 #vars: place = google place object
 #      map = google map object
-addDestinationToSnapshot = (place, map) ->
+addDestinationSnapshot = (place, markerID, destinationID) ->
   destinationName = place.name
-  snapshot = $('#snapshot-location-template').clone().removeClass('hidden')
+  snapshot = $('#snapshot-location-template').clone().removeClass('hidden').removeAttr('id')
+  #setting data needed for trip
   snapshot.find('h5').text(place.name)
+  snapshot.attr('data-marker-id', markerID)
+  snapshot.attr('data-destination-id', destinationID)
   snapshot.insertBefore('#snapshot-add-destination')
+
+  snapshot.click ->
+    info_content = getInfowindowContent(place)
+    infowindow.setContent(info_content)
+    infowindow.open(map, markers[markerID])
   $('#trip-snapshot-link-ul').append('<li></li>')
 
+
+#returns the formatted infowindow content
+getInfowindowContent = (place) ->
+  iw = $('#infowindow-tempalte').clone().removeClass('hidden').removeAttr('id')
+  iw.find('h5').text(place.formatted_address) #infowindow header
+  return  iw.html()
 
 #adds a marker at the geolocation specified in place (google place),
 #on the map specified in map, connects path to previous marker if necessary
 #PRE: bounds array must be declared
+#@return markerID
 addPlaceToMap = (place, map) ->
   markerID = generateMarkerID()
   marker = new google.maps.Marker
@@ -64,8 +81,14 @@ addPlaceToMap = (place, map) ->
     title: place.formatted_address
     id: markerID
 
-  #TEST
-  addDestinationToSnapshot(place, map)
+  #open infowindow on click
+  marker.addListener 'click', ->
+    infowindow.open(map, marker)
+
+  info_content = getInfowindowContent(place)
+  console.log info_content
+  infowindow.setContent(info_content)
+  infowindow.open(map, marker)
 
   #add position to the maps bounds
   bounds.extend marker.position
@@ -78,6 +101,8 @@ addPlaceToMap = (place, map) ->
     map.setOptions(zoom: 6)
   else
     map.fitBounds(bounds)
+
+  return markerID
 
 
 #removes a marker with markerID from the map and markers array
@@ -92,12 +117,12 @@ saveDestinationToDatabase = (place) ->
   $.ajax '/destinations',
     dataType: 'json'
     type: 'POST'
+    async: false
     data:
       place: JSON.stringify(place)
       trip_id: tripID
-    success: (data) ->
-      alert 'Successful'
-      return
+    success: (destinationID) ->
+      return JSON.stringify(destinationID)
     failure: ->
-      alert 'Unsuccessful'
+      alert 'saveDestiantionToDatabase() Unsuccessful, please alert site admins'
       return

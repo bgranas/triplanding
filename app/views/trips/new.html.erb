@@ -40,24 +40,7 @@
     </div>
     <div id="snapshot-content" class="col-sm-12">
         <ul id="trip-snapshot-ul" class="list-inline">
-          <!-- Old Circle Layout for snapshot location
-          <li class="snapshot-location">
-            <div class="snapshot-location-container">
-              <div class="snapshot-location-name"><span>Shanghai</span></div>
-              <div class="snapshot-location-icon"><i class="fa fa-globe fa-2x location-icon"></i></div>
-              <div class="snapshot-location-controls hidden">
-                <i class="fa fa fa-plus-circle"></i>
-                <i class="fa fa-arrows"></i>
-                <i class="fa fa-minus-circle"></i>
-              </div>
-            </div>
-          </li>
-          -->
-          <li id="snapshot-location-template" class="snapshot-location hidden">
-            <div class="snapshot-location-container">
-              <h5>Hidden Template</h5>
-            </div>
-          </li>
+
           <li id="snapshot-add-destination">
             <div class="snapshot-location-container">
               <a href="/blank/add_destination_helper" data-colorbox="true">
@@ -80,4 +63,16 @@
 
 </div>
 
+<!-- Hidden templates for javascript functions -->
+<li id="snapshot-location-template" class="snapshot-location hidden">
+  <div class="snapshot-location-container">
+    <h5>Hidden Template</h5>
+  </div>
+</li>
 
+<div id="infowindow-tempalte" class="">
+  <h5>Location Name</h5>
+  <a href="#" class="block">Add Dates</a>
+  <button class="btn btn-xs btn-danger">Remove</button>
+  <button class="btn btn-xs btn-success">Add Next Destination</button>
+</div>

@@ -24,6 +24,7 @@
 var map;
 var bounds;
 var polyline = new Array();
+var infowindow;
 var myLatLng = {lat: 28, lng: 0};
 function initMap() {
   map = new google.maps.Map(document.getElementById('map-holder'), {
@@ -39,6 +40,12 @@ function initMap() {
   polyline = new google.maps.Polyline({
     geodesic: true,
     map: map
+  });
+
+  var contentString ='<h3>Sample Content Yo</h3>'
+
+  infowindow = new google.maps.InfoWindow({
+    content: contentString
   });
 
   //initSearch();

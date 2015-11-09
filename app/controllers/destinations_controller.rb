@@ -4,8 +4,6 @@ class DestinationsController < ApplicationController
   def create
     place = JSON.parse params[:place]
 
-    trip_id = params[:trip_id].to_i
-
     #use destination if already in the DB, otherwise create a new one
     dest = Destination.find_by_google_place_id(place['id'])
     if dest.nil?
@@ -13,6 +11,14 @@ class DestinationsController < ApplicationController
       dest.save
     end
 
+
+    if dest.persisted?
+      render :json => dest.id
+    else
+      render :status => '400'
+    end
+=begin
+    trip_id = params[:trip_id].to_i
     #Should only create destination order if a trip_id is defined
     if not trip_id.nil?
       max_order_auth = DestinationOrder.where(trip_id: trip_id).maximum(:order_authority)
@@ -24,6 +30,9 @@ class DestinationsController < ApplicationController
       dest_order = dest.destination_orders.build(trip_id: trip_id, order_authority: new_order_auth)
       dest_order.save!
     end
+=end
+
+
   end
 
 
