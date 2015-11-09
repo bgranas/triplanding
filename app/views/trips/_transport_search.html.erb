@@ -1,11 +1,13 @@
-<ul class="transportation-show-routes">
-	<% @routes.each do |route| %>
-	<li><%= route['name'] %></li>
-		<% route['segments'].each do |segment| %>
-			<ul class="transportation-show-segments">
-				<li><%= segment['kind'].to_s + ' to ' + segment['tName'].to_s %></li>
+
+	<ul class="transportation-show">
+		<% @routes.each do |route| %>
+		<li  class="transportation-show-routes"><a href="#"><%= route['name'] %></a></li>
+			<ul class="transportation-segments-all">
+			<% route['segments'].each do |segment| %>
+				<li class="transportation-segment"><%= segment['kind'].to_s + ' to ' + segment['tName'].to_s %></li>
+			<% end %>
 			</ul>
 		<% end %>
-	<% end %>
 
-</ul>
+	</ul>
+
