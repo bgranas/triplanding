@@ -43,7 +43,7 @@
 
           <li id="snapshot-add-destination">
             <div class="snapshot-location-container">
-              <a href="/blank/add_destination_helper" data-colorbox="true">
+              <a href="<%= add_destination_lightbox_path %>" data-colorbox="true">
                 <i class="fa fa-plus-circle fa-2x add-destination" data-toggle="tooltip" data-placement="right"
                    title="Add Destination"></i>
               </a>
@@ -71,8 +71,16 @@
 </li>
 
 <div id="infowindow-tempalte" class="">
-  <h5>Location Name</h5>
-  <a href="#" class="block">Add Dates</a>
-  <button class="btn btn-xs btn-danger">Remove</button>
-  <button class="btn btn-xs btn-success">Add Next Destination</button>
+  <div class="infowindow-content">
+    <h5>Location Name</h5>
+    <div>
+      <a href="#" class="block">
+        <i class="fa fa-calendar-plus-o"></i> Add Dates
+      </a>
+    </div>
+    <button class="btn btn-xs btn-danger">Remove</button>
+    <button class="btn btn-xs btn-success">
+      <a href="<%= add_destination_lightbox_path %>" data-colorbox="true" class="no-style-link">Add Next Destination</a>
+    </button>
+  </div>
 </div>
