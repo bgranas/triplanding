@@ -1,6 +1,7 @@
 #anything code related to trips/new and trips/edit should be put here.
 
 markers = []
+currentMarkerID = 0
 
 $ ->
 
@@ -20,6 +21,9 @@ $ ->
       saveDestinationToDatabase(place)
 
 
+generateMarkerID = ->
+  return currentMarkerID++
+
 
 #save trip to database, destination and details should already be in the database
 saveTrip = (trip_id, trip_title) ->
@@ -36,34 +40,53 @@ saveTrip = (trip_id, trip_title) ->
       alert 'Unsuccessful'
       return
 
+
+
+#add location to trip snapshot
+#vars: place = google place object
+#      map = google map object
+addDestinationToSnapshot = (place, map) ->
+  destinationName = place.name
+  snapshot = $('#snapshot-location-template').clone().removeClass('hidden')
+  snapshot.find('h5').text(place.name)
+  snapshot.insertBefore('#snapshot-add-destination')
+  $('#trip-snapshot-link-ul').append('<li></li>')
+
+
 #adds a marker at the geolocation specified in place (google place),
-#on the map specified in map
+#on the map specified in map, connects path to previous marker if necessary
 #PRE: bounds array must be declared
 addPlaceToMap = (place, map) ->
+  markerID = generateMarkerID()
   marker = new google.maps.Marker
     position: place.geometry.location
     map: map
     title: place.formatted_address
+    id: markerID
+
+  #TEST
+  addDestinationToSnapshot(place, map)
 
   #add position to the maps bounds
   bounds.extend marker.position
 
-  #connect the new marker with the last marker if needed
-  markers.push marker #add to the array of markers
-  mCount = markers.length
-  if mCount == 1
+  markers[markerID] = marker
+  polyline.getPath().setAt(markers.length - 1, marker.position);
+
+  if markers.length == 1
     map.setCenter(marker.position)
     map.setOptions(zoom: 6)
-  else if mCount >= 2
-    connectMarkers(markers[mCount-2], markers[mCount-1], map)
+  else
     map.fitBounds(bounds)
 
-connectMarkers = (o_marker, d_marker, map) ->
-  path_coordinates = [o_marker.position, d_marker.position]
-  line_path = new google.maps.Polyline
-    path: path_coordinates
-    geodesic: true
-    map: map
+
+#removes a marker with markerID from the map and markers array
+removeMarker = (markerID, map) ->
+  marker = markers[markerID]
+  marker.setMap(null)
+  polyline.getPath().removeAt(markerID)
+  delete markers[markerID]
+
 
 saveDestinationToDatabase = (place) ->
   $.ajax '/destinations',

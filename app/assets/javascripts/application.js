@@ -23,6 +23,7 @@
 
 var map;
 var bounds;
+var polyline = new Array();
 var myLatLng = {lat: 28, lng: 0};
 function initMap() {
   map = new google.maps.Map(document.getElementById('map-holder'), {
@@ -33,6 +34,11 @@ function initMap() {
     panControl: false,
     mapTypeControlOptions: {position: google.maps.ControlPosition.TOP_RIGHT},
     zoomControlOptions: {position: google.maps.ControlPosition.RIGHT_TOP}
+  });
+
+  polyline = new google.maps.Polyline({
+    geodesic: true,
+    map: map
   });
 
   //initSearch();
