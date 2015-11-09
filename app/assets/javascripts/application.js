@@ -35,7 +35,7 @@ function initMap() {
     zoomControlOptions: {position: google.maps.ControlPosition.RIGHT_TOP}
   });
 
-  initSearch();
+  //initSearch();
   bounds = new google.maps.LatLngBounds();
 }
 
