@@ -85,11 +85,6 @@ addPlaceToMap = (place, map) ->
   marker.addListener 'click', ->
     infowindow.open(map, marker)
 
-  info_content = getInfowindowContent(place)
-  console.log info_content
-  infowindow.setContent(info_content)
-  infowindow.open(map, marker)
-
   #add position to the maps bounds
   bounds.extend marker.position
 
@@ -101,6 +96,12 @@ addPlaceToMap = (place, map) ->
     map.setOptions(zoom: 6)
   else
     map.fitBounds(bounds)
+
+  #lastly, open window of place just added
+  info_content = getInfowindowContent(place)
+  console.log info_content
+  infowindow.setContent(info_content)
+  infowindow.open(map, marker)
 
   return markerID
 
