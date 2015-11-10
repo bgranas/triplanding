@@ -160,7 +160,7 @@
 #trip-snapshot-ul{
 	position: relative;
 	z-index: 100;
-	margin-top:10px;
+	margin-top:15px;
 }
 
 #trip-snapshot-ul li{
@@ -169,6 +169,13 @@
 	 text-align: center;
 	 height:100%;
 	 vertical-align:top;
+   padding-left:0px;
+   padding-right:0px;
+   cursor: pointer;
+}
+
+.snapshot-location-shadow{
+  box-shadow: 3px 3px 5px #888888;
 }
 
 #trip-snapshot-link-ul{
@@ -186,22 +193,30 @@
     z-index: 1;
 }
 
+.snapshot-draggable-indicator{
+  height: 47px;
+  padding-top: 13px;
+  padding-left: 5px;
+  padding-right: 5px;
+  border-right: 1px dotted lightgray;
+  float:left;
+  position:absolute;
+}
+
 .snapshot-location-container{
-	margin-top: 5px;
-	padding: 5px 15px;
+	padding: 5px 2px;
 	height: 47px;
-	cursor: pointer;
 	border: 1px solid lightgray;
 	background-color:white;
 }
 
 .snapshot-location-container-placeholder{
-	margin-top: 5px;
 	padding: 5px 15px;
 	min-height: 47px;
 	cursor: pointer;
 	border: 1px solid lightgray;
 	background-color:#E6E6E6;
+  vertical-align: top;
 }
 
 .snapshot-location-icon span{

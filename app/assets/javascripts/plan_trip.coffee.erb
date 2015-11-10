@@ -84,7 +84,15 @@ addDestinationSnapshot = (place, markerID, destinationID) ->
     info_content = getInfowindowContent(place)
     infowindow.setContent(info_content)
     infowindow.open(map, markers[markerID])
+
+  snapshot.hover ->
+    dragIndicator = snapshot.find('.snapshot-draggable-indicator')
+    dragIndicator.toggleClass('hidden')
+    dragIndicator.hover ->
+      dragIndicator.parent().toggleClass('snapshot-location-shadow')
+
   $('#trip-snapshot-link-ul').append('<li></li>')
+
 
 
 #returns the formatted infowindow content
@@ -123,7 +131,6 @@ addPlaceToMap = (place, map) ->
 
   #lastly, open window of place just added
   info_content = getInfowindowContent(place)
-  console.log info_content
   infowindow.setContent(info_content)
   infowindow.open(map, marker)
 

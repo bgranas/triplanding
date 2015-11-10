@@ -94,7 +94,7 @@ class TripsController < ApplicationController
     @destinationCoords = "10.09,99.83806"
 
     #calling TransportationHelper
-    r2r_call
+    #r2r_call
 
   end
 

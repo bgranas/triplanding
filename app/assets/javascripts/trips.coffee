@@ -15,7 +15,9 @@ $ -> #on document ready
   $('.snapshot-toggle').click ->
     toggleTripSnapshot()
 
-  $('#trip-snapshot-ul').sortable placeholder: 'snapshot-location-container-placeholder'
+  $('#trip-snapshot-ul').sortable
+    placeholder: 'snapshot-location-container-placeholder',
+    items: "li:not(.not-sortable)"
 
 
 toggleTripSnapshot = ->

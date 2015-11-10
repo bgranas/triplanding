@@ -41,7 +41,7 @@
     <div id="snapshot-content" class="col-sm-12">
         <ul id="trip-snapshot-ul" class="list-inline">
 
-          <li id="snapshot-add-destination">
+          <li id="snapshot-add-destination" class="not-sortable">
             <div class="snapshot-location-container">
               <a href="<%= add_destination_lightbox_path %>" data-colorbox="true">
                 <i class="fa fa-plus-circle fa-2x add-destination" data-toggle="tooltip" data-placement="right"
@@ -59,12 +59,13 @@
     </div>
   </div> <!-- end row -->
 
-	<%= render partial: 'itinerary' %>
+
 
 </div>
 
 <!-- Hidden templates for javascript functions -->
 <li id="snapshot-location-template" class="snapshot-location hidden">
+  <div class="snapshot-draggable-indicator hidden"><i class="fa fa-arrows"></i></div>
   <div class="snapshot-location-container">
     <h5>Hidden Template</h5>
   </div>
