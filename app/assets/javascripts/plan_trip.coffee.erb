@@ -10,6 +10,10 @@ $ ->
     tripTitle = $('#trip_name_input').val()
     saveTrip(tripID, tripTitle)
 
+  #remove button on infobox should remove pin and path
+  $('body').on 'click', '.remove-location', ->
+    markerID = $(this).parent().data('marker-id')
+    removeMarker(markerID, map)
 
   $(document).bind 'cbox_complete', ->
     initSearch() #calling initSearch because initial call didn't bind to lightbox input
@@ -79,10 +83,12 @@ addDestinationSnapshot = (place, markerID, destinationID) ->
   snapshot.insertBefore('#snapshot-add-destination')
 
   snapshot.find('.snapshot-location-content').click ->
-    info_content = getInfowindowContent(place)
+    info_content = getInfowindowContent(place, markerID)
     infowindow.setContent(info_content)
     markerIndex = findMarkerIndexByID(markerID)
     infowindow.open(map, markers[markerIndex])
+
+
 
   snapshot.hover ->
     dragIndicator = $(this).find('.snapshot-draggable-indicator')
@@ -103,9 +109,10 @@ addDestinationSnapshot = (place, markerID, destinationID) ->
 
 
 #returns the formatted infowindow content
-getInfowindowContent = (place) ->
-  iw = $('#infowindow-tempalte').clone().removeClass('hidden').removeAttr('id')
+getInfowindowContent = (place, markerID) ->
+  iw = $('#infowindow-template').clone(true).removeClass('hidden').removeAttr('id')
   iw.find('h5').text(place.formatted_address) #infowindow header
+  iw.find('.infowindow-content').attr('data-marker-id', markerID)
   return  iw.html()
 
 #adds a marker at the geolocation specified in place (google place),
@@ -138,7 +145,7 @@ addPlaceToMap = (place, map) ->
     map.fitBounds(bounds)
 
   #lastly, open window of place just added
-  info_content = getInfowindowContent(place)
+  info_content = getInfowindowContent(place, markerID)
   infowindow.setContent(info_content)
   infowindow.open(map, marker)
 

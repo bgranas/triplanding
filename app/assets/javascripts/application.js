@@ -48,7 +48,6 @@ function initMap() {
     content: contentString
   });
 
-  //initSearch();
   bounds = new google.maps.LatLngBounds();
 }
 
