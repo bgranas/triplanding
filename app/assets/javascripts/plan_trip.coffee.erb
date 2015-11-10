@@ -86,19 +86,18 @@ addDestinationSnapshot = (place, markerID, destinationID) ->
     infowindow.open(map, markers[markerID])
 
   snapshot.hover ->
-    dragIndicator = snapshot.find('.snapshot-draggable-indicator')
+    dragIndicator = $(this).find('.snapshot-draggable-indicator')
     dragIndicator.toggleClass('hidden')
 
-    snapshotClose = snapshot.find('.snapshot-close')
-    snapshotClose.toggleClass('hidden')
+    $(this).find('.snapshot-close').toggleClass('hidden')
     dragIndicator.hover ->
       dragIndicator.parent().toggleClass('snapshot-location-shadow')
 
-    snapshotClose.click ->
-      markerID = snapshotClose.parent().data('marker-id')
-      snapshotClose.parent().remove()
-      $('#trip-snapshot-link-ul li:first').remove()
-      removeMarker(markerID, map)
+  snapshot.find('.snapshot-close').click ->
+    markerID = $(this).parent().data('marker-id')
+    $(this).parent().remove()
+    $('#trip-snapshot-link-ul li:first').remove()
+    removeMarker(markerID, map)
 
   $('#trip-snapshot-link-ul').append('<li></li>')
 
