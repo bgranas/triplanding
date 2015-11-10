@@ -2,6 +2,7 @@
 
 markers = []
 currentMarkerID = 0
+markerCount = 0
 
 $ ->
 
@@ -121,6 +122,9 @@ addPlaceToMap = (place, map) ->
     title: place.formatted_address
     id: markerID
 
+  markerCount++
+
+  alert markerCount
   #open infowindow on click
   marker.addListener 'click', ->
     infowindow.open(map, marker)
@@ -129,9 +133,9 @@ addPlaceToMap = (place, map) ->
   bounds.extend marker.position
 
   markers[markerID] = marker
-  polyline.getPath().setAt(markers.length - 1, marker.position);
+  polyline.getPath().setAt(markerCount - 1, marker.position);
 
-  if markers.length == 1
+  if markerCount == 1
     map.setCenter(marker.position)
     map.setOptions(zoom: 6)
   else
@@ -151,6 +155,7 @@ removeMarker = (markerID, map) ->
   marker.setMap(null)
   polyline.getPath().removeAt(markerID)
   delete markers[markerID]
+  markerCount--
 
 
 saveDestinationToDatabase = (place) ->
