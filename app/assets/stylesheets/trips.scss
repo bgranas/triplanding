@@ -93,6 +93,10 @@
     z-index: 1000000 !important;
   }
 
+  .lightbox-warning-template .alert{
+    margin-bottom: 0px;
+    padding: 5px 15px;
+  }
 
 /****** TRIP SNAPSHOT ***********/
 #trip-snapshot-container{

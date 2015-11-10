@@ -68,6 +68,24 @@ h4{
 .inline-block{
   display: inline-block;
 }
+
+.placeholder-warning::-webkit-input-placeholder {
+   font-weight: bold;
+}
+
+.placeholder-warning:-moz-placeholder { /* Firefox 18- */
+   font-weight: bold;
+}
+
+.placeholder-warning::-moz-placeholder {  /* Firefox 19+ */
+   font-weight: bold;
+}
+
+.placeholder-warning:-ms-input-placeholder {
+   font-weight: bold;
+}
+
+
 .no-padding{
   padding:0px;
 }

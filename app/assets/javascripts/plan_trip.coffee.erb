@@ -13,14 +13,38 @@ $ ->
 
   $(document).bind 'cbox_complete', ->
     initSearch() #calling initSearch because initial call didn't bind to lightbox input
+    $('.add-destination-input').focus()
 
     # PRE: place should be defined from the autocomplete function
     # PRE: map should be initialized
     $('#add-destination-submit').click ->
-      markerID = addPlaceToMap(place, map)
-      response = saveDestinationToDatabase(place)
-      destinationID = response.responseText
-      addDestinationSnapshot(place, markerID, destinationID)
+      if $('.add-destination-input').val() == ''
+        $('.lightbox-warning').remove()
+        content = $('.lightbox-warning-template').clone().removeClass('hidden')
+        content.removeClass('.lightbox-warning-template').addClass('lightbox-warning')
+        content.find('#lightbox-warning-content').html('Please enter a destination.')
+        content.insertBefore('#add-destination-lightbox-wrapper')
+        $.colorbox.resize()
+      else
+        setTimeout ->
+          $('.lightbox-warning').remove()
+          content = $('.lightbox-warning-template').clone().removeClass('hidden')
+          content.removeClass('.lightbox-warning-template').addClass('lightbox-warning')
+          content.insertBefore('#add-destination-lightbox-wrapper')
+          $.colorbox.resize()
+        , 300
+
+
+
+# PRE: place should be defined from the autocomplete function
+# PRE: map should be initialized
+#Parent function that should be called when a new destination is added to the map
+addDestination = (place, map) ->
+  if place != null
+    markerID = addPlaceToMap(place, map)
+    response = saveDestinationToDatabase(place)
+    destinationID = response.responseText
+    addDestinationSnapshot(place, markerID, destinationID)
 
 
 generateMarkerID = ->
@@ -118,7 +142,6 @@ saveDestinationToDatabase = (place) ->
   $.ajax '/destinations',
     dataType: 'json'
     type: 'POST'
-    async: false
     data:
       place: JSON.stringify(place)
       trip_id: tripID
@@ -127,3 +150,14 @@ saveDestinationToDatabase = (place) ->
     failure: ->
       alert 'saveDestiantionToDatabase() Unsuccessful, please alert site admins'
       return
+
+autocomplete = null
+place = null
+#autocomplete search box initialization
+initSearch = ->
+  autocomplete = new (google.maps.places.Autocomplete)(document.getElementById('location-query'), types: [ 'geocode' ])
+  autocomplete.addListener 'place_changed', ->
+    $('#lightbox-warning-template').hide()
+    place = autocomplete.getPlace()
+    addDestination(place, map)
+    $.colorbox.close()

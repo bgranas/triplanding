@@ -1,9 +1,7 @@
-<form class="form-inline">
-  <div class="form-group">
-    <%= text_field_tag 'location-query', '', placeholder: 'Where do you want to go?',
-                        class: 'add-destination-input'  %>
-    <button type="button" id="add-destination-submit" class="btn btn-primary add-destination-button lightbox-close">
-      Add Destination
-    </button>
-  </div>
-</form>
+<div id="add-destination-lightbox-wrapper">
+  <%= text_field_tag 'location-query', '', placeholder: 'Where do you want to go?',
+                      class: 'add-destination-input'  %>
+  <button type="button" id="add-destination-submit" class="btn btn-primary add-destination-button inline-block">
+    Add Destination
+  </button>
+</div>

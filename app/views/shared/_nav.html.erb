@@ -14,7 +14,7 @@
 
     <div class="collapse navbar-collapse" id="collapsemenu">
       <ul class="nav navbar-nav navbar-right">
-        <li><%= link_to 'Plan a Trip', trips_new_path %></li>
+        <li><%= link_to 'Plan a Trip', trips_new_path, :data => { :no_turbolink => true } %></li>
         <li><%= link_to 'Get Inspired', '#' %></li>
         <li><%= link_to 'How it Works', how_it_works_path %></li>
         <% if user_signed_in? %>
