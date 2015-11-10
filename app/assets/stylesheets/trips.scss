@@ -417,6 +417,91 @@
 	    cursor: pointer;
 		}
 
+	/********* TRANSPORTATION SEARCH BOX ***********/
+	.transportation-show {
+	
+	}
+
+	.transportation-routes {
+		border: 1px solid #ececec;
+    background-color: #fff;
+    padding: 10px 20px;
+    margin-bottom: 5px;
+    -webkit-border-radius: 4px;
+    -moz-border-radius: 4px;
+    border-radius: 4px;	
+	}
+
+	.transportation-route-overview {
+    border: 1px solid #f1f1f1;
+    color: #767f93;
+    height: 26px;
+    margin: 0 0 5px 0;
+    -webkit-border-radius: 4px;
+    -moz-border-radius: 4px;
+    border-radius: 4px;
+	}
+
+		.transportation-route-detailbar {
+			    cursor: pointer;
+		}
+
+			.transportation-route-summarybar {
+				display: inline-block;
+				margin-left: -15px;
+				background: #7ebce7;
+				width: 90%;
+				min-width: 10%;
+		    padding: 0;
+		    height: 24px;
+		    -webkit-border-radius: 4px;
+		    -moz-border-radius: 4px;
+		    border-radius: 4px;
+			}
+
+		.route-segment-overview {
+			height: 100%;
+			display: inline-block;
+			text-align: center;
+    	padding-top: 2px;
+		}
+
+			.route-segment-overview i {
+				color: white;
+			}
+
+			.itinerary-route-duration {
+				display: inline-block;
+				margin-left: 15px;
+			}
+
+			.itinerary-route-price {
+				padding-top: 2px;
+				height: 100%;
+    		border-left: 1px solid #ececec;
+			}
+
+	.transportation-segments-all {
+		list-style-type: none;
+	}
+
+		.transportation-segment {
+			margin-top: 10px;
+	    margin-bottom: 10px;
+	    padding-bottom: 10px;
+	    border-bottom: 1px solid gray;
+	    padding-left: 20px;
+		}
+
+		.transportation-segment i {
+			margin-right: 10px;
+		}
+		.transport-book {
+			float: right;
+		}
+
+
+
 
 
 /********* FOR TRIPS / INDEX ***********/

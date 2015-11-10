@@ -2,13 +2,12 @@
 
 $ ->
 
-	$('.transportation-segments-all').hide()
+	$('.transportation-segments').hide()
 
-	$('.transportation-show li a').click ->
-		if $(this).parent().next('ul').is(":visible")
-			$('.transportation-segments-all').slideUp()
+	$('.transportation-route-overview').click ->
+		if $(this).next('div').is(":visible")
+			$('.transportation-segments').slideUp()
 		else
-			$('.transportation-segments-all').slideUp()
-			$(this).parent().next('ul').slideToggle()
-
+			$('.transportation-segments').slideUp()
+			$(this).next('div').slideToggle()
 

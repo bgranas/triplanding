@@ -91,7 +91,7 @@ class TripsController < ApplicationController
     @transportationPrice = "$15"
 
     @originCoords = "31.157,121.40" #might have a max number of digits
-    @destinationCoords = "10.09,99.83806"
+    @destinationCoords = "39.9,116.39"
 
     #calling TransportationHelper
     #r2r_call
@@ -142,7 +142,7 @@ class TripsController < ApplicationController
     @transportationPrice = "$15"
 
     @originCoords = "31.157,121.40" #might have a max number of digits
-    @destinationCoords = "10.09,99.83806"
+    @destinationCoords = "39.9,116.39"
 
     #calling TransportationHelper
     r2r_call
