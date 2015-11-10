@@ -81,6 +81,7 @@ addDestinationSnapshot = (place, markerID, destinationID) ->
   snapshot.find('.snapshot-location-content').click ->
     info_content = getInfowindowContent(place)
     infowindow.setContent(info_content)
+    markerIndex = findMarkerIndexByID(markerID)
     infowindow.open(map, markers[markerIndex])
 
   snapshot.hover ->
