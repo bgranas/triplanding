@@ -9,8 +9,6 @@ mapClickListener = null
 
 $ -> #on document ready
 
-  $('.snapshot-location-container').hover ->
-    $(this).find('.snapshot-location-controls').toggleClass('hidden')
 
   $('.snapshot-toggle').click ->
     toggleTripSnapshot()

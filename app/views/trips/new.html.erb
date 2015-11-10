@@ -40,14 +40,13 @@
     </div>
     <div id="snapshot-content" class="col-sm-12">
         <ul id="trip-snapshot-ul" class="list-inline">
-
           <li id="snapshot-add-destination" class="not-sortable">
-            <div class="snapshot-location-container">
-              <a href="<%= add_destination_lightbox_path %>" data-colorbox="true">
-                <i class="fa fa-plus-circle fa-2x add-destination" data-toggle="tooltip" data-placement="right"
-                   title="Add Destination"></i>
-              </a>
-            </div>
+            <a href="<%= add_destination_lightbox_path %>" data-colorbox="true">
+              <div class="snapshot-location-content">
+                  <i class="fa fa-plus-circle fa-2x add-destination-icon" data-toggle="tooltip" data-placement="right"
+                     title="Add Destination"></i>
+              </div>
+            </a>
           </li>
         </ul>
     </div> <!-- end snapshot content -->
@@ -66,8 +65,11 @@
 <!-- Hidden templates for javascript functions -->
 <li id="snapshot-location-template" class="snapshot-location hidden">
   <div class="snapshot-draggable-indicator hidden"><i class="fa fa-arrows"></i></div>
-  <div class="snapshot-location-container">
-    <h5>Hidden Template</h5>
+  <div class="snapshot-location-content valign-middle-parent">
+    <h5 class="valign-middle-child">Hidden Template</h5>
+  </div>
+  <div class="snapshot-close hidden">
+    <i class="fa fa-times"></i>
   </div>
 </li>
 

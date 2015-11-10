@@ -172,6 +172,7 @@
    padding-left:0px;
    padding-right:0px;
    cursor: pointer;
+   position: relative;
 }
 
 .snapshot-location-shadow{
@@ -194,24 +195,37 @@
 }
 
 .snapshot-draggable-indicator{
-  height: 47px;
+  height: 45px;
   padding-top: 13px;
   padding-left: 5px;
   padding-right: 5px;
   border-right: 1px dotted lightgray;
   float:left;
   position:absolute;
+  background-color: #FDFDFD;
+  margin: 1px;
 }
 
-.snapshot-location-container{
-	padding: 5px 2px;
+.snapshot-location-content{
+	padding: 5px 25px;
 	height: 47px;
 	border: 1px solid lightgray;
 	background-color:white;
 }
+  .snapshot-location-content h5{
+    margin:0px;
+  }
+
+.snapshot-close{
+  position:absolute;
+  top: 0;
+  right: 5px;
+  color: red;
+  cursor: pointer;
+}
 
 .snapshot-location-container-placeholder{
-	padding: 5px 15px;
+	padding: 5px 27px;
 	min-height: 47px;
 	cursor: pointer;
 	border: 1px solid lightgray;
@@ -232,8 +246,11 @@
 		padding-left: 0px;
 	}
 
+.add-destination-icon{
+  margin-top:3px;
+}
 
-.add-destination:before{
+.add-destination-icon:before{
 	background: #01DA04;
   background: -webkit-gradient(linear, left top, left bottom, from(#03c306), to(#0b7910));
   -webkit-background-clip: text;
