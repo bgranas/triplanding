@@ -2,7 +2,6 @@
 
 markers = []
 currentMarkerID = 0
-markerCount = 0
 
 $ ->
 
@@ -35,21 +34,19 @@ $ ->
           $.colorbox.resize()
         , 300
 
-
+#generates unique marker ID for the page
+generateMarkerID = ->
+  return currentMarkerID++
 
 # PRE: place should be defined from the autocomplete function
 # PRE: map should be initialized
 #Parent function that should be called when a new destination is added to the map
 addDestination = (place, map) ->
   if place != null
-    markerID = addPlaceToMap(place, map)
+    markerIndex = addPlaceToMap(place, map)
     response = saveDestinationToDatabase(place)
     destinationID = response.responseText
-    addDestinationSnapshot(place, markerID, destinationID)
-
-
-generateMarkerID = ->
-  return currentMarkerID++
+    addDestinationSnapshot(place, markerIndex, destinationID)
 
 
 #save trip to database, destination and details should already be in the database
@@ -84,7 +81,7 @@ addDestinationSnapshot = (place, markerID, destinationID) ->
   snapshot.find('.snapshot-location-content').click ->
     info_content = getInfowindowContent(place)
     infowindow.setContent(info_content)
-    infowindow.open(map, markers[markerID])
+    infowindow.open(map, markers[markerIndex])
 
   snapshot.hover ->
     dragIndicator = $(this).find('.snapshot-draggable-indicator')
@@ -113,7 +110,7 @@ getInfowindowContent = (place) ->
 #adds a marker at the geolocation specified in place (google place),
 #on the map specified in map, connects path to previous marker if necessary
 #PRE: bounds array must be declared
-#@return markerID
+#@return index of marker in markers array
 addPlaceToMap = (place, map) ->
   markerID = generateMarkerID()
   marker = new google.maps.Marker
@@ -122,9 +119,6 @@ addPlaceToMap = (place, map) ->
     title: place.formatted_address
     id: markerID
 
-  markerCount++
-
-  alert markerCount
   #open infowindow on click
   marker.addListener 'click', ->
     infowindow.open(map, marker)
@@ -132,10 +126,11 @@ addPlaceToMap = (place, map) ->
   #add position to the maps bounds
   bounds.extend marker.position
 
-  markers[markerID] = marker
-  polyline.getPath().setAt(markerCount - 1, marker.position);
+  markers.push marker
+  markerIndex = markers.length-1 #marker index is last element or array
+  polyline.getPath().setAt(markerIndex, marker.position);
 
-  if markerCount == 1
+  if markers.length == 1
     map.setCenter(marker.position)
     map.setOptions(zoom: 6)
   else
@@ -149,15 +144,23 @@ addPlaceToMap = (place, map) ->
   return markerID
 
 
-#removes a marker with markerID from the map and markers array
+#removes a marker with markerIndex from the map and markers array
 removeMarker = (markerID, map) ->
-  marker = markers[markerID]
+  markerIndex = findMarkerIndexByID(markerID)
+  marker = markers[markerIndex]
   marker.setMap(null)
-  polyline.getPath().removeAt(markerID)
-  delete markers[markerID]
-  markerCount--
+  polyline.getPath().removeAt(markerIndex)
+  markers.splice(markerIndex, 1);
+
+#@RETURN: returns the index of marker with the given ID
+findMarkerIndexByID = (markerID) ->
+  for marker, i in markers
+    if marker.id == markerID
+      return i
 
 
+#saves the destination to the database if it doesn't already exist
+#@RETURN: destinationID of location
 saveDestinationToDatabase = (place) ->
   $.ajax '/destinations',
     dataType: 'json'
