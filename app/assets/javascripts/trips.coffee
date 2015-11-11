@@ -31,7 +31,7 @@ $ ->
   #Bind clicking the snapshot to opening infowindow on map
   $('body').on 'click', '.snapshot-location-content', ->
     markerID = $(this).parent().data('marker-id')
-    if markerID
+    if typeof markerID != 'undefined'
       markerIndex = findMarkerIndexByID(markerID)
       openInfowindow(markerID, markerIndex)
 
@@ -121,7 +121,7 @@ addMarkerToMap = (place, map) ->
 
   #Binds click of marker to opening infowindow
   marker.addListener 'click', ->
-    openInfowindow(markerID, markerIndex)
+    openInfowindowByID(markerID)
 
   #Extend maps bounds to show new marker
   bounds.extend marker.position
@@ -182,6 +182,11 @@ openInfowindow = (markerID, markerIndex) ->
   info_content = getInfowindowContent(markerID, markerIndex)
   infowindow.setContent(info_content)
   infowindow.open(map, markers[markerIndex])
+
+#First finds the markerIndex then calls traditional method
+openInfowindowByID = (markerID) ->
+  markerIndex = findMarkerIndexByID(markerID)
+  openInfowindow(markerID, markerIndex)
 
 #@RET: Infowindow content (html) for destination markerID
 getInfowindowContent = (markerID, markerIndex) ->
@@ -259,6 +264,7 @@ mapClickListener = null
 toggleTripSnapshot = ->
   if snapshotMinimized
     snapshotMinimized = false
+    $('#itinerary').removeClass('hidden')
     $('#trip-snapshot-container').addClass('trip-snapshot-max')
     map.setOptions({draggableCursor:'s-resize'})
     $('.snapshot-toggle-icon').removeClass('fa-chevron-up').addClass('fa-chevron-down')
@@ -270,5 +276,9 @@ toggleTripSnapshot = ->
     $('#trip-snapshot-container').removeClass('trip-snapshot-max')
     $('.snapshot-toggle-icon').removeClass('fa-chevron-down').addClass('fa-chevron-up')
     google.maps.event.removeListener(mapClickListener)
+    setTimeout ->
+      $('#itinerary').addClass('hidden')
+    , 500
+
 
 
