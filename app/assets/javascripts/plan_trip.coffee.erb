@@ -16,7 +16,7 @@ $ ->
   #remove button on infobox should remove pin and path
   $('body').on 'click', '.remove-location', ->
     markerID = $(this).parent().data('marker-id')
-    removeMarker(markerID, map)
+    removeDestination(markerID, map)
 
   $(document).bind 'cbox_complete', ->
     initSearch() #calling initSearch because initial call didn't bind to lightbox input
@@ -63,13 +63,6 @@ addDestination = (place, map) ->
     addDestinationSnapshot(place, markerIndex, destinationID)
 
 
-#returns the formatted infowindow content
-getInfowindowContent = (place, markerID) ->
-  iw = $('#infowindow-template').clone(true).removeClass('hidden').removeAttr('id')
-  iw.find('h5').text(place.formatted_address) #infowindow header
-  iw.find('.infowindow-content').attr('data-marker-id', markerID)
-  return  iw.html()
-
 #adds a marker at the geolocation specified in place (google place),
 #on the map specified in map, connects path to previous marker if necessary
 #PRE: bounds array must be declared
@@ -106,6 +99,13 @@ addMarkerToMap = (place, map) ->
 
   return markerID
 
+#returns the formatted infowindow content
+getInfowindowContent = (place, markerID) ->
+  iw = $('#infowindow-template').clone(true).removeClass('hidden').removeAttr('id')
+  iw.find('h5').text(place.formatted_address) #infowindow header
+  iw.find('.infowindow-content').attr('data-marker-id', markerID)
+  return  iw.html()
+
 #saves the destination to the database if it doesn't already exist
 #@RETURN: destinationID of location
 saveDestinationToDatabase = (place) ->
@@ -131,6 +131,7 @@ addDestinationSnapshot = (place, markerID, destinationID) ->
   snapshot.find('h5').text(place.name)
   snapshot.attr('data-marker-id', markerID)
   snapshot.attr('data-destination-id', destinationID)
+  snapshot.attr('id', 'snapshot-location-' + markerID)
   snapshot.insertBefore('#snapshot-add-destination')
 
   snapshot.find('.snapshot-location-content').click ->
@@ -179,6 +180,17 @@ saveTrip = (trip_id, trip_title) ->
 ### ***********************************###
 ### ***** REMOVE A DESTINATION ********###
 ### ***********************************###
+
+#remove destination parent function. Handles removing snapshot, marker, and itinerary
+removeDestination = (markerID, map) ->
+  removeSnapshot(markerID)
+  removeMarker(markerID, map)
+
+
+#removes snapshot location associated to markerID
+removeSnapshot = (markerID) ->
+  $('#snapshot-location-' + markerID).remove()
+  $('#trip-snapshot-link-ul li:first').remove()
 
 #removes a marker with markerIndex from the map and markers array
 removeMarker = (markerID, map) ->
