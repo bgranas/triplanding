@@ -272,11 +272,18 @@
   margin-right: 30px;
 }
 
+#itinerary #itinerary-title h3{
+  margin-bottom: 20px;
+  margin-top:10px;
+}
+/* Calvin removed */
+
 .itinerary-trip-title {
 	border-bottom: 1px solid lightgray;
   padding-bottom: 15px;
 }
 
+/*Calvin remove*/
 .itinerary-destination-header {
 	position: relative;
 }
@@ -293,6 +300,7 @@
 	}
 
 
+  /*Calvin Remove */
 	.itinerary-calendar-box {
 		position: absolute;
     left: 41px;
@@ -309,6 +317,7 @@
 		font-weight: bold;
 	}
 
+  /*Calvin remove, shouldn't have something between rows bootstrap */
 	.itinerary-destination-step {
 		border-bottom: 1px solid lightgray;
 		margin-top: 15px;
@@ -318,6 +327,7 @@
 
 	}
 
+    /*Calvin delete*/
 		.itinerary-step-overview {
 			margin-bottom: 10px;
 		}
@@ -354,23 +364,56 @@
   	position: relative;
   }
 
+  /*Calvin: change class name, not just for transportation */
 	.itinerary-transportation-vertical {
 		width: 5px;
 		height: 30px;
 		border-left: 5px dotted lightgray;
-		margin-left: .6em;
+		margin-left: 14px;
 		margin-top: 5px;
 		margin-bottom: 5px;
 	}
 
+    /*Calvin: change class name, not just for transportation */
 		.itinerary-transportation-vertical-bottom {
 			position: absolute;
 		}
 
+  /*Calvin remove */
 	.itinerary-transportation-icon {
 		position: absolute;
     left: 4%;
 	}
+
+  /*Calvin add */
+  .itinerary-icon {
+    position: absolute;
+    left: 50px;
+  }
+
+  /*Calvin add */
+  .destination-row{
+    border: 1px solid #b2b2b2;
+    box-shadow: 2px 1px 1px #b2b2b2;
+    background-color:white;
+    padding: 10px 0px;
+    border-radius:5px;
+    min-height: 90px !important;
+  }
+
+  /*Calvin Add */
+  .itinerary-row{
+    min-height: 65px;
+    margin: 10px 20px;
+  }
+  /*Calvin Add */
+  .flag-text{
+    margin-top:5px;
+    font-weight: bold;
+    height:65px; /* min height of itinerary row */
+  }
+
+
 
 	.itinerary-transportation-title {
 
@@ -419,7 +462,7 @@
 
 	/********* TRANSPORTATION SEARCH BOX ***********/
 	.transportation-show {
-	
+
 	}
 
 	.transportation-routes {
@@ -429,7 +472,7 @@
     margin-bottom: 5px;
     -webkit-border-radius: 4px;
     -moz-border-radius: 4px;
-    border-radius: 4px;	
+    border-radius: 4px;
 	}
 
 	.transportation-route-overview {
