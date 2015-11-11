@@ -464,7 +464,12 @@
 			display: inline-block;
 			text-align: center;
     	padding-top: 2px;
+    	border-right: 10px solid #bedcf1;
 		}
+
+			.transportation-route-summarybar > div:last-of-type {
+				border-right: none;
+			}
 
 			.route-segment-overview i {
 				color: white;
@@ -478,7 +483,7 @@
 			.itinerary-route-price {
 				padding-top: 2px;
 				height: 100%;
-    		border-left: 1px solid #ececec;
+
 			}
 
 	.transportation-segments-all {
@@ -489,7 +494,7 @@
 			margin-top: 10px;
 	    margin-bottom: 10px;
 	    padding-bottom: 10px;
-	    border-bottom: 1px solid gray;
+	    border-bottom: 1px solid #ececec;
 	    padding-left: 20px;
 		}
 

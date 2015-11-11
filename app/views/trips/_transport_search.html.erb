@@ -8,21 +8,14 @@
 						<div class="transportation-route-summarybar" style="width:<%= route['durationMajor'].to_f / @routeLongest.to_f * 100 * 0.9 %>%">
 							<% route['segments'].each do |segment| %>
 								<% if segment['isMajor'].to_s == "1" %>
-									<% if segment['kind'].to_s == "flight" %>
-										<div class="route-segment-overview" style="width:<%= segment['duration'].to_f / @duration.to_f * 100 %>%"><i class="fa fa-plane fa-lg"></i></div>
-									<% elsif segment['kind'].to_s == "ferry" %>
-										<div class="route-segment-overview" style="width:<%= segment['duration'].to_f / @duration.to_f * 100 %>%"><i class="fa fa-ship fa-lg"></i></div>
-									<% else %>
-										<div class="route-segment-overview" style="width:<%= segment['duration'].to_f / @duration.to_f * 100 %>%"><i class="fa fa-<%= segment['kind'].to_s %> fa-lg"></i></div>
-									<% end %>
+									<div class="route-segment-overview" style="width:<%= segment['duration'].to_f / route['durationMajor'].to_f * 100 - 1 %>%"><i class="fa fa-<%= segment['kindIcon'].to_s %> fa-lg"></i></div>
 								<% end %>
 							<% end %>
-
 						</div>
 						<span class="itinerary-route-duration"><%= route['durationText'] %></span>
 					</div>	
 					<div class="col-xs-1">
-						<span class="itinerary-route-price"><%= @currencyCode %><%= route['indicativePrice']['price'] %></span>
+						<span class="itinerary-route-price"><%= route['indicativePrice']['currencySym'] %><%= route['indicativePrice']['price'] %></span>
 					</div>
 				</div>
 
@@ -30,13 +23,7 @@
 						<ul class="col-xs-10 transportation-segments-all">
 							<% route['segments'].each do |segment| %>
 								<% if segment['isMajor'].to_s == "1" %>
-									<% if segment['kind'].to_s == "flight" %>
-										<li class="transportation-segment"><i class="fa fa-plane fa-lg"></i><%= segment['kind'].to_s.titleize + ' from ' + segment['sCode'] + ' to ' + segment['tCode'].to_s %><span class="transport-book">Book Now</span></li>
-									<% elsif segment['kind'].to_s == "ferry" %>
-										<li class="transportation-segment"><i class="fa fa-ship fa-lg"></i><%= segment['kind'].to_s.titleize + ' from ' + segment['sName'] + ' to ' + segment['tName'].to_s %><span class="transport-book">Book Now</span></li>
-									<% else %>
-										<li class="transportation-segment"><i class="fa fa-<%= segment['kind'].to_s %> fa-lg"></i><%= segment['kind'].to_s.to_s.titleize + ' from ' + segment['sName'] + ' to ' + segment['tName'].to_s %><span class="transport-book">Book Now</span></li>
-									<% end %>
+									<li class="transportation-segment"><i class="fa fa-<%= segment['kindIcon'].to_s %> fa-lg"></i><%= segment['kind'].to_s.titleize + ' from ' + segment['source'].to_s + ' to ' + segment['target'].to_s %><span class="transport-book">Book Now</span></li>
 								<% end %>
 							<% end %>
 						</ul>
