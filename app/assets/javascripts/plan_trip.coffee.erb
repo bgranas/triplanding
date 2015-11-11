@@ -1,7 +1,10 @@
 #anything code related to trips/new and trips/edit should be put here.
 
-markers = []
-currentMarkerID = 0
+
+
+### ***********************************###
+### *********** BINDINGS **************###
+### ***********************************###
 
 $ ->
 
@@ -38,6 +41,13 @@ $ ->
           $.colorbox.resize()
         , 300
 
+### ***********************************###
+### ***** ADDING A DESTINATION ********###
+### ***********************************###
+
+markers = []
+currentMarkerID = 0
+
 #generates unique marker ID for the page
 generateMarkerID = ->
   return currentMarkerID++
@@ -47,28 +57,69 @@ generateMarkerID = ->
 #Parent function that should be called when a new destination is added to the map
 addDestination = (place, map) ->
   if place != null
-    markerIndex = addPlaceToMap(place, map)
+    markerIndex = addMarkerToMap(place, map)
     response = saveDestinationToDatabase(place)
     destinationID = response.responseText
     addDestinationSnapshot(place, markerIndex, destinationID)
 
 
-#save trip to database, destination and details should already be in the database
-saveTrip = (trip_id, trip_title) ->
-  $.ajax '/trips/create',
+#returns the formatted infowindow content
+getInfowindowContent = (place, markerID) ->
+  iw = $('#infowindow-template').clone(true).removeClass('hidden').removeAttr('id')
+  iw.find('h5').text(place.formatted_address) #infowindow header
+  iw.find('.infowindow-content').attr('data-marker-id', markerID)
+  return  iw.html()
+
+#adds a marker at the geolocation specified in place (google place),
+#on the map specified in map, connects path to previous marker if necessary
+#PRE: bounds array must be declared
+#@return index of marker in markers array
+addMarkerToMap = (place, map) ->
+  markerID = generateMarkerID()
+  marker = new google.maps.Marker
+    position: place.geometry.location
+    map: map
+    title: place.formatted_address
+    id: markerID
+
+  #open infowindow on click
+  marker.addListener 'click', ->
+    infowindow.open(map, marker)
+
+  #add position to the maps bounds
+  bounds.extend marker.position
+
+  markers.push marker
+  markerIndex = markers.length-1 #marker index is last element or array
+  polyline.getPath().setAt(markerIndex, marker.position);
+
+  if markers.length == 1
+    map.setCenter(marker.position)
+    map.setOptions(zoom: 6)
+  else
+    map.fitBounds(bounds)
+
+  #lastly, open window of place just added
+  info_content = getInfowindowContent(place, markerID)
+  infowindow.setContent(info_content)
+  infowindow.open(map, marker)
+
+  return markerID
+
+#saves the destination to the database if it doesn't already exist
+#@RETURN: destinationID of location
+saveDestinationToDatabase = (place) ->
+  $.ajax '/destinations',
     dataType: 'json'
     type: 'POST'
     data:
-      trip_title: trip_title
-      trip_id: trip_id
-    success: (data) ->
-      alert 'Successful'
-      return
+      place: JSON.stringify(place)
+      trip_id: tripID
+    success: (destinationID) ->
+      return JSON.stringify(destinationID)
     failure: ->
-      alert 'Unsuccessful'
+      alert 'saveDestiantionToDatabase() Unsuccessful, please alert site admins'
       return
-
-
 
 #add location to trip snapshot
 #vars: place = google place object
@@ -106,51 +157,28 @@ addDestinationSnapshot = (place, markerID, destinationID) ->
 
   $('#trip-snapshot-link-ul').append('<li></li>')
 
+### ***********************************###
+### ********** SAVE A TRIP ************###
+### ***********************************###
 
+#save trip to database, destination and details should already be in the database
+saveTrip = (trip_id, trip_title) ->
+  $.ajax '/trips/create',
+    dataType: 'json'
+    type: 'POST'
+    data:
+      trip_title: trip_title
+      trip_id: trip_id
+    success: (data) ->
+      alert 'Successful'
+      return
+    failure: ->
+      alert 'Unsuccessful'
+      return
 
-#returns the formatted infowindow content
-getInfowindowContent = (place, markerID) ->
-  iw = $('#infowindow-template').clone(true).removeClass('hidden').removeAttr('id')
-  iw.find('h5').text(place.formatted_address) #infowindow header
-  iw.find('.infowindow-content').attr('data-marker-id', markerID)
-  return  iw.html()
-
-#adds a marker at the geolocation specified in place (google place),
-#on the map specified in map, connects path to previous marker if necessary
-#PRE: bounds array must be declared
-#@return index of marker in markers array
-addPlaceToMap = (place, map) ->
-  markerID = generateMarkerID()
-  marker = new google.maps.Marker
-    position: place.geometry.location
-    map: map
-    title: place.formatted_address
-    id: markerID
-
-  #open infowindow on click
-  marker.addListener 'click', ->
-    infowindow.open(map, marker)
-
-  #add position to the maps bounds
-  bounds.extend marker.position
-
-  markers.push marker
-  markerIndex = markers.length-1 #marker index is last element or array
-  polyline.getPath().setAt(markerIndex, marker.position);
-
-  if markers.length == 1
-    map.setCenter(marker.position)
-    map.setOptions(zoom: 6)
-  else
-    map.fitBounds(bounds)
-
-  #lastly, open window of place just added
-  info_content = getInfowindowContent(place, markerID)
-  infowindow.setContent(info_content)
-  infowindow.open(map, marker)
-
-  return markerID
-
+### ***********************************###
+### ***** REMOVE A DESTINATION ********###
+### ***********************************###
 
 #removes a marker with markerIndex from the map and markers array
 removeMarker = (markerID, map) ->
@@ -167,20 +195,9 @@ findMarkerIndexByID = (markerID) ->
       return i
 
 
-#saves the destination to the database if it doesn't already exist
-#@RETURN: destinationID of location
-saveDestinationToDatabase = (place) ->
-  $.ajax '/destinations',
-    dataType: 'json'
-    type: 'POST'
-    data:
-      place: JSON.stringify(place)
-      trip_id: tripID
-    success: (destinationID) ->
-      return JSON.stringify(destinationID)
-    failure: ->
-      alert 'saveDestiantionToDatabase() Unsuccessful, please alert site admins'
-      return
+### ***********************************###
+### ********* MISC FUNCTIONS **********###
+### ***********************************###
 
 autocomplete = null
 place = null
