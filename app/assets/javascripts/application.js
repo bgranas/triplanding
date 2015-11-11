@@ -23,7 +23,7 @@
 
 var map;
 var bounds;
-var polyline = new Array();
+var polyline;
 var infowindow;
 var myLatLng = {lat: 28, lng: 0};
 function initMap() {
