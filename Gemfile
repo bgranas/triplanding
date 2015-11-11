@@ -96,6 +96,9 @@ gem  'minitest-reporters'
 #For calling API URLs
 gem 'httparty', '~> 0.13.7'
 
+#For passing rails variables to JS
+gem 'gon', '~> 6.0', '>= 6.0.1'
+
 #ruby version
 ruby '2.1.5'
 

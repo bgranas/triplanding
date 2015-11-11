@@ -78,6 +78,9 @@ $ ->
           $.colorbox.resize()
         , 300
 
+  #Adding transportation paths
+
+
 ### ***********************************###
 ### ***** ADDING A DESTINATION ********###
 ### ***********************************###
@@ -125,6 +128,8 @@ addMarkerToMap = (place, map) ->
 
   polyline.getPath().setAt(markerIndex, marker.position);
 
+
+
   if markers.length == 1
     map.setCenter(marker.position)
     map.setOptions(zoom: 6)
@@ -136,6 +141,8 @@ addMarkerToMap = (place, map) ->
 
 
   return markerID
+
+
 
 
 #Saves the destination to the database if it doesn't already exist

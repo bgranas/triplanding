@@ -10,6 +10,7 @@ module TransportationHelper
 	  @routes = response['routes']
 
 	  routeLengths = []
+	  paths = []
 
 
 	  @routes.each do |route|
@@ -18,7 +19,13 @@ module TransportationHelper
 		  route['segments'].each do |segment|
 		  	if segment['isMajor'] == 1
 		  		duration += segment['duration'].to_i
+		  		paths << segment['path'].to_s
+		  		
+
 		  	end
+		  	
+		  	gon.segmentPaths = paths
+
 
 		  	#Correcting fontawesome flight and ferry icons and adding flight airport codes
 	  		if segment['kind'].to_s ==	"flight"
