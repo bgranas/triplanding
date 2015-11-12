@@ -337,9 +337,11 @@
     		margin-bottom: -5px;
 			}
 
+      /*Calvin modify*/
 			.itinerary-step-country {
 				font-size: 1.2em;
 		    color: gray;
+        text-transform: uppercase;
 			}
 
 		.itinerary-step-accomodation {
@@ -392,6 +394,24 @@
   }
 
   /*Calvin add */
+  #add-destination-row{
+    min-height: 40px !important;
+    margin: 0px !important;
+    margin-top: -10px !important;
+  }
+
+
+   /*Calvin Add */
+  .itinerary-row{
+    min-height: 65px;
+    margin: 10px 20px;
+  }
+  /*Calvin Add */
+  .itinerary-row p{
+    line-height: initial;
+  }
+
+  /*Calvin add */
   .destination-row{
     border: 1px solid #b2b2b2;
     box-shadow: 2px 1px 1px #b2b2b2;
@@ -401,11 +421,29 @@
     min-height: 90px !important;
   }
 
-  /*Calvin Add */
-  .itinerary-row{
-    min-height: 65px;
-    margin: 10px 20px;
+  /*Calvin add */
+  .transportation-row{
+    min-height: 105px !important;
   }
+    /*Calvin add */
+    .transportation-row-label{
+      font-weight: bold;
+      height:105px; /* min height of itinerary row */
+    }
+    /*Calvin add */
+    .transportation-icon i{
+      margin-left:4px;
+    }
+  /*Calvin add */
+  .destination-label p{
+    margin-bottom: 0px;
+  }
+
+  /*Calvin Add*/
+  .destination-row .col-parent{
+    padding:10px 0px;
+  }
+
   /*Calvin Add */
   .flag-text{
     margin-top:5px;
@@ -413,6 +451,20 @@
     height:65px; /* min height of itinerary row */
   }
 
+  /*Calvin Add */
+  .accomidation-list{
+    margin-top: 5px;
+  }
+  /*Calvin Add */
+  .accomidation-list li{
+    text-align: center;
+    margin-left:20px;
+  }
+
+  /*Calvin Add*/
+  .accomidation-list i{
+    display:block;
+  }
 
 
 	.itinerary-transportation-title {

@@ -41,7 +41,7 @@
     <div id="snapshot-content" class="col-sm-12">
         <ul id="trip-snapshot-ul" class="list-inline">
           <li id="snapshot-add-destination" class="not-sortable">
-            <a href="<%= add_destination_lightbox_path %>" data-colorbox="true">
+            <a href="<%= add_destination_lightbox_path %>" data-colorbox="true" class="add-destination-link">
               <div class="snapshot-location-content">
                   <i class="fa fa-plus-circle fa-2x add-destination-icon" data-toggle="tooltip" data-placement="right"
                      title="Add Destination"></i>
@@ -55,46 +55,45 @@
       <ul id="trip-snapshot-link-ul" class="list-inline">
       </ul>
     </div>
-  </div> <!-- end row -->
+  </div>
+  <!-- end trip snapshot -->
 
+  <!-- begin itinerary -->
   <div id="itinerary" class="row hidden">
     <div id="itinerary-title" class="col-sm-12">
       <h3>Trip Itinerary</h3>
     </div>
     <div class="col-sm-12">
 
-      <div class="row itinerary-row">
-
+      <!-- ========= BEGIN ORIGIN ROW =============-->
+      <div id='itinerary-origin-row' class="row itinerary-row">
         <div class="itinerary-icon">
           <i class="fa fa-flag-o fa-2x"></i>
-          <div class="itinerary-transportation-vertical itinerary-transportation-vertical-bottom"></div>
+          <div class="itinerary-transportation-vertical"></div>
         </div>
 
         <div class="col-sm-11 col-sm-offset-1">
           <div class="flag-text"><a href="#">Add Origin</a></div>
         </div>
+      </div>
+      <!-- ========= END ORIGIN ROW =============-->
 
-      </div> <!--End Orgin Icon Row -->
+      <!-- ========= BEGIN ADD DESTINATION ROW =============-->
+      <div id="add-destination-row" class="row itinerary-row">
 
-      <div class="row itinerary-row destination-row">
-
+        <a href="<%= add_destination_lightbox_path %>" data-colorbox="true" class="add-destination-link">
           <div class="itinerary-icon">
-            <p class="calendar-month">Day</p>
-            <span class="fa-stack fa-lg">
-              <i class="fa fa-calendar-o fa-stack-2x"></i>
-              <strong class="fa-stack-1x calendar-text">1</strong>
-            </span>
+            <i class="fa fa-plus-circle fa-3x add-destination-icon" data-toggle="tooltip" data-placement="right"
+                       title="Add First Destination"></i>
           </div>
+        </a>
+      </div>
+      <!-- ========= END ADD DESTINATION ROW =============-->
 
-        <div class="col-sm-11 col-sm-offset-1">
-          <p class="itinerary-step-city inline-block"><%= @itineraryStepCity %></p>
-          <p class="itinerary-step-country inline-block"><%= @itineraryStepCountry %></p>
-        </div>
 
-      </div> <!-- End Itinerary destination row -->
 
-      <div class="row itinerary-row">
-
+      <!-- ========= BEGIN END DESTINATION ROW =============-->
+      <div id="itinerary-terminal-row" class="row itinerary-row">
         <div class="itinerary-icon">
           <div class="itinerary-transportation-vertical"></div>
           <i class="fa fa-flag-checkered fa-2x"></i>
@@ -102,17 +101,19 @@
 
         <div class="col-sm-11 col-sm-offset-1">
           <div class="flag-text table-parent">
-            <a class="block valign-bottom-child" href="#">Add Origin</a>
+            <a class="block valign-bottom-child" href="#">Add End Location</a>
           </div>
         </div>
+      </div>
+      <!-- ========= END END DESTINATION ROW =============-->
 
-      </div> <!--End Orgin Icon Row -->
-
-  </div> <!-- End Itinerary (entire) row -->
+  </div> <!-- End Itinerary Row -->
 
 </div>
 
-<!-- Hidden templates for javascript functions -->
+<!-- ****************************************************************
+     ********* Hidden Templates for Javascript Functions ************
+     **************************************************************** -->
 <li id="snapshot-location-template" class="snapshot-location hidden">
   <div class="snapshot-draggable-indicator hidden"><i class="fa fa-arrows"></i></div>
   <div class="snapshot-location-content valign-middle-parent">
@@ -144,3 +145,59 @@
     Please select a destination from the dropdown.
   </div>
 </div>
+
+<!-- ========= BEGIN DESTINATION ROW ============= -->
+<div id="destination-row-template" class="row itinerary-row destination-row hidden">
+
+  <div class="itinerary-icon">
+    <p class="calendar-month">Day</p>
+    <span class="fa-stack fa-lg">
+      <i class="fa fa-calendar-o fa-stack-2x"></i>
+      <strong class="fa-stack-1x calendar-text">2</strong>
+    </span>
+  </div>
+
+  <div class="col-sm-4 col-sm-offset-1 destination-label col-parent">
+    <p class="itinerary-step-city inline-block">Dafeng</p>
+    <p class="itinerary-step-country inline-block">China</p>
+    <a class="block" href="#">+ Add Dates</a>
+  </div>
+  <!-- Average temperature if dates
+      Currency conversion
+      Cost of living -->
+
+  <div class="col-sm-4 col-parent">
+    <ul class="accomidation-list list-inline">
+      <li>
+        <i class="fa fa-bed fa-2x"></i>
+        <a href="#">Find Hostels</a>
+      </li>
+      <li>
+        <i class="fa fa-building fa-2x"></i>
+        <a href="#">Find Hotels</a>
+      </li>
+      <li>
+        <i class="fa fa-home fa-2x"></i>
+        <a href="#">Find Airbnb</a>
+      </li>
+    </ul>
+  </div>
+
+</div>
+<!-- ========= END DESTINATION ROW =============-->
+
+<!-- ========= BEGIN TRANSPORATION ROW ============= -->
+<div id="transportation-row-template" class="row itinerary-row transportation-row hidden">
+  <div class="itinerary-icon transportation-icon">
+    <div class="itinerary-transportation-vertical"></div>
+    <i class="fa fa-circle-o fa-2x"></i>
+    <div class="itinerary-transportation-vertical"></div>
+  </div>
+
+  <div class="col-sm-11 col-sm-offset-1">
+    <div class="transportation-row-label table-parent">
+      <a class="block valign-middle-child" href="#">Add Transportation</a>
+    </div>
+  </div>
+</div>
+<!-- ========= END TRANSPORTATION ROW ============= -->

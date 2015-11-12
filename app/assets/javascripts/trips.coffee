@@ -49,6 +49,12 @@ $ ->
   $('.snapshot-toggle').click ->
     toggleTripSnapshot()
 
+  #Add destination links should close the itinerary if maximized
+  $('.add-destination-link').click ->
+    if snapshotMinimized == false
+      toggleTripSnapshot()
+
+
   $('#trip-snapshot-ul').sortable
     placeholder: 'snapshot-location-container-placeholder',
     items: "li:not(.not-sortable)"
