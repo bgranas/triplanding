@@ -185,13 +185,14 @@ addDestinationSnapshot = (place, markerID, destinationID) ->
 
 #Add destination to trip itinerary
 addDestinationItinerary = (place, markerID, country, country_code) ->
-
   #if add-destination row is visible, hide it
   if !$('#add-destination-row').hasClass('hidden')
     $('#add-destination-row').addClass('hidden')
 
   destinationRow = $('#destination-row-template').clone(true).removeClass('hidden').removeAttr('id')
-  destinationCount = $('.destination-row').length
+
+  #+1 because I haven't added myself yet
+  destinationCount = $('#itinerary-transportation-destination-ul .destination-row').length + 1
 
   #Setting the destination row values
   destinationRow.find('.itinerary-step-city').text(place.name)
@@ -257,6 +258,7 @@ saveTrip = (trip_id, trip_title) ->
 removeDestination = (markerID, map) ->
   removeSnapshot(markerID)
   removeMarker(markerID, map)
+  removeItinerary(markerID)
 
 
 #Removes snapshot location associated to markerID
@@ -271,6 +273,32 @@ removeMarker = (markerID, map) ->
   marker.setMap(null)
   polyline.getPath().removeAt(markerIndex)
   markers.splice(markerIndex, 1);
+
+#Removes a destination row from the itinerary
+removeItinerary = (markerID) ->
+  destinationRow = $('#destination-location-' + markerID)
+  destinationCount = $('#itinerary-transportation-destination-ul .destination-row').length
+  destinationIndex = $('#itinerary-transportation-destination-ul .destination-row').index(destinationRow)
+
+  if destinationCount == 1 #if only destination, add back in the add dest button
+    $('#add-destination-row').removeClass('hidden')
+  else if (destinationIndex+1) != destinationCount #if I'm not last, remove transport link after me
+    destinationRow.next().remove()
+  else #i'm last, remove transportation link before me
+    destinationRow.prev().remove()
+
+  #lastly, remove myself
+  destinationRow.remove()
+
+  reorderItineraryCalendars()
+
+
+#Redoes the numbers inside the itinerary calendars on each destination row
+reorderItineraryCalendars = ->
+  destinations = $('#itinerary-transportation-destination-ul .destination-row')
+  destinations.each (i, dest) ->
+    $(dest).find('.calendar-text').text(i+1)
+
 
 # RET: Returns the index of marker with the given ID
 findMarkerIndexByID = (markerID) ->
