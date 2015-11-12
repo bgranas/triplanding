@@ -78,19 +78,20 @@
       </div>
       <!-- ========= END ORIGIN ROW =============-->
 
-      <!-- ========= BEGIN ADD DESTINATION ROW =============-->
-      <div id="add-destination-row" class="row itinerary-row">
+      <ul id="itinerary-transportation-destination-ul" class="row">
 
-        <a href="<%= add_destination_lightbox_path %>" data-colorbox="true" class="add-destination-link">
-          <div class="itinerary-icon">
-            <i class="fa fa-plus-circle fa-3x add-destination-icon" data-toggle="tooltip" data-placement="right"
-                       title="Add First Destination"></i>
-          </div>
-        </a>
-      </div>
-      <!-- ========= END ADD DESTINATION ROW =============-->
+        <!-- ========= BEGIN ADD DESTINATION ROW =============-->
+        <li id="add-destination-row" class="row itinerary-row">
+          <a href="<%= add_destination_lightbox_path %>" data-colorbox="true" class="add-destination-link">
+            <div class="itinerary-icon">
+              <i class="fa fa-plus-circle fa-3x add-destination-icon" data-toggle="tooltip" data-placement="right"
+                         title="Add First Destination"></i>
+            </div>
+          </a>
+        </li>
+        <!-- ========= END ADD DESTINATION ROW =============-->
 
-
+      </ul>
 
       <!-- ========= BEGIN END DESTINATION ROW =============-->
       <div id="itinerary-terminal-row" class="row itinerary-row">
@@ -147,17 +148,17 @@
 </div>
 
 <!-- ========= BEGIN DESTINATION ROW ============= -->
-<div id="destination-row-template" class="row itinerary-row destination-row hidden">
+<li id="destination-row-template" class="row destination-row hidden">
 
-  <div class="itinerary-icon">
+  <div class="itinerary-icon itinerary-col-parent-lg">
     <p class="calendar-month">Day</p>
-    <span class="fa-stack fa-lg">
+    <span class="fa-stack fa-md">
       <i class="fa fa-calendar-o fa-stack-2x"></i>
       <strong class="fa-stack-1x calendar-text">2</strong>
     </span>
   </div>
 
-  <div class="col-sm-4 col-sm-offset-1 destination-label col-parent">
+  <div class="col-sm-4 col-sm-offset-1 destination-label itinerary-col-parent-sm">
     <p class="itinerary-step-city inline-block">Dafeng</p>
     <p class="itinerary-step-country inline-block">China</p>
     <a class="block" href="#">+ Add Dates</a>
@@ -166,7 +167,7 @@
       Currency conversion
       Cost of living -->
 
-  <div class="col-sm-4 col-parent">
+  <div class="col-sm-4 itinerary-col-parent-lg">
     <ul class="accomidation-list list-inline">
       <li>
         <i class="fa fa-bed fa-2x"></i>
@@ -183,11 +184,11 @@
     </ul>
   </div>
 
-</div>
+</li>
 <!-- ========= END DESTINATION ROW =============-->
 
 <!-- ========= BEGIN TRANSPORATION ROW ============= -->
-<div id="transportation-row-template" class="row itinerary-row transportation-row hidden">
+<li id="transportation-row-template" class="row transportation-row hidden">
   <div class="itinerary-icon transportation-icon">
     <div class="itinerary-transportation-vertical"></div>
     <i class="fa fa-circle-o fa-2x"></i>
@@ -199,5 +200,5 @@
       <a class="block valign-middle-child" href="#">Add Transportation</a>
     </div>
   </div>
-</div>
+</li>
 <!-- ========= END TRANSPORTATION ROW ============= -->

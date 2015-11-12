@@ -313,9 +313,13 @@
 	}
 
 	.calendar-month {
-		margin-left: 0.5em;
+		margin-bottom: 5px;
 		font-weight: bold;
 	}
+
+  #itinerary-transportation-destination-ul li{
+    list-style: none;
+  }
 
   /*Calvin remove, shouldn't have something between rows bootstrap */
 	.itinerary-destination-step {
@@ -333,8 +337,8 @@
 		}
 
 			.itinerary-step-city {
-				font-size: 3em;
-    		margin-bottom: -5px;
+				font-size: 36px;
+        line-height: initial;
 			}
 
       /*Calvin modify*/
@@ -342,6 +346,7 @@
 				font-size: 1.2em;
 		    color: gray;
         text-transform: uppercase;
+        margin-left:10px;
 			}
 
 		.itinerary-step-accomodation {
@@ -369,8 +374,8 @@
   /*Calvin: change class name, not just for transportation */
 	.itinerary-transportation-vertical {
 		width: 5px;
-		height: 30px;
-		border-left: 5px dotted lightgray;
+		height: 20px;
+		border-left: 4px dotted lightgray;
 		margin-left: 14px;
 		margin-top: 5px;
 		margin-bottom: 5px;
@@ -403,8 +408,8 @@
 
    /*Calvin Add */
   .itinerary-row{
-    min-height: 65px;
-    margin: 10px 20px;
+    min-height: 60px;
+    margin: 0px 20px;
   }
   /*Calvin Add */
   .itinerary-row p{
@@ -416,19 +421,21 @@
     border: 1px solid #b2b2b2;
     box-shadow: 2px 1px 1px #b2b2b2;
     background-color:white;
-    padding: 10px 0px;
+    padding: 0px 0px;
     border-radius:5px;
-    min-height: 90px !important;
+    min-height: 80px !important;
+    margin-left:0px;
+    margin-right:40px;
   }
 
   /*Calvin add */
   .transportation-row{
-    min-height: 105px !important;
+    min-height: 90px !important;
   }
     /*Calvin add */
     .transportation-row-label{
       font-weight: bold;
-      height:105px; /* min height of itinerary row */
+      height:90px; /* min height of itinerary row */
     }
     /*Calvin add */
     .transportation-icon i{
@@ -440,15 +447,19 @@
   }
 
   /*Calvin Add*/
-  .destination-row .col-parent{
+  .destination-row .itinerary-col-parent-lg{
     padding:10px 0px;
+  }
+  /*Calvin Add*/
+  .destination-row .itinerary-col-parent-sm{
+    padding:5px 0px;
   }
 
   /*Calvin Add */
   .flag-text{
     margin-top:5px;
     font-weight: bold;
-    height:65px; /* min height of itinerary row */
+    height:60px; /* min height of itinerary row */
   }
 
   /*Calvin Add */

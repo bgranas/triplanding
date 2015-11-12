@@ -54,7 +54,6 @@ $ ->
     if snapshotMinimized == false
       toggleTripSnapshot()
 
-
   $('#trip-snapshot-ul').sortable
     placeholder: 'snapshot-location-container-placeholder',
     items: "li:not(.not-sortable)"
@@ -103,10 +102,14 @@ generateMarkerID = ->
 # PRE: map should be initialized
 addDestination = (place, map) ->
   if place != null
-    markerIndex = addMarkerToMap(place, map)
-    response = saveDestinationToDatabase(place)
-    destinationID = response.responseText
-    addDestinationSnapshot(place, markerIndex, destinationID)
+    markerID = addMarkerToMap(place, map)
+    response = JSON.parse(saveDestinationToDatabase(place).responseText)
+    destinationID = response.id
+    destinationCountry = response.country
+    destinationCountryCode = response.country_code
+
+    addDestinationSnapshot(place, markerID, destinationID)
+    addDestinationItinerary(place, markerID, destinationCountry, destinationCountryCode)
 
 
 #Adds a marker at the geolocation specified in place (google place),
@@ -157,11 +160,12 @@ saveDestinationToDatabase = (place) ->
   $.ajax '/destinations',
     dataType: 'json'
     type: 'POST'
+    async: false
     data:
       place: JSON.stringify(place)
       trip_id: tripID
-    success: (destinationID) ->
-      return JSON.stringify(destinationID)
+    success: (data) ->
+      return data
     failure: ->
       alert 'saveDestiantionToDatabase() Unsuccessful, please alert site admins'
       return
@@ -178,6 +182,31 @@ addDestinationSnapshot = (place, markerID, destinationID) ->
   snapshot.insertBefore('#snapshot-add-destination')
 
   $('#trip-snapshot-link-ul').append('<li></li>')
+
+#Add destination to trip itinerary
+addDestinationItinerary = (place, markerID, country, country_code) ->
+
+  #if add-destination row is visible, hide it
+  if !$('#add-destination-row').hasClass('hidden')
+    $('#add-destination-row').addClass('hidden')
+
+  destinationRow = $('#destination-row-template').clone(true).removeClass('hidden').removeAttr('id')
+  destinationCount = $('.destination-row').length
+
+  #Setting the destination row values
+  destinationRow.find('.itinerary-step-city').text(place.name)
+  destinationRow.find('.itinerary-step-country').text(country)
+  destinationRow.find('.calendar-text').text(destinationCount)
+  #add flag icon later with country_code
+  destinationRow.attr('data-marker-id', markerID)
+  destinationRow.attr('id', 'destination-location-' + markerID)
+
+  if destinationCount > 1 #if you're not the first destination, add transportation link
+    transportationRow = $('#transportation-row-template').clone(true).removeClass('hidden').removeAttr('id')
+    $('#itinerary-transportation-destination-ul').append(transportationRow)
+
+  $('#itinerary-transportation-destination-ul').append(destinationRow)
+
 
 ### ***********************************###
 ### ********** INFO WINDOW ************###

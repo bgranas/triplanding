@@ -13,7 +13,7 @@ class DestinationsController < ApplicationController
 
 
     if dest.persisted?
-      render :json => dest.id
+      render :json => {id: dest.id, country: dest.country, country_code: dest.country_iso_2}
     else
       render :status => '400'
     end
