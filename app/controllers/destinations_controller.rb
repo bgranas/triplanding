@@ -17,6 +17,7 @@ class DestinationsController < ApplicationController
     else
       render :status => '400'
     end
+
 =begin
     trip_id = params[:trip_id].to_i
     #Should only create destination order if a trip_id is defined

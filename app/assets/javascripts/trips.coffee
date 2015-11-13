@@ -68,7 +68,9 @@ $ ->
 
   $('#trip-snapshot-ul').sortable
     placeholder: 'snapshot-location-container-placeholder',
-    items: "li:not(.not-sortable)"
+    items: "li:not(.not-sortable)",
+    update: (event, ui) ->
+      reorderDestination(ui)
 
   ### *********** LIGHTBOX BINDINGS **************###
   $(document).bind 'cbox_complete', ->
@@ -126,8 +128,8 @@ addDestination = (place, map, insertIndex) ->
     destinationCountry = response.country
     destinationCountryCode = response.country_code
 
-    addDestinationSnapshot(place, markerID, destinationID)
-    addDestinationItinerary(place, markerID, destinationCountry, destinationCountryCode)
+    addDestinationSnapshot(place, markerID, destinationID, insertIndex)
+    addDestinationItinerary(place, markerID, destinationCountry, destinationCountryCode, insertIndex)
 
 
 #Adds a marker at the geolocation specified in place (google place),
@@ -153,7 +155,7 @@ addMarkerToMap = (place, map, insertIndex) ->
   #Extend maps bounds to show new marker
   bounds.extend marker.position
 
-  polyline.getPath().insertAt(insertIndex, marker.position);
+  polyline.getPath().insertAt(insertIndex, marker.position)
 
 
 
@@ -189,7 +191,7 @@ saveDestinationToDatabase = (place) ->
       return
 
 #Add destination to trip snapshot
-addDestinationSnapshot = (place, markerID, destinationID) ->
+addDestinationSnapshot = (place, markerID, destinationID, insertIndex) ->
   destinationName = place.name
   snapshot = $('#snapshot-location-template').clone(true).removeClass('hidden').removeAttr('id')
   #Setting data needed for trip
@@ -197,35 +199,70 @@ addDestinationSnapshot = (place, markerID, destinationID) ->
   snapshot.attr('data-marker-id', markerID)
   snapshot.attr('data-destination-id', destinationID)
   snapshot.attr('id', 'snapshot-location-' + markerID)
-  snapshot.insertBefore('#snapshot-add-destination')
+
+  destinationCount = $('#trip-snapshot-ul .snapshot-location').length
+
+  if destinationCount == 0 # first destination, add to beginning of list
+    snapshot.insertBefore('#snapshot-add-destination')
+  else
+    snapshot.insertAfter('#trip-snapshot-ul .snapshot-location:nth-child(' + insertIndex + ')')
 
   $('#trip-snapshot-link-ul').append('<li></li>')
 
 #Add destination to trip itinerary
-addDestinationItinerary = (place, markerID, country, country_code) ->
+addDestinationItinerary = (place, markerID, country, country_code, insertIndex) ->
   #if add-destination row is visible, hide it
   if !$('#add-destination-row').hasClass('hidden')
     $('#add-destination-row').addClass('hidden')
 
   destinationRow = $('#destination-row-template').clone(true).removeClass('hidden').removeAttr('id')
-
-  #+1 because I haven't added myself yet
-  destinationCount = $('#itinerary-transportation-destination-ul .destination-row').length + 1
+  destinationCount = $('#itinerary-transportation-destination-ul .destination-row').length
 
   #Setting the destination row values
   destinationRow.find('.itinerary-step-city').text(place.name)
   destinationRow.find('.itinerary-step-country').text(country)
-  destinationRow.find('.calendar-text').text(destinationCount)
+  destinationRow.find('.calendar-text').text(insertIndex + 1)
   #add flag icon later with country_code
   destinationRow.attr('data-marker-id', markerID)
   destinationRow.attr('id', 'destination-location-' + markerID)
 
-  if destinationCount > 1 #if you're not the first destination, add transportation link
+  if destinationCount == 0 #if I'm first, just add myself
+    $('#itinerary-transportation-destination-ul').append(destinationRow)
+  else #if you're not the first destination, add transportation link
     transportationRow = $('#transportation-row-template').clone(true).removeClass('hidden').removeAttr('id')
-    $('#itinerary-transportation-destination-ul').append(transportationRow)
+    $('#itinerary-transportation-destination-ul .destination-row').eq(insertIndex-1).after(transportationRow)
+    destinationRow.insertAfter(transportationRow)
+    reorderItineraryCalendars()
 
-  $('#itinerary-transportation-destination-ul').append(destinationRow)
+### ***********************************###
+### ******* REORDER DESINATION ********###
+### ***********************************###
+reorderDestination = (ui) ->
 
+  snapshot = ui.item
+  markerID = snapshot.data('marker-id')
+  oldIndex = findMarkerIndexByID(markerID)
+  newIndex = $('#trip-snapshot-ul .snapshot-location').index(snapshot)
+  #console.log 'markerID: ' + markerID
+  #console.log 'markerIndex: ' + markerIndex
+  #console.log 'newIndex: ' + newIndex
+
+  #Algorithm: delete first, then reinsert at newIndex
+  temp_marker = markers[oldIndex]
+  markers.splice(oldIndex,1)
+  markers.splice(newIndex,0, temp_marker)
+
+  temp_path = polyline.getPath().getAt(oldIndex)
+  console.log 'temp_path: ' + temp_path.toString()
+  polyline.getPath().removeAt(oldIndex)
+  polyline.getPath().insertAt(newIndex, temp_path)
+
+#print names of each marker in order
+#for debugging
+printMarkers = ->
+  console.log 'Printing markers:'
+  for mark in markers
+    console.log '--' + mark.title
 
 ### ***********************************###
 ### ********** INFO WINDOW ************###
