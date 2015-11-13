@@ -23,6 +23,18 @@ $ ->
 
   ### *********** SNAPSHOT BINDINGS **************###
 
+  #Bind '+' (add destination) on snapshot and itinerary to set the insertIndex for the marker
+  $('body').on 'click', '.add-destination-link', ->
+    #adding destination to the end of the list, so index will be last marker
+    setInsertIndex(markers.length)
+
+
+  #Bind 'Add Destination' on infowindow to set insertIndex correctly
+  $('body').on 'click', '.infowindow-add-destination', ->
+    markerID = $(this).parent().data('marker-id')
+    markerIndex = findMarkerIndexByID(markerID)
+    setInsertIndex(markerIndex + 1) #insert after this marker
+
   #Bind 'X' on snapshot to remove destination action
   $('body').on 'click', '.snapshot-close', ->
     markerID = $(this).parent().data('marker-id')
@@ -81,7 +93,7 @@ $ ->
           content.removeClass('.lightbox-warning-template').addClass('lightbox-warning')
           content.insertBefore('#add-destination-lightbox-wrapper')
           $.colorbox.resize()
-        , 300 
+        , 300
 
 
 ### ***********************************###
@@ -90,6 +102,13 @@ $ ->
 
 markers = []
 currentMarkerID = 0
+insertIndex = 0
+
+#set's insertIndex variable to parameter
+#can't set global variables in bind function, apparently
+# ^fuck you javascript
+setInsertIndex = (i) ->
+  insertIndex = i
 
 #Generates unique marker ID for the page
 generateMarkerID = ->
@@ -98,9 +117,10 @@ generateMarkerID = ->
 #Parent function that should be called when a new destination is added to the map
 # PRE: place should be defined from the autocomplete function
 # PRE: map should be initialized
-addDestination = (place, map) ->
+# PARAM: insertIndex - index to insert the new marker into markers[] and path[]
+addDestination = (place, map, insertIndex) ->
   if place != null
-    markerID = addMarkerToMap(place, map)
+    markerID = addMarkerToMap(place, map, insertIndex)
     response = JSON.parse(saveDestinationToDatabase(place).responseText)
     destinationID = response.id
     destinationCountry = response.country
@@ -114,7 +134,8 @@ addDestination = (place, map) ->
 #on the map specified in map, connects path to previous marker if necessary
 # PRE: Bounds array must be declared
 # RET: Index of marker in markers array
-addMarkerToMap = (place, map) ->
+# PARAM: insertIndex = index to insert marker into array and path
+addMarkerToMap = (place, map, insertIndex) ->
   markerID = generateMarkerID()
   marker = new google.maps.Marker
     position: place.geometry.location
@@ -123,8 +144,7 @@ addMarkerToMap = (place, map) ->
     id: markerID
 
   #First, add new marker to the markers array
-  markers.push marker
-  markerIndex = markers.length-1 #marker index is last element or array
+  markers.splice(insertIndex, 0, marker)
 
   #Binds click of marker to opening infowindow
   marker.addListener 'click', ->
@@ -133,7 +153,7 @@ addMarkerToMap = (place, map) ->
   #Extend maps bounds to show new marker
   bounds.extend marker.position
 
-  polyline.getPath().setAt(markerIndex, marker.position);
+  polyline.getPath().insertAt(insertIndex, marker.position);
 
 
 
@@ -144,7 +164,7 @@ addMarkerToMap = (place, map) ->
     map.fitBounds(bounds)
 
   #Lastly, open window of place just added
-  openInfowindow(markerID, markerIndex)
+  openInfowindow(markerID, insertIndex)
 
 
   return markerID
@@ -317,7 +337,7 @@ initSearch = ->
   autocomplete.addListener 'place_changed', ->
     $('#lightbox-warning-template').hide()
     place = autocomplete.getPlace()
-    addDestination(place, map)
+    addDestination(place, map, insertIndex)
     $.colorbox.close()
 
 snapshotMinimized = true
@@ -359,9 +379,9 @@ $ ->
           #build google latlng literal
           #console.log JSON.stringify(airportPathsLat[0])
           source_geo = {lat: Number(airportPathsLat[flightCount][0]), lng: Number(airportPathsLng[flightCount][0])}
-          console.log "source_geo: " + JSON.stringify(source_geo) 
+          console.log "source_geo: " + JSON.stringify(source_geo)
           target_geo = {lat: Number(airportPathsLat[flightCount][1]), lng: Number(airportPathsLng[flightCount][1])}
-          console.log 'target_geo: ' + JSON.stringify(target_geo)  
+          console.log 'target_geo: ' + JSON.stringify(target_geo)
           path = [source_geo, target_geo]
           setTransportPath(map, path ,false)
           flightCount = flightCount + 1
@@ -375,8 +395,8 @@ setTransportPath =  (map, path, needDecode) ->
       #console.log("route path" + transportPath)
     else
       transportPath = path
-      console.log("airport path" + JSON.stringify(transportPath))    
-    
+      console.log("airport path" + JSON.stringify(transportPath))
+
     routePath = new google.maps.Polyline
       map: map
       path: transportPath

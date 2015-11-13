@@ -125,8 +125,9 @@
   </div>
 </li>
 
+<!-- Info window template -->
 <div id="infowindow-template" class="hidden">
-  <div class="infowindow-content">
+  <div class="infowindow-content" data-marker-id="">
     <h5>Location Name</h5>
     <div>
       <a href="#" class="block">
@@ -134,9 +135,11 @@
       </a>
     </div>
     <button class="btn btn-xs btn-danger remove-location">Remove</button>
-    <button class="btn btn-xs btn-success">
-      <a href="<%= add_destination_lightbox_path %>" data-colorbox="true" class="no-style-link">Add Next Destination</a>
-    </button>
+    <a href="<%= add_destination_lightbox_path %>" data-colorbox="true" class="no-style-link infowindow-add-destination">
+      <button class="btn btn-xs btn-success">
+        Add Next Destination
+      </button>
+    </a>
   </div>
 </div>
 
