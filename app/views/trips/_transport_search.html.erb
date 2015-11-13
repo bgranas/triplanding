@@ -1,10 +1,10 @@
 
 	<div class="container transportation-show">
 		<div class="row">
-			<% @routes.each do |route| %>
+			<% @routes.each_with_index do |route, index| %>
 			<div class="col-xs-9 transportation-routes">
 				<div class="row transportation-route-overview">
-					<div class="col-xs-9 transportation-route-detailbar">
+					<div class="col-xs-9 transportation-route-detailbar" id="route-<%= index %>">
 						<div class="transportation-route-summarybar" style="width:<%= route['durationMajor'].to_f / @routeLongest.to_f * 100 * 0.9 %>%">
 							<% route['segments'].each do |segment| %>
 								<% if segment['isMajor'].to_s == "1" %>
@@ -45,6 +45,7 @@
 
 
 			</div>
+			
 
 			<% end %>
 			

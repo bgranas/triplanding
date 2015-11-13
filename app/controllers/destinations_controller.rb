@@ -48,7 +48,9 @@ private
     dest.name = place['name']
     dest.google_place_id = place['id']
     dest.formatted_address = place['formatted_address']
+    dest.photoRef = place['photos']
 
+    puts"********* photo Ref: " + dest.photoRef 
     #Google API Docs:
     #...the latitude coordinate is always written first, followed by the longitude
     #developers.google.com/maps/documentation/javascript/3.exp/reference#LatLng

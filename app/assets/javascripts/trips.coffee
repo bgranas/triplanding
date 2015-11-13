@@ -84,6 +84,7 @@ $ ->
         , 300 
 
 
+
 ### ***********************************###
 ### ***** ADDING A DESTINATION ********###
 ### ***********************************###
@@ -105,6 +106,7 @@ addDestination = (place, map) ->
     destinationID = response.id
     destinationCountry = response.country
     destinationCountryCode = response.country_code
+
 
     addDestinationSnapshot(place, markerID, destinationID)
     addDestinationItinerary(place, markerID, destinationCountry, destinationCountryCode)
@@ -342,18 +344,54 @@ toggleTripSnapshot = ->
     , 500
 
 
+### ***********************************###
+### *** PASSING DEST TO TRANSPORTATION ###
+### ***********************************###
+#oPos = "31.626710,-7.994810"
+#dPos = "-33.917524,18.423252"
+
+$ ->
+  $('#add-transport-test').click ->
+    passRouteToTransportation()
+
+passRouteToTransportation = ->
+  $.ajax '/routes/r2r_call',
+    type: 'POST'
+    async: true
+    data:
+      oPos: "31.626710,-7.994810"
+      dPos: "-33.917524,18.423252"
+    success: (data) ->
+      $('#add-transport-box').html(data)
+    failure: ->
+      alert 'passDestinationToTransportation Unsuccessful, please alert site admins'
+      return
+
+
 
 ### ***********************************###
 ### *** ADDING TRANSPORTATION PATHS ***###
 ### ***********************************###
 
+
+#Finds index of route by ID in order to get that route's transport path
+#findRouteIndex = (routeID) ->
+ # routeRow = $('#' + routeID)
+  #routeRowCount = $('.col-xs-9 transportaion-route-detailbar').length
+  #console.log(routeRowCount)
+  #routeRowIndex = $('.col-xs-9 transportaion-route-detailbar').index(routeRow)
+
 $ ->
-  $('.transportation-routes').click ->
+  $('body').on 'click', '.transportation-route-detailbar', ->
+    console.log("clicked")
+    #index = findRouteIndex(this.id)
+    #console.log(index)
     flightCount=0
-    airportPathsLat = gon.airportPathsLat
-    airportPathsLng = gon.airportPathsLng
+    airportPathsLat = gon.watch(airportPathsLat)
+    console.log("airport paths lat: ") + airportPathsLat
+    airportPathsLng = gon.watch(airportPathsLng)
     #console.log("airport routes" + airportRoutes)
-    for routePath in gon.routePaths
+    for routePath in gon.watch(routePaths)#[index]
       for segmentPath in routePath
         if segmentPath.length == 0
           #build google latlng literal
@@ -382,6 +420,7 @@ setTransportPath =  (map, path, needDecode) ->
       path: transportPath
       strokeColor: '#767f93'
       strokeWeight: 2
+      routeID: 43
 
 
 

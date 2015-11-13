@@ -4,7 +4,7 @@ $ ->
 
 	$('.transportation-segments').hide()
 
-	$('.transportation-route-overview').click ->
+	$('.body').on 'click', '.transportation-route-overview', ->
 		if $(this).next('div').is(":visible")
 			$('.transportation-segments').slideUp()
 		else

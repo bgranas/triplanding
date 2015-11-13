@@ -1,12 +1,19 @@
-module TransportationHelper
+class RoutesController < ApplicationController
 
 	include HTTParty
 
-
-
 	def r2r_call
 
-	  response = HTTParty.get("http://free.rome2rio.com/api/1.2/json/Search?key=PZgcLuJc&oPos="+@originCoords+"&dPos="+@destinationCoords+"&flags=0x00000002")
+
+		#ajax testing
+    oPos = params[:oPos].to_s
+    dPos = params[:dPos].to_s
+
+    #puts "****************oPos: " + oPos
+    #puts "****************oPos: " + dPos
+
+
+	  response = HTTParty.get("http://free.rome2rio.com/api/1.2/json/Search?key=PZgcLuJc&oPos="+oPos+"&dPos="+dPos+"&flags=0x00000002")
 	  @routes = response['routes']
 
 	  airports = {}
@@ -92,10 +99,14 @@ module TransportationHelper
 
 		end
 
-		gon.airportPathsLng = flightPathsLng
-		gon.airportPathsLat = flightPathsLat
-		gon.routePaths = allPaths
-		puts "******route Airpot Paths Lat: " + gon.airportPathsLat.to_s
+		gon.watch.airportPathsLng = flightPathsLng
+		gon.watch.airportPathsLat = flightPathsLat
+		gon.watch.routePaths = allPaths
+
+		puts "******* route paths: " + gon.routePaths.to_s
+
+		#render transport_search view
+		render partial: 'trips/transport_search'
 
 	end
 
@@ -105,5 +116,4 @@ module TransportationHelper
 		return "#{hr}h #{min}min"  
 
 	end
-
 end

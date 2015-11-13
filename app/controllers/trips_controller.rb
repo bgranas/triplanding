@@ -1,7 +1,6 @@
 class TripsController < ApplicationController
 
   layout 'nav_bar_only', :only => [:new, :edit, :itinerary_test]
-  include TransportationHelper
 
 
   def index
@@ -90,8 +89,6 @@ class TripsController < ApplicationController
     @transportationSpecifics = "DF Bus | Shanghai Bus Station | 12:00 PM"
     @transportationPrice = "$15"
 
-    @originCoords = "31.157,121.40" #might have a max number of digits
-    @destinationCoords = "39.9,116.39"
 
     #calling TransportationHelper
     #r2r_call
@@ -108,8 +105,9 @@ class TripsController < ApplicationController
   end
 
    def itinerary_test
-        # add initialization script for google maps
+    # add initialization script for google maps
     @map_page = true
+
 
 
     @itineraryOriginDate = "1"
@@ -141,11 +139,11 @@ class TripsController < ApplicationController
     @transportationSpecifics = "DF Bus | Shanghai Bus Station | 12:00 PM"
     @transportationPrice = "$15"
 
-    @originCoords = "31.23041600,121.47370100" #might have a max number of digits
-    @destinationCoords = "39.90421100,116.40739500"
+    #initializing gon variables to be updated with gon.watch
+    gon.watch.airportPathsLng = []
+    gon.watch.airportPathsLat = []
+    gon.watch.routePaths = [] 
 
-    #calling TransportationHelper
-    r2r_call
   end
 
   def new_destination
