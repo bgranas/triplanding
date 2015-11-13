@@ -66,7 +66,7 @@
 
    <% if @map_page %>
     <script
-      src="https://maps.googleapis.com/maps/api/js?v=3&key=AIzaSyBbL1jb6SbG8RGQME134WvJeJbd6PJEFSw&callback=initMap"  async defer>
+      src="https://maps.googleapis.com/maps/api/js?v=3&key=AIzaSyBbL1jb6SbG8RGQME134WvJeJbd6PJEFSw&libraries=geometry&callback=initMap"  async defer>
     </script>
 
     <script>
@@ -75,6 +75,7 @@
       var bounds;
       var polyline;
       var infowindow;
+      var segmentPath;
       var myLatLng = {lat: 28, lng: 0};
       function initMap() {
         map = new google.maps.Map(document.getElementById('map-holder'), {

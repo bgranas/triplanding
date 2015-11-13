@@ -60,7 +60,7 @@
 
 <% if @map_page %>
   <script
-    src="https://maps.googleapis.com/maps/api/js?v=3&key=AIzaSyBbL1jb6SbG8RGQME134WvJeJbd6PJEFSw&libraries=places&callback=initMap"  async defer>
+    src="https://maps.googleapis.com/maps/api/js?v=3&key=AIzaSyBbL1jb6SbG8RGQME134WvJeJbd6PJEFSw&libraries=geometry,places&callback=initMap"  async defer>
   </script>
 
   <script>
@@ -69,6 +69,7 @@
     var bounds;
     var polyline;
     var infowindow;
+    var transportPath;
     var myLatLng = {lat: 28, lng: 0};
     function initMap() {
       map = new google.maps.Map(document.getElementById('map-holder'), {
@@ -85,6 +86,7 @@
         geodesic: true,
         map: map
       });
+
 
       var contentString = '<h3>Sample Content Yo</h3>';
 

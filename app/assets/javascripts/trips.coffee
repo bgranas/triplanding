@@ -81,9 +81,7 @@ $ ->
           content.removeClass('.lightbox-warning-template').addClass('lightbox-warning')
           content.insertBefore('#add-destination-lightbox-wrapper')
           $.colorbox.resize()
-        , 300
-
-  #Adding transportation paths
+        , 300 
 
 
 ### ***********************************###
@@ -342,6 +340,49 @@ toggleTripSnapshot = ->
     setTimeout ->
       $('#itinerary').addClass('hidden')
     , 500
+
+
+
+### ***********************************###
+### *** ADDING TRANSPORTATION PATHS ***###
+### ***********************************###
+
+$ ->
+  $('.transportation-routes').click ->
+    flightCount=0
+    airportPathsLat = gon.airportPathsLat
+    airportPathsLng = gon.airportPathsLng
+    #console.log("airport routes" + airportRoutes)
+    for routePath in gon.routePaths
+      for segmentPath in routePath
+        if segmentPath.length == 0
+          #build google latlng literal
+          #console.log JSON.stringify(airportPathsLat[0])
+          source_geo = {lat: Number(airportPathsLat[flightCount][0]), lng: Number(airportPathsLng[flightCount][0])}
+          console.log "source_geo: " + JSON.stringify(source_geo) 
+          target_geo = {lat: Number(airportPathsLat[flightCount][1]), lng: Number(airportPathsLng[flightCount][1])}
+          console.log 'target_geo: ' + JSON.stringify(target_geo)  
+          path = [source_geo, target_geo]
+          setTransportPath(map, path ,false)
+          flightCount = flightCount + 1
+        else
+          setTransportPath(map, segmentPath, true)
+
+
+setTransportPath =  (map, path, needDecode) ->
+    if needDecode
+      transportPath = google.maps.geometry.encoding.decodePath(path)
+      #console.log("route path" + transportPath)
+    else
+      transportPath = path
+      console.log("airport path" + JSON.stringify(transportPath))    
+    
+    routePath = new google.maps.Polyline
+      map: map
+      path: transportPath
+      strokeColor: '#767f93'
+      strokeWeight: 2
+
 
 
 

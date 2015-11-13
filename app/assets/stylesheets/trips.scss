@@ -542,14 +542,14 @@
     border: 1px solid #f1f1f1;
     color: #767f93;
     height: 26px;
-    margin: 0 0 5px 0;
     -webkit-border-radius: 4px;
     -moz-border-radius: 4px;
     border-radius: 4px;
 	}
 
 		.transportation-route-detailbar {
-			    cursor: pointer;
+	    cursor: pointer;
+	    white-space: nowrap;
 		}
 
 			.transportation-route-summarybar {
@@ -571,6 +571,7 @@
 			text-align: center;
     	padding-top: 2px;
     	border-right: 10px solid #bedcf1;
+    	min-width: 30px;
 		}
 
 			.transportation-route-summarybar > div:last-of-type {
@@ -583,7 +584,7 @@
 
 			.itinerary-route-duration {
 				display: inline-block;
-				margin-left: 15px;
+				margin-left: 5px;
 			}
 
 			.itinerary-route-price {
@@ -593,15 +594,15 @@
 			}
 
 	.transportation-segments-all {
-		list-style-type: none;
+		margin-top: 10px;
+    margin-bottom: 10px;
+    padding-bottom: 10px;
+    border-bottom: 1px solid #ececec;
+    height: 26px;
 	}
 
 		.transportation-segment {
-			margin-top: 10px;
-	    margin-bottom: 10px;
-	    padding-bottom: 10px;
-	    border-bottom: 1px solid #ececec;
-	    padding-left: 20px;
+
 		}
 
 		.transportation-segment i {
