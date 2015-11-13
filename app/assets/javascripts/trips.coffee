@@ -216,7 +216,6 @@ addDestinationItinerary = (place, markerID, country, country_code, insertIndex) 
     $('#add-destination-row').addClass('hidden')
 
   destinationRow = $('#destination-row-template').clone(true).removeClass('hidden').removeAttr('id')
-  destinationCount = $('#itinerary-transportation-destination-ul .destination-row').length
 
   #Setting the destination row values
   destinationRow.find('.itinerary-step-city').text(place.name)
@@ -226,26 +225,36 @@ addDestinationItinerary = (place, markerID, country, country_code, insertIndex) 
   destinationRow.attr('data-marker-id', markerID)
   destinationRow.attr('id', 'destination-location-' + markerID)
 
+  insertDestinationRow(destinationRow, insertIndex, 0)
+
+
+#inserts Destination Row at insertIndex
+insertDestinationRow = (destinationRow, insertIndex, oldIndex) ->
+  destinationCount = $('#itinerary-transportation-destination-ul .destination-row').length
   if destinationCount == 0 #if I'm first, just add myself
     $('#itinerary-transportation-destination-ul').append(destinationRow)
-  else #if you're not the first destination, add transportation link
+  else
     transportationRow = $('#transportation-row-template').clone(true).removeClass('hidden').removeAttr('id')
     $('#itinerary-transportation-destination-ul .destination-row').eq(insertIndex-1).after(transportationRow)
     destinationRow.insertAfter(transportationRow)
     reorderItineraryCalendars()
 
+  #finally, if a transport list is last, remove it THIS IS BAD DESIGN
+  last_itinerary_row = $('#itinerary-transportation-destination-ul .row').last()
+  if last_itinerary_row.hasClass('transportation-row')
+    last_itinerary_row.remove()
+
 ### ***********************************###
 ### ******* REORDER DESINATION ********###
 ### ***********************************###
 reorderDestination = (ui) ->
-
   snapshot = ui.item
   markerID = snapshot.data('marker-id')
   oldIndex = findMarkerIndexByID(markerID)
   newIndex = $('#trip-snapshot-ul .snapshot-location').index(snapshot)
-  #console.log 'markerID: ' + markerID
-  #console.log 'markerIndex: ' + markerIndex
-  #console.log 'newIndex: ' + newIndex
+  console.log 'markerID: ' + markerID
+  console.log 'oldIndex: ' + oldIndex
+  console.log 'newIndex: ' + newIndex
 
   #Algorithm: delete first, then reinsert at newIndex
   temp_marker = markers[oldIndex]
@@ -253,9 +262,22 @@ reorderDestination = (ui) ->
   markers.splice(newIndex,0, temp_marker)
 
   temp_path = polyline.getPath().getAt(oldIndex)
-  console.log 'temp_path: ' + temp_path.toString()
   polyline.getPath().removeAt(oldIndex)
   polyline.getPath().insertAt(newIndex, temp_path)
+
+  reorderItinerary(markerID, oldIndex, newIndex)
+
+
+#moves the destination associated with markerID from oldIndex to newIndex
+reorderItinerary = (markerID, oldIndex, newIndex) ->
+   temp_itinerary_destination = $('#destination-location-' + markerID).clone(true)
+
+   #Algorithm: remove my transportation, remove me, add me, add transportation
+   $('#destination-location-' + markerID).next().remove()
+   $('#destination-location-' + markerID).remove()
+
+   insertDestinationRow(temp_itinerary_destination, newIndex, oldIndex)
+
 
 #print names of each marker in order
 #for debugging
