@@ -47,7 +47,7 @@ private
     puts '************ YAML: ' + place.to_yaml if debug
 
     dest.name = place['name']
-    dest.google_place_id = place['id']
+    dest.google_place_id = place['place_id']
     dest.formatted_address = place['formatted_address']
 
     #Google API Docs:
