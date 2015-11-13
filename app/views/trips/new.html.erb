@@ -14,6 +14,13 @@
 
       <%= text_field_tag 'trip_name_input', '', placeholder: 'Enter a Name for Your Trip'  %>
 
+      <!-- Data to add
+          - Total distance
+          - Total duration
+          - Total cost? (maybe inaccurate)
+          - # Citites
+          - # Countries
+        -->
 
       <div id="map-controls-buttons-container" class="inline-block map-controls-div">
         <button type="button" id="save-trip" class="btn btn-primary btn-xs">
@@ -161,7 +168,7 @@
     </span>
   </div>
 
-  <div class="col-sm-4 col-sm-offset-1 destination-label itinerary-col-parent-sm">
+  <div class="col-sm-5 col-sm-offset-1 destination-label itinerary-col-parent-sm">
     <p class="itinerary-step-city inline-block">Dafeng</p>
     <p class="itinerary-step-country inline-block">China</p>
     <a class="block" href="#">+ Add Dates</a>
@@ -170,7 +177,7 @@
       Currency conversion
       Cost of living -->
 
-  <div class="col-sm-4 itinerary-col-parent-lg">
+  <div class="col-sm-4 itinerary-col-parent-lg hidden">
     <ul class="accomidation-list list-inline">
       <li>
         <i class="fa fa-bed fa-2x"></i>

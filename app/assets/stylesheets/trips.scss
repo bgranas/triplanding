@@ -209,11 +209,14 @@
 .snapshot-location-content{
 	padding: 5px 25px;
 	height: 47px;
+  width:150px;
 	border: 1px solid lightgray;
 	background-color:white;
 }
   .snapshot-location-content h5{
     margin:0px;
+    max-width: 100px; /*snapshot width - 25px padding on each side */
+    word-wrap: break-word;
   }
 
 .snapshot-close{

@@ -195,7 +195,7 @@ addDestinationSnapshot = (place, markerID, destinationID, insertIndex) ->
   destinationName = place.name
   snapshot = $('#snapshot-location-template').clone(true).removeClass('hidden').removeAttr('id')
   #Setting data needed for trip
-  snapshot.find('h5').text(place.name)
+  snapshot.find('h5').text(shorten(place.name, 20))
   snapshot.attr('data-marker-id', markerID)
   snapshot.attr('data-destination-id', destinationID)
   snapshot.attr('id', 'snapshot-location-' + markerID)
@@ -387,6 +387,14 @@ findMarkerIndexByID = (markerID) ->
 ### ***********************************###
 ### ********* MISC FUNCTIONS **********###
 ### ***********************************###
+
+#cuts text off at max_length and replaces with '...'
+shorten = (text, max_length) ->
+  ret = text
+  if ret.length > max_length
+      ret = ret.substr(0,max_length) + "...";
+
+  return ret
 
 autocomplete = null
 place = null
