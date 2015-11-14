@@ -353,6 +353,7 @@ toggleTripSnapshot = ->
 $ ->
   $('#add-transport-test').click ->
     passRouteToTransportation()
+    
 
 passRouteToTransportation = ->
   $.ajax '/routes/r2r_call',
@@ -363,6 +364,9 @@ passRouteToTransportation = ->
       dPos: "-33.917524,18.423252"
     success: (data) ->
       $('#add-transport-box').html(data)
+
+      #Hiding individual segment results in transport results
+      $('.transportation-segments').hide()
     failure: ->
       alert 'passDestinationToTransportation Unsuccessful, please alert site admins'
       return
@@ -375,16 +379,18 @@ passRouteToTransportation = ->
 
 
 #Finds index of route by ID in order to get that route's transport path
-#findRouteIndex = (routeID) ->
- # routeRow = $('#' + routeID)
-  #routeRowCount = $('.col-xs-9 transportaion-route-detailbar').length
-  #console.log(routeRowCount)
-  #routeRowIndex = $('.col-xs-9 transportaion-route-detailbar').index(routeRow)
+###
+findRouteIndex = (routeID) ->
+  routeRow = $('#' + routeID)
+  routeRowCount = $('.col-xs-9 transportation-route-detailbar').length
+  console.log(routeRowCount)
+  routeRowIndex = $('.col-xs-9 transportaiton-route-detailbar').index(routeRow)
+
 
 $ ->
+  
   $('body').on 'click', '.transportation-route-detailbar', ->
-    console.log("clicked")
-    #index = findRouteIndex(this.id)
+    index = findRouteIndex(this.id)
     #console.log(index)
     flightCount=0
     airportPathsLat = gon.watch(airportPathsLat)
@@ -421,7 +427,7 @@ setTransportPath =  (map, path, needDecode) ->
       strokeColor: '#767f93'
       strokeWeight: 2
       routeID: 43
-
+###
 
 
 
