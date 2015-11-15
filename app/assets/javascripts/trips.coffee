@@ -207,7 +207,6 @@ addDestinationSnapshot = (place, markerID, destinationID, insertIndex) ->
   else
     snapshot.insertAfter('#trip-snapshot-ul .snapshot-location:nth-child(' + insertIndex + ')')
 
-  $('#trip-snapshot-link-ul').append('<li></li>')
 
 #Add destination to trip itinerary
 addDestinationItinerary = (place, markerID, country, country_code, insertIndex) ->
@@ -341,7 +340,6 @@ removeDestination = (markerID, map) ->
 #Removes snapshot location associated to markerID
 removeSnapshot = (markerID) ->
   $('#snapshot-location-' + markerID).remove()
-  $('#trip-snapshot-link-ul li:first').remove()
 
 #Removes a marker with markerIndex from the map and markers array
 removeMarker = (markerID, map) ->

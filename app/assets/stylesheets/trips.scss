@@ -155,19 +155,21 @@
 	height:80px;
   margin-top:20px; /*height of toggle bar */
 	border-bottom: 1px solid lightgray;
+  overflow:hidden;
+  white-space:nowrap;
 }
 
 #trip-snapshot-ul{
 	position: relative;
 	z-index: 100;
 	margin-top:15px;
+  overflow:auto;
 }
 
 #trip-snapshot-ul li{
 	 margin-left:14px;
 	 width:150px;
 	 text-align: center;
-	 height:100%;
 	 vertical-align:top;
    padding-left:0px;
    padding-right:0px;
@@ -175,9 +177,19 @@
    position: relative;
 }
 
+#trip-snapshot-ul .snapshot-location:after{
+  content: '';
+  position: absolute;
+  top: 22px;
+  width: 21px;
+  right: -20px;
+  border-top: 3px dotted gray;
+}
+
 .snapshot-location-shadow{
   box-shadow: 3px 3px 5px #888888;
 }
+
 
 #trip-snapshot-link-ul{
 	margin-bottom: 0px;
@@ -208,7 +220,7 @@
 
 .snapshot-location-content{
 	padding: 5px 25px;
-	height: 47px;
+	height: 48px;
   width:150px;
 	border: 1px solid lightgray;
 	background-color:white;
