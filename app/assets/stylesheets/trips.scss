@@ -159,6 +159,27 @@
   white-space:nowrap;
 }
 
+.snapshot-scroll{
+  background: rgba(0,0,0,.1);
+  position: absolute;
+  padding-top: 25px;
+  height: 100%;
+  border-right: 1px solid whitesmoke;
+  border-left: 1px solid whitesmoke;
+  width: 50px;
+  z-index: 1000;
+}
+
+  #scroll-left{
+    margin-left:-15px;
+    padding-left: 13px;
+  }
+  #scroll-right{
+    padding-left:17px;
+    right:0px;
+    top:0px;
+  }
+
 #trip-snapshot-ul{
 	position: relative;
 	z-index: 100;
@@ -224,6 +245,7 @@
   width:150px;
 	border: 1px solid lightgray;
 	background-color:white;
+  white-space:normal;
 }
   .snapshot-location-content h5{
     margin:0px;

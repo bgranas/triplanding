@@ -46,16 +46,22 @@
       <i class="fa fa-chevron-up snapshot-toggle-icon"></i>
     </div>
     <div id="snapshot-content" class="col-sm-12">
-        <ul id="trip-snapshot-ul" class="list-inline">
-          <li id="snapshot-add-destination" class="not-sortable">
-            <a href="<%= add_destination_lightbox_path %>" data-colorbox="true" class="add-destination-link">
-              <div class="snapshot-location-content">
-                  <i class="fa fa-plus-circle fa-2x add-destination-icon" data-toggle="tooltip" data-placement="right"
-                     title="Add Destination"></i>
-              </div>
-            </a>
-          </li>
-        </ul>
+      <div id="scroll-left" class="snapshot-scroll hidden">
+        <i class="fa fa-chevron-left fa-2x"></i>
+      </div>
+      <ul id="trip-snapshot-ul" class="list-inline">
+        <li id="snapshot-add-destination" class="not-sortable">
+          <a href="<%= add_destination_lightbox_path %>" data-colorbox="true" class="add-destination-link">
+            <div class="snapshot-location-content">
+                <i class="fa fa-plus-circle fa-2x add-destination-icon" data-toggle="tooltip" data-placement="right"
+                   title="Add Destination"></i>
+            </div>
+          </a>
+        </li>
+      </ul>
+      <div id="scroll-right" class="snapshot-scroll hidden">
+        <i class="fa fa-chevron-right fa-2x"></i>
+      </div>
     </div> <!-- end snapshot content -->
   </div>
   <!-- end trip snapshot -->

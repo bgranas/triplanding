@@ -23,6 +23,22 @@ $ ->
 
   ### *********** SNAPSHOT BINDINGS **************###
 
+  #Bind hover of snapshot-ul to show scroll arrows if overflowing
+  $('body').on 'mouseenter', '#trip-snapshot-ul', ->
+    console.log 'mouse entered trip-snapshot-ul'
+    if snapshotOverflow()
+      console.log 'snapshotOverflow is overflowing!'
+      $('.snapshot-scroll').removeClass('hidden')
+    else
+      console.log 'snapshotOverflow is not overflowing!'
+      $('.snapshot-scroll').addClass('hidden')
+
+  $('body').on 'mouseleave', '#trip-snapshot-ul', ->
+    console.log 'mouse leaving trip-snapshot-ul'
+    if not $('.snapshot-scroll').hasClass('hidden')
+      console.log 'hiding snapshot scroll'
+      $('.snapshot-scroll').addClass('hidden')
+
   #Bind '+' (add destination) on snapshot and itinerary to set the insertIndex for the marker
   $('body').on 'click', '.add-destination-link', ->
     #adding destination to the end of the list, so index will be last marker
@@ -130,6 +146,8 @@ addDestination = (place, map, insertIndex) ->
 
     addDestinationSnapshot(place, markerID, destinationID, insertIndex)
     addDestinationItinerary(place, markerID, destinationCountry, destinationCountryCode, insertIndex)
+
+
 
 
 #Adds a marker at the geolocation specified in place (google place),
@@ -385,6 +403,18 @@ findMarkerIndexByID = (markerID) ->
 ### ***********************************###
 ### ********* MISC FUNCTIONS **********###
 ### ***********************************###
+
+snapshot_overflow = false
+
+#if the trip snapshot is overflowing, set snapshot_overflow = true
+#this will allow the scroll arrows to display on hover
+snapshotOverflow = ->
+   if $("#trip-snapshot-ul").prop('scrollWidth') > $('#trip-snapshot-ul').width()
+      console.log 'ul is overflowing'
+      return true
+    else
+      console.log 'ul is not overflowing'
+      return false
 
 #cuts text off at max_length and replaces with '...'
 shorten = (text, max_length) ->
