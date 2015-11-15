@@ -28,6 +28,7 @@ Rails.application.routes.draw do
   get 'admin/users' => 'admin#all_users' #creates admin_users_path and admin_users_url pointing to /admin/all_users
   get 'trips/new' => 'trips#new' #creates trips_new_path and trips_new_url pointing to /trips/new/
   get '/blank/add_destination_helper' => 'blank#add_destination_helper', as: 'add_destination_lightbox'
+  get 'blank/snapshot_demo' => 'blank#snapshot_demo'
 
   #for capturing information after signup
   match '/users/:id/finish_signup' => 'users#finish_signup', via: [:get, :patch], :as => :finish_signup
