@@ -379,25 +379,28 @@ passRouteToTransportation = ->
 
 
 #Finds index of route by ID in order to get that route's transport path
-###
+
 findRouteIndex = (routeID) ->
   routeRow = $('#' + routeID)
-  routeRowCount = $('.col-xs-9 transportation-route-detailbar').length
-  console.log(routeRowCount)
-  routeRowIndex = $('.col-xs-9 transportaiton-route-detailbar').index(routeRow)
+  console.log(routeRowID.html()) 
+  routeRowCount = $('.transportation-route-detailbar').length
+  routeRowIndex = $('.transportation-route-detailbar').index(routeRow)
+  return routeRowIndex
+
 
 
 $ ->
   
   $('body').on 'click', '.transportation-route-detailbar', ->
-    index = findRouteIndex(this.id)
-    #console.log(index)
+    routeID = $(this).attr('id')
+    index = findRouteIndex(routeID)
+    console.log("inside index: " + index)
     flightCount=0
     airportPathsLat = gon.watch(airportPathsLat)
     console.log("airport paths lat: ") + airportPathsLat
     airportPathsLng = gon.watch(airportPathsLng)
     #console.log("airport routes" + airportRoutes)
-    for routePath in gon.watch(routePaths)#[index]
+    for routePath in gon.watch(routePaths)[index]
       for segmentPath in routePath
         if segmentPath.length == 0
           #build google latlng literal
@@ -427,7 +430,7 @@ setTransportPath =  (map, path, needDecode) ->
       strokeColor: '#767f93'
       strokeWeight: 2
       routeID: 43
-###
+
 
 
 
