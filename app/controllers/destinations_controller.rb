@@ -10,11 +10,13 @@ class DestinationsController < ApplicationController
   end
 
   def create
+    debug = true
     place = JSON.parse params[:place]
 
     #use destination if already in the DB, otherwise create a new one
-    dest = Destination.find_by_google_place_id(place['id'])
+    dest = Destination.find_by_google_place_id(place['place_id'])
     if dest.nil?
+      puts '******** New destination! gathering photos and place info' if debug
       dest = buildDestinationFromPlace(place)
       dest.save
       getPanoramiaPhotos(dest, 'thumbnail')
@@ -47,29 +49,12 @@ class DestinationsController < ApplicationController
 
   end
 
-  def pano_test
-    debug = false
-
-    render 'trips/pano_test'
-
-    @photo_size = 'thumbnail'
-
-    #first, call Panoramio
-    response = HTTParty.get("http://www.panoramio.com/map/get_panoramas.php?set=public&from=0&to=5&minx=120.5&miny=33.2&maxx=120.6&maxy=33.3&size=thumbnail&mapfilter=true")
-    puts response.to_yaml if debug
-
-    response['photos'].each do |photo|
-      puts 'photo title: ' + photo['photo_title'] if debug
-      createPhotoFromPanoramioResponse(photo, 2, @photo_size)
-    end
-
-  end
 
 private
 
   #gets panoramia photos for the newly created destination at the specified size
   def getPanoramiaPhotos(destination, photo_size)
-    debug = true
+    debug = false
 
     puts 'getPanoramiaPhotos called!' if debug
     max_photos = 5.to_s
