@@ -1,6 +1,13 @@
 class DestinationsController < ApplicationController
 
+  layout 'admin'
+
   include HTTParty
+
+  def index
+    @page_title = 'Edit Destinations'
+    @destinations = Destination.order("created_at ASC")
+  end
 
   def create
     place = JSON.parse params[:place]
@@ -10,11 +17,14 @@ class DestinationsController < ApplicationController
     if dest.nil?
       dest = buildDestinationFromPlace(place)
       dest.save
+      getPanoramiaPhotos(dest, 'thumbnail')
     end
 
 
+    thumbnail_url = dest.destination_photos[0].photo_file_url if not dest.destination_photos[0].nil?
     if dest.persisted?
-      render :json => {id: dest.id, country: dest.country, country_code: dest.country_iso_2}
+      render :json => {id: dest.id, country: dest.country, country_code: dest.country_iso_2,
+                       thumbnail_url: thumbnail_url}
     else
       render :status => '400'
     end
@@ -57,8 +67,37 @@ class DestinationsController < ApplicationController
 
 private
 
-  def createPhotoFromPanoramioResponse(photo_data, destination_id, size)
+  #gets panoramia photos for the newly created destination at the specified size
+  def getPanoramiaPhotos(destination, photo_size)
     debug = true
+
+    puts 'getPanoramiaPhotos called!' if debug
+    max_photos = 5.to_s
+
+    destination_id = destination.id
+    lat_min = (destination.lat).to_s #minY
+    lat_max = (destination.lat + 0.1).to_s #maxY
+
+    lng_min = (destination.lng).to_s #minX
+    lng_max = (destination.lng + 0.1).to_s #maxX
+
+
+    #first, call Panoramio
+    response = HTTParty.get("http://www.panoramio.com/map/get_panoramas.php?set=public&from=0&to=" +
+                            max_photos + "&minx=" + lng_min + "&miny=" + lat_min +
+                            "&maxx=" + lng_max + "&maxy=" + lat_max + "&size=" + photo_size + "&mapfilter=true")
+
+    puts response.to_yaml if debug
+
+    response['photos'].each do |photo|
+      puts 'photo title: ' + photo['photo_title'] if debug
+      createPhotoFromPanoramioResponse(photo, destination_id, photo_size)
+    end
+  end
+
+  #creates and saves the photo object from panoramia
+  def createPhotoFromPanoramioResponse(photo_data, destination_id, size)
+    debug = false
 
     puts photo_data.to_yaml if debug
 

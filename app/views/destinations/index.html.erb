@@ -1,0 +1,29 @@
+
+<div class="container-fluid">
+  <div class="row">
+    <div class="col-sm-12">
+
+      <h1>Destinations</h1>
+
+      <table class="table">
+        <tr>
+          <th>ID</th>
+          <th>Destination Name</th>
+          <th>Photo 1</th>
+          <th>Photo 2</th>
+          <th>Photo 3</th>
+        </tr>
+        <% @destinations.each do |dest| %>
+        <tr>
+          <td><%= dest.id %></td>
+          <td><%= dest.name %></td>
+          <td><%= image_tag dest.destination_photos[0].photo_file_url if not dest.destination_photos[0].nil? %></td>
+          <td><%= image_tag dest.destination_photos[1].photo_file_url if not dest.destination_photos[1].nil? %></td>
+          <td><%= image_tag dest.destination_photos[2].photo_file_url if not dest.destination_photos[2].nil? %></td>
+        </tr>
+        <% end %>
+      </table>
+
+    </div>
+  </div>
+</div>
