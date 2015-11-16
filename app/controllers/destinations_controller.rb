@@ -1,5 +1,6 @@
 class DestinationsController < ApplicationController
 
+  include HTTParty
 
   def create
     place = JSON.parse params[:place]
@@ -36,8 +37,49 @@ class DestinationsController < ApplicationController
 
   end
 
+  def pano_test
+    debug = false
+
+    render 'trips/pano_test'
+
+    @photo_size = 'thumbnail'
+
+    #first, call Panoramio
+    response = HTTParty.get("http://www.panoramio.com/map/get_panoramas.php?set=public&from=0&to=5&minx=120.5&miny=33.2&maxx=120.6&maxy=33.3&size=thumbnail&mapfilter=true")
+    puts response.to_yaml if debug
+
+    response['photos'].each do |photo|
+      puts 'photo title: ' + photo['photo_title'] if debug
+      createPhotoFromPanoramioResponse(photo, 2, @photo_size)
+    end
+
+  end
 
 private
+
+  def createPhotoFromPanoramioResponse(photo_data, destination_id, size)
+    debug = true
+
+    puts photo_data.to_yaml if debug
+
+    photo = DestinationPhoto.new
+    photo.destination_id = destination_id
+    photo.panoramio_photo_id = photo_data['photo_id']
+    photo.height = photo_data['height']
+    photo.width = photo_data['width']
+    photo.lat = photo_data['latitude']
+    photo.lng = photo_data['longitude']
+    photo.photo_title = photo_data['photo_title']
+    photo.photo_url = photo_data['photo_url']
+    photo.photo_file_url = photo_data['photo_file_url']
+    photo.photo_size = size
+    photo.owner_url = photo_data['owner_url']
+    photo.owner_name = photo_data['owner_name']
+    photo.owner_id = photo_data['owner_id']
+
+    photo.save
+  end
+
   #returns a Destination object built with values from a Google place
   #PRE: Google place object should be parsed into ruby hash via JSON.parase
   def buildDestinationFromPlace(place)

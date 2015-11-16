@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20151107034524) do
+ActiveRecord::Schema.define(version: 20151116072056) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -26,6 +26,26 @@ ActiveRecord::Schema.define(version: 20151107034524) do
 
   add_index "destination_orders", ["destination_id"], name: "index_destination_orders_on_destination_id", using: :btree
   add_index "destination_orders", ["trip_id"], name: "index_destination_orders_on_trip_id", using: :btree
+
+  create_table "destination_photos", force: :cascade do |t|
+    t.integer  "destination_id"
+    t.string   "panoramio_photo_id"
+    t.integer  "height"
+    t.integer  "width"
+    t.decimal  "lat"
+    t.decimal  "lng"
+    t.string   "photo_title"
+    t.string   "photo_url"
+    t.string   "photo_file_url"
+    t.string   "photo_size"
+    t.string   "owner_url"
+    t.string   "owner_name"
+    t.string   "owner_id"
+    t.datetime "created_at",         null: false
+    t.datetime "updated_at",         null: false
+  end
+
+  add_index "destination_photos", ["destination_id"], name: "index_destination_photos_on_destination_id", using: :btree
 
   create_table "destinations", force: :cascade do |t|
     t.string   "name",                                                 null: false
@@ -123,5 +143,6 @@ ActiveRecord::Schema.define(version: 20151107034524) do
 
   add_foreign_key "destination_orders", "destinations"
   add_foreign_key "destination_orders", "trips"
+  add_foreign_key "destination_photos", "destinations"
   add_foreign_key "identities", "users"
 end
