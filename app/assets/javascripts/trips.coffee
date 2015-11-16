@@ -24,20 +24,49 @@ $ ->
   ### *********** SNAPSHOT BINDINGS **************###
 
   #Bind hover of snapshot-ul to show scroll arrows if overflowing
-  $('body').on 'mouseenter', '#trip-snapshot-ul', ->
-    console.log 'mouse entered trip-snapshot-ul'
+  $('body').on 'mouseenter', '#trip-snapshot-ul, .snapshot-scroll', ->
     if snapshotOverflow()
-      console.log 'snapshotOverflow is overflowing!'
       $('.snapshot-scroll').removeClass('hidden')
     else
-      console.log 'snapshotOverflow is not overflowing!'
       $('.snapshot-scroll').addClass('hidden')
 
-  $('body').on 'mouseleave', '#trip-snapshot-ul', ->
-    console.log 'mouse leaving trip-snapshot-ul'
+  $('body').on 'mouseleave', '.snapshot-scroll, #trip-snapshot-ul', ->
     if not $('.snapshot-scroll').hasClass('hidden')
-      console.log 'hiding snapshot scroll'
       $('.snapshot-scroll').addClass('hidden')
+
+  right_scroll_hovered = false
+  scrollRight = null
+  #scroll right on snapshot arrow hover
+  $('body').on 'mouseenter', '#scroll-right', ->
+    right_scroll_hovered = true
+    scrollRight = setInterval ->
+      if right_scroll_hovered
+        x = $('#trip-snapshot-ul').scrollLeft();
+        $('#trip-snapshot-ul').scrollLeft(x+2);
+    ,5
+
+  $('body').on 'mouseleave', '#scroll-right', ->
+    right_scroll_hovered = false
+    clearInterval(scrollRight)
+
+  left_scroll_hovered = false
+  scrollLeft = null
+  #scroll right on snapshot arrow hover
+  $('body').on 'mouseenter', '#scroll-left', ->
+    left_scroll_hovered = true
+    #console.log 'hover on! left_scroll_hovered: ' + left_scroll_hovered
+    scrollLeft = setInterval ->
+      if left_scroll_hovered
+        x = $('#trip-snapshot-ul').scrollLeft();
+        $('#trip-snapshot-ul').scrollLeft(x-2);
+    ,5
+
+  $('body').on 'mouseleave', '#scroll-left', ->
+    left_scroll_hovered = false
+    clearInterval(scrollLeft)
+
+    #console.log 'hover off! left_scroll_hovered: ' + left_scroll_hovered
+
 
   #Bind '+' (add destination) on snapshot and itinerary to set the insertIndex for the marker
   $('body').on 'click', '.add-destination-link', ->
@@ -269,9 +298,6 @@ reorderDestination = (ui) ->
   markerID = snapshot.data('marker-id')
   oldIndex = findMarkerIndexByID(markerID)
   newIndex = $('#trip-snapshot-ul .snapshot-location').index(snapshot)
-  console.log 'markerID: ' + markerID
-  console.log 'oldIndex: ' + oldIndex
-  console.log 'newIndex: ' + newIndex
 
   #Algorithm: delete first, then reinsert at newIndex
   temp_marker = markers[oldIndex]
@@ -404,16 +430,13 @@ findMarkerIndexByID = (markerID) ->
 ### ********* MISC FUNCTIONS **********###
 ### ***********************************###
 
-snapshot_overflow = false
 
-#if the trip snapshot is overflowing, set snapshot_overflow = true
+#return true if snapshot is overflowing, else false
 #this will allow the scroll arrows to display on hover
 snapshotOverflow = ->
    if $("#trip-snapshot-ul").prop('scrollWidth') > $('#trip-snapshot-ul').width()
-      console.log 'ul is overflowing'
       return true
     else
-      console.log 'ul is not overflowing'
       return false
 
 #cuts text off at max_length and replaces with '...'
