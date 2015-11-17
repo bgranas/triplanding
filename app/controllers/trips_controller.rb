@@ -98,6 +98,7 @@ class TripsController < ApplicationController
   def create
     trip_id = params[:trip_id].to_i
     trip_title = params[:trip_title]
+    destinations = JSON.parse params[:destinations]
 
     @trip = Trip.find_by_id(trip_id)
     @trip.title = trip_title
@@ -142,7 +143,7 @@ class TripsController < ApplicationController
     #initializing variables to be passed to trips.coffee via ajax
     @airportPathsLng = []
     @airportPathsLat = []
-    @routePaths = [] 
+    @routePaths = []
 
   end
 

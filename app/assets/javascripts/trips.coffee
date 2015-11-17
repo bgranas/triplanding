@@ -204,7 +204,6 @@ addMarkerToMap = (place, map, insertIndex) ->
 
   #First, add new marker to the markers array
   markers.splice(insertIndex, 0, marker)
-  markers.push routePath
 
   #Binds click of marker to opening infowindow
   marker.addListener 'click', ->
@@ -368,20 +367,31 @@ getInfowindowContent = (markerID, markerIndex) ->
 ### ********** SAVE A TRIP ************###
 ### ***********************************###
 
-#Save trip to database, destination and details should already be in the database
+#Save trip to database for the destination orders defined in the snapshot
 saveTrip = (trip_id, trip_title) ->
+  destinations = createDestinationArray()
+  ###
   $.ajax '/trips/create',
     dataType: 'json'
     type: 'POST'
     data:
       trip_title: trip_title
       trip_id: trip_id
+      destinations:
     success: (data) ->
       alert 'Successful'
       return
     failure: ->
       alert 'Unsuccessful'
       return
+###
+#creates an array with the current order of the destinations for the trip
+createDestinationArray = ->
+  destinations = []
+  for dest in $('.snapshot-location')
+    destinations.push dest.data('destination-id')
+  console.log destinations.toString()
+  return destinations
 
 ### ***********************************###
 ### ***** REMOVE A DESTINATION ********###
@@ -530,7 +540,6 @@ passRouteToTransportation = ->
       #Hiding individual segment results in transport results
       $('.transportation-segments').hide()
       showAllTransportPaths()
-      console.log("transport paths called")
     failure: ->
       alert 'passDestinationToTransportation Unsuccessful, please alert site admins'
       return
