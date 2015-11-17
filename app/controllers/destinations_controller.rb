@@ -20,6 +20,8 @@ class DestinationsController < ApplicationController
       dest = buildDestinationFromPlace(place)
       dest.save
       getPanoramiaPhotos(dest, 'thumbnail')
+    else
+      puts '******** OLD destination! gathering photos and place info' if debug
     end
 
 
