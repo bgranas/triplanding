@@ -258,9 +258,15 @@
 .snapshot-close{
   position:absolute;
   top: 0;
-  right: 5px;
+  right: 0px;
   color: #CC0303;
   cursor: pointer;
+  background-color: white;
+  border: 1px solid lightgray;
+  width: 22px;
+  line-height: 10px;
+  height: 20px;
+  border-bottom-left-radius: 20px;
 }
 
 .snapshot-location-container-placeholder{
