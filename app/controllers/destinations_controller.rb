@@ -10,7 +10,7 @@ class DestinationsController < ApplicationController
   end
 
   def create
-    debug = true
+    debug = false
     place = JSON.parse params[:place]
 
     #use destination if already in the DB, otherwise create a new one

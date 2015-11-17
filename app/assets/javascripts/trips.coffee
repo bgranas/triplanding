@@ -147,6 +147,11 @@ $ ->
         , 300
 
 
+    #HACK - should simulate click on page load
+    #FUTURE FIX - only trigger lightbox if no destination has been added from landing page
+$ ->
+  $.colorbox({opacity: .5, href:"/blank/add_destination_helper"});
+
 ### ***********************************###
 ### ***** ADDING A DESTINATION ********###
 ### ***********************************###
