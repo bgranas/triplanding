@@ -150,7 +150,7 @@ $ ->
     #HACK - should simulate click on page load
     #FUTURE FIX - only trigger lightbox if no destination has been added from landing page
     #FUTURE IMPROVEMENT - do this on map load, not on page load
-$ ->
+$(".trips.new").ready ->
   $.colorbox({opacity: .5, href:"/blank/add_destination_helper"});
 
 
@@ -369,29 +369,28 @@ getInfowindowContent = (markerID, markerIndex) ->
 
 #Save trip to database for the destination orders defined in the snapshot
 saveTrip = (trip_id, trip_title) ->
-  destinations = createDestinationArray()
-  ###
+  destinationIDs = createDestinationArray()
   $.ajax '/trips/create',
     dataType: 'json'
     type: 'POST'
     data:
       trip_title: trip_title
       trip_id: trip_id
-      destinations:
+      destinationIDs: destinationIDs
     success: (data) ->
       alert 'Successful'
       return
     failure: ->
       alert 'Unsuccessful'
       return
-###
+
 #creates an array with the current order of the destinations for the trip
 createDestinationArray = ->
-  destinations = []
-  for dest in $('.snapshot-location')
-    destinations.push dest.data('destination-id')
-  console.log destinations.toString()
-  return destinations
+  destinationIDs = []
+  snapshots = $('#trip-snapshot-ul .snapshot-location')
+  snapshots.each ->
+    destinationIDs.push $(this).data('destination-id')
+  return destinationIDs
 
 ### ***********************************###
 ### ***** REMOVE A DESTINATION ********###
