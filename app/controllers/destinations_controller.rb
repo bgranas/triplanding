@@ -33,21 +33,6 @@ class DestinationsController < ApplicationController
       render :status => '400'
     end
 
-=begin
-    trip_id = params[:trip_id].to_i
-    #Should only create destination order if a trip_id is defined
-    if not trip_id.nil?
-      max_order_auth = DestinationOrder.where(trip_id: trip_id).maximum(:order_authority)
-
-      #if set destination order to 100 if first destination, else 100 + last destination
-      new_order_auth = max_order_auth.nil? ? 100 : (max_order_auth + 100)
-
-
-      dest_order = dest.destination_orders.build(trip_id: trip_id, order_authority: new_order_auth)
-      dest_order.save!
-    end
-=end
-
 
   end
 
