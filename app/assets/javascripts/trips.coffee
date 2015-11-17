@@ -187,9 +187,6 @@ addDestination = (place, map, insertIndex) ->
     addDestinationSnapshot(place, markerID, destinationID, insertIndex, bg_url)
     addDestinationItinerary(place, markerID, destinationCountry, destinationCountryCode, insertIndex)
 
-    addDestinationSnapshot(place, markerID, destinationID)
-    addDestinationItinerary(place, markerID, destinationCountry, destinationCountryCode)
-
 
 #Adds a marker at the geolocation specified in place (google place),
 #on the map specified in map, connects path to previous marker if necessary
@@ -259,10 +256,8 @@ addDestinationSnapshot = (place, markerID, destinationID, insertIndex, bg_url) -
   snapshot.attr('data-destination-id', destinationID)
   snapshot.attr('id', 'snapshot-location-' + markerID)
   if not (bg_url == null || bg_url == undefined)
-    console.log 'bg_url defined!'
     snapshot.find('.snapshot-location-content').css('background-image', 'url(' + bg_url + ')')
   else
-    console.log 'bg_url undefined!'
     snapshot.find('.transparent-layer').css('background-color', 'rgba(0, 0, 0, 0.3)')
 
   destinationCount = $('#trip-snapshot-ul .snapshot-location').length
