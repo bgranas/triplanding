@@ -252,10 +252,8 @@ addDestinationSnapshot = (place, markerID, destinationID, insertIndex, bg_url) -
   snapshot.attr('data-destination-id', destinationID)
   snapshot.attr('id', 'snapshot-location-' + markerID)
   if not (bg_url == null || bg_url == undefined)
-    console.log 'bg_url not undefined'
     snapshot.find('.snapshot-location-content').css('background-image', 'url(' + bg_url + ')')
   else
-    console.log 'bg_url undefined'
     snapshot.find('.transparent-layer').css('background-color', 'rgba(0, 0, 0, 0.3)')
 
   destinationCount = $('#trip-snapshot-ul .snapshot-location').length
