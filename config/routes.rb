@@ -37,6 +37,9 @@ Rails.application.routes.draw do
   #for creating or updating destinations
   match "/destinations" => "destinations#create", :via => [:post, :patch], :as => :create_destination
 
+  #itinerary testing r2r
+  match "/routes/r2r_call" => "routes#r2r_call", :via => [:post, :patch], :as => :r2r
+
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 

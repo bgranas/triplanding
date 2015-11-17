@@ -1,12 +1,19 @@
-module TransportationHelper
+class RoutesController < ApplicationController
 
 	include HTTParty
 
-
-
 	def r2r_call
 
-	  response = HTTParty.get("http://free.rome2rio.com/api/1.2/json/Search?key=PZgcLuJc&oPos="+@originCoords+"&dPos="+@destinationCoords+"&flags=0x00000002")
+
+		#ajax testing
+    oPos = params[:oPos].to_s
+    dPos = params[:dPos].to_s
+
+    #puts "****************oPos: " + oPos
+    #puts "****************oPos: " + dPos
+
+
+	  response = HTTParty.get("http://free.rome2rio.com/api/1.2/json/Search?key=PZgcLuJc&oPos="+oPos+"&dPos="+dPos+"&flags=0x00000002")
 	  @routes = response['routes']
 
 	  airports = {}
@@ -35,19 +42,14 @@ module TransportationHelper
 		  	if segment['isMajor'] == 1
 		  		duration += segment['duration'].to_i
 		  		if segment['kind'] == "flight"
-		  			#first add the lat of the source, then the lat of the end
 		  			flightPathLat << airports[segment['sCode']+'_lat']
 		  			flightPathLat << airports[segment['tCode']+'_lat']
-		  			#puts flightPathLat.to_yaml
 		  			#first add the lng of the source, then the lat of the end
 		  			flightPathLng << airports[segment['sCode']+'_lng']
 		  			flightPathLng << airports[segment['tCode']+'_lng']
-		  			#puts "*************flight path inside" + flightPath.to_s
 		  		end
 	  			
 	  			routePath << segment['path'].to_s
-	  			#puts "*************routePath" + routePath.to_s
-		  		#puts "*************flight path outside" + flightPath.to_s
 		  	end
 
 		  	#Correcting fontawesome flight and ferry icons and adding flight airport codes
@@ -72,7 +74,6 @@ module TransportationHelper
 		  if flightPathLat.empty? == false
 		  	flightPathsLat << flightPathLat
 		  	flightPathsLng << flightPathLng
-		  	#puts "*****flight paths lat" + flightPathsLat.to_yaml
 		  end
 
 		  allPaths << routePath
@@ -92,10 +93,14 @@ module TransportationHelper
 
 		end
 
-		gon.airportPathsLng = flightPathsLng
-		gon.airportPathsLat = flightPathsLat
-		gon.routePaths = allPaths
-		puts "******route Airpot Paths Lat: " + gon.airportPathsLat.to_s
+		@airportPathsLng = flightPathsLng
+		@airportPathsLat = flightPathsLat
+		@routePaths = allPaths
+
+		puts "******* airport Lat: " + @airportPathsLat.to_s
+
+		#render transport_search view
+		render partial: 'trips/transport_search'
 
 	end
 
@@ -105,5 +110,4 @@ module TransportationHelper
 		return "#{hr}h #{min}min"  
 
 	end
-
 end

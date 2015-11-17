@@ -152,6 +152,7 @@ $ ->
 $ ->
   $.colorbox({opacity: .5, href:"/blank/add_destination_helper"});
 
+
 ### ***********************************###
 ### ***** ADDING A DESTINATION ********###
 ### ***********************************###
@@ -186,7 +187,8 @@ addDestination = (place, map, insertIndex) ->
     addDestinationSnapshot(place, markerID, destinationID, insertIndex, bg_url)
     addDestinationItinerary(place, markerID, destinationCountry, destinationCountryCode, insertIndex)
 
-
+    addDestinationSnapshot(place, markerID, destinationID)
+    addDestinationItinerary(place, markerID, destinationCountry, destinationCountryCode)
 
 
 #Adds a marker at the geolocation specified in place (google place),
@@ -497,45 +499,6 @@ toggleTripSnapshot = ->
 
 
 
-### ***********************************###
-### *** ADDING TRANSPORTATION PATHS ***###
-### ***********************************###
-
-$ ->
-  $('.transportation-routes').click ->
-    flightCount=0
-    airportPathsLat = gon.airportPathsLat
-    airportPathsLng = gon.airportPathsLng
-    #console.log("airport routes" + airportRoutes)
-    for routePath in gon.routePaths
-      for segmentPath in routePath
-        if segmentPath.length == 0
-          #build google latlng literal
-          #console.log JSON.stringify(airportPathsLat[0])
-          source_geo = {lat: Number(airportPathsLat[flightCount][0]), lng: Number(airportPathsLng[flightCount][0])}
-          console.log "source_geo: " + JSON.stringify(source_geo)
-          target_geo = {lat: Number(airportPathsLat[flightCount][1]), lng: Number(airportPathsLng[flightCount][1])}
-          console.log 'target_geo: ' + JSON.stringify(target_geo)
-          path = [source_geo, target_geo]
-          setTransportPath(map, path ,false)
-          flightCount = flightCount + 1
-        else
-          setTransportPath(map, segmentPath, true)
-
-
-setTransportPath =  (map, path, needDecode) ->
-    if needDecode
-      transportPath = google.maps.geometry.encoding.decodePath(path)
-      #console.log("route path" + transportPath)
-    else
-      transportPath = path
-      console.log("airport path" + JSON.stringify(transportPath))
-
-    routePath = new google.maps.Polyline
-      map: map
-      path: transportPath
-      strokeColor: '#767f93'
-      strokeWeight: 2
 
 
 
