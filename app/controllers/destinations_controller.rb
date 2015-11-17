@@ -23,7 +23,7 @@ class DestinationsController < ApplicationController
     end
 
 
-    thumbnail_url = dest.destination_photos[0].photo_file_url if not dest.destination_photos[0].nil?
+    thumbnail_url = dest.destination_photos.first.photo_file_url if not dest.destination_photos.first.nil?
     if dest.persisted?
       render :json => {id: dest.id, country: dest.country, country_code: dest.country_iso_2,
                        thumbnail_url: thumbnail_url}
@@ -60,11 +60,11 @@ private
     max_photos = 5.to_s
 
     destination_id = destination.id
-    lat_min = (destination.lat).to_s #minY
-    lat_max = (destination.lat + 0.1).to_s #maxY
+    lat_min = (destination.lat - 0.05).to_s #minY
+    lat_max = (destination.lat + 0.05).to_s #maxY
 
-    lng_min = (destination.lng).to_s #minX
-    lng_max = (destination.lng + 0.1).to_s #maxX
+    lng_min = (destination.lng - 0.05).to_s #minX
+    lng_max = (destination.lng + 0.05).to_s #maxX
 
 
     #first, call Panoramio

@@ -172,8 +172,9 @@ addDestination = (place, map, insertIndex) ->
     destinationID = response.id
     destinationCountry = response.country
     destinationCountryCode = response.country_code
+    bg_url = response.thumbnail_url
 
-    addDestinationSnapshot(place, markerID, destinationID, insertIndex)
+    addDestinationSnapshot(place, markerID, destinationID, insertIndex, bg_url)
     addDestinationItinerary(place, markerID, destinationCountry, destinationCountryCode, insertIndex)
 
 
@@ -238,7 +239,7 @@ saveDestinationToDatabase = (place) ->
       return
 
 #Add destination to trip snapshot
-addDestinationSnapshot = (place, markerID, destinationID, insertIndex) ->
+addDestinationSnapshot = (place, markerID, destinationID, insertIndex, bg_url) ->
   destinationName = place.name
   snapshot = $('#snapshot-location-template').clone(true).removeClass('hidden').removeAttr('id')
   #Setting data needed for trip
@@ -246,6 +247,11 @@ addDestinationSnapshot = (place, markerID, destinationID, insertIndex) ->
   snapshot.attr('data-marker-id', markerID)
   snapshot.attr('data-destination-id', destinationID)
   snapshot.attr('id', 'snapshot-location-' + markerID)
+  console.log 'bg_url: ' + bg_url + ', length: ' + bg_url.length
+  if bg_url.length > 0
+    snapshot.find('.snapshot-location-content').css('background-image', 'url(' + bg_url + ')')
+  else
+    snapshot.find('.transparent-layer').css('background-color', 'rgba(0, 0, 0, 0.3)')
 
   destinationCount = $('#trip-snapshot-ul .snapshot-location').length
 

@@ -51,7 +51,7 @@
       </div>
       <ul id="trip-snapshot-ul" class="list-inline">
         <li id="snapshot-add-destination" class="not-sortable">
-          <a href="<%= add_destination_lightbox_path %>" data-colorbox="true" class="add-destination-link">
+          <a href="<%= add_destination_lightbox_path %>" data-colorbox="true" class="add-destination-link no-style-link">
             <div class="snapshot-location-content">
                 <i class="fa fa-plus-circle fa-2x add-destination-icon" data-toggle="tooltip" data-placement="right"
                    title="Add Destination"></i>
@@ -126,6 +126,8 @@
 <li id="snapshot-location-template" class="snapshot-location hidden">
   <div class="snapshot-draggable-indicator hidden"><i class="fa fa-arrows"></i></div>
   <div class="snapshot-location-content valign-middle-parent">
+    <div class="transparent-layer">
+    </div>
     <h5 class="valign-middle-child">Hidden Template</h5>
   </div>
   <div class="snapshot-close hidden"><i class="fa fa-times"></i></div>

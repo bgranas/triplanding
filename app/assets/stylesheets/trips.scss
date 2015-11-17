@@ -101,7 +101,7 @@
 /****** TRIP SNAPSHOT ***********/
 #trip-snapshot-container{
 	height: 10vh;
-	height: 100px;
+	height: 120px;
 	position: fixed;
 	bottom: 0;
 	left: 0;
@@ -152,7 +152,7 @@
 }
 
 #snapshot-content{
-	height:80px;
+	height:100px;
   margin-top:20px; /*height of toggle bar */
 	border-bottom: 1px solid lightgray;
   overflow:hidden;
@@ -160,16 +160,16 @@
 }
 
 .snapshot-scroll{
-  background: rgba(0,0,0,.1);
+  background: rgba(0,0,0,.4);
   position: absolute;
-  padding-top: 25px;
+  padding-top: 37px;
   height: 100%;
-  border-right: 1px solid whitesmoke;
-  border-left: 1px solid whitesmoke;
   width: 50px;
   z-index: 1000;
 }
-
+  .snapshot-scroll i{
+    color: lightgray;
+  }
   #scroll-left{
     margin-left:-15px;
     padding-left: 13px;
@@ -189,8 +189,8 @@
 }
 
 #trip-snapshot-ul li{
-	 margin-left:14px;
-	 width:150px;
+	 margin-left:30px;
+	 width:100px;
 	 text-align: center;
 	 vertical-align:top;
    padding-left:0px;
@@ -202,30 +202,14 @@
 #trip-snapshot-ul .snapshot-location:after{
   content: '';
   position: absolute;
-  top: 22px;
+  top: 38px;
   width: 21px;
-  right: -20px;
+  right: -26px;
   border-top: 3px dotted gray;
 }
 
 .snapshot-location-shadow{
   box-shadow: 3px 3px 5px #888888;
-}
-
-
-#trip-snapshot-link-ul{
-	margin-bottom: 0px;
-	height:0px;
-	margin-left:99px;
-}
-
-#trip-snapshot-link-ul li{
-    border-top: 3px dotted gray;
-    width: 150px;
-    margin-left: 14px;
-    position: relative;
-    top: -54px;
-    z-index: 1;
 }
 
 .snapshot-draggable-indicator{
@@ -241,18 +225,35 @@
 }
 
 .snapshot-location-content{
-	padding: 5px 25px;
-	height: 48px;
-  width:150px;
+	padding: 5px 5px;
+	height: 75px;
+  position:relative;
+  width:100px;
 	border: 1px solid lightgray;
 	background-color:white;
   white-space:normal;
+
+  background-repeat: no-repeat;
+  background-size: 100px 75px;
 }
+
   .snapshot-location-content h5{
     margin:0px;
-    max-width: 100px; /*snapshot width - 25px padding on each side */
+    max-width: 90px; /*snapshot width - 25px padding on each side */
     word-wrap: break-word;
+    color:white;
+    text-shadow: 1px 1px 3px black;
+    position:relative;
   }
+
+.transparent-layer{
+  background-color: rgba(0, 0, 0, 0.1);
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+}
 
 .snapshot-close{
   position:absolute;
@@ -263,8 +264,8 @@
 }
 
 .snapshot-location-container-placeholder{
-	padding: 5px 27px;
-	min-height: 47px;
+	padding: 5px 5px;
+	min-height: 75px;
 	cursor: pointer;
 	border: 1px solid lightgray;
 	background-color:#E6E6E6;
@@ -277,12 +278,25 @@
 	padding: 5px;
 }
 
+#snapshot-add-destination{
+  margin-right:115px;
+}
+
+#snapshot-add-destination-text{
+  color:black;
+  text-shadow: initial;
+}
+
 .snapshot-location-controls i{
 	padding-left: 5px;
 }
 	.snapshot-location-controls i:first-child{
 		padding-left: 0px;
 	}
+
+#snapshot-add-destination .add-destination-icon{
+  margin-top:18px;
+}
 
 .add-destination-icon{
   margin-top:3px;

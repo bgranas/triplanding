@@ -29,7 +29,6 @@ Rails.application.routes.draw do
   get 'trips/new' => 'trips#new' #creates trips_new_path and trips_new_url pointing to /trips/new/
   get '/blank/add_destination_helper' => 'blank#add_destination_helper', as: 'add_destination_lightbox'
   get 'blank/snapshot_demo' => 'blank#snapshot_demo'
-  get 'destinations/pano_test' => 'destinations#pano_test'
   get 'destinations' => 'destinations#index', as: 'destinations'
 
   #for capturing information after signup
