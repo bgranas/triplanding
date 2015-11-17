@@ -496,5 +496,93 @@ toggleTripSnapshot = ->
 
 
 
+### ***********************************###
+### *** PASSING DEST TO TRANSPORTATION ###
+### ***********************************###
+#oPos = "31.626710,-7.994810"
+#dPos = "-33.917524,18.423252"
+
+$ ->
+  $('#add-transport-test').click ->
+    passRouteToTransportation()
+    
+
+passRouteToTransportation = ->
+  $.ajax '/routes/r2r_call',
+    type: 'POST'
+    async: true
+    data:
+      oPos: "31.626710,-7.994810"
+      dPos: "-33.917524,18.423252"
+    success: (data) ->
+      $('#add-transport-box').html(data)
+
+      #Hiding individual segment results in transport results
+      $('.transportation-segments').hide()
+      showAllTransportPaths()
+      console.log("transport paths called")
+    failure: ->
+      alert 'passDestinationToTransportation Unsuccessful, please alert site admins'
+      return
+
+
+
+### ***********************************###
+### *** ADDING TRANSPORTATION PATHS ***###
+### ***********************************###
+
+
+#Finds index of route by ID in order to get that route's transport path
+
+findRouteIndex = (routeID) ->
+  routeRow = $('#' + routeID)
+  routeRowCount = $('.transportation-route-detailbar').length
+  routeRowIndex = $('.transportation-route-detailbar').index(routeRow)
+  return routeRowIndex
+
+
+$ ->
+
+  $('body').on 'click', '.transportation-route-detailbar', ->
+    routeID = $(this).attr('id')
+    index = findRouteIndex(routeID)
+
+  
+showAllTransportPaths = ->
+  flightCount=0
+  for routePath in routePaths
+    for segmentPath in routePath
+      if segmentPath.length == 0
+        #build google latlng literal
+        #console.log JSON.stringify(airportPathsLat[0])
+        source_geo = {lat: Number(airportPathsLat[flightCount][0]), lng: Number(airportPathsLng[flightCount][0])}
+        console.log ("source_geo: " + JSON.stringify(source_geo)) 
+        target_geo = {lat: Number(airportPathsLat[flightCount][1]), lng: Number(airportPathsLng[flightCount][1])}
+        console.log ('target_geo: ' + JSON.stringify(target_geo))  
+        path = [source_geo, target_geo]
+        setTransportPath(map, path ,false)
+        flightCount = flightCount + 1
+      else
+        setTransportPath(map, segmentPath, true)
+
+
+
+setTransportPath =  (map, path, needDecode) ->
+    if needDecode
+      transportPath = google.maps.geometry.encoding.decodePath(path)
+      #console.log("route path" + transportPath)
+    else
+      transportPath = path
+      console.log("airport path" + JSON.stringify(transportPath))
+
+    routePath = new google.maps.Polyline
+      map: map
+      path: transportPath
+      strokeColor: '#767f93'
+      strokeWeight: 5
+      routeID: 43
+
+
+
 
 
