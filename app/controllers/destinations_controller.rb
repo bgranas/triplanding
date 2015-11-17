@@ -136,7 +136,7 @@ private
           dest[type] = long_name
 
           #if type is country, also set iso 2 code for flags
-          dest.country_iso_2 = component['short_name'] if type == 'country'
+          dest['country_iso_2'] = component['short_name'] if type == 'country'
         end
       end #done with type iteration
     end #done with address componenet iteration
