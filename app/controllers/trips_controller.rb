@@ -139,10 +139,10 @@ class TripsController < ApplicationController
     @transportationSpecifics = "DF Bus | Shanghai Bus Station | 12:00 PM"
     @transportationPrice = "$15"
 
-    #initializing gon variables to be updated with gon.watch
-    gon.watch.airportPathsLng = []
-    gon.watch.airportPathsLat = []
-    gon.watch.routePaths = [] 
+    #initializing variables to be passed to trips.coffee via ajax
+    @airportPathsLng = []
+    @airportPathsLat = []
+    @routePaths = [] 
 
   end
 

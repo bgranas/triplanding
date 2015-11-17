@@ -42,19 +42,14 @@ class RoutesController < ApplicationController
 		  	if segment['isMajor'] == 1
 		  		duration += segment['duration'].to_i
 		  		if segment['kind'] == "flight"
-		  			#first add the lat of the source, then the lat of the end
 		  			flightPathLat << airports[segment['sCode']+'_lat']
 		  			flightPathLat << airports[segment['tCode']+'_lat']
-		  			#puts flightPathLat.to_yaml
 		  			#first add the lng of the source, then the lat of the end
 		  			flightPathLng << airports[segment['sCode']+'_lng']
 		  			flightPathLng << airports[segment['tCode']+'_lng']
-		  			#puts "*************flight path inside" + flightPath.to_s
 		  		end
 	  			
 	  			routePath << segment['path'].to_s
-	  			#puts "*************routePath" + routePath.to_s
-		  		#puts "*************flight path outside" + flightPath.to_s
 		  	end
 
 		  	#Correcting fontawesome flight and ferry icons and adding flight airport codes
@@ -79,7 +74,6 @@ class RoutesController < ApplicationController
 		  if flightPathLat.empty? == false
 		  	flightPathsLat << flightPathLat
 		  	flightPathsLng << flightPathLng
-		  	#puts "*****flight paths lat" + flightPathsLat.to_yaml
 		  end
 
 		  allPaths << routePath
@@ -99,11 +93,11 @@ class RoutesController < ApplicationController
 
 		end
 
-		gon.watch.airportPathsLng = flightPathsLng
-		gon.watch.airportPathsLat = flightPathsLat
-		gon.watch.routePaths = allPaths
+		@airportPathsLng = flightPathsLng
+		@airportPathsLat = flightPathsLat
+		@routePaths = allPaths
 
-		puts "******* route paths: " + gon.routePaths.to_s
+		puts "******* airport Lat: " + @airportPathsLat.to_s
 
 		#render transport_search view
 		render partial: 'trips/transport_search'

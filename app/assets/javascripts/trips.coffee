@@ -367,6 +367,8 @@ passRouteToTransportation = ->
 
       #Hiding individual segment results in transport results
       $('.transportation-segments').hide()
+      showAllTransportPaths()
+      console.log("transport paths called")
     failure: ->
       alert 'passDestinationToTransportation Unsuccessful, please alert site admins'
       return
@@ -382,38 +384,33 @@ passRouteToTransportation = ->
 
 findRouteIndex = (routeID) ->
   routeRow = $('#' + routeID)
-  console.log(routeRowID.html()) 
   routeRowCount = $('.transportation-route-detailbar').length
   routeRowIndex = $('.transportation-route-detailbar').index(routeRow)
   return routeRowIndex
 
 
-
 $ ->
-  
   $('body').on 'click', '.transportation-route-detailbar', ->
     routeID = $(this).attr('id')
     index = findRouteIndex(routeID)
-    console.log("inside index: " + index)
-    flightCount=0
-    airportPathsLat = gon.watch(airportPathsLat)
-    console.log("airport paths lat: ") + airportPathsLat
-    airportPathsLng = gon.watch(airportPathsLng)
-    #console.log("airport routes" + airportRoutes)
-    for routePath in gon.watch(routePaths)[index]
-      for segmentPath in routePath
-        if segmentPath.length == 0
-          #build google latlng literal
-          #console.log JSON.stringify(airportPathsLat[0])
-          source_geo = {lat: Number(airportPathsLat[flightCount][0]), lng: Number(airportPathsLng[flightCount][0])}
-          console.log "source_geo: " + JSON.stringify(source_geo) 
-          target_geo = {lat: Number(airportPathsLat[flightCount][1]), lng: Number(airportPathsLng[flightCount][1])}
-          console.log 'target_geo: ' + JSON.stringify(target_geo)  
-          path = [source_geo, target_geo]
-          setTransportPath(map, path ,false)
-          flightCount = flightCount + 1
-        else
-          setTransportPath(map, segmentPath, true)
+
+  
+showAllTransportPaths = ->
+  flightCount=0
+  for routePath in routePaths
+    for segmentPath in routePath
+      if segmentPath.length == 0
+        #build google latlng literal
+        #console.log JSON.stringify(airportPathsLat[0])
+        source_geo = {lat: Number(airportPathsLat[flightCount][0]), lng: Number(airportPathsLng[flightCount][0])}
+        console.log ("source_geo: " + JSON.stringify(source_geo)) 
+        target_geo = {lat: Number(airportPathsLat[flightCount][1]), lng: Number(airportPathsLng[flightCount][1])}
+        console.log ('target_geo: ' + JSON.stringify(target_geo))  
+        path = [source_geo, target_geo]
+        setTransportPath(map, path ,false)
+        flightCount = flightCount + 1
+      else
+        setTransportPath(map, segmentPath, true)
 
 
 setTransportPath =  (map, path, needDecode) ->
@@ -428,7 +425,7 @@ setTransportPath =  (map, path, needDecode) ->
       map: map
       path: transportPath
       strokeColor: '#767f93'
-      strokeWeight: 2
+      strokeWeight: 5
       routeID: 43
 
 
