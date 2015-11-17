@@ -204,20 +204,14 @@ addMarkerToMap = (place, map, insertIndex) ->
 
   #First, add new marker to the markers array
   markers.splice(insertIndex, 0, marker)
+  markers.push routePath
 
   #Binds click of marker to opening infowindow
   marker.addListener 'click', ->
     openInfowindowByID(markerID)
 
-
-
-  console.log 'Add Marker, Printing bounds (before): ' + window.bounds.toString()
-
   #Extend maps bounds to show new marker
   window.bounds.extend marker.position
-
-  console.log 'Add Marker, Printing bounds (after): ' + window.bounds.toString()
-
 
   polyline.getPath().insertAt(insertIndex, marker.position)
 
@@ -419,8 +413,6 @@ redoBounds = ->
   window.bounds = new google.maps.LatLngBounds()
   for marker in markers
     window.bounds.extend marker.position
-
-  console.log 'redoBounds, Printing bounds: ' + window.bounds.toString()
 
   map.fitBounds(window.bounds)
 
