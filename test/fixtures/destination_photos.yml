@@ -1,0 +1,31 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  destination_id: 
+  panoramio_photo_id: MyString
+  height: 1
+  width: 1
+  lat: 9.99
+  lng: 9.99
+  photo_title: MyString
+  photo_url: MyString
+  photo_file_url: MyString
+  photo_size: MyString
+  owner_url: MyString
+  owner_name: MyString
+  owner_id: MyString
+
+two:
+  destination_id: 
+  panoramio_photo_id: MyString
+  height: 1
+  width: 1
+  lat: 9.99
+  lng: 9.99
+  photo_title: MyString
+  photo_url: MyString
+  photo_file_url: MyString
+  photo_size: MyString
+  owner_url: MyString
+  owner_name: MyString
+  owner_id: MyString

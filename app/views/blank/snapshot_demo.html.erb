@@ -1,0 +1,127 @@
+
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Demo - jQuery Smooth Div Scroll - Thomas Kahn</title>
+
+    <!-- the CSS for Smooth Div Scroll -->
+
+
+    <!-- Styles for my specific scrolling content -->
+    <style type="text/css">
+
+        #snapshot-test{
+            margin: 0px;
+            height:60px;
+            padding:0px;
+            overflow:auto;
+        }
+        #snapshot-test li{
+            list-style: none;
+            display:inline-block;
+            margin-left:20px;
+            width: 150px;
+            height: 47px;
+            border: 1px solid black;
+            position:relative;
+        }
+
+        #snapshot-test li:first-child{
+            margin-left:0px !important;
+        }
+
+        .red{ background-color: white;}
+        .green{ background-color: white;}
+        .blue{ background-color: white;}
+
+        #scrollable{
+            overflow:hidden;
+            white-space: nowrap;
+        }
+
+        h5{
+            text-align: center;
+        }
+
+        .snapshot-draggable-indicator{
+          height: 45px;
+          border-right: 1px dotted lightgray;
+          float:left;
+          position:absolute;
+          background-color: #FDFDFD;
+          margin: 1px;
+        }
+
+        .snapshot-close{
+          position:absolute;
+          top: 0;
+          right: 5px;
+          color: #CC0303;
+          cursor: pointer;
+        }
+    </style>
+
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css">
+
+</head>
+
+<body>
+
+    <div id="scrollable">
+        <ul id="snapshot-test" class="">
+            <% i=1 %>
+            <% 10.times do %>
+                <li class="red">
+                    <div class="snapshot-draggable-indicator"><i class="fa fa-arrows"></i></div>
+                    <h5> Test <%= i.to_s %> </h5>
+                    <div class="snapshot-close"><i class="fa fa-times"></i></div>
+                </li>
+                <li class="green">
+                    <div class="snapshot-draggable-indicator"><i class="fa fa-arrows"></i></div>
+                    <h5> Test <%= (i+1).to_s %> </h5>
+                    <div class="snapshot-close"><i class="fa fa-times"></i></div>
+                </li>
+                <li class="blue">
+                    <div class="snapshot-draggable-indicator"><i class="fa fa-arrows"></i></div>
+                    <h5> Test <%= (i+2).to_s %> </h5>
+                    <div class="snapshot-close"><i class="fa fa-times"></i></div>
+                </li>
+                <% i = i + 3 %>
+            <% end %>
+        </ul>
+    </div>
+    <button id="test">Scroll bitch</button
+
+    <!-- LOAD JAVASCRIPT LATE - JUST BEFORE THE BODY TAG
+         That way the browser will have loaded the images
+         and will know the width of the images. No need to
+         specify the width in the CSS or inline. -->
+
+    <!-- jQuery library - Please load it from Google API's -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js" type="text/javascript"></script>
+    <script>
+
+        $('#test').each(function () {
+          var hovered = false;
+          var loop = window.setInterval(function () {
+            if (hovered) {
+                x = $('#snapshot-test').scrollLeft();
+                $('#snapshot-test').scrollLeft(x+1);
+            }
+          }, 5);
+
+          $(this).hover(
+            function () {
+              hovered = true;
+            },
+            function () {
+              hovered = false;
+            }
+          );
+        });
+
+    </script>
+
+
+</body>
+</html>

@@ -14,6 +14,13 @@
 
       <%= text_field_tag 'trip_name_input', '', placeholder: 'Enter a Name for Your Trip'  %>
 
+      <!-- Data to add
+          - Total distance
+          - Total duration
+          - Total cost? (maybe inaccurate)
+          - # Citites
+          - # Countries
+        -->
 
       <div id="map-controls-buttons-container" class="inline-block map-controls-div">
         <button type="button" id="save-trip" class="btn btn-primary btn-xs">
@@ -39,22 +46,23 @@
       <i class="fa fa-chevron-up snapshot-toggle-icon"></i>
     </div>
     <div id="snapshot-content" class="col-sm-12">
-        <ul id="trip-snapshot-ul" class="list-inline">
-          <li id="snapshot-add-destination" class="not-sortable">
-            <a href="<%= add_destination_lightbox_path %>" data-colorbox="true" class="add-destination-link">
-              <div class="snapshot-location-content">
-                  <i class="fa fa-plus-circle fa-2x add-destination-icon" data-toggle="tooltip" data-placement="right"
-                     title="Add Destination"></i>
-              </div>
-            </a>
-          </li>
-        </ul>
-    </div> <!-- end snapshot content -->
-    <!--these should be a class of li, alternating between destination -->
-    <div class="col-sm-12">
-      <ul id="trip-snapshot-link-ul" class="list-inline">
+      <div id="scroll-left" class="snapshot-scroll hidden">
+        <i class="fa fa-chevron-left fa-2x"></i>
+      </div>
+      <ul id="trip-snapshot-ul" class="list-inline">
+        <li id="snapshot-add-destination" class="not-sortable">
+          <a href="<%= add_destination_lightbox_path %>" data-colorbox="true" class="add-destination-link no-style-link">
+            <div class="snapshot-location-content">
+                <i class="fa fa-plus-circle fa-2x add-destination-icon" data-toggle="tooltip" data-placement="right"
+                   title="Add Destination"></i>
+            </div>
+          </a>
+        </li>
       </ul>
-    </div>
+      <div id="scroll-right" class="snapshot-scroll hidden">
+        <i class="fa fa-chevron-right fa-2x"></i>
+      </div>
+    </div> <!-- end snapshot content -->
   </div>
   <!-- end trip snapshot -->
 
@@ -116,17 +124,18 @@
      ********* Hidden Templates for Javascript Functions ************
      **************************************************************** -->
 <li id="snapshot-location-template" class="snapshot-location hidden">
-  <div class="snapshot-draggable-indicator hidden"><i class="fa fa-arrows"></i></div>
+  <div class="snapshot-draggable-indicator hidden"><i class="fa fa-arrows-h"></i></div>
   <div class="snapshot-location-content valign-middle-parent">
+    <div class="transparent-layer">
+    </div>
     <h5 class="valign-middle-child">Hidden Template</h5>
   </div>
-  <div class="snapshot-close hidden">
-    <i class="fa fa-times"></i>
-  </div>
+  <div class="snapshot-close hidden"><i class="fa fa-times"></i></div>
 </li>
 
+<!-- Info window template -->
 <div id="infowindow-template" class="hidden">
-  <div class="infowindow-content">
+  <div class="infowindow-content" data-marker-id="">
     <h5>Location Name</h5>
     <div>
       <a href="#" class="block">
@@ -134,9 +143,11 @@
       </a>
     </div>
     <button class="btn btn-xs btn-danger remove-location">Remove</button>
-    <button class="btn btn-xs btn-success">
-      <a href="<%= add_destination_lightbox_path %>" data-colorbox="true" class="no-style-link">Add Next Destination</a>
-    </button>
+    <a href="<%= add_destination_lightbox_path %>" data-colorbox="true" class="no-style-link infowindow-add-destination">
+      <button class="btn btn-xs btn-success">
+        Add Next Destination
+      </button>
+    </a>
   </div>
 </div>
 
@@ -148,7 +159,7 @@
 </div>
 
 <!-- ========= BEGIN DESTINATION ROW ============= -->
-<li id="destination-row-template" class="row destination-row hidden">
+<li id="destination-row-template" class="row destination-row hidden" data-marker-id="">
 
   <div class="itinerary-icon itinerary-col-parent-lg">
     <p class="calendar-month">Day</p>
@@ -158,7 +169,7 @@
     </span>
   </div>
 
-  <div class="col-sm-4 col-sm-offset-1 destination-label itinerary-col-parent-sm">
+  <div class="col-sm-5 col-sm-offset-1 destination-label itinerary-col-parent-sm">
     <p class="itinerary-step-city inline-block">Dafeng</p>
     <p class="itinerary-step-country inline-block">China</p>
     <a class="block" href="#">+ Add Dates</a>
@@ -167,7 +178,7 @@
       Currency conversion
       Cost of living -->
 
-  <div class="col-sm-4 itinerary-col-parent-lg">
+  <div class="col-sm-4 itinerary-col-parent-lg hidden">
     <ul class="accomidation-list list-inline">
       <li>
         <i class="fa fa-bed fa-2x"></i>
@@ -197,7 +208,7 @@
 
   <div class="col-sm-11 col-sm-offset-1">
     <div class="transportation-row-label table-parent">
-      <a class="block valign-middle-child" href="#">Add Transportation</a>
+      <a class="block valign-middle-child" href="#">Find Transportation</a>
     </div>
   </div>
 </li>

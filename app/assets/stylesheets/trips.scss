@@ -101,7 +101,7 @@
 /****** TRIP SNAPSHOT ***********/
 #trip-snapshot-container{
 	height: 10vh;
-	height: 100px;
+	height: 120px;
 	position: fixed;
 	bottom: 0;
 	left: 0;
@@ -152,22 +152,45 @@
 }
 
 #snapshot-content{
-	height:80px;
+	height:100px;
   margin-top:20px; /*height of toggle bar */
 	border-bottom: 1px solid lightgray;
+  overflow:hidden;
+  white-space:nowrap;
 }
 
+.snapshot-scroll{
+  background: rgba(0,0,0,.4);
+  position: absolute;
+  padding-top: 37px;
+  height: 100%;
+  width: 50px;
+  z-index: 1000;
+}
+  .snapshot-scroll i{
+    color: lightgray;
+  }
+  #scroll-left{
+    margin-left:-15px;
+    padding-left: 13px;
+  }
+  #scroll-right{
+    padding-left:17px;
+    right:0px;
+    top:0px;
+  }
+
 #trip-snapshot-ul{
-	position: relative;
 	z-index: 100;
 	margin-top:15px;
+  margin-bottom: 0px;
+  overflow:hidden;
 }
 
 #trip-snapshot-ul li{
-	 margin-left:14px;
-	 width:150px;
+	 margin-left:30px;
+	 width:100px;
 	 text-align: center;
-	 height:100%;
 	 vertical-align:top;
    padding-left:0px;
    padding-right:0px;
@@ -175,58 +198,86 @@
    position: relative;
 }
 
+#trip-snapshot-ul .snapshot-location:after{
+  content: '';
+  position: absolute;
+  top: 38px;
+  width: 21px;
+  right: -26px;
+  border-top: 3px dotted gray;
+}
+
+  #trip-snapshot-ul .snapshot-location.snap-hidden:after{
+    display:none; /* hide snapshot links on drag */
+  }
+
+
 .snapshot-location-shadow{
   box-shadow: 3px 3px 5px #888888;
 }
 
-#trip-snapshot-link-ul{
-	margin-bottom: 0px;
-	height:0px;
-	margin-left:99px;
-}
-
-#trip-snapshot-link-ul li{
-    border-top: 3px dotted gray;
-    width: 150px;
-    margin-left: 14px;
-    position: relative;
-    top: -54px;
-    z-index: 1;
-}
-
 .snapshot-draggable-indicator{
-  height: 45px;
-  padding-top: 13px;
-  padding-left: 5px;
-  padding-right: 5px;
-  border-right: 1px dotted lightgray;
-  float:left;
   position:absolute;
-  background-color: #FDFDFD;
-  margin: 1px;
+  z-index: 100;
+  bottom: -2px;
+  left: 39px;
+  color: white;
+
 }
 
 .snapshot-location-content{
-	padding: 5px 25px;
-	height: 47px;
+	padding: 5px 5px;
+	height: 75px;
+  position:relative;
+  width:100px;
 	border: 1px solid lightgray;
 	background-color:white;
+  white-space:normal;
+
+  background-repeat: no-repeat;
+  background-size: 100px 75px;
 }
+
+  .snapshot-draggable-indicator i{
+    font-size: 1.5em;
+    transform: scale(2.2,1);
+  }
+
   .snapshot-location-content h5{
     margin:0px;
+    max-width: 90px; /*snapshot width - 25px padding on each side */
+    word-wrap: break-word;
+    color:white;
+    text-shadow: 1px 1px 3px black;
+    position:relative;
   }
+
+.transparent-layer{
+  background-color: rgba(0, 0, 0, 0.1);
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+}
 
 .snapshot-close{
   position:absolute;
   top: 0;
-  right: 5px;
+  right: 0px;
   color: #CC0303;
   cursor: pointer;
+  background-color: white;
+  border: 1px solid lightgray;
+  width: 22px;
+  line-height: 10px;
+  height: 20px;
+  border-bottom-left-radius: 20px;
 }
 
 .snapshot-location-container-placeholder{
-	padding: 5px 27px;
-	min-height: 47px;
+	padding: 5px 5px;
+	min-height: 75px;
 	cursor: pointer;
 	border: 1px solid lightgray;
 	background-color:#E6E6E6;
@@ -239,12 +290,25 @@
 	padding: 5px;
 }
 
+#snapshot-add-destination{
+  margin-right:115px;
+}
+
+#snapshot-add-destination-text{
+  color:black;
+  text-shadow: initial;
+}
+
 .snapshot-location-controls i{
 	padding-left: 5px;
 }
 	.snapshot-location-controls i:first-child{
 		padding-left: 0px;
 	}
+
+#snapshot-add-destination .add-destination-icon{
+  margin-top:18px;
+}
 
 .add-destination-icon{
   margin-top:3px;
@@ -434,7 +498,6 @@
   }
     /*Calvin add */
     .transportation-row-label{
-      font-weight: bold;
       height:90px; /* min height of itinerary row */
     }
     /*Calvin add */
@@ -458,7 +521,6 @@
   /*Calvin Add */
   .flag-text{
     margin-top:5px;
-    font-weight: bold;
     height:60px; /* min height of itinerary row */
   }
 
