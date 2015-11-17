@@ -185,7 +185,7 @@
 	z-index: 100;
 	margin-top:15px;
   margin-bottom: 0px;
-  overflow:auto;
+  overflow:hidden;
 }
 
 #trip-snapshot-ul li{
@@ -207,6 +207,11 @@
   right: -26px;
   border-top: 3px dotted gray;
 }
+
+  #trip-snapshot-ul .snapshot-location.snap-hidden:after{
+    display:none; /* hide snapshot links on drag */
+  }
+
 
 .snapshot-location-shadow{
   box-shadow: 3px 3px 5px #888888;
@@ -236,7 +241,7 @@
 
   .snapshot-draggable-indicator i{
     font-size: 1.5em;
-    transform: scale(2.2,1.2);
+    transform: scale(2.2,1);
   }
 
   .snapshot-location-content h5{

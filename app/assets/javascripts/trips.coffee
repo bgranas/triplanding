@@ -116,6 +116,10 @@ $ ->
     items: "li:not(.not-sortable)",
     update: (event, ui) ->
       reorderDestination(ui)
+    start: (event, ui) ->
+      ui.item.toggleClass('snap-hidden')
+    stop: (event, ui) ->
+      ui.item.toggleClass('snap-hidden')
 
   ### *********** LIGHTBOX BINDINGS **************###
   $(document).bind 'cbox_complete', ->
@@ -247,10 +251,11 @@ addDestinationSnapshot = (place, markerID, destinationID, insertIndex, bg_url) -
   snapshot.attr('data-marker-id', markerID)
   snapshot.attr('data-destination-id', destinationID)
   snapshot.attr('id', 'snapshot-location-' + markerID)
-  console.log 'bg_url: ' + bg_url + ', length: ' + bg_url.length
-  if bg_url.length > 0
+  if not (bg_url == null || bg_url == undefined)
+    console.log 'bg_url not undefined'
     snapshot.find('.snapshot-location-content').css('background-image', 'url(' + bg_url + ')')
   else
+    console.log 'bg_url undefined'
     snapshot.find('.transparent-layer').css('background-color', 'rgba(0, 0, 0, 0.3)')
 
   destinationCount = $('#trip-snapshot-ul .snapshot-location').length

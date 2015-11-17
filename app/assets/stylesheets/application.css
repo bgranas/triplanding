@@ -39,6 +39,10 @@ h4{
   padding-right: 15px;
 }
 
+
+.overflow-hidden{
+  overflow:hidden !important;
+}
 .no-style-link{
   text-decoration: inherit;
   color: inherit;
