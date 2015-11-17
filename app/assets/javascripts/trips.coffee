@@ -209,8 +209,15 @@ addMarkerToMap = (place, map, insertIndex) ->
   marker.addListener 'click', ->
     openInfowindowByID(markerID)
 
+
+
+  console.log 'Add Marker, Printing bounds (before): ' + window.bounds.toString()
+
   #Extend maps bounds to show new marker
-  bounds.extend marker.position
+  window.bounds.extend marker.position
+
+  console.log 'Add Marker, Printing bounds (after): ' + window.bounds.toString()
+
 
   polyline.getPath().insertAt(insertIndex, marker.position)
 
@@ -220,15 +227,13 @@ addMarkerToMap = (place, map, insertIndex) ->
     map.setCenter(marker.position)
     map.setOptions(zoom: 6)
   else
-    map.fitBounds(bounds)
+    map.fitBounds(window.bounds)
 
   #Lastly, open window of place just added
   openInfowindow(markerID, insertIndex)
 
 
   return markerID
-
-
 
 
 #Saves the destination to the database if it doesn't already exist
@@ -407,6 +412,18 @@ removeMarker = (markerID, map) ->
   polyline.getPath().removeAt(markerIndex)
   markers.splice(markerIndex, 1);
 
+  redoBounds() #redo the bounds of the map after marker is deleted
+
+#Redoes the bounds of the map based off the current markers array
+redoBounds = ->
+  window.bounds = new google.maps.LatLngBounds()
+  for marker in markers
+    window.bounds.extend marker.position
+
+  console.log 'redoBounds, Printing bounds: ' + window.bounds.toString()
+
+  map.fitBounds(window.bounds)
+
 #Removes a destination row from the itinerary
 removeItinerary = (markerID) ->
   destinationRow = $('#destination-location-' + markerID)
@@ -506,7 +523,7 @@ toggleTripSnapshot = ->
 $ ->
   $('#add-transport-test').click ->
     passRouteToTransportation()
-    
+
 
 passRouteToTransportation = ->
   $.ajax '/routes/r2r_call',
@@ -548,7 +565,7 @@ $ ->
     routeID = $(this).attr('id')
     index = findRouteIndex(routeID)
 
-  
+
 showAllTransportPaths = ->
   flightCount=0
   for routePath in routePaths
@@ -557,9 +574,9 @@ showAllTransportPaths = ->
         #build google latlng literal
         #console.log JSON.stringify(airportPathsLat[0])
         source_geo = {lat: Number(airportPathsLat[flightCount][0]), lng: Number(airportPathsLng[flightCount][0])}
-        console.log ("source_geo: " + JSON.stringify(source_geo)) 
+        console.log ("source_geo: " + JSON.stringify(source_geo))
         target_geo = {lat: Number(airportPathsLat[flightCount][1]), lng: Number(airportPathsLng[flightCount][1])}
-        console.log ('target_geo: ' + JSON.stringify(target_geo))  
+        console.log ('target_geo: ' + JSON.stringify(target_geo))
         path = [source_geo, target_geo]
         setTransportPath(map, path ,false)
         flightCount = flightCount + 1
