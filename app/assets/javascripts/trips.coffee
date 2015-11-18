@@ -603,14 +603,20 @@ highlightSelectedSegmentPath = (index) ->
   #console.log("segmentPath: " + index)
   #console.log 'polylines.length' + polylines.length
   #console.log("array: " + polylines[index].toString())
-  polylines[index].setOptions({strokeColor: "#434D98"})
+  if $('.transportation-segments').is(':visible')
+    polylines[index].setOptions({strokeColor: "#d9d9d9"})
+    console.log('is visible')
+  else
+    polylines[index].setOptions({strokeColor: "#434D98"})
+    console.log('is not visible')
 
 
 $ ->
 
   $('body').on 'click', '.transportation-route-detailbar', ->
-    #console.log 'polylines ' + polylines
-    #polylines.setOptions({strokeColor: "#d9d9d9"})
+    for polyline in  polylines
+      polyline.setOptions({strokeColor: "#d9d9d9"})
+
     $(this).find('.route-segment-overview').each ->
       segmentID = $(this).data('segment-id')
       console.log("segment id: " + segmentID)
