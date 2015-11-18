@@ -520,7 +520,6 @@ passRouteToTransportation = ->
       #Hiding individual segment results in transport results
       $('.transportation-segments').hide()
       showAllTransportPaths()
-      console.log("transport paths called")
     failure: ->
       alert 'passDestinationToTransportation Unsuccessful, please alert site admins'
       return
@@ -531,56 +530,57 @@ passRouteToTransportation = ->
 ### *** ADDING TRANSPORTATION PATHS ***###
 ### ***********************************###
 
-
-#Finds index of route by ID in order to get that route's transport path
-
-findRouteIndex = (routeID) ->
-  routeRow = $('#' + routeID)
-  routeRowCount = $('.transportation-route-detailbar').length
-  routeRowIndex = $('.transportation-route-detailbar').index(routeRow)
-  return routeRowIndex
-
-
-$ ->
-
-  $('body').on 'click', '.transportation-route-detailbar', ->
-    routeID = $(this).attr('id')
-    index = findRouteIndex(routeID)
-
   
 showAllTransportPaths = ->
   flightCount=0
+  console.log 'routePaths.length' + routePaths.length
   for routePath in routePaths
     for segmentPath in routePath
       if segmentPath.length == 0
         #build google latlng literal
         #console.log JSON.stringify(airportPathsLat[0])
         source_geo = {lat: Number(airportPathsLat[flightCount][0]), lng: Number(airportPathsLng[flightCount][0])}
-        console.log ("source_geo: " + JSON.stringify(source_geo)) 
         target_geo = {lat: Number(airportPathsLat[flightCount][1]), lng: Number(airportPathsLng[flightCount][1])}
-        console.log ('target_geo: ' + JSON.stringify(target_geo))  
         path = [source_geo, target_geo]
         setTransportPath(map, path ,false)
         flightCount = flightCount + 1
       else
         setTransportPath(map, segmentPath, true)
 
-
-
+polylines = []
 setTransportPath =  (map, path, needDecode) ->
-    if needDecode
-      transportPath = google.maps.geometry.encoding.decodePath(path)
-      #console.log("route path" + transportPath)
-    else
-      transportPath = path
-      console.log("airport path" + JSON.stringify(transportPath))
+  if needDecode
+    transportPath = google.maps.geometry.encoding.decodePath(path)
+  else
+    transportPath = path
 
-    routePath = new google.maps.Polyline
-      map: map
-      path: transportPath
-      strokeColor: '#767f93'
-      strokeWeight: 5
-      routeID: 43
+  polyline = new google.maps.Polyline
+    map: map
+    path: transportPath
+    strokeColor: "#d9d9d9"
+    strokeWeight: 5
+
+  polylines.push polyline
+
+
+###****HIHGLIGHTING PATHS WHEN ROUTE SELECTED***###
+
+highlightSelectedSegmentPath = (index) ->
+  #console.log("segmentPath: " + index)
+  #console.log 'polylines.length' + polylines.length
+  #console.log("array: " + polylines[index].toString())
+  polylines[index].setOptions({strokeColor: "#434D98"})
+
+
+$ ->
+
+  $('body').on 'click', '.transportation-route-detailbar', ->
+    #console.log 'polylines ' + polylines
+    #polylines.setOptions({strokeColor: "#d9d9d9"})
+    $(this).find('.route-segment-overview').each ->
+      segmentID = $(this).data('segment-id')
+      console.log("segment id: " + segmentID)
+      highlightSelectedSegmentPath(segmentID)
 
 
 
