@@ -90,14 +90,11 @@ class RoutesController < ApplicationController
 		  if route['indicativePrice']['currency'].to_s == "USD"
 		  	route['indicativePrice']['currencySym'] = "$" 
 		  end
-
 		end
 
 		@airportPathsLng = flightPathsLng
 		@airportPathsLat = flightPathsLat
 		@routePaths = allPaths
-
-		puts "******* airport Lat: " + @airportPathsLat.to_s
 
 		#render transport_search view
 		render partial: 'trips/transport_search'
