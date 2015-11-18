@@ -125,6 +125,8 @@ $ ->
   $('body').on 'click', '.add-transportation', ->
     $('#trip-snapshot-container').addClass('trip-snapshot-min')
     minimizeItinerary()
+    showSidePopup()
+
 
   ### *********** LIGHTBOX BINDINGS **************###
   $(document).bind 'cbox_complete', ->
@@ -475,6 +477,14 @@ findMarkerIndexByID = (markerID) ->
 ### ********* MISC FUNCTIONS **********###
 ### ***********************************###
 
+
+#Shows the sidepopup
+showSidePopup = ->
+  $('#side-popup').css('width', '50%')
+
+#Hides the sidepopup
+hideSidePopup = ->
+  $('#side-popup').css('width', '0px')
 
 #return true if snapshot is overflowing, else false
 #this will allow the scroll arrows to display on hover
