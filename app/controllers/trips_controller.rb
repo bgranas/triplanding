@@ -98,13 +98,20 @@ class TripsController < ApplicationController
   def create
     trip_id = params[:trip_id].to_i
     trip_title = params[:trip_title]
+    destinationIDs = params[:destinationIDs]
 
-    @trip = Trip.find_by_id(trip_id)
-    @trip.title = trip_title
+    @trip = Trip.find_by_id(trip_id) #trip ID should be created when user first goes to page
+    @trip.title = trip_title #setting title
     @trip.save
+
+    #first, find all existing destination orders
+    DestinationOrder.where(trip_id: trip_id).delete_all
+    #next, create destination orders and associate them with my trip
+    createDestinationOrders(destinationIDs, trip_id)
+
   end
 
-   def itinerary_test
+  def itinerary_test
     # add initialization script for google maps
     @map_page = true
 
@@ -142,12 +149,23 @@ class TripsController < ApplicationController
     #initializing variables to be passed to trips.coffee via ajax
     @airportPathsLng = []
     @airportPathsLat = []
-    @routePaths = [] 
+    @routePaths = []
 
   end
 
   def new_destination
     @dest = Destination.new
+  end
+
+private
+
+  #creates Destination order objects from an array of destinationIDs
+  def createDestinationOrders(destinationIDs, trip_id)
+    order_authority = 100
+    destinationIDs.each do |destID|
+      DestinationOrder.create(destination_id: destID, trip_id: trip_id, order_authority: order_authority)
+      order_authority = order_authority + 100
+    end
   end
 
 end

@@ -149,7 +149,8 @@ $ ->
 
     #HACK - should simulate click on page load
     #FUTURE FIX - only trigger lightbox if no destination has been added from landing page
-$ ->
+    #FUTURE IMPROVEMENT - do this on map load, not on page load
+$(".trips.new").ready ->
   $.colorbox({opacity: .5, href:"/blank/add_destination_helper"});
 
 
@@ -209,7 +210,7 @@ addMarkerToMap = (place, map, insertIndex) ->
     openInfowindowByID(markerID)
 
   #Extend maps bounds to show new marker
-  bounds.extend marker.position
+  window.bounds.extend marker.position
 
   polyline.getPath().insertAt(insertIndex, marker.position)
 
@@ -219,15 +220,13 @@ addMarkerToMap = (place, map, insertIndex) ->
     map.setCenter(marker.position)
     map.setOptions(zoom: 6)
   else
-    map.fitBounds(bounds)
+    map.fitBounds(window.bounds)
 
   #Lastly, open window of place just added
   openInfowindow(markerID, insertIndex)
 
 
   return markerID
-
-
 
 
 #Saves the destination to the database if it doesn't already exist
@@ -368,20 +367,30 @@ getInfowindowContent = (markerID, markerIndex) ->
 ### ********** SAVE A TRIP ************###
 ### ***********************************###
 
-#Save trip to database, destination and details should already be in the database
+#Save trip to database for the destination orders defined in the snapshot
 saveTrip = (trip_id, trip_title) ->
+  destinationIDs = createDestinationArray()
   $.ajax '/trips/create',
     dataType: 'json'
     type: 'POST'
     data:
       trip_title: trip_title
       trip_id: trip_id
+      destinationIDs: destinationIDs
     success: (data) ->
       alert 'Successful'
       return
     failure: ->
       alert 'Unsuccessful'
       return
+
+#creates an array with the current order of the destinations for the trip
+createDestinationArray = ->
+  destinationIDs = []
+  snapshots = $('#trip-snapshot-ul .snapshot-location')
+  snapshots.each ->
+    destinationIDs.push $(this).data('destination-id')
+  return destinationIDs
 
 ### ***********************************###
 ### ***** REMOVE A DESTINATION ********###
@@ -405,6 +414,16 @@ removeMarker = (markerID, map) ->
   marker.setMap(null)
   polyline.getPath().removeAt(markerIndex)
   markers.splice(markerIndex, 1);
+
+  redoBounds() #redo the bounds of the map after marker is deleted
+
+#Redoes the bounds of the map based off the current markers array
+redoBounds = ->
+  window.bounds = new google.maps.LatLngBounds()
+  for marker in markers
+    window.bounds.extend marker.position
+
+  map.fitBounds(window.bounds)
 
 #Removes a destination row from the itinerary
 removeItinerary = (markerID) ->
@@ -505,7 +524,7 @@ toggleTripSnapshot = ->
 $ ->
   $('#add-transport-test').click ->
     passRouteToTransportation()
-    
+
 
 passRouteToTransportation = ->
   $.ajax '/routes/r2r_call',
@@ -530,7 +549,22 @@ passRouteToTransportation = ->
 ### *** ADDING TRANSPORTATION PATHS ***###
 ### ***********************************###
 
-  
+#Finds index of route by ID in order to get that route's transport path
+
+findRouteIndex = (routeID) ->
+  routeRow = $('#' + routeID)
+  routeRowCount = $('.transportation-route-detailbar').length
+  routeRowIndex = $('.transportation-route-detailbar').index(routeRow)
+  return routeRowIndex
+
+
+$ ->
+
+  $('body').on 'click', '.transportation-route-detailbar', ->
+    routeID = $(this).attr('id')
+    index = findRouteIndex(routeID)
+
+
 showAllTransportPaths = ->
   flightCount=0
   console.log 'routePaths.length' + routePaths.length
