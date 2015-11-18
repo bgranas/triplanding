@@ -236,12 +236,20 @@ addMarkerToMap = (place, map, insertIndex) ->
 #Saves the destination to the database if it doesn't already exist
 # RET: destinationID of location
 saveDestinationToDatabase = (place) ->
+  place_lat = place.geometry.location.lat()
+  place_lng = place.geometry.location.lng()
   $.ajax '/destinations',
     dataType: 'json'
     type: 'POST'
     async: false
     data:
-      place: JSON.stringify(place)
+      place:
+        name: place.name
+        place_id: place.place_id
+        formatted_address: place.formatted_address
+        address_components: place.address_components
+        lat: place_lat
+        lng: place_lng
       trip_id: tripID
     success: (data) ->
       return data
@@ -515,7 +523,17 @@ toggleTripSnapshot = ->
       $('#itinerary').addClass('hidden')
     , 500
 
-
+###
+minimizeItinerary = ->
+  snapshotMinimized = true
+    map.setOptions({draggableCursor:null})
+    $('#trip-snapshot-container').removeClass('trip-snapshot-max')
+    $('.snapshot-toggle-icon').removeClass('fa-chevron-down').addClass('fa-chevron-up')
+    google.maps.event.removeListener(mapClickListener)
+    setTimeout ->
+      $('#itinerary').addClass('hidden')
+    , 500
+###
 
 
 
