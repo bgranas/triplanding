@@ -571,22 +571,6 @@ passRouteToTransportation = ->
 ### *** ADDING TRANSPORTATION PATHS ***###
 ### ***********************************###
 
-#Finds index of route by ID in order to get that route's transport path
-
-findRouteIndex = (routeID) ->
-  routeRow = $('#' + routeID)
-  routeRowCount = $('.transportation-route-detailbar').length
-  routeRowIndex = $('.transportation-route-detailbar').index(routeRow)
-  return routeRowIndex
-
-
-$ ->
-
-  $('body').on 'click', '.transportation-route-detailbar', ->
-    routeID = $(this).attr('id')
-    index = findRouteIndex(routeID)
-
-
 showAllTransportPaths = ->
   flightCount=0
   console.log 'routePaths.length' + routePaths.length
@@ -594,7 +578,6 @@ showAllTransportPaths = ->
     for segmentPath in routePath
       if segmentPath.length == 0
         #build google latlng literal
-        #console.log JSON.stringify(airportPathsLat[0])
         source_geo = {lat: Number(airportPathsLat[flightCount][0]), lng: Number(airportPathsLng[flightCount][0])}
         target_geo = {lat: Number(airportPathsLat[flightCount][1]), lng: Number(airportPathsLng[flightCount][1])}
         path = [source_geo, target_geo]
@@ -602,6 +585,7 @@ showAllTransportPaths = ->
         flightCount = flightCount + 1
       else
         setTransportPath(map, segmentPath, true)
+
 
 polylines = []
 unhighlightedSegmentColor = "#d9d9d9"
@@ -621,32 +605,28 @@ setTransportPath =  (map, path, needDecode) ->
   polylines.push polyline
 
 
-###****HIHGLIGHTING PATHS WHEN ROUTE SELECTED***###
+#****HIHGLIGHTING PATHS WHEN ROUTE SELECTED****#
 
 highlightSelectedSegmentPath = (index) ->
-  #console.log("segmentPath: " + index)
-  #console.log 'polylines.length' + polylines.length
-  #console.log("array: " + polylines[index].toString())
-  if $('.transportation-segments').is(':visible')
-    polylines[index].setOptions({strokeColor: unhighlightedSegmentColor})
-    console.log('is visible')
-  else
-    polylines[index].setOptions({strokeColor: highlightedSegmentColor})
-    console.log('is not visible')
+  polylines[index].setOptions({strokeColor: highlightedSegmentColor})
 
+unhighlightSelectedSegmentPath = (index) ->
+  polylines[index].setOptions({strokeColor: unhighlightedSegmentColor}) 
 
 $ ->
 
-  $('body').on 'click', '.transportation-route-detailbar', ->
+  $('body').on 'click', '.transportation-route-overview', ->
     for polyline in  polylines
       polyline.setOptions({strokeColor: unhighlightedSegmentColor})
 
-    $(this).find('.route-segment-overview').each ->
-      segmentID = $(this).data('segment-id')
-      console.log("segment id: " + segmentID)
-      highlightSelectedSegmentPath(segmentID)
-
-
-
-
-
+    if $(this).parent().find('.transportation-segments').is(":visible")
+      $('.transportation-segments').slideUp()
+      $(this).find('.route-segment-overview').each ->
+        segmentID = $(this).data('segment-id')
+        unhighlightSelectedSegmentPath(segmentID)
+    else
+      $('.transportation-segments').slideUp()
+      $(this).parent().find('.transportation-segments').slideToggle()
+      $(this).find('.route-segment-overview').each ->
+        segmentID = $(this).data('segment-id')
+        highlightSelectedSegmentPath(segmentID)
