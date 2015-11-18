@@ -121,11 +121,21 @@ $ ->
     stop: (event, ui) ->
       ui.item.toggleClass('snap-hidden')
 
-  #Bind 'Add Transportation' in itinerary to trigger popout
+  #Bind 'Add Transportation' in itinerary to trigger side popup
   $('body').on 'click', '.add-transportation', ->
-    $('#trip-snapshot-container').addClass('trip-snapshot-min')
-    minimizeItinerary()
-    showSidePopup()
+    destinationRows = $('.destination-row')
+    transportationRow = $(this).closest('.transportation-row')
+    oIndex = destinationRows.index(transportationRow.prev())
+    dIndex = destinationRows.index(transportationRow.next())
+    console.log 'origin Index: ' + oIndex.toString()
+    console.log 'destination Index: ' + dIndex.toString()
+    getRoutes(oIndex, dIndex)
+
+
+  #Bind 'X' in sidepopup to close popup
+  $('body').on 'click', '#close-side-popup', ->
+    $('#trip-snapshot-container').removeClass('trip-snapshot-min')
+    hideSidePopup()
 
 
   ### *********** LIGHTBOX BINDINGS **************###
@@ -485,6 +495,7 @@ showSidePopup = ->
 #Hides the sidepopup
 hideSidePopup = ->
   $('#side-popup').css('width', '0px')
+  $('#add-transport-box').html('')
 
 #return true if snapshot is overflowing, else false
 #this will allow the scroll arrows to display on hover
@@ -545,18 +556,28 @@ minimizeItinerary = ->
 #oPos = "31.626710,-7.994810"
 #dPos = "-33.917524,18.423252"
 
-$ ->
-  $('#add-transport-test').click ->
-    passRouteToTransportation()
+#parent method to trigger R2R call and display routes form dest to dest
+getRoutes = (oIndex, dIndex) ->
+  $('#trip-snapshot-container').addClass('trip-snapshot-min')
+  minimizeItinerary()
 
+  oLat = markers[oIndex].getPosition().lat()
+  oLng = markers[oIndex].getPosition().lng()
+  dLat = markers[dIndex].getPosition().lat()
+  dLng = markers[dIndex].getPosition().lng()
+  passRouteToTransportation(oLat, oLng, dLat, dLng)
 
-passRouteToTransportation = ->
+  showSidePopup()
+
+passRouteToTransportation = (oLat, oLng, dLat, dLng) ->
+  oPos = oLat + ',' + oLng
+  dPos = dLat + ',' + dLng
   $.ajax '/routes/r2r_call',
     type: 'POST'
     async: true
     data:
-      oPos: "31.626710,-7.994810"
-      dPos: "-33.917524,18.423252"
+      oPos: oPos
+      dPos: dPos
     success: (data) ->
       $('#add-transport-box').html(data)
 
@@ -613,7 +634,7 @@ highlightSelectedSegmentPath = (index) ->
   polylines[index].setOptions({strokeColor: highlightedSegmentColor})
 
 unhighlightSelectedSegmentPath = (index) ->
-  polylines[index].setOptions({strokeColor: unhighlightedSegmentColor})
+  polylines[index].setOptions({strokeColor: unhighlightedSegmentColor; strokeOpacity: .2})
 
 $ ->
 

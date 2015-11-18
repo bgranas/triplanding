@@ -32,7 +32,17 @@
 
   -webkit-font-smoothing: antialiased; /* Fix for webkit rendering */
 }
+#close-side-popup {
+  color: #CC0303;
+  position:absolute;
+  top:5px;
+  right:5px;
+  cursor: pointer;
+}
 
+#side-popup .container-fluid{
+  margin-top:50px;
+}
 #map-container-90{
 	height: 90vh;/* height of footer and header */
 	position: relative;

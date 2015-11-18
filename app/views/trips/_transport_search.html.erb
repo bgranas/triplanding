@@ -1,9 +1,9 @@
 
-<div class="container transportation-show">
+<div class="transportation-show">
 	<div class="row">
 	<% i = 0 %>
 		<% @routes.each_with_index do |route, index| %>
-		<div class="col-xs-9 transportation-routes">
+		<div class="col-xs-12 transportation-routes">
 			<div class="row transportation-route-overview">
 				<div class="col-xs-9 transportation-route-detailbar" id="route-<%= index %>">
 					<div class="transportation-route-summarybar" style="width:<%= route['durationMajor'].to_f / @routeLongest.to_f * 100 * 0.9 %>%">
@@ -15,7 +15,7 @@
 						<% end %>
 					</div>
 					<span class="itinerary-route-duration"><%= route['durationText'] %></span>
-				</div>	
+				</div>
 				<div class="col-xs-1">
 					<span class="itinerary-route-price"><%= route['indicativePrice']['currencySym'] %><%= route['indicativePrice']['price'] %></span>
 				</div>
@@ -26,7 +26,7 @@
 
 				<div class="row transportation-segments">
 					<% route['segments'].each do |segment| %>
-						
+
 
 						<div class="transportation-segments-all">
 								<div class="col-xs-9">
@@ -40,17 +40,17 @@
 								</div>
 							</div>
 
-							
+
 					<% end %>
-					
+
 				</div>
 
 
 		</div>
-		
+
 
 		<% end %>
-		
+
 	</div>
 
 	<%= javascript_tag do %>
