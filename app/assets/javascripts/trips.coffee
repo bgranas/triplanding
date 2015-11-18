@@ -496,6 +496,9 @@ showSidePopup = ->
 hideSidePopup = ->
   $('#side-popup').css('width', '0px')
   $('#add-transport-box').html('')
+  #lastly, delete those routes
+  for polyline in  polylines
+      polyline.setOptions({map: null})
 
 #return true if snapshot is overflowing, else false
 #this will allow the scroll arrows to display on hover
@@ -566,13 +569,12 @@ getRoutes = (oIndex, dIndex) ->
   dLat = markers[dIndex].getPosition().lat()
   dLng = markers[dIndex].getPosition().lng()
   passRouteToTransportation(oLat, oLng, dLat, dLng)
-
   showSidePopup()
 
 passRouteToTransportation = (oLat, oLng, dLat, dLng) ->
   oPos = oLat + ',' + oLng
   dPos = dLat + ',' + dLng
-  $.ajax '/routes/r2r_call',
+  $.ajax '/segments/r2r_call',
     type: 'POST'
     async: true
     data:
