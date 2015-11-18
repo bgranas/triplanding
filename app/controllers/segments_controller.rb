@@ -1,4 +1,4 @@
-class RoutesController < ApplicationController
+class SegmentsController < ApplicationController
 
 	include HTTParty
 

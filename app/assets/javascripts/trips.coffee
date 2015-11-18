@@ -551,7 +551,7 @@ $ ->
 
 
 passRouteToTransportation = ->
-  $.ajax '/routes/r2r_call',
+  $.ajax '/segments/r2r_call',
     type: 'POST'
     async: true
     data:
