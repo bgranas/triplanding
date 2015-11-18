@@ -17,12 +17,15 @@
 	position: relative;
 }
 
-
+.vertical-sep{
+  border-right:1px solid lightgray;
+  margin: 0px 10px;
+}
 
 #map-controls-container{
-	position:absolute;
-	top: 20px;
-	left: 50px;
+  position: absolute;
+  top: 10px;
+  left: 0px;
 }
 
 #map-controls{
@@ -30,18 +33,53 @@
 	box-shadow: 0 2px 4px rgba(0,0,0,0.2),0 -1px 0px rgba(0,0,0,0.02);
 	border-bottom: 1px solid transparent;
 	border-radius: 2px;
-	padding: 12px 10px;
-	background-color: white;
+	padding: 15px 30px;
+	background: transparent linear-gradient(to right, #272727 0%, rgba(39, 39, 39, 0.9) 90%);
+  min-height: 100px;
+  min-width: 280px;
+  position: relative;
 }
+  #map-controls h3{
+    color:white;
+    margin-top:0px;
+    margin-bottom:5px;
+    margin-right:5px;
+  }
+
+    #trip-metrics{
+    color: #ea7663;
+    letter-spacing: .05em;
+    font-size: 13px;
+    margin-bottom: 15px;
+  }
+
+   #map-controls i{
+    color:#CDCDCD;
+    cursor:pointer;
+  }
+
+#map-controls-buttons-container i{
+  padding-left: 5px;
+  padding-right: 5px;
+}
+
+#map-controls-buttons-container i:first-of-type{
+  padding-left:0px;
+}
+
 
 	#map-controls-div{
 		padding-top: 3px;
 		padding-bottom: 3px;
 	}
 
+  #save-status{
+    font-size: 12px;
+    color:#F44848;
+  }
+
 	#switch-trips-button{
-		padding: 0 8px;
-		cursor: pointer;
+		padding-right: 8px;
 	}
 
 
@@ -56,11 +94,12 @@
 			 outline: none;
 		}
 
+
+
 	#map-controls-buttons-container{
-		border-left: 1px solid #ddd;
-    padding-right: 10px;
-    padding-left: 5px;
+
 	}
+
 		#map-controls-buttons-container button{
 	    margin-left: 5px;
 	    margin-right: 5px;
@@ -130,6 +169,10 @@
 
 .trip-snapshot-max{
 	height: 88vh !important;
+}
+
+.trip-snapshot-min{
+  height:22px !important;
 }
 
 #snapshot-toggle-bar{
@@ -579,11 +622,6 @@
 		}
 
 
-		#map-controls-buttons-container i{
-	    padding-left: 5px;
-	    padding-right: 5px;
-	    cursor: pointer;
-		}
 
 	/********* TRANSPORTATION SEARCH BOX ***********/
 	.transportation-show {

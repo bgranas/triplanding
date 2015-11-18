@@ -8,11 +8,23 @@
 
   <div id="map-controls-container">
     <div id="map-controls">
-      <div id="switch-trips-button" class="inline-block" data-toggle="tooltip" data-placement="top" title="Switch Trips">
+      <!-- SWITCH TRIPS
+      <div id="switch-trips-button" class="inline-block" data-toggle="tooltip" data-placement="bottom" title="Switch Trips">
         <i class="fa fa-caret-down fa-lg"></i>
-      </div>
+      </div> -->
 
-      <%= text_field_tag 'trip_name_input', '', placeholder: 'Enter a Name for Your Trip'  %>
+      <h3 class="inline-block">My Untitled Trip</h3>
+      <i class="fa fa-pencil" data-toggle="tooltip" data-placement="right" title="Edit Title"></i>
+
+      <div id="trip-metrics">
+        <span id="trip-metrics-citites">
+          <strong>5</strong> Cities
+        </span>
+        <span> - </span>
+        <span id="trip-metrics-countries">
+          <strong>2</strong> Countries
+        </span>
+      </div>
 
       <!-- Data to add
           - Total distance
@@ -22,18 +34,20 @@
           - # Countries
         -->
 
-      <div id="map-controls-buttons-container" class="inline-block map-controls-div">
-        <button type="button" id="save-trip" class="btn btn-primary btn-xs">
-          <span>Save</span>
-        </button>
-        <i data-toggle="tooltip" data-placement="top" title="Add to Favorites" class="fa fa-star-o fa-lg trip-favorite"></i>
-        <i data-toggle="tooltip" data-placement="top" title="Share Trip" class="fa fa-share-alt fa-lg icon-gray"></i>
-        <i data-toggle="tooltip" data-placement="top" title="More Actions" class="fa fa-ellipsis-h fa-lg icon-gray"></i>
+      <div id="map-controls-buttons-container" class="map-controls-div">
+        <i data-toggle="tooltip" data-placement="bottom" title="Add to Favorites" class="fa fa-star-o fa-lg"></i>
+        <i data-toggle="tooltip" data-placement="bottom" title="Share Trip" class="fa fa-share-alt fa-lg"></i>
+        <i data-toggle="tooltip" data-placement="bottom" title="More Actions" class="fa fa-ellipsis-h fa-lg"></i>
         <!-- More Options Should Have a Dropdown for the following -->
         <!-- Embed Trip <i class="fa fa-code fa-lg"></i> -->
         <!-- Duplicate Trip <i class="fa fa-files-o fa-lg"></i> -->
         <!-- Delete Trip <i class="fa fa-trash-o fa-lg"></i> -->
-      </div>
+        <span class="vertical-sep"></span>
+        <button type="button" id="save-trip" class="btn btn-primary btn-xs">
+          <span>Save</span>
+        </button>
+        <span id="save-status" class="inline-block">Unsaved</span>
+      </div> <!-- End map controls buttons container div -->
     </div>
   </div>
 </div>
