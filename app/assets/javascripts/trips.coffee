@@ -123,7 +123,8 @@ $ ->
 
   #Bind 'Add Transportation' in itinerary to trigger popout
   $('body').on 'click', '.add-transportation', ->
-    $('#trip-snapshot-container').removeClass('trip-snapshot-max').addClass('trip-snapshot-min')
+    $('#trip-snapshot-container').addClass('trip-snapshot-min')
+    minimizeItinerary()
 
   ### *********** LIGHTBOX BINDINGS **************###
   $(document).bind 'cbox_complete', ->
@@ -602,7 +603,7 @@ highlightSelectedSegmentPath = (index) ->
   polylines[index].setOptions({strokeColor: highlightedSegmentColor})
 
 unhighlightSelectedSegmentPath = (index) ->
-  polylines[index].setOptions({strokeColor: unhighlightedSegmentColor}) 
+  polylines[index].setOptions({strokeColor: unhighlightedSegmentColor})
 
 $ ->
 
