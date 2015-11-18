@@ -569,10 +569,15 @@ getRoutes = (oIndex, dIndex) ->
 
   showSidePopup()
 
+<<<<<<< HEAD
 passRouteToTransportation = (oLat, oLng, dLat, dLng) ->
   oPos = oLat + ',' + oLng
   dPos = dLat + ',' + dLng
   $.ajax '/routes/r2r_call',
+=======
+passRouteToTransportation = ->
+  $.ajax '/segments/r2r_call',
+>>>>>>> origin/master
     type: 'POST'
     async: true
     data:
