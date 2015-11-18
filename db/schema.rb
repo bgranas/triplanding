@@ -94,10 +94,32 @@ ActiveRecord::Schema.define(version: 20151118072940) do
     t.datetime "updated_at", null: false
   end
 
-  create_table "routes", force: :cascade do |t|
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
+  create_table "segments", force: :cascade do |t|
+    t.integer  "route_id"
+    t.integer  "trip_id"
+    t.string   "path"
+    t.decimal  "duration"
+    t.decimal  "distance"
+    t.boolean  "is_imperial"
+    t.decimal  "cost"
+    t.string   "currency"
+    t.decimal  "cost_native"
+    t.string   "currency_native"
+    t.string   "kind"
+    t.string   "agency_name"
+    t.string   "agency_url"
+    t.string   "airport_s_code"
+    t.string   "airport_t_code"
+    t.string   "s_name"
+    t.string   "t_name"
+    t.string   "flight_path_lat"
+    t.string   "flight_path_lng"
+    t.boolean  "is_major"
+    t.datetime "created_at",      null: false
+    t.datetime "updated_at",      null: false
   end
+
+  add_index "segments", ["trip_id"], name: "index_segments_on_trip_id", using: :btree
 
   create_table "trips", force: :cascade do |t|
     t.string   "title"
@@ -150,4 +172,5 @@ ActiveRecord::Schema.define(version: 20151118072940) do
   add_foreign_key "destination_orders", "trips"
   add_foreign_key "destination_photos", "destinations"
   add_foreign_key "identities", "users"
+  add_foreign_key "segments", "trips"
 end
