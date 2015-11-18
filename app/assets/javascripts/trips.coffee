@@ -582,6 +582,8 @@ showAllTransportPaths = ->
         setTransportPath(map, segmentPath, true)
 
 polylines = []
+unhighlightedSegmentColor = "#d9d9d9"
+highlightedSegmentColor = "#434D98"
 setTransportPath =  (map, path, needDecode) ->
   if needDecode
     transportPath = google.maps.geometry.encoding.decodePath(path)
@@ -591,7 +593,7 @@ setTransportPath =  (map, path, needDecode) ->
   polyline = new google.maps.Polyline
     map: map
     path: transportPath
-    strokeColor: "#d9d9d9"
+    strokeColor: unhighlightedSegmentColor
     strokeWeight: 5
 
   polylines.push polyline
@@ -604,10 +606,10 @@ highlightSelectedSegmentPath = (index) ->
   #console.log 'polylines.length' + polylines.length
   #console.log("array: " + polylines[index].toString())
   if $('.transportation-segments').is(':visible')
-    polylines[index].setOptions({strokeColor: "#d9d9d9"})
+    polylines[index].setOptions({strokeColor: unhighlightedSegmentColor})
     console.log('is visible')
   else
-    polylines[index].setOptions({strokeColor: "#434D98"})
+    polylines[index].setOptions({strokeColor: highlightedSegmentColor})
     console.log('is not visible')
 
 
@@ -615,7 +617,7 @@ $ ->
 
   $('body').on 'click', '.transportation-route-detailbar', ->
     for polyline in  polylines
-      polyline.setOptions({strokeColor: "#d9d9d9"})
+      polyline.setOptions({strokeColor: unhighlightedSegmentColor})
 
     $(this).find('.route-segment-overview').each ->
       segmentID = $(this).data('segment-id')
