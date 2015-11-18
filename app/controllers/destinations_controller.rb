@@ -95,7 +95,7 @@ private
   #returns a Destination object built with values from a Google place
   #PRE: Google place object should be parsed into ruby hash via JSON.parase
   def buildDestinationFromPlace(place)
-    debug = false
+    debug = true
     dest = Destination.new
 
     puts '************ PLACE YAML: ' + place.to_yaml if debug
@@ -118,14 +118,16 @@ private
 
       #for each type, look for that column in our db
       #if found, set it equal to long name
-      types.each do |type|
-        if Destination.column_names.include? type
-          dest[type] = long_name
+      if not types.nil?
+        types.each do |type|
+          if Destination.column_names.include? type
+            dest[type] = long_name
 
-          #if type is country, also set iso 2 code for flags
-          dest['country_iso_2'] = component[1]['short_name'] if type == 'country'
-        end
-      end #done with type iteration
+            #if type is country, also set iso 2 code for flags
+            dest['country_iso_2'] = component[1]['short_name'] if type == 'country'
+          end
+        end #done with type iteration
+      end #end types if statment
     end #done with address componenet iteration
 
     puts '******** dest.valid: ' + (dest.valid?).to_s if debug

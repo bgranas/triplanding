@@ -514,26 +514,17 @@ toggleTripSnapshot = ->
     mapClickListener = map.addListener 'click', ->
      toggleTripSnapshot()
   else
-    snapshotMinimized = true
-    map.setOptions({draggableCursor:null})
-    $('#trip-snapshot-container').removeClass('trip-snapshot-max')
-    $('.snapshot-toggle-icon').removeClass('fa-chevron-down').addClass('fa-chevron-up')
-    google.maps.event.removeListener(mapClickListener)
-    setTimeout ->
-      $('#itinerary').addClass('hidden')
-    , 500
+    minimizeItinerary()
 
-###
 minimizeItinerary = ->
   snapshotMinimized = true
-    map.setOptions({draggableCursor:null})
-    $('#trip-snapshot-container').removeClass('trip-snapshot-max')
-    $('.snapshot-toggle-icon').removeClass('fa-chevron-down').addClass('fa-chevron-up')
-    google.maps.event.removeListener(mapClickListener)
-    setTimeout ->
-      $('#itinerary').addClass('hidden')
-    , 500
-###
+  map.setOptions({draggableCursor:null})
+  $('#trip-snapshot-container').removeClass('trip-snapshot-max')
+  $('.snapshot-toggle-icon').removeClass('fa-chevron-down').addClass('fa-chevron-up')
+  google.maps.event.removeListener(mapClickListener)
+  setTimeout ->
+    $('#itinerary').addClass('hidden')
+  , 500
 
 
 
