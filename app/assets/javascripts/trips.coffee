@@ -121,6 +121,10 @@ $ ->
     stop: (event, ui) ->
       ui.item.toggleClass('snap-hidden')
 
+  #Bind 'Add Transportation' in itinerary to trigger popout
+  $('body').on 'click', '.add-transportation', ->
+    $('#trip-snapshot-container').removeClass('trip-snapshot-max').addClass('trip-snapshot-min')
+
   ### *********** LIGHTBOX BINDINGS **************###
   $(document).bind 'cbox_complete', ->
     initSearch() #calling initSearch because initial call didn't bind to lightbox input
@@ -496,7 +500,7 @@ toggleTripSnapshot = ->
   if snapshotMinimized
     snapshotMinimized = false
     $('#itinerary').removeClass('hidden')
-    $('#trip-snapshot-container').addClass('trip-snapshot-max')
+    $('#trip-snapshot-container').removeClass('trip-snapshot-min').addClass('trip-snapshot-max')
     map.setOptions({draggableCursor:'s-resize'})
     $('.snapshot-toggle-icon').removeClass('fa-chevron-up').addClass('fa-chevron-down')
     mapClickListener = map.addListener 'click', ->
