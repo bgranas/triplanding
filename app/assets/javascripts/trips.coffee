@@ -623,6 +623,7 @@ setTransportPath =  (map, path, needDecode) ->
 
   polyline = new google.maps.Polyline
     map: map
+    geodesic: true
     path: transportPath
     strokeColor: unhighlightedSegmentColor
     strokeWeight: 5
