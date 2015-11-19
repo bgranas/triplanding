@@ -7,7 +7,14 @@
 ### *********** BINDINGS **************###
 ### ***********************************###
 
+window.saved = false
+
 $ ->
+
+  ### *********** PAGE BINDINGS *************###
+  $(window).bind 'beforeunload', ->
+    if not window.saved
+      return 'You have unsaved changes to your trip! These changes will be lost if you leave the page.'
 
   ### *********** MAP BINDINGS **************###
 
@@ -204,6 +211,7 @@ addDestination = (place, map, insertIndex) ->
 
     addDestinationSnapshot(place, markerID, destinationID, insertIndex, bg_url)
     addDestinationItinerary(place, markerID, destinationCountry, destinationCountryCode, insertIndex)
+    setUnsaved()
 
 
 #Adds a marker at the geolocation specified in place (google place),
@@ -346,6 +354,7 @@ reorderDestination = (ui) ->
   polyline.getPath().insertAt(newIndex, temp_path)
 
   reorderItinerary(markerID, oldIndex, newIndex)
+  setUnsaved()
 
 
 #moves the destination associated with markerID from oldIndex to newIndex
@@ -409,6 +418,19 @@ saveTrip = (trip_id, trip_title) ->
       alert 'Unsuccessful'
       return
 
+  #put this in success function
+  setSaved()
+
+#sets saved status to unsaved
+setUnsaved = ->
+  window.saved = true
+  $('#save-status').removeClass('save-green').addClass('save-red').html('Unsaved')
+
+#sets saved status to saved
+setSaved = ->
+  window.saved = true
+  $('#save-status').removeClass('save-red').addClass('save-green').html('Saved')
+
 #creates an array with the current order of the destinations for the trip
 createDestinationArray = ->
   destinationIDs = []
@@ -426,6 +448,7 @@ removeDestination = (markerID, map) ->
   removeSnapshot(markerID)
   removeMarker(markerID, map)
   removeItinerary(markerID)
+  setUnsaved()
 
 
 #Removes snapshot location associated to markerID
@@ -439,16 +462,20 @@ removeMarker = (markerID, map) ->
   marker.setMap(null)
   polyline.getPath().removeAt(markerIndex)
   markers.splice(markerIndex, 1);
-
-  redoBounds() #redo the bounds of the map after marker is deleted
+  redoBounds()
 
 #Redoes the bounds of the map based off the current markers array
 redoBounds = ->
-  window.bounds = new google.maps.LatLngBounds()
-  for marker in markers
-    window.bounds.extend marker.position
+  if markers.length == 1
+    map.setCenter(markers[0].position)
+    map.setOptions(zoom: 6)
+  else if markers.length > 1
+    window.bounds = new google.maps.LatLngBounds()
+    for marker in markers
+      window.bounds.extend marker.position
 
-  map.fitBounds(window.bounds)
+    map.fitBounds(window.bounds)
+
 
 #Removes a destination row from the itinerary
 removeItinerary = (markerID) ->
