@@ -16,7 +16,7 @@ $ ->
 
   #Bind 'Save' on map controls to saveTrip function
   $('#save-trip').click ->
-    tripTitle = $('#trip_name_input').val()
+    tripTitle = $('#trip-title').text()
     saveTrip(tripID, tripTitle)
 
   #Bind 'Remove' button on infowindow to removeDestination
@@ -24,7 +24,21 @@ $ ->
     markerID = $(this).parent().data('marker-id')
     removeDestination(markerID, map)
 
+  #Dynamically resize input based off length
+  $('body').on 'keyup', '#trip-title-input', ->
+    $(this).attr({width: 'auto', size: $(this).val().length});
+
   #Bind 'Edit Title' icon to action
+  $('body').on 'click', '#edit-title', ->
+    $('#trip-title-confirmed').addClass('hidden')
+    $('#trip-title-edit').removeClass('hidden')
+
+  #Bind 'Confirm Title' icon to action
+  $('body').on 'click', '#confirm-title', ->
+    title = $('#trip-title-input').val()
+    $('#trip-title').text(title)
+    $('#trip-title-confirmed').removeClass('hidden')
+    $('#trip-title-edit').addClass('hidden')
 
   ### *********** SNAPSHOT BINDINGS **************###
 
