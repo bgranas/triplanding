@@ -11,11 +11,6 @@ window.saved = false
 
 $ ->
 
-  ### *********** PAGE BINDINGS *************###
-  $(window).bind 'beforeunload', ->
-    if not window.saved
-      return 'You have unsaved changes to your trip! These changes will be lost if you leave the page.'
-
   ### *********** MAP BINDINGS **************###
 
   #Bind 'Save' on map controls to saveTrip function
@@ -176,6 +171,13 @@ $ ->
     #FUTURE IMPROVEMENT - do this on map load, not on page load
 $(".trips.new").ready ->
   $.colorbox({opacity: .5, href:"/blank/add_destination_helper"});
+
+  ### *********** PAGE BINDINGS *************###
+  $(window).bind 'beforeunload', ->
+    console.log 'window.saved: ' + window.saved
+    console.log 'markers.length: ' + markers.length
+    if (window.saved == false) and markers.length > 0
+      return 'You have unsaved changes to this trip!'
 
 
 ### ***********************************###
@@ -423,7 +425,7 @@ saveTrip = (trip_id, trip_title) ->
 
 #sets saved status to unsaved
 setUnsaved = ->
-  window.saved = true
+  window.saved = false
   $('#save-status').removeClass('save-green').addClass('save-red').html('Unsaved')
 
 #sets saved status to saved
@@ -518,11 +520,14 @@ findMarkerIndexByID = (markerID) ->
 #Shows the sidepopup
 showSidePopup = ->
   $('#side-popup').css('width', '50%')
+  $('#side-popup .container-fluid').removeClass('hidden')
 
 #Hides the sidepopup
 hideSidePopup = ->
   $('#side-popup').css('width', '0px')
   $('#add-transport-box').html('')
+  $('#side-popup .container-fluid').addClass('hidden')
+
   #lastly, delete those routes
   for polyline in  polylines
       polyline.setOptions({map: null})
