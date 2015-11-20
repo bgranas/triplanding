@@ -35,22 +35,14 @@
 				<%= render partial: 'itinerary_add_destination' %>
 			<% end %>
 			
-			<% if @transportChosen %>
+
 				<%= render partial: 'transport_chosen' %>
-			<% else %>
-				<%= render partial: 'transport_search' %>
-			<% end %>
 
 			<% if @destinationChosen %>
 				<%= render partial: 'destination_chosen' %>
 			<% else %>
 				<%= render partial: 'itinerary_add_destination' %>
 			<% end %>
-
-
-		
-			
-			<%= render partial: "transport_search" %>
 
 
 
