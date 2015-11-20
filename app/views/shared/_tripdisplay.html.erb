@@ -59,14 +59,8 @@
 
 						<!-- Thumbs up icon and counter -->
 						<ul class="list-inline trip-thumbsup-container">
-							<li class="trip-thumbsup-button"><i class="fa fa-thumbs-o-up"> </i></li>
+							<li class="trip-thumbsup-button"><i class="fa fa-star-o"> </i></li>
 							<li class="trip-thumbsup-total"><%= @likeTotal %></li>
-						</ul>
-
-						<!-- Like and share buttons -->
-						<ul class="list-inline trip-favoriteandshare-container">
-							<li><i class="fa fa-star-o fa-lg trip-favorite"><%= link_to("", {:controller => 'trips', :action => 'like'}) %></i></li>
-							<li><i><%= link_to("", {:controller => 'share'}, :class => "fa fa-share-alt fa-lg trip-share") %></i></li>
 						</ul>
 
 					</div>
