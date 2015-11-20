@@ -174,8 +174,6 @@ $(".trips.new").ready ->
 
   ### *********** PAGE BINDINGS *************###
   $(window).bind 'beforeunload', ->
-    console.log 'window.saved: ' + window.saved
-    console.log 'markers.length: ' + markers.length
     if (window.saved == false) and markers.length > 0
       return 'You have unsaved changes to this trip!'
 
