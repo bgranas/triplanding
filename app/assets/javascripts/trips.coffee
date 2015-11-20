@@ -166,9 +166,9 @@ $ ->
         , 300
 
 
-    #HACK - should simulate click on page load
-    #FUTURE FIX - only trigger lightbox if no destination has been added from landing page
-    #FUTURE IMPROVEMENT - do this on map load, not on page load
+#HACK - should simulate click on page load
+#FUTURE FIX - only trigger lightbox if no destination has been added from landing page
+#FUTURE IMPROVEMENT - do this on map load, not on page load
 $(".trips.new").ready ->
   $.colorbox({opacity: .5, href:"/blank/add_destination_helper"});
 
@@ -177,6 +177,11 @@ $(".trips.new").ready ->
     if (window.saved == false) and markers.length > 0
       return 'You have unsaved changes to this trip!'
 
+$(".trips.edit").ready ->
+  ### *********** PAGE BINDINGS *************###
+  $(window).bind 'beforeunload', ->
+    if (window.saved == false) and markers.length > 0
+      return 'You have unsaved changes to this trip!'
 
 ### ***********************************###
 ### ***** ADDING A DESTINATION ********###
