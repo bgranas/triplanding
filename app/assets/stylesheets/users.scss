@@ -10,13 +10,18 @@ User profile page
 
 #map-container {
   height: 70vh;
+  position: relative;
 }
 
 #map-holder {
   height: 100%;
   width: 100%;
+}
 
-
+#map-buttons{
+  position:absolute;
+  bottom:10px;
+  right:300px;
 }
 
 #user-profile-top{

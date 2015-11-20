@@ -1,7 +1,13 @@
 <!-- Start map API -->
 <div class="hidden-xs" id="map-container">
   <div id="map-holder"></div>
+  <div id="map-buttons">
+    <button class="btn btn-md btn-primary">Trips</button>
+    <button class="btn btn-md btn-primary">Countries</button>
+  </div>
 </div>
+
+
 
 <div class="container-fluid">
   <div class="row">
@@ -11,7 +17,7 @@
         <%= image_tag(@profile_image_path, :alt => @user.name + "\'s profile picture", :class => "img-circle img-responsive profile-picture") %>
         <div id="user-profile-demographics">
           <h2><%= @user.name %></h2>
-          <h4><%= @user.hometown + ', ' if not @user.hometown.nil? %><%= @user.country %></h4>
+          <h4><%= @user.hometown + ', USA' if not @user.hometown.nil? %><%= @user.country %></h4>
         </div>
         <div id="user-profile-stats">
           <ul class="list-inline" id="user-stats">

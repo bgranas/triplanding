@@ -9,6 +9,7 @@
 
 window.saved = false
 
+#only bind these to trips.new
 $ ->
 
   ### *********** MAP BINDINGS **************###
@@ -22,6 +23,8 @@ $ ->
   $('body').on 'click', '.remove-location', ->
     markerID = $(this).parent().data('marker-id')
     removeDestination(markerID, map)
+
+  #Bind 'Edit Title' icon to action
 
   ### *********** SNAPSHOT BINDINGS **************###
 
