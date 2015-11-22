@@ -10,7 +10,7 @@
 window.saved = false
 
 #only bind these to trips.new
-$ ->
+$(".trips.new").ready ->
 
   ### *********** MAP BINDINGS **************###
 

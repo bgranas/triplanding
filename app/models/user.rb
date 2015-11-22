@@ -206,7 +206,7 @@ class User < ActiveRecord::Base
         puts '************** self.errors[profile_url]: ' + self.errors[:profile_url].to_s if debug
         self.profile_url = temp_name + "_" + i.to_s
         puts '************** new profile_url ' + self.profile_url if debug
-        self.valid? #checking if valid, will generate new self.errors
+        #self.valid? #checking if valid, will generate new self.errors
         i = i + 1
       end
 

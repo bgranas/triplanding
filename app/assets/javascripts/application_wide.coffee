@@ -29,6 +29,7 @@ $ ->
         for error in data.errors
           do ->
             $('#signup-container').find('.error-message').append('<li>' + error + '</li>')
+            $('#signup-container').find('.error-message').fadeIn().removeClass('hidden')
             $.colorbox.resize()
 
     #sign-up failed
@@ -38,6 +39,7 @@ $ ->
       for e in data.errors
           do ->
             $('#signup-container').find('.error-message').append('<li>' + e + '</li>')
+            $('#signup-container').find('.error-message').fadeIn().removeClass('hidden')
             $.colorbox.resize()
 
     #button within a lightbox to initiate close

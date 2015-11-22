@@ -44,7 +44,7 @@ class RegistrationsController < Devise::RegistrationsController
         respond_with resource, location: after_inactive_sign_up_path_for(resource)
       end
     else
-      #puts '************************sign-up failed. format: ' + request.format
+      puts '************************sign-up failed. errors: ' + resource.errors.to_yaml
       clean_up_passwords resource
       set_minimum_password_length
       respond_to do |format|
