@@ -262,7 +262,7 @@ addMarkerToMap = (place, map, insertIndex) ->
   polyline.getPath().insertAt(insertIndex, marker.position)
 
 
-
+  #adjusting the map position with the new marker
   if markers.length == 1
     map.setCenter(marker.position)
     map.setOptions(zoom: 6)
@@ -536,7 +536,6 @@ findMarkerIndexByID = (markerID) ->
 ### ********* MISC FUNCTIONS **********###
 ### ***********************************###
 
-
 #Shows the sidepopup
 showSidePopup = ->
   $('#side-popup').css('width', '50%')
@@ -568,7 +567,6 @@ shorten = (text, max_length) ->
 
   return ret
 
-autocomplete = null
 place = null
 #Autocomplete search box initialization
 initSearch = ->
@@ -578,6 +576,15 @@ initSearch = ->
     place = autocomplete.getPlace()
     addDestination(place, map, insertIndex)
     $.colorbox.close()
+
+    console.log 'autocomplete bounds (before): ' + autocomplete.getBounds()
+    #setting bounds around new place
+    biasCircle = new google.maps.Circle
+      center: place.geometry.location
+      radius: 500 #in kilometers
+
+    autocomplete.setBounds(biasCircle.getBounds())
+    console.log 'autocomplete bounds (after): ' + autocomplete.getBounds()
 
 snapshotMinimized = true
 mapClickListener = null
