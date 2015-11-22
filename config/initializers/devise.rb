@@ -65,7 +65,7 @@ Devise.setup do |config|
 
   # If 401 status code should be returned for AJAX requests. True by default.
   config.http_authenticatable_on_xhr = false
-  config.navigational_formats = [:html, :json]
+  config.navigational_formats = [ "*/*" ,:html, :json]
 
   # The realm used in Http Basic Authentication. 'Application' by default.
   # config.http_authentication_realm = 'Application'

@@ -36,7 +36,7 @@ class ApplicationController < ActionController::Base
     request.referrer
   end
 
-   def ensure_signup_complete
+  def ensure_signup_complete
     # Ensure we don't go into an infinite loop
     return if action_name == 'finish_signup'
 
