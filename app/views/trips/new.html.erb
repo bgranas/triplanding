@@ -27,15 +27,15 @@
 
       <div id="trip-metrics">
         <span id="trip-metrics-cities">
-          <strong>0</strong> Cities
+          <strong>0</strong><span> Cities</span>
         </span>
         <span> - </span>
         <span id="trip-metrics-countries">
-          <strong>0</strong> Countries
+          <strong>0</strong><span> Countries</span>
         </span>
         <span> - </span>
         <span id="trip-metrics-distance">
-          <strong>0</strong> KM
+          <strong>0</strong><span> KM </span>
         </span>
       </div>
 
@@ -128,7 +128,31 @@
         </div>
 
         <div class="col-sm-11 col-sm-offset-1">
-          <div class="flag-text"><a href="#">Departure City</a></div>
+          <div class="flag-text">
+            <h5 id="departure-city" class="hidden">CITY NAME</h5>
+            <a href="<%= add_destination_lightbox_path %>" data-colorbox="true" id="add-departure-link">
+             Departure City
+            </a>
+            <a href="" id="change-departure" class="hidden">
+              <i class="fa fa-pencil" data-toggle="tooltip" data-placement="bottom" title="Change Departure City"></i>
+            </a>
+            <a href="" id="remove-departure" class="hidden">
+              <i class="fa fa-trash" data-toggle="tooltip" data-placement="bottom" title="Remove Departure City"></i>
+            </a>
+          </div>
+        </div>
+      </div>
+
+      <div class="row end-transportation-row hidden" id="departure-row-transportation">
+        <div class="itinerary-icon transportation-icon">
+          <i class="fa fa-circle-o fa-2x"></i>
+          <div class="itinerary-transportation-vertical"></div>
+        </div>
+
+        <div class="col-sm-11 col-sm-offset-1">
+          <div class="table-parent">
+            <a class="add-transportation block valign-middle-child" href="#header">Find Transportation</a>
+          </div>
         </div>
       </div>
       <!-- ========= END ORIGIN ROW =============-->
@@ -148,7 +172,20 @@
 
       </ul>
 
-      <!-- ========= BEGIN END DESTINATION ROW =============-->
+      <!-- ========= BEGIN RETURN DESTINATION ROW =============-->
+      <div class="row end-transportation-row hidden" id="return-row-transportation">
+        <div class="itinerary-icon transportation-icon">
+          <div class="itinerary-transportation-vertical"></div>
+          <i class="fa fa-circle-o fa-2x"></i>
+        </div>
+
+        <div class="col-sm-11 col-sm-offset-1">
+          <div class="table-parent">
+            <a class="add-transportation block valign-bottom-child" href="">Find Transportation</a>
+          </div>
+        </div>
+      </div>
+
       <div id="itinerary-terminal-row" class="row itinerary-row">
         <div class="itinerary-icon">
           <div class="itinerary-transportation-vertical"></div>
@@ -157,11 +194,22 @@
 
         <div class="col-sm-11 col-sm-offset-1">
           <div class="flag-text table-parent">
-            <a class="block valign-bottom-child" href="#">Return City</a>
+            <h5 id="return-city" class="hidden">CITY NAME</h5>
+            <a href="<%= add_destination_lightbox_path %>" data-colorbox="true"
+               class="block valign-bottom-child" id="add-return-link">
+             Return City
+            </a>
+            <a href="" id="change-departure" class="hidden">
+              <i class="fa fa-pencil" data-toggle="tooltip" data-placement="bottom" title="Change Return City"></i>
+            </a>
+            <a href="" id="remove-departure" class="hidden">
+              <i class="fa fa-trash" data-toggle="tooltip" data-placement="bottom" title="Remove Return City"></i>
+            </a>
           </div>
         </div>
       </div>
-      <!-- ========= END END DESTINATION ROW =============-->
+
+      <!-- ========= END RETURN DESTINATION ROW =============-->
 
   </div> <!-- End Itinerary Row -->
 

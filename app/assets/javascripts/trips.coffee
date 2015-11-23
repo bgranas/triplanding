@@ -92,12 +92,16 @@ $(".trips.new").ready ->
 
   #Bind '+' (add destination) on snapshot and itinerary to set the insertIndex for the marker
   $('body').on 'click', '.add-destination-link', ->
+    window.markerType = 'destination'
     #adding destination to the end of the list, so index will be last marker
     setInsertIndex(markers.length)
-
+    #should close itinerary if maximized
+    if snapshotMinimized == false
+      toggleTripSnapshot()
 
   #Bind 'Add Destination' on infowindow to set insertIndex correctly
   $('body').on 'click', '.infowindow-add-destination', ->
+    window.markerType = 'destination'
     markerID = $(this).parent().data('marker-id')
     markerIndex = findMarkerIndexByID(markerID)
     setInsertIndex(markerIndex + 1) #insert after this marker
@@ -128,10 +132,18 @@ $(".trips.new").ready ->
   $('.snapshot-toggle').click ->
     toggleTripSnapshot()
 
-  #Add destination links should close the itinerary if maximized
-  $('.add-destination-link').click ->
+  #Bind 'Add Departure City' to set markerType for lightbox
+  $('body').on 'click', '#add-departure-link', ->
+    window.markerType = 'departure'
     if snapshotMinimized == false
       toggleTripSnapshot()
+
+  #Bind 'Add Return City' to set markerType for lightbox
+  $('body').on 'click', '.add-return-link', ->
+    window.markerType = 'return'
+    if snapshotMinimized == false
+      toggleTripSnapshot()
+
 
   $('#trip-snapshot-ul').sortable
     placeholder: 'snapshot-location-container-placeholder',
@@ -223,18 +235,60 @@ setInsertIndex = (i) ->
 generateMarkerID = ->
   return currentMarkerID++
 
+#returns true if there is a departure location added
+isDeparture = ->
+  if $('#departure-city').hasClass('hidden')
+    return false #no departure
+  else
+    return true #there is departure
+
+#returns true if there is a return location added
+isReturn = ->
+  if $('#return-city').hasClass('hidden')
+    return false #no return
+  else
+    return true #there is return
+
+#parent method to call when adding a departure city
+addDeparture = (place, map) ->
+  if place != null
+    markerID = addMarkerToMap(place, map, 0, 'departure') #add to beginning of markers[]
+    response = JSON.parse(saveDestinationToDatabase(place).responseText)
+    destinationCountry = response.country
+    destinationCountryCode = response.country_code
+
+    #addDestinationItinerary(place, markerID, destinationCountry, destinationCountryCode, insertIndex)
+    addDepartureItinerary(markerID)
+    calculateTripMetrics() #update trip's metrics
+    setUnsaved()
+
+addDepartureItinerary = (markerID) ->
+  markerIndex = findMarkerIndexByID(markerID)
+  departure_name = markers[markerIndex].title
+  $('#departure-city').text(departure_name).removeClass('hidden')
+  $('#add-departure-link').addClass('hidden')
+  $('#remove-departure').removeClass('hidden')
+  $('#change-departure').removeClass('hidden')
+  $('#departure-row-transportation').removeClass('hidden')
+  #add transportation row from departure to first destination
+
+
 #Parent function that should be called when a new destination is added to the map
 # PRE: place should be defined from the autocomplete function
 # PRE: map should be initialized
 # PARAM: insertIndex - index to insert the new marker into markers[] and path[]
 addDestination = (place, map, insertIndex) ->
   if place != null
-    markerID = addMarkerToMap(place, map, insertIndex)
+    markerID = addMarkerToMap(place, map, insertIndex, 'destination')
     response = JSON.parse(saveDestinationToDatabase(place).responseText)
     destinationID = response.id
     destinationCountry = response.country
     destinationCountryCode = response.country_code
     bg_url = response.thumbnail_url
+
+    #if there is a departure marker, remove one from the insertIndex so it doesn't mess up snapshot/itinerary
+    if isDeparture()
+      insertIndex = insertIndex - 1
 
     addDestinationSnapshot(place, markerID, destinationID, insertIndex, bg_url)
     addDestinationItinerary(place, markerID, destinationCountry, destinationCountryCode, insertIndex)
@@ -247,13 +301,33 @@ addDestination = (place, map, insertIndex) ->
 # PRE: Bounds array must be declared
 # RET: Index of marker in markers array
 # PARAM: insertIndex = index to insert marker into array and path
-addMarkerToMap = (place, map, insertIndex) ->
+addMarkerToMap = (place, map, insertIndex, icon_type) ->
   markerID = generateMarkerID()
-  marker = new google.maps.Marker
-    position: place.geometry.location
-    map: map
-    title: place.formatted_address
-    id: markerID
+  if icon_type == 'departure'
+    icon =
+      url:'/assets/flag_marker_origin.png'
+      anchor: new google.maps.Point(5,25)
+
+    marker = new google.maps.Marker
+      position: place.geometry.location
+      title: place.formatted_address
+      id: markerID
+      map: map
+      icon: icon
+      labelAnchor: new google.maps.Point(22, 50)
+  else if icon_type == 'return'
+    marker = new google.maps.Marker
+      position: place.geometry.location
+      title: place.formatted_address
+      id: markerID
+      map: map
+      icon: '/assets/flag_marker_return.png'
+  else #destination, use default icon
+    marker = new google.maps.Marker
+        position: place.geometry.location
+        title: place.formatted_address
+        id: markerID
+        map: map
 
   #First, add new marker to the markers array
   markers.splice(insertIndex, 0, marker)
@@ -357,7 +431,7 @@ insertDestinationRow = (destinationRow, insertIndex, oldIndex) ->
     destinationRow.insertAfter(transportationRow)
     reorderItineraryCalendars()
 
-  #finally, if a transport list is last, remove it THIS IS BAD DESIGN
+  #finally, if a transport list is last, remove it -- THIS IS BAD DESIGN
   last_itinerary_row = $('#itinerary-transportation-destination-ul .row').last()
   if last_itinerary_row.hasClass('transportation-row')
     last_itinerary_row.remove()
@@ -557,6 +631,18 @@ calculateTripMetrics = ->
   $('#trip-metrics-countries strong').text(countries)
   $('#trip-metrics-distance strong').text(distance)
 
+  #fixing GRAMMERZ
+  if cities == 1
+    $('#trip-metrics-cities span').text(' City')
+  else
+    $('#trip-metrics-cities span').text(' Cities')
+
+  if countries == 1
+    $('#trip-metrics-countries span').text(' Country')
+  else
+    $('#trip-metrics-countries span').text(' Countries')
+
+
   $('#trip-metrics strong').digits() #format numbers with commas
 
 #RET: returns the distance of a trips polyline in the unit specified in the parameters
@@ -614,6 +700,7 @@ shorten = (text, max_length) ->
 
   return ret
 
+window.markerType = 'destination' #could be set to destination or origin
 place = null
 #Autocomplete search box initialization
 initSearch = ->
@@ -621,7 +708,14 @@ initSearch = ->
   autocomplete.addListener 'place_changed', ->
     $('#lightbox-warning-template').hide()
     place = autocomplete.getPlace()
-    addDestination(place, map, insertIndex)
+
+    #console.log 'place changed: markerType: ' + window.markerType
+    if window.markerType == 'departure'
+      addDeparture(place, map)
+    else if window.markerType == 'return'
+      console.log 'add return city'
+    else #it's a destination
+      addDestination(place, map, insertIndex)
     $.colorbox.close()
 
     #console.log 'autocomplete bounds (before): ' + autocomplete.getBounds()

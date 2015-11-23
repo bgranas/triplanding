@@ -12,6 +12,7 @@
 
 /********* FOR TRIPS / NEW ***********/
 
+
 #side-popup{
   position:fixed;
   bottom:22px;
@@ -421,6 +422,16 @@
 
 	/********** ITINERARY VIEWER ***********/
 
+#departure-city{
+  margin-right: 15px;
+  display: inline-block;
+}
+
+#return-row-transportation .table-parent a{
+  height:60px;
+  padding-bottom: 5px;
+}
+
 .itinerary-holder {
 	margin-top: 30px;
 	margin-left: 30px;
@@ -475,6 +486,11 @@
 		margin-bottom: 5px;
 		font-weight: bold;
 	}
+
+  #itinerary-transportation-destination-ul{
+    margin-top: 3px;
+    margin-bottom:3px;
+  }
 
   #itinerary-transportation-destination-ul li{
     list-style: none;
@@ -561,13 +577,11 @@
   #add-destination-row{
     min-height: 40px !important;
     margin: 0px !important;
-    margin-top: -10px !important;
   }
 
 
    /*Calvin Add */
   .itinerary-row{
-    min-height: 60px;
     margin: 0px 20px;
   }
   /*Calvin Add */
@@ -616,7 +630,16 @@
   /*Calvin Add */
   .flag-text{
     margin-top:5px;
-    height:60px; /* min height of itinerary row */
+    height:52px; /* min height of itinerary row */
+  }
+
+  .flag-text i{
+    margin-left:5px;
+  }
+
+  .end-transportation-row{
+    height:60px;
+    margin:0px 20px;
   }
 
   /*Calvin Add */
