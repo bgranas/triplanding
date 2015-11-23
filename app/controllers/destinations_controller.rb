@@ -95,7 +95,7 @@ private
   #returns a Destination object built with values from a Google place
   #PRE: Google place object should be parsed into ruby hash via JSON.parase
   def buildDestinationFromPlace(place)
-    debug = true
+    debug = false
     dest = Destination.new
 
     puts '************ PLACE YAML: ' + place.to_yaml if debug

@@ -265,6 +265,11 @@ addMarkerToMap = (place, map, insertIndex) ->
   window.bounds.extend marker.position
 
   polyline.getPath().insertAt(insertIndex, marker.position)
+  lengthInMeters = google.maps.geometry.spherical.computeLength(polyline.getPath())
+  lengthInKilometers = Math.round(lengthInMeters/1000)
+  console.log 'current trip length (km): ' + lengthInKilometers
+  $('#trip-metrics-distance strong').text(lengthInKilometers)
+  $('#trip-metrics-distance strong').digits()
 
 
   #adjusting the map position with the new marker
