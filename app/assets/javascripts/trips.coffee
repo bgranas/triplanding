@@ -132,6 +132,16 @@ $(".trips.new").ready ->
   $('.snapshot-toggle').click ->
     toggleTripSnapshot()
 
+  #Binds 'remove' link in departure infowindow to remove departure
+  $('body').on 'click', '.remove-departure-link', ->
+    markerID = $(this).parent().data('marker-id')
+    removeDeparture(markerID, map)
+
+  #Binds 'remove' link in departure section of itinerary
+  $('body').on 'click', '.remove-departure-link-itinerary', ->
+    markerID = markers[0].id
+    removeDeparture(markerID, map)
+
   #Bind 'Add Departure City' to set markerType for lightbox
   $('body').on 'click', '#add-departure-link', ->
     window.markerType = 'departure'
@@ -311,6 +321,7 @@ addMarkerToMap = (place, map, insertIndex, icon_type) ->
     marker = new google.maps.Marker
       position: place.geometry.location
       title: place.formatted_address
+      type: 'departure'
       id: markerID
       map: map
       icon: icon
@@ -319,15 +330,19 @@ addMarkerToMap = (place, map, insertIndex, icon_type) ->
     marker = new google.maps.Marker
       position: place.geometry.location
       title: place.formatted_address
+      type: 'return'
       id: markerID
       map: map
-      icon: '/assets/flag_marker_return.png'
+      icon =
+        url:'/assets/flag_marker_return.png'
+        anchor: new google.maps.Point(5,25)
   else #destination, use default icon
     marker = new google.maps.Marker
-        position: place.geometry.location
-        title: place.formatted_address
-        id: markerID
-        map: map
+      position: place.geometry.location
+      title: place.formatted_address
+      type: 'destination'
+      id: markerID
+      map: map
 
   #First, add new marker to the markers array
   markers.splice(insertIndex, 0, marker)
@@ -444,6 +459,8 @@ reorderDestination = (ui) ->
   markerID = snapshot.data('marker-id')
   oldIndex = findMarkerIndexByID(markerID)
   newIndex = $('#trip-snapshot-ul .snapshot-location').index(snapshot)
+  if isDeparture()
+    newIndex = newIndex + 1 #departure is not shown in snapshot, but is in polyline and markers array
 
   #Algorithm: delete first, then reinsert at newIndex
   temp_marker = markers[oldIndex]
@@ -497,6 +514,12 @@ getInfowindowContent = (markerID, markerIndex) ->
   iw = $('#infowindow-template').clone(true).removeClass('hidden').removeAttr('id')
   iw.find('h5').text(markers[markerIndex].title) #infowindow header
   iw.find('.infowindow-content').attr('data-marker-id', markerID)
+
+  if markers[markerIndex].type == 'departure'
+    iw.find('.info-date span').text('Add Departure Date')
+    iw.find('.info-accommodation').addClass('hidden')
+    iw.find('.remove-location').addClass('remove-departure-link').removeClass('remove-location')
+
   return  iw.html()
 
 ### ***********************************###
@@ -547,6 +570,20 @@ createDestinationArray = ->
 ### ***********************************###
 ### ***** REMOVE A DESTINATION ********###
 ### ***********************************###
+
+#Remvove departure parent function
+removeDeparture = (markerID, map) ->
+  removeMarker(markerID, map)
+  removeDepartureItinerary()
+  calculateTripMetrics() #update trip's metrics
+  setUnsaved()
+
+removeDepartureItinerary = ->
+  $('#departure-city').addClass('hidden')
+  $('#add-departure-link').removeClass('hidden')
+  $('#remove-departure').addClass('hidden')
+  $('#change-departure').addClass('hidden')
+  $('#departure-row-transportation').addClass('hidden')
 
 #Remove destination parent function. Handles removing snapshot, marker, and itinerary
 removeDestination = (markerID, map) ->
