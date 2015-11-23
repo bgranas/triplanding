@@ -438,6 +438,9 @@ saveTrip = (trip_id, trip_title) ->
     data:
       trip_title: trip_title
       trip_id: trip_id
+      countries: countUniqueCountries()
+      cities: countCities()
+      distance: measureDistnace('Kilometers')
       destinationIDs: destinationIDs
     success: (data) ->
       alert 'Successful'
@@ -544,27 +547,41 @@ findMarkerIndexByID = (markerID) ->
 ### ***********************************###
 
 #Calculates the trip's metrics (countries, cities, and KM)
-#Countries and City counts are based off the destination rows country column, so
-#if html changes there, this method may break :/
 #PRE: polyline must equal the current polyline of the map
 calculateTripMetrics = ->
-  #Calculating Distance
-  lengthInMeters = google.maps.geometry.spherical.computeLength(polyline.getPath())
-  lengthInKilometers = Math.round(lengthInMeters/1000)
-  $('#trip-metrics-distance strong').text(lengthInKilometers)
+  distance = measureDistnace('kilometers')
+  cities = countCities()
+  countries = countUniqueCountries()
 
-  #Calculating Citites (Destinations)
-  destinations = $('#itinerary-transportation-destination-ul .destination-row')
-  $('#trip-metrics-cities strong').text(destinations.length)
-
-  #Calculating Countries
-  uniqueCountries = {}
-  destinations.find('.itinerary-step-country').each ->
-    uniqueCountries["'" + $(this).text() + "'"] = 1
-  $('#trip-metrics-countries strong').text( Object.keys(uniqueCountries).length )
+  $('#trip-metrics-cities strong').text(cities)
+  $('#trip-metrics-countries strong').text(countries)
+  $('#trip-metrics-distance strong').text(distance)
 
   $('#trip-metrics strong').digits() #format numbers with commas
 
+#RET: returns the distance of a trips polyline in the unit specified in the parameters
+#If the unit specified is unrecognized, returns distance of polyline in KM
+measureDistnace = (unit) ->
+  lengthInMeters = google.maps.geometry.spherical.computeLength(polyline.getPath())
+  if unit == 'miles'
+    return Math.round(lengthInMeters/1609.34)
+  else if unit == 'meters'
+    return Math.round(lengthInMeters)
+  else #return Kilometers
+    return Math.round(lengthInMeters/1000)
+
+#RET: returns the number of  cities in a trip
+countCities = ->
+  return  $('#itinerary-transportation-destination-ul .destination-row').length
+
+#RET: returns the number of unique countires in this destination
+#Countriescounts are based off the destination rows country column, so
+#if html changes there, this method may break :/
+countUniqueCountries = ->
+  uniqueCountries = {}
+  $('#itinerary-transportation-destination-ul .destination-row .itinerary-step-country').each ->
+    uniqueCountries["'" + $(this).text() + "'"] = 1
+  return Object.keys(uniqueCountries).length
 
 #Shows the sidepopup
 showSidePopup = ->
