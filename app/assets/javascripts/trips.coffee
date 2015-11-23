@@ -64,9 +64,12 @@ $(".trips.new").ready ->
         $('#trip-snapshot-ul').scrollLeft(x+2);
     ,5
 
+
+  window.curScroll = null
   $('body').on 'mouseleave', '#scroll-right', ->
     right_scroll_hovered = false
     clearInterval(scrollRight)
+    window.curScroll = $('#trip-snapshot-ul').scrollLeft()
 
   left_scroll_hovered = false
   scrollLeft = null
@@ -136,9 +139,11 @@ $(".trips.new").ready ->
     update: (event, ui) ->
       reorderDestination(ui)
     start: (event, ui) ->
+      $('#trip-snapshot-ul').scrollLeft(window.curScroll) #preventing jump if scrolled all the way right
       ui.item.toggleClass('snap-hidden')
     stop: (event, ui) ->
       ui.item.toggleClass('snap-hidden')
+
 
   #Bind 'Add Transportation' in itinerary to trigger side popup
   $('body').on 'click', '.add-transportation', ->
@@ -577,14 +582,14 @@ initSearch = ->
     addDestination(place, map, insertIndex)
     $.colorbox.close()
 
-    console.log 'autocomplete bounds (before): ' + autocomplete.getBounds()
+    #console.log 'autocomplete bounds (before): ' + autocomplete.getBounds()
     #setting bounds around new place
     biasCircle = new google.maps.Circle
       center: place.geometry.location
       radius: 500 #in kilometers
 
     autocomplete.setBounds(biasCircle.getBounds())
-    console.log 'autocomplete bounds (after): ' + autocomplete.getBounds()
+    #console.log 'autocomplete bounds (after): ' + autocomplete.getBounds()
 
 snapshotMinimized = true
 mapClickListener = null
