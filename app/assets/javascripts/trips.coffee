@@ -238,6 +238,7 @@ addDestination = (place, map, insertIndex) ->
 
     addDestinationSnapshot(place, markerID, destinationID, insertIndex, bg_url)
     addDestinationItinerary(place, markerID, destinationCountry, destinationCountryCode, insertIndex)
+    calculateTripMetrics() #update trip's metrics
     setUnsaved()
 
 
@@ -265,12 +266,6 @@ addMarkerToMap = (place, map, insertIndex) ->
   window.bounds.extend marker.position
 
   polyline.getPath().insertAt(insertIndex, marker.position)
-  lengthInMeters = google.maps.geometry.spherical.computeLength(polyline.getPath())
-  lengthInKilometers = Math.round(lengthInMeters/1000)
-  console.log 'current trip length (km): ' + lengthInKilometers
-  $('#trip-metrics-distance strong').text(lengthInKilometers)
-  $('#trip-metrics-distance strong').digits()
-
 
   #adjusting the map position with the new marker
   if markers.length == 1
@@ -386,6 +381,7 @@ reorderDestination = (ui) ->
   polyline.getPath().insertAt(newIndex, temp_path)
 
   reorderItinerary(markerID, oldIndex, newIndex)
+  calculateTripMetrics() #update trip's metrics
   setUnsaved()
 
 
@@ -480,6 +476,7 @@ removeDestination = (markerID, map) ->
   removeSnapshot(markerID)
   removeMarker(markerID, map)
   removeItinerary(markerID)
+  calculateTripMetrics() #update trip's metrics
   setUnsaved()
 
 
@@ -545,6 +542,29 @@ findMarkerIndexByID = (markerID) ->
 ### ***********************************###
 ### ********* MISC FUNCTIONS **********###
 ### ***********************************###
+
+#Calculates the trip's metrics (countries, cities, and KM)
+#Countries and City counts are based off the destination rows country column, so
+#if html changes there, this method may break :/
+#PRE: polyline must equal the current polyline of the map
+calculateTripMetrics = ->
+  #Calculating Distance
+  lengthInMeters = google.maps.geometry.spherical.computeLength(polyline.getPath())
+  lengthInKilometers = Math.round(lengthInMeters/1000)
+  $('#trip-metrics-distance strong').text(lengthInKilometers)
+
+  #Calculating Citites (Destinations)
+  destinations = $('#itinerary-transportation-destination-ul .destination-row')
+  $('#trip-metrics-cities strong').text(destinations.length)
+
+  #Calculating Countries
+  uniqueCountries = {}
+  destinations.find('.itinerary-step-country').each ->
+    uniqueCountries["'" + $(this).text() + "'"] = 1
+  $('#trip-metrics-countries strong').text( Object.keys(uniqueCountries).length )
+
+  $('#trip-metrics strong').digits() #format numbers with commas
+
 
 #Shows the sidepopup
 showSidePopup = ->
