@@ -742,6 +742,7 @@ place = null
 #Autocomplete search box initialization
 initSearch = ->
   autocomplete = new (google.maps.places.Autocomplete)(document.getElementById('location-query'), types: [ 'geocode' ])
+  autocomplete.bindTo('bounds', map)
   autocomplete.addListener 'place_changed', ->
     $('#lightbox-warning-template').hide()
     place = autocomplete.getPlace()
@@ -755,14 +756,14 @@ initSearch = ->
       addDestination(place, map, insertIndex)
     $.colorbox.close()
 
-    #console.log 'autocomplete bounds (before): ' + autocomplete.getBounds()
+    console.log 'autocomplete bounds (before): ' + autocomplete.getBounds()
     #setting bounds around new place
     biasCircle = new google.maps.Circle
       center: place.geometry.location
       radius: 500 #in kilometers
 
     autocomplete.setBounds(biasCircle.getBounds())
-    #console.log 'autocomplete bounds (after): ' + autocomplete.getBounds()
+    console.log 'autocomplete bounds (after): ' + autocomplete.getBounds()
 
 snapshotMinimized = true
 mapClickListener = null
