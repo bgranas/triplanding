@@ -130,6 +130,9 @@ $(".trips.new").ready ->
   $('.snapshot-toggle').click ->
     toggleTripSnapshot()
 
+  #Binds 'Add Departure City' link to show the autocomplete box
+  $('body').on 'click', '#add-departure-link', ->
+    initAutocompleteDeparture()
 
   #Binds 'remove' link in departure section of itinerary
   $('body').on 'click', '.remove-departure-link-itinerary', ->
@@ -241,7 +244,7 @@ isReturn = ->
     return true #there is return destination
 
 #parent method to call when adding a departure city
-addDeparture = (place, map) ->
+addDeparture = (place) ->
   if place != null
     response = JSON.parse(saveDestinationToDatabase(place).responseText)
     destinationCountry = response.country
@@ -255,10 +258,12 @@ addDeparture = (place, map) ->
 addDepartureItinerary = (departure_name) ->
   $('#departure-city').text(departure_name).removeClass('hidden')
   $('#add-departure-link').addClass('hidden')
+  $('#departure-city-edit').addClass('hidden')
   $('#remove-departure').removeClass('hidden')
   $('#change-departure').removeClass('hidden')
   $('#departure-row-transportation').removeClass('hidden')
   #add transportation row from departure to first destination
+
 
 
 #Parent function that should be called when a new destination is added to the map
@@ -525,6 +530,7 @@ removeDeparture = ->
   setUnsaved()
 
 removeDepartureItinerary = ->
+  $('#departure-city-input').val('')
   $('#departure-city').addClass('hidden')
   $('#add-departure-link').removeClass('hidden')
   $('#remove-departure').addClass('hidden')
@@ -684,7 +690,7 @@ shorten = (text, max_length) ->
   return ret
 
 place = null
-#Autocomplete search box initialization
+#Autocomplete search box initialization for adding destination
 initSearch = ->
   autocomplete = new (google.maps.places.Autocomplete)(document.getElementById('location-query'), types: [ 'geocode' ])
   autocomplete.bindTo('bounds', map)
@@ -695,14 +701,25 @@ initSearch = ->
     addDestination(place, map, insertIndex)
     $.colorbox.close()
 
-    console.log 'autocomplete bounds (before): ' + autocomplete.getBounds()
     #setting bounds around new place
     biasCircle = new google.maps.Circle
       center: place.geometry.location
       radius: 500 #in kilometers
-
     autocomplete.setBounds(biasCircle.getBounds())
-    console.log 'autocomplete bounds (after): ' + autocomplete.getBounds()
+
+#initializing autocomplete for departure
+initAutocompleteDeparture = ->
+  #Unhide input fields
+  $('#add-departure-link').addClass('hidden')
+  $('#departure-city-edit').removeClass('hidden')
+  $('#departure-city-input').focus()
+
+  #Setup autocomplete
+  autocomplete = new (google.maps.places.Autocomplete)(document.getElementById('departure-city-input'), types: [ 'geocode' ])
+  autocomplete.addListener 'place_changed', ->
+    place = autocomplete.getPlace()
+    addDeparture(place)
+
 
 snapshotMinimized = true
 mapClickListener = null
