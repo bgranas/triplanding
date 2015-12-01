@@ -422,10 +422,6 @@
 
 	/********** ITINERARY VIEWER ***********/
 
-#departure-city{
-  margin-right: 15px;
-  display: inline-block;
-}
 
 #return-row-transportation .table-parent a{
   height:60px;
@@ -633,9 +629,14 @@
     height:52px; /* min height of itinerary row */
   }
 
-  .flag-text i{
-    margin-left:5px;
-  }
+    .flag-text i{
+      margin-left:5px;
+    }
+
+    .flag-text h5{
+      margin-right: 15px;
+      display: inline-block;
+    }
 
   .end-transportation-row{
     height:60px;

@@ -138,6 +138,14 @@ $(".trips.new").ready ->
   $('body').on 'click', '.remove-departure-link-itinerary', ->
     removeDeparture()
 
+  #Binds 'Add Return City' link to show the autocomplete box
+  $('body').on 'click', '#add-return-link', ->
+    initAutocompleteReturn()
+
+  #Binds 'remove' link in return section of itinerary
+  $('body').on 'click', '.remove-return-link-itinerary', ->
+    removeReturn()
+
 
   $('#trip-snapshot-ul').sortable
     placeholder: 'snapshot-location-container-placeholder',
@@ -244,7 +252,7 @@ isReturn = ->
     return true #there is return destination
 
 #parent method to call when adding a departure city
-addDeparture = (place) ->
+addDepartureCity = (place) ->
   if place != null
     response = JSON.parse(saveDestinationToDatabase(place).responseText)
     destinationCountry = response.country
@@ -262,9 +270,26 @@ addDepartureItinerary = (departure_name) ->
   $('#remove-departure').removeClass('hidden')
   $('#change-departure').removeClass('hidden')
   $('#departure-row-transportation').removeClass('hidden')
-  #add transportation row from departure to first destination
 
+#parent method to call when adding a departure city
+addReturnCity = (place) ->
+  if place != null
+    response = JSON.parse(saveDestinationToDatabase(place).responseText)
+    destinationCountry = response.country
+    destinationCountryCode = response.country_code
 
+    addReturnCityItinerary(place.name)
+    setUnsaved()
+
+#Adds the departure city to itinerary
+#PARAMS: name of the departure city
+addReturnCityItinerary = (return_city_name) ->
+  $('#return-city').text(return_city_name).removeClass('hidden')
+  $('#add-return-link').addClass('hidden')
+  $('#return-city-edit').addClass('hidden')
+  $('#remove-return').removeClass('hidden')
+  $('#change-return').removeClass('hidden')
+  $('#return-row-transportation').removeClass('hidden')
 
 #Parent function that should be called when a new destination is added to the map
 # PRE: place should be defined from the autocomplete function
@@ -718,7 +743,20 @@ initAutocompleteDeparture = ->
   autocomplete = new (google.maps.places.Autocomplete)(document.getElementById('departure-city-input'), types: [ 'geocode' ])
   autocomplete.addListener 'place_changed', ->
     place = autocomplete.getPlace()
-    addDeparture(place)
+    addDepartureCity(place)
+
+#initializing autocomplete for return city input
+initAutocompleteReturn = ->
+  #Unhide input fields
+  $('#add-return-link').addClass('hidden')
+  $('#return-city-edit').removeClass('hidden')
+  $('#return-city-input').focus()
+
+  #Setup autocomplete
+  autocomplete = new (google.maps.places.Autocomplete)(document.getElementById('return-city-input'), types: [ 'geocode' ])
+  autocomplete.addListener 'place_changed', ->
+    place = autocomplete.getPlace()
+    addReturnCity(place)
 
 
 snapshotMinimized = true
