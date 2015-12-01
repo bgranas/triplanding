@@ -139,6 +139,10 @@ $(".trips.new").ready ->
     hideDepartureContent()
     initAutocompleteDeparture()
 
+  #Binds the 'X' next to the departure input to canceling the input
+  $('body').on 'click', '#cancel-departure-city', ->
+    showDepartureCityContent()
+
   #Binds 'remove' link in departure section of itinerary
   $('body').on 'click', '#remove-departure-city', ->
     removeDeparture()
@@ -147,17 +151,21 @@ $(".trips.new").ready ->
   $('body').on 'click', '#add-return-link', ->
     initAutocompleteReturn()
 
+  #Binds 'Change Return City' icon to show the autocomplete function
+  $('body').on 'click', '#change-return-city', ->
+    hideReturnCityContent()
+    initAutocompleteReturn()
 
-  #Binds 'remove' link in return section of itinerary
-  $('body').on 'click', '.remove-return-link-itinerary', ->
-    removeReturn()
+  #Binds 'remove' icon in return city section of itinerary
+  $('body').on 'click', '#remove-return-city', ->
+    removeReturnCity()
 
-  #Binds the 'X' next to the departure input to canceling the input
-  $('body').on 'click', '#cancel-departure', ->
-    showDepartureContent()
+  #Binds the 'X' next to the return input to canceling the input
+  $('body').on 'click', '#cancel-return-city', ->
+    showReturnCityContent()
 
   #Binds the checkmark next to the departure city autocomplete to display an error if location not selected
-  $('#confirm-departure').click ->
+  $('#confirm-departure-city').click ->
     setTimeout ->
       $('.lightbox-warning').remove()
       content = $('.lightbox-warning-template').clone().removeClass('hidden')
@@ -266,34 +274,36 @@ generateMarkerID = ->
   return currentMarkerID++
 
 #returns true if there is a departure location added
-isDeparture = ->
-  if $('#departure-city').hasClass('hidden')
+isDepartureCity = ->
+  if $('#departure-city').text().length == 0
     return false #no departure
   else
     return true #there is departure
 
 #returns true if there is a return location added
-isReturn = ->
-  if $('#return-city').hasClass('hidden')
-    return false #no return destination
+isReturnCity = ->
+  if $('#return-city').text().length == 0
+    return false #no return city
   else
-    return true #there is return destination
+    return true #there is return city
 
 #parent method to call when adding a departure city
 addDepartureCity = (place) ->
   if place != null
-    response = JSON.parse(saveDestinationToDatabase(place).responseText)
-    destinationCountry = response.country
-    destinationCountryCode = response.country_code
+    saveDestinationToDatabase(place)
 
-    addDepartureItinerary(place.name)
+    addDepartureCityItinerary(place.formatted_address)
     setUnsaved()
+
+    #if there is no return city, match to the destination
+    if not isReturnCity()
+      addReturnCity(place)
 
 #Adds the departure city to itinerary
 #PARAMS: name of the departure city
-addDepartureItinerary = (departure_name) ->
+addDepartureCityItinerary = (departure_name) ->
   $('#departure-city').text(departure_name)
-  showDepartureContent()
+  showDepartureCityContent()
   $('#remove-departure-city').removeClass('hidden')
   $('#change-departure-city').removeClass('hidden')
   $('#departure-row-transportation').removeClass('hidden')
@@ -301,21 +311,20 @@ addDepartureItinerary = (departure_name) ->
 #parent method to call when adding a departure city
 addReturnCity = (place) ->
   if place != null
-    response = JSON.parse(saveDestinationToDatabase(place).responseText)
-    destinationCountry = response.country
-    destinationCountryCode = response.country_code
+    saveDestinationToDatabase(place)
 
-    addReturnCityItinerary(place.name)
+    addReturnCityItinerary(place.formatted_address)
     setUnsaved()
 
 #Adds the departure city to itinerary
 #PARAMS: name of the departure city
 addReturnCityItinerary = (return_city_name) ->
-  $('#return-city').text(return_city_name).removeClass('hidden')
   $('#add-return-link').addClass('hidden')
   $('#return-city-edit').addClass('hidden')
-  $('#remove-return-city').removeClass('hidden')
-  $('#change-return-city').removeClass('hidden')
+
+  $('#return-city').text(return_city_name)
+  showReturnCityContent()
+
   $('#return-row-transportation').removeClass('hidden')
 
 #Parent function that should be called when a new destination is added to the map
@@ -590,16 +599,47 @@ hideDepartureContent = ->
 
 #Hides the departure edit section
 #Shows the departure city name, edit, and delete icons
-showDepartureContent = ->
+showDepartureCityContent = ->
   $('#departure-city-edit').addClass('hidden')
 
   #If there is a departure city chosen, show that
-  if $('#departure-city').text().length > 0
+  if isDepartureCity()
     $('#departure-city').removeClass('hidden')
     $('#remove-departure-city').removeClass('hidden')
     $('#change-departure-city').removeClass('hidden')
   else
     removeDepartureItinerary()
+
+#Remvove return parent function
+removeReturnCity = ->
+  removeReturnCityItinerary()
+  setUnsaved()
+
+#Hide the return city and icons, removes the transport row
+removeReturnCityItinerary = ->
+  hideReturnCityContent()
+  $('#add-return-link').removeClass('hidden')
+  $('#return-row-transportation').addClass('hidden')
+  $('#return-city').text('')
+
+#Hides the return city name, edit, and delete icons
+hideReturnCityContent = ->
+  $('#return-city').addClass('hidden')
+  $('#remove-return-city').addClass('hidden')
+  $('#change-return-city').addClass('hidden')
+
+#Hides the return edit section
+#Shows the return city name, edit, and delete icons
+showReturnCityContent = ->
+  $('#return-city-edit').addClass('hidden')
+
+  #If there is a return city chosen, show that
+  if isReturnCity()
+    $('#return-city').removeClass('hidden')
+    $('#remove-return-city').removeClass('hidden')
+    $('#change-return-city').removeClass('hidden')
+  else
+    removeReturnCityItinerary()
 
 #Remove destination parent function. Handles removing snapshot, marker, and itinerary
 removeDestination = (markerID, map) ->
