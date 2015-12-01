@@ -290,9 +290,10 @@ isReturnCity = ->
 #parent method to call when adding a departure city
 addDepartureCity = (place) ->
   if place != null
-    saveDestinationToDatabase(place)
+    response = JSON.parse(saveDestinationToDatabase(place).responseText)
+    destinationID = response.id
 
-    addDepartureCityItinerary(place.formatted_address)
+    addDepartureCityItinerary(place.formatted_address, destinationID)
     setUnsaved()
 
     #if there is no return city, match to the destination
@@ -301,8 +302,9 @@ addDepartureCity = (place) ->
 
 #Adds the departure city to itinerary
 #PARAMS: name of the departure city
-addDepartureCityItinerary = (departure_name) ->
+addDepartureCityItinerary = (departure_name, destination_id) ->
   $('#departure-city').text(departure_name)
+  $('#departure-city').attr('data-destination-id', destination_id)
   showDepartureCityContent()
   $('#remove-departure-city').removeClass('hidden')
   $('#change-departure-city').removeClass('hidden')
@@ -311,17 +313,18 @@ addDepartureCityItinerary = (departure_name) ->
 #parent method to call when adding a departure city
 addReturnCity = (place) ->
   if place != null
-    saveDestinationToDatabase(place)
+    response = JSON.parse(saveDestinationToDatabase(place).responseText)
+    destinationID = response.id
 
-    addReturnCityItinerary(place.formatted_address)
+    addReturnCityItinerary(place.formatted_address, destinationID)
     setUnsaved()
 
 #Adds the departure city to itinerary
 #PARAMS: name of the departure city
-addReturnCityItinerary = (return_city_name) ->
+addReturnCityItinerary = (return_city_name, destination_id) ->
   $('#add-return-link').addClass('hidden')
   $('#return-city-edit').addClass('hidden')
-
+  $('#return-city').attr('data-destination-id', destination_id)
   $('#return-city').text(return_city_name)
   showReturnCityContent()
 
@@ -537,6 +540,10 @@ getInfowindowContent = (markerID, markerIndex) ->
 #Save trip to database for the destination orders defined in the snapshot
 saveTrip = (trip_id, trip_title) ->
   destinationIDs = createDestinationArray()
+  departure_city_id = $('#departure-city').attr('data-destination-id')
+  console.log 'departure city: ' + departure_city_id
+  return_city_id = $('#return-city').attr('data-destination-id')
+  console.log 'return city: ' + return_city_id
   $.ajax '/trips/create',
     dataType: 'json'
     type: 'POST'
@@ -547,6 +554,8 @@ saveTrip = (trip_id, trip_title) ->
       cities: countCities()
       distance: measureDistnace('Kilometers')
       destinationIDs: destinationIDs
+      departure_city_id: departure_city_id
+      return_city_id: return_city_id
     success: (data) ->
       alert 'Successful'
       return
@@ -588,6 +597,7 @@ removeDeparture = ->
 removeDepartureItinerary = ->
   hideDepartureContent()
   $('#add-departure-link').removeClass('hidden')
+  $('#departure-city').attr('data-destination-id', '')
   $('#departure-row-transportation').addClass('hidden')
   $('#departure-city').text('')
 
@@ -619,6 +629,7 @@ removeReturnCity = ->
 removeReturnCityItinerary = ->
   hideReturnCityContent()
   $('#add-return-link').removeClass('hidden')
+  $('#return-city').attr('data-destination-id', '')
   $('#return-row-transportation').addClass('hidden')
   $('#return-city').text('')
 

@@ -103,12 +103,16 @@ class TripsController < ApplicationController
     distance = params[:distance]
 
     destinationIDs = params[:destinationIDs]
+    departure_city_id = params[:departure_city_id]
+    return_city_id = params[:return_city_id]
 
     @trip = Trip.find_by_id(trip_id) #trip ID should be created when user first goes to page
     @trip.title = trip_title #setting title
     @trip.countries = countries
     @trip.cities = cities
     @trip.distance = distance #in KM
+    @trip.departure_city_destination_id = departure_city_id
+    @trip.return_city_destination_id = return_city_id
     @trip.save
 
     #first, find all existing destination orders
