@@ -134,17 +134,45 @@ $(".trips.new").ready ->
   $('body').on 'click', '#add-departure-link', ->
     initAutocompleteDeparture()
 
+  #Binds 'Change Departure City' icon to show the autocomplete function
+  $('body').on 'click', '#change-departure-city', ->
+    hideDepartureContent()
+    initAutocompleteDeparture()
+
   #Binds 'remove' link in departure section of itinerary
-  $('body').on 'click', '.remove-departure-link-itinerary', ->
+  $('body').on 'click', '#remove-departure-city', ->
     removeDeparture()
 
   #Binds 'Add Return City' link to show the autocomplete box
   $('body').on 'click', '#add-return-link', ->
     initAutocompleteReturn()
 
+
   #Binds 'remove' link in return section of itinerary
   $('body').on 'click', '.remove-return-link-itinerary', ->
     removeReturn()
+
+  #Binds the 'X' next to the departure input to canceling the input
+  $('body').on 'click', '#cancel-departure', ->
+    showDepartureContent()
+
+  #Binds the checkmark next to the departure city autocomplete to display an error if location not selected
+  $('#confirm-departure').click ->
+    setTimeout ->
+      $('.lightbox-warning').remove()
+      content = $('.lightbox-warning-template').clone().removeClass('hidden')
+      content.removeClass('.lightbox-warning-template').addClass('lightbox-warning').addClass('inline-block')
+      content.insertAfter('#departure-city-edit')
+    ,
+
+  #Binds the checkmark next to the return city autocomplete to display an error if location not selected
+  $('#confirm-return-city').click ->
+    setTimeout ->
+      $('.lightbox-warning').remove()
+      content = $('.lightbox-warning-template').clone().removeClass('hidden')
+      content.removeClass('.lightbox-warning-template').addClass('lightbox-warning').addClass('inline-block')
+      content.insertAfter('#return-city-edit')
+    , 300
 
 
   $('#trip-snapshot-ul').sortable
@@ -264,11 +292,10 @@ addDepartureCity = (place) ->
 #Adds the departure city to itinerary
 #PARAMS: name of the departure city
 addDepartureItinerary = (departure_name) ->
-  $('#departure-city').text(departure_name).removeClass('hidden')
-  $('#add-departure-link').addClass('hidden')
-  $('#departure-city-edit').addClass('hidden')
-  $('#remove-departure').removeClass('hidden')
-  $('#change-departure').removeClass('hidden')
+  $('#departure-city').text(departure_name)
+  showDepartureContent()
+  $('#remove-departure-city').removeClass('hidden')
+  $('#change-departure-city').removeClass('hidden')
   $('#departure-row-transportation').removeClass('hidden')
 
 #parent method to call when adding a departure city
@@ -287,8 +314,8 @@ addReturnCityItinerary = (return_city_name) ->
   $('#return-city').text(return_city_name).removeClass('hidden')
   $('#add-return-link').addClass('hidden')
   $('#return-city-edit').addClass('hidden')
-  $('#remove-return').removeClass('hidden')
-  $('#change-return').removeClass('hidden')
+  $('#remove-return-city').removeClass('hidden')
+  $('#change-return-city').removeClass('hidden')
   $('#return-row-transportation').removeClass('hidden')
 
 #Parent function that should be called when a new destination is added to the map
@@ -492,12 +519,6 @@ getInfowindowContent = (markerID, markerIndex) ->
   iw = $('#infowindow-template').clone(true).removeClass('hidden').removeAttr('id')
   iw.find('h5').text(markers[markerIndex].title) #infowindow header
   iw.find('.infowindow-content').attr('data-marker-id', markerID)
-
-  if markers[markerIndex].type == 'departure'
-    iw.find('.info-date span').text('Add Departure Date')
-    iw.find('.info-accommodation').addClass('hidden')
-    iw.find('.remove-location').addClass('remove-departure-link').removeClass('remove-location')
-
   return  iw.html()
 
 ### ***********************************###
@@ -554,13 +575,31 @@ removeDeparture = ->
   removeDepartureItinerary()
   setUnsaved()
 
+#Hide the departure city and icons, removes the transport row
 removeDepartureItinerary = ->
-  $('#departure-city-input').val('')
-  $('#departure-city').addClass('hidden')
+  hideDepartureContent()
   $('#add-departure-link').removeClass('hidden')
-  $('#remove-departure').addClass('hidden')
-  $('#change-departure').addClass('hidden')
   $('#departure-row-transportation').addClass('hidden')
+  $('#departure-city').text('')
+
+#Hides the departure city name, edit, and delete icons
+hideDepartureContent = ->
+  $('#departure-city').addClass('hidden')
+  $('#remove-departure-city').addClass('hidden')
+  $('#change-departure-city').addClass('hidden')
+
+#Hides the departure edit section
+#Shows the departure city name, edit, and delete icons
+showDepartureContent = ->
+  $('#departure-city-edit').addClass('hidden')
+
+  #If there is a departure city chosen, show that
+  if $('#departure-city').text().length > 0
+    $('#departure-city').removeClass('hidden')
+    $('#remove-departure-city').removeClass('hidden')
+    $('#change-departure-city').removeClass('hidden')
+  else
+    removeDepartureItinerary()
 
 #Remove destination parent function. Handles removing snapshot, marker, and itinerary
 removeDestination = (markerID, map) ->
@@ -720,7 +759,6 @@ initSearch = ->
   autocomplete = new (google.maps.places.Autocomplete)(document.getElementById('location-query'), types: [ 'geocode' ])
   autocomplete.bindTo('bounds', map)
   autocomplete.addListener 'place_changed', ->
-    $('#lightbox-warning-template').hide()
     place = autocomplete.getPlace()
 
     addDestination(place, map, insertIndex)
@@ -735,6 +773,7 @@ initSearch = ->
 #initializing autocomplete for departure
 initAutocompleteDeparture = ->
   #Unhide input fields
+  $('#departure-city-input').val('')
   $('#add-departure-link').addClass('hidden')
   $('#departure-city-edit').removeClass('hidden')
   $('#departure-city-input').focus()
@@ -742,12 +781,15 @@ initAutocompleteDeparture = ->
   #Setup autocomplete
   autocomplete = new (google.maps.places.Autocomplete)(document.getElementById('departure-city-input'), types: [ 'geocode' ])
   autocomplete.addListener 'place_changed', ->
+    #Hide any warnings
+    $('.lightbox-warning-template').addClass('hidden')
     place = autocomplete.getPlace()
     addDepartureCity(place)
 
 #initializing autocomplete for return city input
 initAutocompleteReturn = ->
   #Unhide input fields
+  $('#return-city-input').val('')
   $('#add-return-link').addClass('hidden')
   $('#return-city-edit').removeClass('hidden')
   $('#return-city-input').focus()
@@ -755,6 +797,7 @@ initAutocompleteReturn = ->
   #Setup autocomplete
   autocomplete = new (google.maps.places.Autocomplete)(document.getElementById('return-city-input'), types: [ 'geocode' ])
   autocomplete.addListener 'place_changed', ->
+    $('.lightbox-warning-template').addClass('hidden')
     place = autocomplete.getPlace()
     addReturnCity(place)
 

@@ -129,20 +129,19 @@
 
         <div class="col-sm-11 col-sm-offset-1">
           <div class="flag-text">
-            <h5 id="departure-city" class="hidden">CITY NAME</h5>
+            <h5 id="departure-city" class="hidden"></h5>
             <span class="link-text" id="add-departure-link">
              Departure City
             </span>
-            <div id="departure-city-edit" class="hidden">
+            <div id="departure-city-edit" class="hidden departure-return-wrapper">
               <input id="departure-city-input" placeholder="Departure city name"></input>
-              <i id="confirm-departure" class="fa fa-check" data-toggle="tooltip" data-placement="right" title="Confirm City"></i>
+              <i id="confirm-departure" class="fa fa-check" data-toggle="tooltip" data-placement="bottom" title="Confirm City"></i>
+              <i id="cancel-departure" class="fa fa-times" data-toggle="tooltip" data-placement="bottom" title="Cancel"></i>
             </div>
-            <a href="" id="change-departure" class="hidden">
-              <i class="fa fa-pencil" data-toggle="tooltip" data-placement="bottom" title="Change Departure City"></i>
-            </a>
-            <a href="#header" id="remove-departure" class="hidden remove-departure-link-itinerary">
-              <i class="fa fa-trash" data-toggle="tooltip" data-placement="bottom" title="Remove Departure City"></i>
-            </a>
+              <i id="change-departure-city" class="fa fa-pencil hidden link-text" data-toggle="tooltip"
+                 data-placement="bottom" title="Change Departure City"></i>
+              <i id="remove-departure-city" class="fa fa-trash hidden link-text" data-toggle="tooltip"
+                 data-placement="bottom" title="Remove Departure City"></i>
           </div>
         </div>
       </div>
@@ -199,18 +198,17 @@
         <div class="col-sm-11 col-sm-offset-1">
           <div class="flag-text table-parent">
             <div class="valign-bottom-child">
-              <h5 id="return-city" class="hidden">CITY NAME</h5>
+              <h5 id="return-city" class="hidden"></h5>
               <span class="link-text" id="add-return-link">
                Return City
               </span>
-              <div id="return-city-edit" class="hidden">
+              <div id="return-city-edit" class="hidden departure-return-wrapper">
                 <input id="return-city-input" placeholder="Return city name"></input>
                 <i id="confirm-return-city" class="fa fa-check" data-toggle="tooltip" data-placement="right" title="Confirm City"></i>
               </div>
-              <a href="" id="change-return" class="hidden">
-                <i class="fa fa-pencil" data-toggle="tooltip" data-placement="bottom" title="Change Return City"></i>
-              </a>
-              <a href="" id="remove-return" class="hidden">
+              <i id="change-return-city" class="fa fa-pencil hidden link-text"
+                 data-toggle="tooltip" data-placement="bottom" title="Change Return City"></i>
+              <a href="" id="remove-return-city" class="hidden">
                 <i class="fa fa-trash" data-toggle="tooltip" data-placement="bottom" title="Remove Return City"></i>
               </a>
             </div>
@@ -264,6 +262,7 @@
     Please select a destination from the dropdown.
   </div>
 </div>
+
 
 <!-- ========= BEGIN DESTINATION ROW ============= -->
 <li id="destination-row-template" class="row destination-row hidden" data-marker-id="">
