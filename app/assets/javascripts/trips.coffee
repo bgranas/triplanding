@@ -549,8 +549,9 @@ saveTrip = (trip_id, trip_title) ->
   departure_city_id = $('#departure-city').attr('data-destination-id')
   return_city_id = $('#return-city').attr('data-destination-id')
   user_id = getCookie('current_user_id')
-  if user_id #user is logged in
-    $.ajax '/trips/create',
+
+  #saves the trip regardless if there is user.
+  $.ajax '/trips/create',
       dataType: 'json'
       type: 'POST'
       data:
@@ -564,14 +565,16 @@ saveTrip = (trip_id, trip_title) ->
         return_city_id: return_city_id
         user_id: user_id
       success: (data) ->
-        setSaved()
+        if user_id
+          setSaved()
         return
       failure: ->
         return
-  else #user is not logged in
+
+  #if there is no user, sets a cookie to associate user to trip on login/register
+  if not user_id #user not logged in
     setCookie('pending_save_trip_id', trip_id, 10)
     $.colorbox {width:"380px", opacity: .5, href:"/blank/save_trip_sign_up_or_login_helper"}
-    #lightbox prompt
     #after login, redirect to trips/show
 
 #sets saved status to unsaved

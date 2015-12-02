@@ -125,7 +125,7 @@ class TripsController < ApplicationController
 
       #associate this trip to the user
       user_id = params[:user_id].to_i
-      createUserTrip(user_id, trip_id)
+      UserTrip.createUserTrip(user_id, trip_id)
 
       render :json => {status: :ok}
     else
@@ -182,19 +182,7 @@ class TripsController < ApplicationController
 
 private
 
-  #if it doesn't exist, creates a usertrip object, associating the user with the trip
-  #this trip will be set to 'created by user'
-  def createUserTrip(user_id, trip_id)
-    ut = UserTrip.find_by_user_id_and_trip_id(user_id, trip_id)
 
-      if ut.nil? #create user trip if its not already associated
-        ut = UserTrip.new
-        ut.user_id = user_id
-        ut.trip_id = trip_id
-        ut.created_by_user = true
-        ut.save
-      end
-  end
 
   #creates Destination order objects from an array of destination_ids
   def createDestinationOrders(destination_ids, trip_id)
