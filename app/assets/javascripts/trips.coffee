@@ -572,8 +572,10 @@ saveTrip = (trip_id, trip_title) ->
     #put this in success function
     setSaved()
   else #user is not logged in
-    #store current trip ID as cookie
-    #redirect to login/signup page
+    alert 'temp: login/signup before saving'
+    setCookie('pending_save_trip_id', trip_id, 10)
+    $.colorbox {width:"80%", href:"/blank/save_trip_sign_up_or_login_helper"}
+    #lightbox prompt
     #after login, redirect to trips/show
 
 #sets saved status to unsaved

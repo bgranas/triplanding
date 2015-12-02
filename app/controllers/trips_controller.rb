@@ -102,34 +102,32 @@ class TripsController < ApplicationController
     cities = params[:cities]
     distance = params[:distance]
 
-    destinationIDs = params[:destinationIDs]
+    destination_ids = params[:destinationIDs]
     departure_city_id = params[:departure_city_id]
     return_city_id = params[:return_city_id]
 
-    @trip = Trip.find_by_id(trip_id) #trip ID should be created when user first goes to page
-    @trip.title = trip_title #setting title
-    @trip.countries = countries
-    @trip.cities = cities
-    @trip.distance = distance #in KM
-    @trip.departure_city_destination_id = departure_city_id
-    @trip.return_city_destination_id = return_city_id
-    @trip.save
+    trip = Trip.find_by_id(trip_id) #trip ID should be created when user first goes to page
+    trip.title = trip_title #setting title
+    trip.countries = countries
+    trip.cities = cities
+    trip.distance = distance #in KM
+    trip.departure_city_destination_id = departure_city_id
+    trip.return_city_destination_id = return_city_id
+    trip.save
 
-    #first, delete all existing destination orders
-    DestinationOrder.where(trip_id: trip_id).delete_all
-    #next, create destination orders and associate them with my trip
-    createDestinationOrders(destinationIDs, trip_id)
+    if trip.persisted?
+      #first, delete all existing destination orders
+      #then, create destination orders and associate them with my trip
+      DestinationOrder.where(trip_id: trip_id).delete_all
+      createDestinationOrders(destination_ids, trip_id)
 
-    #last, associate this trip to the user
-    user_id = params[:user_id].to_i
-    ut = UserTrip.find_by_user_id_and_trip_id(user_id, trip_id)
+      #associate this trip to the user
+      user_id = params[:user_id].to_i
+      createUserTrip(user_id, trip_id)
 
-    if ut.nil? #create user trip if its not already associated
-      ut = UserTrip.new
-      ut.user_id = user_id
-      ut.trip_id = trip_id
-      ut.created_by_user = true
-      ut.save
+      render :json => {status: :ok}
+    else
+      render :status => '400'
     end
 
   end
@@ -182,10 +180,24 @@ class TripsController < ApplicationController
 
 private
 
-  #creates Destination order objects from an array of destinationIDs
-  def createDestinationOrders(destinationIDs, trip_id)
+  #if it doesn't exist, creates a usertrip object, associating the user with the trip
+  #this trip will be set to 'created by user'
+  def createUserTrip(user_id, trip_id)
+    ut = UserTrip.find_by_user_id_and_trip_id(user_id, trip_id)
+
+      if ut.nil? #create user trip if its not already associated
+        ut = UserTrip.new
+        ut.user_id = user_id
+        ut.trip_id = trip_id
+        ut.created_by_user = true
+        ut.save
+      end
+  end
+
+  #creates Destination order objects from an array of destination_ids
+  def createDestinationOrders(destination_ids, trip_id)
     order_authority = 100
-    destinationIDs.each do |destID|
+    destination_ids.each do |destID|
       DestinationOrder.create(destination_id: destID, trip_id: trip_id, order_authority: order_authority)
       order_authority = order_authority + 100
     end

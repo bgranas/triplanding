@@ -1,0 +1,17 @@
+<h2>Create an Account to Save Your Trip</h2>
+
+<div class="container-fluid">
+  <div class="row">
+    <div id="auth-body-left" class="col-sm-6">
+      <%= render partial: 'shared/login' %>
+      <div id="reset-div">
+        <h5>Forgot your password?</h5>
+        <%= link_to 'Reset it here', new_password_path(:user) %>
+      </div>
+    </div>
+    <div id="auth-body-right" class="col-sm-6 border-left">
+      <%= render partial: 'shared/sign_up' %>
+    </div>
+  </div>
+</div>
+

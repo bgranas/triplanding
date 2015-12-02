@@ -66,6 +66,12 @@ $ ->
       $(this).find('.dropdown-menu').hide()
     return
 
+#sets a cookie with name 'cname', value 'cvalue', to expire in 'exdays'
+@setCookie = (cname, cvalue, exdays) ->
+  d = new Date
+  d.setTime d.getTime() + exdays * 24 * 60 * 60 * 1000
+  expires = 'expires=' + d.toUTCString()
+  document.cookie = cname + '=' + cvalue + '; ' + expires
 
 #returns the value of a cookie with cname
 #if cname is not found, returns ""
