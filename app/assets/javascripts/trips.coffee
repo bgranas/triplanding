@@ -33,12 +33,17 @@ $(".trips.new").ready ->
     $('#trip-title-confirmed').addClass('hidden')
     $('#trip-title-edit').removeClass('hidden')
 
+
   #Bind 'Confirm Title' icon to action
   $('body').on 'click', '#confirm-title', ->
     title = $('#trip-title-input').val()
-    $('#trip-title').text(title)
-    $('#trip-title-confirmed').removeClass('hidden')
-    $('#trip-title-edit').addClass('hidden')
+    if title.length > 0 #there is a title
+      $('#trip-title').text(title)
+      $('#trip-title-confirmed').removeClass('hidden')
+      $('#trip-title-edit').addClass('hidden')
+    else #title is blank
+      $('#trip-title-input').attr('placeholder', 'Title cannot be blank!')
+      $('#trip-title-input').focus()
 
   ### *********** SNAPSHOT BINDINGS **************###
 

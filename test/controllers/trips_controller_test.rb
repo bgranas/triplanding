@@ -26,4 +26,6 @@ class TripsControllerTest < ActionController::TestCase
     assert_response :success
   end
 
+  #test saving blank title
+
 end
