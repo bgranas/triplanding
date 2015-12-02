@@ -126,13 +126,16 @@
     color:#00F71F;
   }
 
-	#switch-trips-button{
-		padding-right: 8px;
-	}
-
   #save-trip-lightbox h3{
     margin-top:10px;
     margin-bottom:10px;
+  }
+
+  #delete-trip-lightbox{
+    text-align: center;
+    min-width: 400px;
+    padding-top:15px;
+    padding-bottom:15px;
   }
 
 	#map-controls input{

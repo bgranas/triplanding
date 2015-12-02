@@ -45,7 +45,9 @@
         <!-- <i data-toggle="tooltip" data-placement="bottom" title="More Actions" class="fa fa-ellipsis-h fa-lg"></i> -->
         <i data-toggle="tooltip" data-placement="bottom" title="Switch Trips" class="fa fa-map-o fa-lg"></i>
         <i data-toggle="tooltip" data-placement="bottom" title="Duplicate Trip" class="fa fa-files-o fa-lg"></i>
-        <i data-toggle="tooltip" data-placement="bottom" title="Delete Trip" class="fa fa-trash-o fa-lg"></i>
+        <a href="<%= delete_trip_confirmation_lightbox_path %>" data-colorbox="true" class="no-style-link">
+          <i data-toggle="tooltip" data-placement="bottom" title="Delete Trip" class="fa fa-trash-o fa-lg"></i>
+        </a>
         <span class="vertical-sep"></span>
         <button type="button" id="save-trip" class="btn btn-primary btn-xs">
           <span>Save</span>
