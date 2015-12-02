@@ -546,30 +546,35 @@ getInfowindowContent = (markerID, markerIndex) ->
 saveTrip = (trip_id, trip_title) ->
   destinationIDs = createDestinationArray()
   departure_city_id = $('#departure-city').attr('data-destination-id')
-  console.log 'departure city: ' + departure_city_id
   return_city_id = $('#return-city').attr('data-destination-id')
-  console.log 'return city: ' + return_city_id
-  $.ajax '/trips/create',
-    dataType: 'json'
-    type: 'POST'
-    data:
-      trip_title: trip_title
-      trip_id: trip_id
-      countries: countUniqueCountries()
-      cities: countCities()
-      distance: measureDistnace('Kilometers')
-      destinationIDs: destinationIDs
-      departure_city_id: departure_city_id
-      return_city_id: return_city_id
-    success: (data) ->
-      alert 'Successful'
-      return
-    failure: ->
-      alert 'Unsuccessful'
-      return
+  user_id = getCookie('current_user_id')
 
-  #put this in success function
-  setSaved()
+  if user_id #user is logged in
+    $.ajax '/trips/create',
+      dataType: 'json'
+      type: 'POST'
+      data:
+        trip_title: trip_title
+        trip_id: trip_id
+        countries: countUniqueCountries()
+        cities: countCities()
+        distance: measureDistnace('Kilometers')
+        destinationIDs: destinationIDs
+        departure_city_id: departure_city_id
+        return_city_id: return_city_id
+        user_id: user_id
+      success: (data) ->
+        alert 'Successful'
+        return
+      failure: ->
+        alert 'Unsuccessful'
+        return
+    #put this in success function
+    setSaved()
+  else #user is not logged in
+    #store current trip ID as cookie
+    #redirect to login/signup page
+    #after login, redirect to trips/show
 
 #sets saved status to unsaved
 setUnsaved = ->

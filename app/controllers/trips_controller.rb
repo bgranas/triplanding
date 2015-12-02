@@ -115,10 +115,22 @@ class TripsController < ApplicationController
     @trip.return_city_destination_id = return_city_id
     @trip.save
 
-    #first, find all existing destination orders
+    #first, delete all existing destination orders
     DestinationOrder.where(trip_id: trip_id).delete_all
     #next, create destination orders and associate them with my trip
     createDestinationOrders(destinationIDs, trip_id)
+
+    #last, associate this trip to the user
+    user_id = params[:user_id].to_i
+    ut = UserTrip.find_by_user_id_and_trip_id(user_id, trip_id)
+
+    if ut.nil? #create user trip if its not already associated
+      ut = UserTrip.new
+      ut.user_id = user_id
+      ut.trip_id = trip_id
+      ut.created_by_user = true
+      ut.save
+    end
 
   end
 

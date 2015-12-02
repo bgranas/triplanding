@@ -27,5 +27,7 @@ class TripsControllerTest < ActionController::TestCase
   end
 
   #test saving blank title
+  #test saving without logging in => redirect to login page
+  #test saving being logged in associates trip to account
 
 end

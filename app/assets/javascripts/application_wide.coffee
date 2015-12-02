@@ -66,3 +66,18 @@ $ ->
       $(this).find('.dropdown-menu').hide()
     return
 
+
+#returns the value of a cookie with cname
+#if cname is not found, returns ""
+@getCookie = (cname) ->
+  name = cname + '='
+  ca = document.cookie.split(';')
+  i = 0
+  while i < ca.length
+    c = ca[i]
+    while c.charAt(0) == ' '
+      c = c.substring(1)
+    if c.indexOf(name) == 0
+      return c.substring(name.length, c.length)
+    i++
+  return ''

@@ -250,6 +250,15 @@ Devise.setup do |config|
 
   config.omniauth :instagram, 'ef8035d3370342ae8d36d696944dc24f', '1fa9a1fda563482399c860901dc31e58'
 
+  #Warden callback methods to set cookies for login/logout
+  Warden::Manager.after_set_user do |user,auth,opts|
+    auth.cookies[:current_user_id] = user.id
+  end
+
+  Warden::Manager.before_logout do |user,auth,opts|
+    auth.cookies.delete :current_user_id
+  end
+
   # ==> Warden configuration
   # If you want to use other strategies, that are not supported by Devise, or
   # change the failure app, you can configure them inside the config.warden block.
