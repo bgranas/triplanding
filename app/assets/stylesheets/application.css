@@ -122,6 +122,11 @@ i.fa{ /* Font awesome icons */
   padding:0px;
 }
 
+  .no-horizontal-padding{
+    padding-left:0px;
+    padding-right:0px;
+  }
+
   .no-padding-left{
     padding-left:0px;
   }

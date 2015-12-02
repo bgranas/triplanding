@@ -253,10 +253,15 @@ Devise.setup do |config|
   #Warden callback methods to set cookies for login/logout
   Warden::Manager.after_set_user do |user,auth,opts|
     auth.cookies[:current_user_id] = user.id
+    if auth.cookies[:pending_save_trip_id]
+      puts '************THERE IS A SAVE TRIP ID: ' + auth.cookies[:pending_save_trip_id]
+    end
   end
 
   Warden::Manager.before_logout do |user,auth,opts|
+    puts '============= LOGGING OUT MUTHAFUCKA'
     auth.cookies.delete :current_user_id
+    auth.cookies.delete :pending_save_trip_id
   end
 
   # ==> Warden configuration

@@ -219,28 +219,29 @@ $(".trips.new").ready ->
 
   ### *********** LIGHTBOX BINDINGS **************###
   $(document).bind 'cbox_complete', ->
-    initSearch() #calling initSearch because initial call didn't bind to lightbox input
-    $('.add-destination-input').focus()
+    if isAddDestinationLightbox() #if it is the add destination lightbox
+      initSearch() #calling initSearch because initial call didn't bind to lightbox input
+      $('.add-destination-input').focus()
 
-    # PRE: place should be defined from the autocomplete function
-    # PRE: map should be initialized
-    # Binds autocomplete and 'Add Destination' button
-    $('#add-destination-submit').click ->
-      if $('.add-destination-input').val() == ''
-        $('.lightbox-warning').remove()
-        content = $('.lightbox-warning-template').clone().removeClass('hidden')
-        content.removeClass('.lightbox-warning-template').addClass('lightbox-warning')
-        content.find('#lightbox-warning-content').html('Please enter a destination.')
-        content.insertBefore('#add-destination-lightbox-wrapper')
-        $.colorbox.resize()
-      else
-        setTimeout ->
+      # PRE: place should be defined from the autocomplete function
+      # PRE: map should be initialized
+      # Binds autocomplete and 'Add Destination' button
+      $('#add-destination-submit').click ->
+        if $('.add-destination-input').val() == ''
           $('.lightbox-warning').remove()
           content = $('.lightbox-warning-template').clone().removeClass('hidden')
           content.removeClass('.lightbox-warning-template').addClass('lightbox-warning')
+          content.find('#lightbox-warning-content').html('Please enter a destination.')
           content.insertBefore('#add-destination-lightbox-wrapper')
           $.colorbox.resize()
-        , 300
+        else
+          setTimeout ->
+            $('.lightbox-warning').remove()
+            content = $('.lightbox-warning-template').clone().removeClass('hidden')
+            content.removeClass('.lightbox-warning-template').addClass('lightbox-warning')
+            content.insertBefore('#add-destination-lightbox-wrapper')
+            $.colorbox.resize()
+          , 300
 
 
 #HACK - should simulate click on page load
@@ -548,7 +549,6 @@ saveTrip = (trip_id, trip_title) ->
   departure_city_id = $('#departure-city').attr('data-destination-id')
   return_city_id = $('#return-city').attr('data-destination-id')
   user_id = getCookie('current_user_id')
-
   if user_id #user is logged in
     $.ajax '/trips/create',
       dataType: 'json'
@@ -564,17 +564,13 @@ saveTrip = (trip_id, trip_title) ->
         return_city_id: return_city_id
         user_id: user_id
       success: (data) ->
-        alert 'Successful'
+        setSaved()
         return
       failure: ->
-        alert 'Unsuccessful'
         return
-    #put this in success function
-    setSaved()
   else #user is not logged in
-    alert 'temp: login/signup before saving'
     setCookie('pending_save_trip_id', trip_id, 10)
-    $.colorbox {width:"80%", href:"/blank/save_trip_sign_up_or_login_helper"}
+    $.colorbox {width:"380px", opacity: .5, href:"/blank/save_trip_sign_up_or_login_helper"}
     #lightbox prompt
     #after login, redirect to trips/show
 
@@ -735,6 +731,13 @@ findMarkerIndexByID = (markerID) ->
 ### ***********************************###
 ### ********* MISC FUNCTIONS **********###
 ### ***********************************###
+
+#returns true if visible lightbox is to add destination, else false
+isAddDestinationLightbox = ->
+  if document.getElementById('add-destination-lightbox-wrapper')
+    return true
+  else
+    return false
 
 #Calculates the trip's metrics (countries, cities, and KM)
 #PRE: polyline must equal the current polyline of the map

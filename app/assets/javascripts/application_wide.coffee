@@ -71,7 +71,7 @@ $ ->
   d = new Date
   d.setTime d.getTime() + exdays * 24 * 60 * 60 * 1000
   expires = 'expires=' + d.toUTCString()
-  document.cookie = cname + '=' + cvalue + '; ' + expires
+  document.cookie = cname + '=' + cvalue + '; path=/;' + expires
 
 #returns the value of a cookie with cname
 #if cname is not found, returns ""
