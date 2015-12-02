@@ -119,7 +119,9 @@ class TripsController < ApplicationController
       #first, delete all existing destination orders
       #then, create destination orders and associate them with my trip
       DestinationOrder.where(trip_id: trip_id).delete_all
-      createDestinationOrders(destination_ids, trip_id)
+      if not destination_ids.nil?
+        createDestinationOrders(destination_ids, trip_id)
+      end
 
       #associate this trip to the user
       user_id = params[:user_id].to_i
