@@ -640,7 +640,7 @@ favoriteTrip = (trip_id) ->
           user_id: user_id
           trip_id: trip_id
         success: (data) ->
-          alert 'Trip Favorited!'
+          $('#favorite-trip').removeClass('fa-star-o').addClass('fa-star').addClass('favorited')
         error: ->
           alert 'Trip favorite failed! Please contact site admin.'
   else #user not logged in
