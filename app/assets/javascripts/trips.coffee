@@ -423,7 +423,7 @@ saveDestinationToDatabase = (place) ->
       trip_id: tripID
     success: (data) ->
       return data
-    failure: ->
+    error: ->
       alert 'saveDestiantionToDatabase() Unsuccessful, please alert site admins'
       return
 
@@ -576,7 +576,7 @@ saveTrip = (trip_id, trip_title) ->
         if user_id
           setSaved()
         return
-      failure: ->
+      error: ->
         return
 
   #if there is no user, sets a cookie to associate user to trip on login/register
@@ -609,15 +609,34 @@ createDestinationArray = ->
 
 #calls trips/destroy in the trips controller for trip_Id
 deleteTrip = (trip_id) ->
+  user_id = getCookie('current_user_id')
   $.ajax '/trips/destroy',
       dataType: 'json'
       type: 'POST'
       data:
+        user_id: user_id
         trip_id: trip_id
       success: (data) ->
         window.location.href = '/trips/new'
-      failure: ->
+      error: ->
         alert 'Trip delete failed! Please contact site admin.'
+
+### ***********************************###
+### ********* FAVORITE A TRIP *********###
+### ***********************************###
+
+#calls trips/favorite in the trips controller for trip_Id
+favoriteTrip = (user_id, trip_id) ->
+  $.ajax '/trips/favorite',
+      dataType: 'json'
+      type: 'POST'
+      data:
+        user_id: user_id
+        trip_id: trip_id
+      success: (data) ->
+        alert 'Trip Favorited!'
+      error: ->
+        alert 'Trip favorite failed! Please contact site admin.'
 
 
 ### ***********************************###
@@ -955,7 +974,7 @@ passRouteToTransportation = (oLat, oLng, dLat, dLng) ->
       #Hiding individual segment results in transport results
       $('.transportation-segments').hide()
       showAllTransportPaths()
-    failure: ->
+    error: ->
       alert 'passDestinationToTransportation Unsuccessful, please alert site admins'
       return
 

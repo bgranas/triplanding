@@ -42,9 +42,20 @@ class TripsController < ApplicationController
   end
 
   def destroy
-    trip = Trip.find_by_id(params[:trip_id])
-    trip.destroy
-    render :json => {status: :ok}
+    user_id = params[:user_id].to_i
+    trip_id = params[:trip_id].to_i
+
+    ut = UserTrip.find_by_user_id_and_trip_id(user_id, trip_id)
+    ut2 = UserTrip.find_by_trip_id(trip_id) #nil if unsaved
+    if ut2.nil? or (ut and ut.created_by_user) #verify trip is unsaved, or the user created the trip
+      trip = Trip.find_by_id(trip_id)
+      #MAKE SURE user_id is the one that created it
+      trip.destroy
+      render :json => {status: :ok}
+    else #someone is hacking
+      render :json => {}, :status => 400
+     end
+
   end
 
   def edit
@@ -92,7 +103,21 @@ class TripsController < ApplicationController
 
       render :json => {status: :ok}
     else
-      render :status => '400'
+      render :json => {}, :status => 400
+    end
+
+  end
+
+  #favorites trip_id for user specified
+  def favorite
+
+    trip_id = params[:trip_id].to_i
+    user_id = params[:user_id].to_i
+    ut = UserTrip.favoriteTrip(user_id, trip_id)
+    if ut.persisted? #association worked
+      render :json => {status: :ok}
+    else #shit's fucked
+      render :json => {}, :status => 400
     end
 
   end

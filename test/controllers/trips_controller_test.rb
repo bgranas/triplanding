@@ -33,6 +33,8 @@ class TripsControllerTest < ActionController::TestCase
   #testing saving trip is associated to user account if they register or login after creating
   #test deleting a trip and clicking no on confirmation
   #test deleting a trip and clicking yes on confirmation
+  #favorite trip if logged in / not logged in
+  #try to delete trip user did not create
 
 
 end
