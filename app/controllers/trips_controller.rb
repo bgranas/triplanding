@@ -54,7 +54,7 @@ class TripsController < ApplicationController
       render :json => {status: :ok}
     else #someone is hacking
       render :json => {}, :status => 400
-     end
+    end
 
   end
 
@@ -110,7 +110,6 @@ class TripsController < ApplicationController
 
   #favorites trip_id for user specified
   def favorite
-
     trip_id = params[:trip_id].to_i
     user_id = params[:user_id].to_i
     ut = UserTrip.favoriteTrip(user_id, trip_id)

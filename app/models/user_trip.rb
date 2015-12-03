@@ -15,6 +15,9 @@ class UserTrip < ActiveRecord::Base
       ut.trip_id = trip_id
       ut.created_by_user = true
       ut.save
+    elsif ut and user_id !=0 and not ut.created_by_user #usertrip exists, but has only favoirted trip
+      ut.created_by_user = true
+      ut.save
     end
 
     return ut

@@ -52,6 +52,9 @@ $(".trips.new").ready ->
   $('body').on 'click', '#delete-trip-confirm', ->
     deleteTrip(tripID)
 
+  $('body').on 'click', '#favorite-trip', ->
+    favoriteTrip(tripID)
+
 
   ### *********** SNAPSHOT BINDINGS **************###
 
@@ -626,17 +629,23 @@ deleteTrip = (trip_id) ->
 ### ***********************************###
 
 #calls trips/favorite in the trips controller for trip_Id
-favoriteTrip = (user_id, trip_id) ->
-  $.ajax '/trips/favorite',
-      dataType: 'json'
-      type: 'POST'
-      data:
-        user_id: user_id
-        trip_id: trip_id
-      success: (data) ->
-        alert 'Trip Favorited!'
-      error: ->
-        alert 'Trip favorite failed! Please contact site admin.'
+#and the current logged in user
+favoriteTrip = (trip_id) ->
+  user_id = getCookie('current_user_id')
+  if user_id #logged in
+    $.ajax '/trips/favorite',
+        dataType: 'json'
+        type: 'POST'
+        data:
+          user_id: user_id
+          trip_id: trip_id
+        success: (data) ->
+          alert 'Trip Favorited!'
+        error: ->
+          alert 'Trip favorite failed! Please contact site admin.'
+  else #user not logged in
+    $.colorbox {width:"380px", opacity: .5, href:"/blank/sign_up_helper"}
+
 
 
 ### ***********************************###

@@ -34,6 +34,7 @@ class TripsControllerTest < ActionController::TestCase
   #test deleting a trip and clicking no on confirmation
   #test deleting a trip and clicking yes on confirmation
   #favorite trip if logged in / not logged in
+  #favrotie trip unsaved trip
   #try to delete trip user did not create
 
 
