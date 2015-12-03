@@ -53,7 +53,7 @@ $(".trips.new").ready ->
     deleteTrip(tripID)
 
   $('body').on 'click', '#favorite-trip', ->
-    favoriteTrip(tripID)
+    toggleFavoriteTrip(tripID)
 
 
   ### *********** SNAPSHOT BINDINGS **************###
@@ -628,19 +628,23 @@ deleteTrip = (trip_id) ->
 ### ********* FAVORITE A TRIP *********###
 ### ***********************************###
 
-#calls trips/favorite in the trips controller for trip_Id
+#calls trips/toggle_favorite in the trips controller for trip_Id
 #and the current logged in user
-favoriteTrip = (trip_id) ->
+toggleFavoriteTrip = (trip_id) ->
   user_id = getCookie('current_user_id')
   if user_id #logged in
-    $.ajax '/trips/favorite',
+    $.ajax '/trips/toggle_favorite',
         dataType: 'json'
         type: 'POST'
         data:
           user_id: user_id
           trip_id: trip_id
         success: (data) ->
-          $('#favorite-trip').removeClass('fa-star-o').addClass('fa-star').addClass('favorited')
+          console.log 'favorite: ' + data.favorited
+          if data.favorited #if user favorited
+            $('#favorite-trip').removeClass('fa-star-o').addClass('fa-star').addClass('favorited')
+          else #user unfavorited
+            $('#favorite-trip').addClass('fa-star-o').removeClass('fa-star').removeClass('favorited')
         error: ->
           alert 'Trip favorite failed! Please contact site admin.'
   else #user not logged in

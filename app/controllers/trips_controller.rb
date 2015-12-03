@@ -108,17 +108,18 @@ class TripsController < ApplicationController
 
   end
 
-  #favorites trip_id for user specified
-  def favorite
+  #if trip has already been favorited, unfavorite
+  #else favorite (may create new UserTrip object)
+  def toggle_favorite
     trip_id = params[:trip_id].to_i
     user_id = params[:user_id].to_i
-    ut = UserTrip.favoriteTrip(user_id, trip_id)
+
+    ut = UserTrip.toggle_favorite(user_id, trip_id)
     if ut.persisted? #association worked
-      render :json => {status: :ok}
+      render :json => {status: :ok, favorited: ut.favorited_by_user}
     else #shit's fucked
       render :json => {}, :status => 400
     end
-
   end
 
   def itinerary_test
