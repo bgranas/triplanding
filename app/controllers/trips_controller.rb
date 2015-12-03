@@ -9,7 +9,6 @@ class TripsController < ApplicationController
     @map_page = true
 
 
-
     # Static map API link builder
     @tripMapStaticSize = "300x300"
     @tripMapStatic = "https://www.google.com/maps/api/staticmap?size="+@tripMapStaticSize+"&scale=2&path=weight:5|Hanoi,Vietnam|Halong,Vietnam|Hue,Vietnam|DaLat,Vietnam|HoChiMinhCity,Vietnam&key=AIzaSyBbL1jb6SbG8RGQME134WvJeJbd6PJEFSw" # Google static map URL
@@ -42,7 +41,10 @@ class TripsController < ApplicationController
     @map_page = true
   end
 
-  def delete
+  def destroy
+    trip = Trip.find_by_id(params[:trip_id])
+    trip.destroy
+    render :json => {status: :ok}
   end
 
   def edit

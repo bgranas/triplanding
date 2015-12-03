@@ -45,6 +45,14 @@ $(".trips.new").ready ->
       $('#trip-title-input').attr('placeholder', 'Title cannot be blank!')
       $('#trip-title-input').focus()
 
+  #Binds 'Cancel' on delete trip confirmation to close lightbox
+  $('body').on 'click', '.close-lightbox', ->
+    $.colorbox.close()
+
+  $('body').on 'click', '#delete-trip-confirm', ->
+    deleteTrip(tripID)
+
+
   ### *********** SNAPSHOT BINDINGS **************###
 
   #Bind hover of snapshot-ul to show scroll arrows if overflowing
@@ -594,6 +602,23 @@ createDestinationArray = ->
   snapshots.each ->
     destinationIDs.push $(this).data('destination-id')
   return destinationIDs
+
+### ***********************************###
+### ********* DELETE A TRIP ***********###
+### ***********************************###
+
+#calls trips/destroy in the trips controller for trip_Id
+deleteTrip = (trip_id) ->
+  $.ajax '/trips/destroy',
+      dataType: 'json'
+      type: 'POST'
+      data:
+        trip_id: trip_id
+      success: (data) ->
+        window.location.href = '/trips/new'
+      failure: ->
+        alert 'Trip delete failed! Please contact site admin.'
+
 
 ### ***********************************###
 ### ***** REMOVE A DESTINATION ********###
