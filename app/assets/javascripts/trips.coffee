@@ -32,6 +32,7 @@ $(".trips.new").ready ->
   $('body').on 'click', '#edit-title', ->
     $('#trip-title-confirmed').addClass('hidden')
     $('#trip-title-edit').removeClass('hidden')
+    $('#trip-title-input').focus().select()
 
 
   #Bind 'Confirm Title' icon to action
