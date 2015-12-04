@@ -24,6 +24,25 @@
         <input id="trip-title-input" value="My Untitled Trip"></input>
         <i id="confirm-title" class="fa fa-check" data-toggle="tooltip" data-placement="right" title="Confirm Title"></i>
       </div>
+      <div id="trip-dates">
+        <p id="no-trip-dates" class="link-text">+ Add Dates</p>
+
+        <div id="edit-trip-dates" class="hidden">
+          <i class="fa fa-calendar-plus-o fa-fw in-form-icon"></i>
+          <%= text_field_tag :trip_start_date, nil, :class => 'date-picker', :placeholder => 'From' %>
+          <span> to </span>
+          <i class="fa fa-calendar-plus-o fa-fw in-form-icon"></i>
+          <%= text_field_tag :trip_end_date, nil, :class => 'date-picker', :placeholder => 'To' %>
+          <i id="confirm-trip-dates" class="fa fa-check" data-toggle="tooltip" data-placement="right" title="Confirm Dates"></i>
+        </div>
+
+        <div id="confirmed-trip-dates" class="hidden">
+            <span id="trip-start-date">START DATE</span>
+            <span>-</span>
+            <span id="trip-end-date">END DATE</span>
+            <i id="show-edit-trip-dates" class="fa fa-pencil" data-toggle="tooltip" data-placement="right" title="Edit Trip Dates"></i>
+        </div>
+      </div>
 
       <div id="trip-metrics">
         <span id="trip-metrics-cities">

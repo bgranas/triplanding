@@ -14,6 +14,7 @@
 //= require jquery.turbolinks
 //= require jquery_ujs
 //= require jquery-ui/sortable
+//= require jquery-ui/datepicker
 //= require jquery.countdown.js
 //= require colorbox-rails
 //= require jquery.readyselector

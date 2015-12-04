@@ -46,13 +46,46 @@ $(".trips.new").ready ->
       $('#trip-title-input').attr('placeholder', 'Title cannot be blank!')
       $('#trip-title-input').focus()
 
+  #Binds '+Add Dates' on map controls to show the datepickers
+  $('#no-trip-dates').click ->
+    $(this).addClass 'hidden'
+    $('#edit-trip-dates').removeClass('hidden')
+
+  #Binds date text fields to the jquery datepicker widget
+  $('#trip_start_date').ready ->
+    $(this).datepicker
+      autosize: true
+      onSelect: (date, input) ->
+        $('span#trip-start-date').html(date)
+
+  $('#trip_end_date').ready ->
+    $(this).datepicker
+      autosize: true
+      onSelect: (date, input) ->
+        $('span#trip-end-date').html(date)
+
+  #Binds 'checkmark' icon next to trip dates to set the trip dates
+  $('body').on 'click', '#confirm-trip-dates', ->
+    $('#edit-trip-dates').addClass('hidden')
+    $('#confirmed-trip-dates').removeClass('hidden')
+
+  #Binds 'edit' icon next to the confirmed trip dates to show the inputs again
+  $('body').on 'click', '#show-edit-trip-dates', ->
+    $('#edit-trip-dates').removeClass('hidden')
+    $('#confirmed-trip-dates').addClass('hidden')
+
+
+
+
   #Binds 'Cancel' on delete trip confirmation to close lightbox
   $('body').on 'click', '.close-lightbox', ->
     $.colorbox.close()
 
+  #Binds 'delete' on the delete trip confirmation popup to trigger trips/destory
   $('body').on 'click', '#delete-trip-confirm', ->
     deleteTrip(tripID)
 
+  #Binds favorite trip icon to the toggle trip function
   $('body').on 'click', '#favorite-trip', ->
     toggleFavoriteTrip(tripID)
 
