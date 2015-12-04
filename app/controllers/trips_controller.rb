@@ -72,9 +72,13 @@ class TripsController < ApplicationController
   def create
     trip_id = params[:trip_id].to_i
     trip_title = params[:trip_title]
+    start_date = params[:start_date]
+    end_date = params[:end_date]
+
     countries = params[:countries]
     cities = params[:cities]
     distance = params[:distance]
+    days = params[:days]
 
     destination_ids = params[:destinationIDs]
     departure_city_id = params[:departure_city_id]
@@ -85,6 +89,9 @@ class TripsController < ApplicationController
     trip.countries = countries
     trip.cities = cities
     trip.distance = distance #in KM
+    trip.days = days if days
+    trip.start_date = start_date if start_date
+    trip.end_date = end_date if end_date
     trip.departure_city_destination_id = departure_city_id
     trip.return_city_destination_id = return_city_id
     trip.save

@@ -29,6 +29,7 @@ class TripsControllerTest < ActionController::TestCase
   #test saving blank title
   #test saving without logging in => redirect to login page
   #test saving being logged in associates trip to account
+  #test saving with metrics
   #save trip without any destinations should succeed
   #testing saving trip is associated to user account if they register or login after creating
   #test deleting a trip and clicking no on confirmation

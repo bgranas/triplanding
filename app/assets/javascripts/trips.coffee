@@ -51,20 +51,26 @@ $(".trips.new").ready ->
     $(this).addClass 'hidden'
     $('#edit-trip-dates').removeClass('hidden')
 
+  #When dates are changed, make trip needs to be changed
+  $('#trip-dates .date-picker').change ->
+    setUnsaved()
+
   #Binds date text fields to the jquery datepicker widget
   $('#trip_start_date').ready ->
     $(this).datepicker
       autosize: true
       onSelect: (date, input) ->
-        $('span#trip-start-date').html(date)
         $('#trip_end_date').datepicker('option', 'minDate', date)
+        setUnsaved()
 
   $('#trip_end_date').ready ->
     $(this).datepicker
       autosize: true
       onSelect: (date, input) ->
-        $('span#trip-end-date').html(date)
         $('#trip_start_date').datepicker('option', 'maxDate', date)
+        setUnsaved()
+
+
 
   #Binds 'checkmark' icon next to trip dates to set the trip dates
   $('body').on 'click', '#confirm-trip-dates', ->
@@ -595,6 +601,8 @@ saveTrip = (trip_id, trip_title) ->
   departure_city_id = $('#departure-city').attr('data-destination-id')
   return_city_id = $('#return-city').attr('data-destination-id')
   user_id = getCookie('current_user_id')
+  start_date = $('#trip_start_date').val()
+  end_date = $('#trip_end_date').val()
 
   #saves the trip regardless if there is user.
   $.ajax '/trips/create',
@@ -606,6 +614,9 @@ saveTrip = (trip_id, trip_title) ->
         countries: countUniqueCountries()
         cities: countCities()
         distance: measureDistnace('Kilometers')
+        days: countTripDays()
+        start_date: start_date
+        end_date: end_date
         destinationIDs: destinationIDs
         departure_city_id: departure_city_id
         return_city_id: return_city_id
@@ -692,6 +703,11 @@ toggleFavoriteTrip = (trip_id) ->
 #parent function called when confirming trip dates
 confirmTripDates = ->
   if validateTripDates()
+    start_date = $('#trip_start_date').val()
+    end_date = $('#trip_end_date').val()
+
+    $('span#trip-start-date').html(start_date)
+    $('span#trip-end-date').html(end_date)
     $('#edit-trip-dates').addClass('hidden')
     $('#confirmed-trip-dates').removeClass('hidden')
     $('#trip-dates .date-picker').removeClass('has-error')
