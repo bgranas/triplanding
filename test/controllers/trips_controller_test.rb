@@ -36,6 +36,7 @@ class TripsControllerTest < ActionController::TestCase
   #favorite trip if logged in / not logged in
   #favrotie trip unsaved trip
   #try to delete trip user did not create
+  #add valid trip dates, #add trip date start after trip date end
 
 
 end

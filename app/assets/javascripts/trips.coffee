@@ -695,6 +695,7 @@ confirmTripDates = ->
     $('#edit-trip-dates').addClass('hidden')
     $('#confirmed-trip-dates').removeClass('hidden')
     $('#trip-dates .date-picker').removeClass('has-error')
+    calculateTripMetrics() #might need to add dates
 
 #returns true if all trip date validations pass
 #otherwise false and will display errors
@@ -710,8 +711,10 @@ validateTripDates = ->
     end_date.addClass('has-error')
     return false
 
+  d1 = new Date start_date.val()
+  d2 = new Date end_date.val()
   #2) check if start is after end
-  if start_date.val() > end_date.val()
+  if d1 > d2
     $('#trip-dates .date-picker').addClass('has-error')
     return false
 
@@ -871,10 +874,16 @@ calculateTripMetrics = ->
   distance = measureDistnace('kilometers')
   cities = countCities()
   countries = countUniqueCountries()
+  days = countTripDays()
 
   $('#trip-metrics-cities strong').text(cities)
   $('#trip-metrics-countries strong').text(countries)
   $('#trip-metrics-distance strong').text(distance)
+  if days #if dates are entered and there is more than one
+    $('#trip-metric-days-div').removeClass('hidden')
+    $('#trip-metrics-days strong').text(days)
+  else
+    $('#trip-metric-days-div').addClass('hidden')
 
   #fixing GRAMMERZ
   if cities == 1
@@ -886,6 +895,11 @@ calculateTripMetrics = ->
     $('#trip-metrics-countries span').text(' Country')
   else
     $('#trip-metrics-countries span').text(' Countries')
+
+  if days == 1
+     $('#trip-metrics-days span').text(' Day')
+  else
+     $('#trip-metrics-days span').text(' Days')
 
 
   $('#trip-metrics strong').digits() #format numbers with commas
@@ -913,6 +927,17 @@ countUniqueCountries = ->
   $('#itinerary-transportation-destination-ul .destination-row .itinerary-step-country').each ->
     uniqueCountries["'" + $(this).text() + "'"] = 1
   return Object.keys(uniqueCountries).length
+
+#RET: returns the number of days in the trip
+#if no trip dates have been entered, returns 0
+countTripDays = ->
+  start_date = new Date $('#trip_start_date').val()
+  end_date = new Date $('#trip_end_date').val()
+
+  #two dates gives you difference in miliseconds, so need to convert to days
+  return Math.abs((end_date-start_date)/86400000)
+
+
 
 #Shows the sidepopup
 showSidePopup = ->
