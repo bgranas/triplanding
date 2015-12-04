@@ -523,7 +523,12 @@ addDestinationItinerary = (place, markerID, country, country_code, insertIndex) 
   destinationRow.find('.date-picker').attr('id', 'destination-date-' + markerID)
   destinationRow.find('.date-picker').datepicker
     autosize: true
+    dateFormat: "M d, yy"
     onSelect: (date, input) ->
+      destination_date_wrapper = $('#' + input.id).parent().parent()
+      destination_date_wrapper.find('.destination-date').html(date)
+      destination_date_wrapper.find('.destination-date-wrapper').removeClass('hidden')
+      $('#' + input.id).parent().addClass('hidden')
       setUnsaved()
   #add flag icon later with country_code
   destinationRow.attr('data-marker-id', markerID)

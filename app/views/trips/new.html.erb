@@ -300,7 +300,10 @@
       <div class="add-destination-date-div hidden inline-block">
         <i class="fa fa-calendar-plus-o fa-fw in-form-icon"></i>
         <%= text_field_tag '', nil, :class => 'date-picker destination-date-picker', :placeholder => 'Arrival Date' %>
-        <span class="destination-date hidden">DATE</span>
+      </div>
+      <div class="destination-date-wrapper hidden inline-block">
+        <span>Arrive: </span><span class="destination-date">DATE</span>
+        <i class="fa fa-pencil edit-destination-date" data-toggle="tooltip" data-placement="below" title="Change Arrival"></i>
       </div>
       <a class="inline-block" href="#" style="margin-left:20px;">+ Add Accommodation</a>
     </div>
