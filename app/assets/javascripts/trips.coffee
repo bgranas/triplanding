@@ -57,17 +57,18 @@ $(".trips.new").ready ->
       autosize: true
       onSelect: (date, input) ->
         $('span#trip-start-date').html(date)
+        $('#trip_end_date').datepicker('option', 'minDate', date)
 
   $('#trip_end_date').ready ->
     $(this).datepicker
       autosize: true
       onSelect: (date, input) ->
         $('span#trip-end-date').html(date)
+        $('#trip_start_date').datepicker('option', 'maxDate', date)
 
   #Binds 'checkmark' icon next to trip dates to set the trip dates
   $('body').on 'click', '#confirm-trip-dates', ->
-    $('#edit-trip-dates').addClass('hidden')
-    $('#confirmed-trip-dates').removeClass('hidden')
+    confirmTripDates()
 
   #Binds 'edit' icon next to the confirmed trip dates to show the inputs again
   $('body').on 'click', '#show-edit-trip-dates', ->
@@ -684,6 +685,37 @@ toggleFavoriteTrip = (trip_id) ->
   else #user not logged in
     $.colorbox {width:"380px", opacity: .5, href:"/blank/sign_up_helper"}
 
+### ***********************************###
+### ****** ADDING DATES TO A TRIP *****###
+### ***********************************###
+
+#parent function called when confirming trip dates
+confirmTripDates = ->
+  if validateTripDates()
+    $('#edit-trip-dates').addClass('hidden')
+    $('#confirmed-trip-dates').removeClass('hidden')
+    $('#trip-dates .date-picker').removeClass('has-error')
+
+#returns true if all trip date validations pass
+#otherwise false and will display errors
+validateTripDates = ->
+  $('#trip-dates .date-picker').removeClass('has-error') #remove previous errors
+  start_date = $('#trip_start_date')
+  end_date = $('#trip_end_date')
+  #1) check if there is a value
+  if not start_date.val()
+    start_date.addClass('has-error')
+    return false
+  if not end_date.val()
+    end_date.addClass('has-error')
+    return false
+
+  #2) check if start is after end
+  if start_date.val() > end_date.val()
+    $('#trip-dates .date-picker').addClass('has-error')
+    return false
+
+  return true #no errors
 
 
 ### ***********************************###
