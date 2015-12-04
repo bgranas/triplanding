@@ -296,7 +296,12 @@
     <p class="itinerary-step-city inline-block">Dafeng</p>
     <p class="itinerary-step-country inline-block">China</p>
     <div>
-      <a class="inline-block" href="#">+ Add Dates</a>
+      <p class="link-text inline-block add-destination-date">+ Add Dates</p>
+      <div class="add-destination-date-div hidden inline-block">
+        <i class="fa fa-calendar-plus-o fa-fw in-form-icon"></i>
+        <%= text_field_tag '', nil, :class => 'date-picker destination-date-picker', :placeholder => 'Arrival Date' %>
+        <span class="destination-date hidden">DATE</span>
+      </div>
       <a class="inline-block" href="#" style="margin-left:20px;">+ Add Accommodation</a>
     </div>
   </div>

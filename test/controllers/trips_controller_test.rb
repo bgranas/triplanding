@@ -38,6 +38,8 @@ class TripsControllerTest < ActionController::TestCase
   #favrotie trip unsaved trip
   #try to delete trip user did not create
   #add valid trip dates, #add trip date start after trip date end
+  #add destination date
+  #add destination date that is before the previous destination
 
 
 end

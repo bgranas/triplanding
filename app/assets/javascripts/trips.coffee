@@ -251,6 +251,21 @@ $(".trips.new").ready ->
     stop: (event, ui) ->
       ui.item.toggleClass('snap-hidden')
 
+  $('body').on 'ready', '.destination-date-picker', ->
+    console.log 'destination-date-picker ready!'
+    $(this).datepicker
+      autosize: true
+      onSelect: (date, input) ->
+        console.log 'date: ' + date
+        console.log 'input.id ' + input.id
+        #$('#' + input.id).val(date)
+        #setUnsaved()
+
+  #Bind 'Add Date' in destination row to trigger datepicker popup
+  $('body').on 'click', '.add-destination-date', ->
+    $(this).addClass('hidden')
+    $(this).parent().find('.add-destination-date-div').removeClass('hidden')
+
 
   #Bind 'Add Transportation' in itinerary to trigger side popup
   $('body').on 'click', '.add-transportation', ->
@@ -505,6 +520,11 @@ addDestinationItinerary = (place, markerID, country, country_code, insertIndex) 
   destinationRow.find('.itinerary-step-city').text(place.name)
   destinationRow.find('.itinerary-step-country').text(country)
   destinationRow.find('.calendar-text').text(insertIndex + 1)
+  destinationRow.find('.date-picker').attr('id', 'destination-date-' + markerID)
+  destinationRow.find('.date-picker').datepicker
+    autosize: true
+    onSelect: (date, input) ->
+      setUnsaved()
   #add flag icon later with country_code
   destinationRow.attr('data-marker-id', markerID)
   destinationRow.attr('id', 'destination-location-' + markerID)
