@@ -31,7 +31,7 @@ class UsersController < ApplicationController
     trip_display_setup
 
     #To prevent username from displaying on trip list
-    @show_username = false;
+    #@show_username = false;
 
 	end
 
