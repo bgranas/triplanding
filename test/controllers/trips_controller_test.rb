@@ -40,6 +40,7 @@ class TripsControllerTest < ActionController::TestCase
   #add valid trip dates, #add trip date start after trip date end
   #add destination date
   #add destination date that is before the previous destination
+  #editing destination date
 
 
 end

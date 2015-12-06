@@ -81,6 +81,7 @@ class TripsController < ApplicationController
     days = params[:days]
 
     destination_ids = params[:destinationIDs]
+    destination_dates = params[:destinationDates]
     departure_city_id = params[:departure_city_id]
     return_city_id = params[:return_city_id]
 
@@ -101,7 +102,7 @@ class TripsController < ApplicationController
       #then, create destination orders and associate them with my trip
       DestinationOrder.where(trip_id: trip_id).delete_all
       if not destination_ids.nil?
-        createDestinationOrders(destination_ids, trip_id)
+        createDestinationOrders(destination_ids, destination_dates, trip_id)
       end
 
       #associate this trip to the user
@@ -180,11 +181,19 @@ private
 
 
   #creates Destination order objects from an array of destination_ids
-  def createDestinationOrders(destination_ids, trip_id)
+  def createDestinationOrders(destination_ids, destination_dates, trip_id)
     order_authority = 100
+    i=0
     destination_ids.each do |destID|
-      DestinationOrder.create(destination_id: destID, trip_id: trip_id, order_authority: order_authority)
+      arrival_date = destination_dates[i]
+      if arrival_date #there is an arrival date
+        DestinationOrder.create(destination_id: destID, trip_id: trip_id, arrival_date: arrival_date, order_authority: order_authority)
+      else
+        DestinationOrder.create(destination_id: destID, trip_id: trip_id, order_authority: order_authority)
+      end
+
       order_authority = order_authority + 100
+      i = i+1
     end
   end
 

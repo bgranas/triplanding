@@ -251,21 +251,14 @@ $(".trips.new").ready ->
     stop: (event, ui) ->
       ui.item.toggleClass('snap-hidden')
 
-  $('body').on 'ready', '.destination-date-picker', ->
-    console.log 'destination-date-picker ready!'
-    $(this).datepicker
-      autosize: true
-      onSelect: (date, input) ->
-        console.log 'date: ' + date
-        console.log 'input.id ' + input.id
-        #$('#' + input.id).val(date)
-        #setUnsaved()
-
   #Bind 'Add Date' in destination row to trigger datepicker popup
   $('body').on 'click', '.add-destination-date', ->
     $(this).addClass('hidden')
     $(this).parent().find('.add-destination-date-div').removeClass('hidden')
 
+  #Bind 'Edit Date' in destination row to trigger datepicker textbox
+  $('body').on 'click', '.edit-destination-date', ->
+    $(this).parent().addClass('hidden').parent().find('.add-destination-date-div').removeClass('hidden')
 
   #Bind 'Add Transportation' in itinerary to trigger side popup
   $('body').on 'click', '.add-transportation', ->
@@ -623,6 +616,7 @@ getInfowindowContent = (markerID, markerIndex) ->
 #Save trip to database for the destination orders defined in the snapshot
 saveTrip = (trip_id, trip_title) ->
   destinationIDs = createDestinationArray()
+  destinationDates = createDestinationDateArray()
   departure_city_id = $('#departure-city').attr('data-destination-id')
   return_city_id = $('#return-city').attr('data-destination-id')
   user_id = getCookie('current_user_id')
@@ -643,6 +637,7 @@ saveTrip = (trip_id, trip_title) ->
         start_date: start_date
         end_date: end_date
         destinationIDs: destinationIDs
+        destinationDates: destinationDates
         departure_city_id: departure_city_id
         return_city_id: return_city_id
         user_id: user_id
@@ -676,6 +671,17 @@ createDestinationArray = ->
   snapshots.each ->
     destinationIDs.push $(this).data('destination-id')
   return destinationIDs
+
+#returns an array of destination dates
+#if a destination row does not have a date, it will insert a blank into array for that space
+createDestinationDateArray = ->
+  dates = []
+  destinationDates = $('#itinerary-transportation-destination-ul .destination-date')
+  destinationDates.each ->
+    dates.push $(this).html()
+
+  return dates
+
 
 ### ***********************************###
 ### ********* DELETE A TRIP ***********###
