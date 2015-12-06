@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20151205185931) do
+ActiveRecord::Schema.define(version: 20151206220239) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -83,6 +83,8 @@ ActiveRecord::Schema.define(version: 20151205185931) do
     t.string   "ward"
     t.datetime "created_at",                                           null: false
     t.datetime "updated_at",                                           null: false
+    t.string   "region"
+    t.string   "sub_region"
   end
 
   add_index "destinations", ["google_place_id"], name: "index_destinations_on_google_place_id", using: :btree
