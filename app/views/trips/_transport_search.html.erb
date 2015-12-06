@@ -6,13 +6,14 @@
 		<div class="col-xs-12 transportation-routes">
 			<div class="row transportation-route-overview">
 				<div class="col-xs-9 transportation-route-detailbar" id="route-<%= index %>">
-					<div class="transportation-route-summarybar" style="width:<%= route['durationMajor'].to_f / @routeLongest.to_f * 100 * 0.9 %>%">
+					<div class="transportation-route-summarybar" style="width:<%= route['durationMajor'].to_f / @routeLongest.to_f * 100 * 0.85 %>%">
 						<% route['segments'].each do |segment| %>
 							<% if segment['isMajor'].to_s == "1" %>
 								<div class="route-segment-overview" data-segment-id="<%= i %>" style="width:<%= segment['duration'].to_f / route['durationMajor'].to_f * 100 - 1 %>%"><i class="fa fa-<%= segment['kindIcon'].to_s %> fa-lg"></i></div>
 								<% i = i + 1 %>
 							<% end %>
 						<% end %>
+
 					</div>
 					<span class="itinerary-route-duration"><%= route['durationText'] %></span>
 				</div>
@@ -20,13 +21,13 @@
 					<span class="itinerary-route-price"><%= route['indicativePrice']['currencySym'] %><%= route['indicativePrice']['price'] %></span>
 				</div>
 				<div class="col-xs-2">
-					<button type="button" class="btn-primary btn-xs">Add</button>
+					<button class="btn btn-primary btn-xs">Add</button>
 				</div>
 			</div>
 
 				<div class="row transportation-segments">
 					<% route['segments'].each do |segment| %>
-
+						<% if segment['isMajor'].to_s == "1" %>
 
 						<div class="transportation-segments-all">
 								<div class="col-xs-9">
@@ -36,11 +37,11 @@
 									<span class="itinerary-route-price">$<%= segment['indicativePrice']['price'] %></span>
 								</div>
 								<div class="col-xs-2 transport-book">
-									<span>Book</span>
+									<a href="#">Book</a>
 								</div>
 							</div>
 
-
+						<% end %>
 					<% end %>
 
 				</div>
