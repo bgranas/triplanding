@@ -1,17 +1,22 @@
 
 <h2>Edit <%= @user.name %></h2>
 
+<div class="container">
+	<div class="row">
+		<div class="col-xs-8 col-xs-offset-2">
+			<%= form_for(:user, :url => {:action => 'update', :id => @user.id}, html: {method: "update", autocomplete:false}) do |f| %>
+			    <% @user.errors.full_messages.each do |msg| %>
+			      <p><%= msg %></p>
+			    <% end %>
 
-<%= form_for(:user, :url => {:action => 'update', :id => @user.id}, html: {method: "update", autocomplete:false}) do |f| %>
-    <% @user.errors.full_messages.each do |msg| %>
-      <p><%= msg %></p>
-    <% end %>
 
+			  <%= render(:partial => "shared/edit_user_form", :locals => {:f => f}) %>
 
-  <%= render(:partial => "shared/edit_user_form", :locals => {:f => f}) %>
+			    <div class="form-buttons">
+			      <%= f.submit "Update" %>
+			    </div>
 
-    <div class="form-buttons">
-      <%= f.submit "Update" %>
-    </div>
-
-  <% end %>
+			  <% end %>
+		</div>
+	</div>
+</div>
