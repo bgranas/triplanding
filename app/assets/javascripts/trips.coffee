@@ -522,6 +522,7 @@ addDestinationItinerary = (place, markerID, country, country_code, insertIndex) 
       destination_date_wrapper.find('.destination-date').html(date)
       destination_date_wrapper.find('.destination-date-wrapper').removeClass('hidden')
       $('#' + input.id).parent().addClass('hidden')
+      validateDestinationDates(input.id, date)
       setUnsaved()
   #add flag icon later with country_code
   destinationRow.attr('data-marker-id', markerID)
@@ -766,6 +767,21 @@ validateTripDates = ->
     return false
 
   return true #no errors
+
+#sets the min / max dates of destinations to ensure correct chronological order
+#params: dateID is the ID of the input_field that was just changed, date is the new date
+validateDestinationDates = (dateID, date) ->
+  dateInput = $('#' + dateID)
+  dateInputs = $('#itinerary-transportation-destination-ul .destination-date-picker')
+  inputIndex = dateInputs.index(dateInput)
+  console.log 'inputIndex: ' + inputIndex
+  dateInputs.each (i, input) ->
+    if i < inputIndex
+      console.log 'i: ' + i + ', setting maxDate'
+      $('#' + input.id).datepicker('option', 'maxDate', date)
+    else if i > inputIndex
+      console.log 'i: ' + i + ', setting minDate'
+      $('#' + input.id).datepicker('option', 'minDate', date)
 
 
 ### ***********************************###
