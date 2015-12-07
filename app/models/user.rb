@@ -191,7 +191,10 @@ class User < ActiveRecord::Base
     #need to replace spaces with strings
     debug = false
 
-    if !self.name.nil? and self.profile_url.blank?
+    puts '*****GENERATE PROFILE URL called()' if debug
+
+    if !self.name.nil? and self.profile_url.blank? #no profile URL before
+
       temp_name = self.name.downcase.gsub(' ', '-').gsub('_', '-') #replacing spaces, underscores with dashes
       self.profile_url = temp_name #replacing spaces with dashes
       puts '************** profile_url: ' + self.profile_url if debug
@@ -209,8 +212,11 @@ class User < ActiveRecord::Base
         #self.valid? #checking if valid, will generate new self.errors
         i = i + 1
       end
-
+    elsif self.profile_url_changed? #updated profile URL
+      temp_name = self.profile_url.downcase.gsub(' ', '-').gsub('_', '-') #replacing spaces, underscores with dashes
+      self.profile_url = temp_name #replacing spaces with dashes
     end
+
   end
 
 protected
