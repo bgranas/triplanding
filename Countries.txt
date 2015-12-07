@@ -1,197 +1,197 @@
-Bangladesh	Asia	South Asia
-Bhutan	Asia	South Asia
-Brunei	Asia	Southeast Asia
-Cambodia	Asia	Southeast Asia
-China	Asia	Asia
-India	Asia	South Asia
-Indonesia	Asia	Southeast Asia
-Japan	Asia	Asia
-Kazakhstan	Asia	Asia
-North Korea	Asia	Asia
-South Korea	Asia	Asia
-Kyrgyzstan	Asia	Asia
-Laos	Asia	Southeast Asia
-Malaysia	Asia	Southeast Asia
-Maldives	Asia	South Asia
-Mongolia	Asia	Asia
-Myanmar	Asia	Southeast Asia
-Nepal	Asia	South Asia
-Philippines	Asia	Southeast Asia
-Singapore	Asia	Southeast Asia
-Sri Lanka	Asia	South Asia
-Taiwan	Asia	Asia
-Tajikistan	Asia	Asia
-Thailand	Asia	Southeast Asia
-Turkmenistan	Asia	Asia
-Uzbekistan	Asia	Asia
-Vietnam	Asia	Southeast Asia
-Afghanistan	Asia	Middle East and North Africa
-Algeria	Africa	Middle East and North Africa
-Azerbaijan	Asia	Middle East and North Africa
-Bahrain	Asia	Middle East and North Africa
-Egypt	Africa	Middle East and North Africa
-Iran	Asia	Middle East and North Africa
-Iraq	Asia	Middle East and North Africa
-Israel	Asia	Middle East and North Africa
-Jordan	Asia	Middle East and North Africa
-Kuwait	Asia	Middle East and North Africa
-Lebanon	Asia	Middle East and North Africa
-Libya	Africa	Middle East and North Africa
-Morocco	Africa	Middle East and North Africa
-Oman	Asia	Middle East and North Africa
-Pakistan	Asia	Middle East and North Africa
-Qatar	Asia	Middle East and North Africa
-Saudi Arabia	Asia	Middle East and North Africa
-Somalia	Africa	Middle East and North Africa
-Syria	Asia	Middle East and North Africa
-Tunisia	Africa	Middle East and North Africa
-Turkey	Europe	Middle East and North Africa
-United Arab Emirates	Asia	Middle East and North Africa
-Yemen	Asia	Middle East and North Africa
-Albania	Europe	Balkans
-Andorra	Europe	Europe
-Armenia	Europe	Europe
-Austria	Europe	Europe
-Belarus	Europe	Europe
-Belgium	Europe	Europe
-Bosnia and Herzegovina	Europe	Balkans
-Bulgaria	Europe	Balkans
-Croatia	Europe	Balkans
-Cyprus	Europe	Europe
-Czech Republic	Europe	Europe
-Denmark	Europe	Scandinavia
-Estonia	Europe	Baltics
-Finland	Europe	Scandinavia
-France	Europe	Europe
-Georgia	Europe	Europe
-Germany	Europe	Europe
-Greece	Europe	Europe
-Hungary	Europe	Europe
-Iceland	Europe	Europe
-Ireland	Europe	Europe
-Italy	Europe	Europe
-Kosovo	Europe	Balkans
-Latvia	Europe	Baltics
-Liechtenstein	Europe	Europe
-Lithuania	Europe	Baltics
-Luxembourg	Europe	Europe
-Macedonia	Europe	Balkans
-Malta	Europe	Europe
-Moldova	Europe	Europe
-Monaco	Europe	Europe
-Montenegro	Europe	Balkans
-Netherlands	Europe	Europe
-Norway	Europe	Scandinavia
-Poland	Europe	Europe
-Portugal	Europe	Europe
-Romania	Europe	Europe
-Russia	Europe	Europe
-San Marino	Europe	Europe
-Serbia	Europe	Balkans
-Slovakia	Europe	Europe
-Slovenia	Europe	Europe
-Spain	Europe	Europe
-Sweden	Europe	Scandinavia
-Switzerland	Europe	Europe
-Ukraine	Europe	Europe
-United Kingdom	Europe	Europe
-Vatican City	Europe	Europe
-Canada	North America	North America
-Greenland	North America	North America
-Mexico	North America	North America
-United States	North America	North America
-Antigua and Barbuda	Central America and the Caribbean	The Caribbean
-The Bahamas	Central America and the Caribbean	The Caribbean
-Barbados	Central America and the Caribbean	The Caribbean
-Belize	Central America and the Caribbean	Central America
-Costa Rica	Central America and the Caribbean	Central America
-Cuba	Central America and the Caribbean	The Caribbean
-Dominica	Central America and the Caribbean	The Caribbean
-Dominican Republic	Central America and the Caribbean	The Caribbean
-El Salvador	Central America and the Caribbean	Central America
-Grenada	Central America and the Caribbean	The Caribbean
-Guatemala	Central America and the Caribbean	Central America
-Haiti	Central America and the Caribbean	The Caribbean
-Honduras	Central America and the Caribbean	Central America
-Jamaica	Central America and the Caribbean	The Caribbean
-Nicaragua	Central America and the Caribbean	Central America
-Panama	Central America and the Caribbean	Central America
-Saint Kitts and Nevis	Central America and the Caribbean	The Caribbean
-Saint Lucia	Central America and the Caribbean	The Caribbean
-Saint Vincent and the Grenadines	Central America and the Caribbean	The Caribbean
-Trinidad and Tobago	Central America and the Caribbean	The Caribbean
-Argentina	South America	South America
-Bolivia	South America	South America
-Brazil	South America	South America
-Chile	South America	South America
-Colombia	South America	South America
-Ecuador	South America	South America
-Guyana	South America	South America
-Paraguay	South America	South America
-Peru	South America	South America
-Suriname	South America	South America
-Uruguay	South America	South America
-Venezuela	South America	South America
-Angola	Africa	Sub Saharan Africa
-Benin	Africa	Sub Saharan Africa
-Botswana	Africa	Sub Saharan Africa
-Burkina Faso	Africa	Sub Saharan Africa
-Burundi	Africa	Sub Saharan Africa
-Cameroon	Africa	Sub Saharan Africa
-Cape Verde	Africa	Sub Saharan Africa
-Central African Republic	Africa	Sub Saharan Africa
-Chad	Africa	Sub Saharan Africa
-Comoros	Africa	Sub Saharan Africa
-Republic of the Congo	Africa	Sub Saharan Africa
-Democratic Republic of the Congo	Africa	Sub Saharan Africa
-Cote d'Ivoire	Africa	Sub Saharan Africa
-Djibouti	Africa	Sub Saharan Africa
-Equatorial Guinea	Africa	Sub Saharan Africa
-Eritrea	Africa	Sub Saharan Africa
-Ethiopia	Africa	Sub Saharan Africa
-Gabon	Africa	Sub Saharan Africa
-The Gambia	Africa	Sub Saharan Africa
-Ghana	Africa	Sub Saharan Africa
-Guinea	Africa	Sub Saharan Africa
-Guinea-Bissau	Africa	Sub Saharan Africa
-Kenya	Africa	Sub Saharan Africa
-Lesotho	Africa	Sub Saharan Africa
-Liberia	Africa	Sub Saharan Africa
-Madagascar	Africa	Sub Saharan Africa
-Malawi	Africa	Sub Saharan Africa
-Mali	Africa	Sub Saharan Africa
-Mauritania	Africa	Sub Saharan Africa
-Mauritius	Africa	Sub Saharan Africa
-Mozambique	Africa	Sub Saharan Africa
-Namibia	Africa	Sub Saharan Africa
-Niger	Africa	Sub Saharan Africa
-Nigeria	Africa	Sub Saharan Africa
-Rwanda	Africa	Sub Saharan Africa
-Sao Tome and Principe	Africa	Sub Saharan Africa
-Senegal	Africa	Sub Saharan Africa
-Seychelles	Africa	Sub Saharan Africa
-Sierra Leone	Africa	Sub Saharan Africa
-South Africa	Africa	Sub Saharan Africa
-South Sudan	Africa	Sub Saharan Africa
-Sudan	Africa	Sub Saharan Africa
-Swaziland	Africa	Sub Saharan Africa
-Tanzania	Africa	Sub Saharan Africa
-Togo	Africa	Sub Saharan Africa
-Uganda	Africa	Sub Saharan Africa
-Zambia	Africa	Sub Saharan Africa
-Zimbabwe	Africa	Sub Saharan Africa
-Australia	Australia and Oceania	Australia
-East Timor	Australia and Oceania	Oceania
-Fiji	Australia and Oceania	Oceania
-Kiribati	Australia and Oceania	Oceania
-Marshall Islands	Australia and Oceania	Oceania
-Federated States of Micronesia	Australia and Oceania	Oceania
-Nauru	Australia and Oceania	Oceania
-New Zealand	Australia and Oceania	Oceania
-Palau	Australia and Oceania	Oceania
-Papua New Guinea	Australia and Oceania	Oceania
-Samoa	Australia and Oceania	Oceania
-Solomon Islands	Australia and Oceania	Oceania
-Tonga	Australia and Oceania	Oceania
-Tuvalu	Australia and Oceania	Oceania
-Vanuatu	Australia and Oceania	Oceania
+Bangladesh	BD	Asia	South Asia
+Bhutan	BT	Asia	South Asia
+Brunei	BN	Asia	Southeast Asia
+Cambodia	KH	Asia	Southeast Asia
+China	CN	Asia	Asia
+India	IN	Asia	South Asia
+Indonesia	ID	Asia	Southeast Asia
+Japan	JP	Asia	Asia
+Kazakhstan	KZ	Asia	Asia
+North Korea	KP	Asia	Asia
+South Korea	KR	Asia	Asia
+Kyrgyzstan	KG	Asia	Asia
+Laos	LA	Asia	Southeast Asia
+Malaysia	MY	Asia	Southeast Asia
+Maldives	MV	Asia	South Asia
+Mongolia	MN	Asia	Asia
+Myanmar	MM	Asia	Southeast Asia
+Nepal	NP	Asia	South Asia
+Philippines	PH	Asia	Southeast Asia
+Singapore	SG	Asia	Southeast Asia
+Sri Lanka	LK	Asia	South Asia
+Taiwan	TW	Asia	Asia
+Tajikistan	TJ	Asia	Asia
+Thailand	TH	Asia	Southeast Asia
+Turkmenistan	TM	Asia	Asia
+Uzbekistan	UZ	Asia	Asia
+Vietnam	VN	Asia	Southeast Asia
+Afghanistan	AF	Asia	Middle East and North Africa
+Algeria	DZ	Africa	Middle East and North Africa
+Azerbaijan	AZ	Asia	Middle East and North Africa
+Bahrain	BH	Asia	Middle East and North Africa
+Egypt	EG	Africa	Middle East and North Africa
+Iran	IR	Asia	Middle East and North Africa
+Iraq	IQ	Asia	Middle East and North Africa
+Israel	IL	Asia	Middle East and North Africa
+Jordan	JO	Asia	Middle East and North Africa
+Kuwait	KW	Asia	Middle East and North Africa
+Lebanon	LB	Asia	Middle East and North Africa
+Libya	LY	Africa	Middle East and North Africa
+Morocco	MA	Africa	Middle East and North Africa
+Oman	OM	Asia	Middle East and North Africa
+Pakistan	PK	Asia	Middle East and North Africa
+Qatar	QA	Asia	Middle East and North Africa
+Saudi Arabia	SA	Asia	Middle East and North Africa
+Somalia	SO	Africa	Middle East and North Africa
+Syria	SY	Asia	Middle East and North Africa
+Tunisia	TN	Africa	Middle East and North Africa
+Turkey	TR	Europe	Middle East and North Africa
+United Arab Emirates	AE	Asia	Middle East and North Africa
+Yemen	YE	Asia	Middle East and North Africa
+Albania	AL	Europe	Balkans
+Andorra	AD	Europe	Europe
+Armenia	AM	Europe	Europe
+Austria	AT	Europe	Europe
+Belarus	BY	Europe	Europe
+Belgium	BE	Europe	Europe
+Bosnia and Herzegovina	BA	Europe	Balkans
+Bulgaria	BG	Europe	Balkans
+Croatia	HR	Europe	Balkans
+Cyprus	CY	Europe	Europe
+Czech Republic	CZ	Europe	Europe
+Denmark	DK	Europe	Scandinavia
+Estonia	EE	Europe	Baltics
+Finland	FI	Europe	Scandinavia
+France	FR	Europe	Europe
+Georgia	GE	Europe	Europe
+Germany	DE	Europe	Europe
+Greece	GR	Europe	Europe
+Hungary	HU	Europe	Europe
+Iceland	IS	Europe	Europe
+Ireland	IE	Europe	Europe
+Italy	IT	Europe	Europe
+Kosovo	XK	Europe	Balkans
+Latvia	LV	Europe	Baltics
+Liechtenstein	LI	Europe	Europe
+Lithuania	LT	Europe	Baltics
+Luxembourg	LU	Europe	Europe
+Macedonia	MK	Europe	Balkans
+Malta	MT	Europe	Europe
+Moldova	MD	Europe	Europe
+Monaco	MC	Europe	Europe
+Montenegro	ME	Europe	Balkans
+Netherlands	NL	Europe	Europe
+Norway	NO	Europe	Scandinavia
+Poland	PL	Europe	Europe
+Portugal	PT	Europe	Europe
+Romania	RO	Europe	Europe
+Russia	RU	Europe	Europe
+San Marino	SM	Europe	Europe
+Serbia	RS	Europe	Balkans
+Slovakia	SK	Europe	Europe
+Slovenia	SI	Europe	Europe
+Spain	ES	Europe	Europe
+Sweden	SE	Europe	Scandinavia
+Switzerland	CH	Europe	Europe
+Ukraine	UA	Europe	Europe
+United Kingdom	GB	Europe	Europe
+Vatican City	VA	Europe	Europe
+Canada	CA	North America	North America
+Greenland	GL	North America	North America
+Mexico	MX	North America	North America
+United States	US	North America	North America
+Antigua and Barbuda	AG	Central America and the Caribbean	The Caribbean
+The Bahamas	BS	Central America and the Caribbean	The Caribbean
+Barbados	BB	Central America and the Caribbean	The Caribbean
+Belize	BZ	Central America and the Caribbean	Central America
+Costa Rica	CR	Central America and the Caribbean	Central America
+Cuba	CU	Central America and the Caribbean	The Caribbean
+Dominica	DM	Central America and the Caribbean	The Caribbean
+Dominican Republic	DO	Central America and the Caribbean	The Caribbean
+El Salvador	SV	Central America and the Caribbean	Central America
+Grenada	GD	Central America and the Caribbean	The Caribbean
+Guatemala	GT	Central America and the Caribbean	Central America
+Haiti	HT	Central America and the Caribbean	The Caribbean
+Honduras	HN	Central America and the Caribbean	Central America
+Jamaica	JM	Central America and the Caribbean	The Caribbean
+Nicaragua	NI	Central America and the Caribbean	Central America
+Panama	PA	Central America and the Caribbean	Central America
+Saint Kitts and Nevis	KN	Central America and the Caribbean	The Caribbean
+Saint Lucia	LC	Central America and the Caribbean	The Caribbean
+Saint Vincent and the Grenadines	VC	Central America and the Caribbean	The Caribbean
+Trinidad and Tobago	TT	Central America and the Caribbean	The Caribbean
+Argentina	AR	South America	South America
+Bolivia	BO	South America	South America
+Brazil	BR	South America	South America
+Chile	CL	South America	South America
+Colombia	CO	South America	South America
+Ecuador	EC	South America	South America
+Guyana	GY	South America	South America
+Paraguay	PY	South America	South America
+Peru	PE	South America	South America
+Suriname	SR	South America	South America
+Uruguay	UY	South America	South America
+Venezuela	VE	South America	South America
+Angola	AO	Africa	Sub Saharan Africa
+Benin	BJ	Africa	Sub Saharan Africa
+Botswana	BW	Africa	Sub Saharan Africa
+Burkina Faso	BF	Africa	Sub Saharan Africa
+Burundi	BI	Africa	Sub Saharan Africa
+Cameroon	CM	Africa	Sub Saharan Africa
+Cape Verde	CV	Africa	Sub Saharan Africa
+Central African Republic	CF	Africa	Sub Saharan Africa
+Chad	TD	Africa	Sub Saharan Africa
+Comoros	KM	Africa	Sub Saharan Africa
+Republic of the Congo	CG	Africa	Sub Saharan Africa
+Democratic Republic of the Congo	CD	Africa	Sub Saharan Africa
+Cote d'Ivoire	CI	Africa	Sub Saharan Africa
+Djibouti	DJ	Africa	Sub Saharan Africa
+Equatorial Guinea	GQ	Africa	Sub Saharan Africa
+Eritrea	ER	Africa	Sub Saharan Africa
+Ethiopia	ET	Africa	Sub Saharan Africa
+Gabon	GA	Africa	Sub Saharan Africa
+The Gambia	GM	Africa	Sub Saharan Africa
+Ghana	GH	Africa	Sub Saharan Africa
+Guinea	GN	Africa	Sub Saharan Africa
+Guinea-Bissau	GW	Africa	Sub Saharan Africa
+Kenya	KE	Africa	Sub Saharan Africa
+Lesotho	LS	Africa	Sub Saharan Africa
+Liberia	LR	Africa	Sub Saharan Africa
+Madagascar	MG	Africa	Sub Saharan Africa
+Malawi	MW	Africa	Sub Saharan Africa
+Mali	ML	Africa	Sub Saharan Africa
+Mauritania	MR	Africa	Sub Saharan Africa
+Mauritius	MU	Africa	Sub Saharan Africa
+Mozambique	MZ	Africa	Sub Saharan Africa
+Namibia	NA	Africa	Sub Saharan Africa
+Niger	NE	Africa	Sub Saharan Africa
+Nigeria	NG	Africa	Sub Saharan Africa
+Rwanda	RW	Africa	Sub Saharan Africa
+Sao Tome and Principe	ST	Africa	Sub Saharan Africa
+Senegal	SN	Africa	Sub Saharan Africa
+Seychelles	SC	Africa	Sub Saharan Africa
+Sierra Leone	SL	Africa	Sub Saharan Africa
+South Africa	ZA	Africa	Sub Saharan Africa
+South Sudan	SS	Africa	Sub Saharan Africa
+Sudan	SD	Africa	Sub Saharan Africa
+Swaziland	SZ	Africa	Sub Saharan Africa
+Tanzania	TZ	Africa	Sub Saharan Africa
+Togo	TG	Africa	Sub Saharan Africa
+Uganda	UG	Africa	Sub Saharan Africa
+Zambia	ZM	Africa	Sub Saharan Africa
+Zimbabwe	ZW	Africa	Sub Saharan Africa
+Australia	AU	Australia and Oceania	Australia
+Timor-Leste	TL	Australia and Oceania	Oceania
+Fiji	FJ	Australia and Oceania	Oceania
+Kiribati	KI	Australia and Oceania	Oceania
+Marshall Islands	MH	Australia and Oceania	Oceania
+Federated States of Micronesia	FM	Australia and Oceania	Oceania
+Nauru	NR	Australia and Oceania	Oceania
+New Zealand	NZ	Australia and Oceania	Oceania
+Palau	PW	Australia and Oceania	Oceania
+Papua New Guinea	PG	Australia and Oceania	Oceania
+Samoa	WS	Australia and Oceania	Oceania
+Solomon Islands	SB	Australia and Oceania	Oceania
+Tonga	TO	Australia and Oceania	Oceania
+Tuvalu	TV	Australia and Oceania	Oceania
+Vanuatu	VU	Australia and Oceania	Oceania
