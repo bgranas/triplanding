@@ -26,6 +26,7 @@ class TripsControllerTest < ActionController::TestCase
     assert_response :success
   end
 
+  #test trip metrics (including days)
   #test saving blank title
   #test saving without logging in => redirect to login page
   #test saving being logged in associates trip to account
@@ -34,6 +35,7 @@ class TripsControllerTest < ActionController::TestCase
   #testing saving trip is associated to user account if they register or login after creating
   #test deleting a trip and clicking no on confirmation
   #test deleting a trip and clicking yes on confirmation
+  #test delting before logged in
   #favorite trip if logged in / not logged in
   #favrotie trip unsaved trip
   #try to delete trip user did not create

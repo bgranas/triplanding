@@ -691,16 +691,20 @@ createDestinationDateArray = ->
 #calls trips/destroy in the trips controller for trip_Id
 deleteTrip = (trip_id) ->
   user_id = getCookie('current_user_id')
-  $.ajax '/trips/destroy',
-      dataType: 'json'
-      type: 'POST'
-      data:
-        user_id: user_id
-        trip_id: trip_id
-      success: (data) ->
-        window.location.href = '/trips/new'
-      error: ->
-        alert 'Trip delete failed! Please contact site admin.'
+  if user_id
+    $.ajax '/trips/destroy',
+        dataType: 'json'
+        type: 'POST'
+        data:
+          user_id: user_id
+          trip_id: trip_id
+        success: (data) ->
+          window.location.href = '/trips/new'
+        error: ->
+          alert 'Trip delete failed! Please contact site admin.'
+  else
+    alert 'You must be logged in to delete a trip!'
+    $.colorbox.close()
 
 ### ***********************************###
 ### ********* FAVORITE A TRIP *********###
